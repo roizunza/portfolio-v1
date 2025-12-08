@@ -1,3 +1,212 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Roboto+Mono:wght@300;400;700&family=Source+Code+Pro:wght@600;700&display=swap');
+
+:root {
+  /* --- COLORES --- */
+  --fondo-app: #0d0f16;
+  --fondo-terminal: #000000;
+  --azul-electrico: #0000FF;
+  --texto-principal: #e0e0e0;
+  --texto-secundario: #6b7280;
+  --borde-sutil: rgba(255, 255, 255, 0.1);
+  
+  /* --- FUENTES --- */
+  --fuente-ui: 'Inter', sans-serif;
+  --fuente-datos: 'Roboto Mono', monospace;
+  --fuente-codigo: 'Source Code Pro', monospace;
+
+  /* --- MEDIDAS --- */
+  --altura-header: 60px;
+  --altura-footer: 40px;
+}
+
+/* Reset */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background-color: var(--fondo-app);
+  color: var(--texto-principal);
+  font-family: var(--fuente-ui);
+  overflow-x: hidden;
+}
+
+/* --- ANIMACIONES --- */
+@keyframes parpadeo { 0%, 50% { opacity: 1; } 51%, 100% { opacity: 0; } }
+.cursor-terminal {
+  display: inline-block; width: 10px; height: 18px;
+  background-color: var(--texto-principal); margin-left: 5px;
+  animation: parpadeo 1s step-end infinite; vertical-align: text-bottom;
+}
+
+/* =========================================
+   ESTILOS DEL HEADER
+   ========================================= */
+.header-container {
+  position: fixed; top: 0; left: 0; width: 100%;
+  height: var(--altura-header);
+  background-color: var(--azul-electrico);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 2rem; z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+.header-branding { display: flex; flex-direction: column; }
+.header-title { 
+  color: white; font-family: var(--fuente-datos); font-weight: 700; 
+  font-size: 1.8rem; letter-spacing: 0.05em; margin: 0; 
+}
+.header-subtitle {
+  color: rgba(255,255,255,0.9); font-family: var(--fuente-datos);
+  font-size: 0.75rem; font-weight: 500; letter-spacing: 0.025em;
+}
+
+.header-nav {
+  font-family: var(--fuente-codigo); color: white; font-size: 0.9rem;
+  display: flex; align-items: center;
+}
+.nav-btn {
+  background: none; border: none; color: white;
+  font-family: inherit; font-size: inherit; cursor: pointer;
+  padding: 0 4px; transition: opacity 0.2s;
+}
+.nav-btn:hover { text-decoration: underline; }
+
+/* =========================================
+   ESTILOS DEL HERO (PORTADA)
+   ========================================= */
+.hero-section {
+  width: 100%; min-height: 100vh;
+  display: flex; align-items: center; justify-content: center;
+  padding: 40px;
+}
+
+.profile-container {
+  background-color: rgba(21, 24, 35, 0.6); /* Vidrio */
+  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--borde-sutil);
+  border-radius: 12px;
+  width: 100%; max-width: 1200px; /* Ancho Desktop */
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  display: flex; flex-direction: column;
+}
+
+/* Header de Ventana */
+.profile-window-bar {
+  background-color: rgba(13, 15, 22, 0.8);
+  border-bottom: 1px solid var(--borde-sutil);
+  padding: 12px 20px;
+  font-size: 0.85rem; color: var(--texto-secundario);
+  font-family: var(--fuente-datos);
+  display: flex; justify-content: space-between; align-items: center;
+}
+.window-controls { font-family: var(--fuente-codigo); opacity: 0.7; letter-spacing: 2px; }
+
+/* Contenido Principal */
+.profile-content {
+  display: flex; gap: 60px; padding: 60px 50px;
+  align-items: flex-start;
+}
+
+/* Columna Izquierda (Foto) */
+.profile-left {
+  flex-shrink: 0; display: flex; flex-direction: column;
+  align-items: flex-start; width: 300px;
+}
+.profile-image {
+  width: 260px; height: 260px; border-radius: 50%;
+  object-fit: cover; background-color: #222;
+  margin-bottom: 24px; border: 2px solid var(--borde-sutil);
+  align-self: center;
+}
+.profile-quote {
+  color: var(--texto-secundario); font-size: 13px; line-height: 1.6;
+  width: 100%; text-align: left;
+  font-family: var(--fuente-datos); font-style: italic;
+}
+
+/* Columna Derecha (Código) */
+.profile-right {
+  flex: 1; display: flex; flex-direction: column;
+}
+
+/* Bloque de Código */
+.code-block {
+  color: var(--texto-principal); font-family: var(--fuente-codigo);
+  font-size: 1.05rem; line-height: 1.7;
+}
+/* Colores Sintaxis */
+.ck-key { color: #5b7cf7; } /* keyword */
+.ck-cls { color: #e5c07b; } /* class */
+.ck-fn  { color: #61afef; } /* function */
+.ck-str { color: #98c379; } /* string */
+.ck-punc{ color: #abb2bf; } /* punctuation */
+.ck-com { color: #6b7280; font-style: italic; } /* comment */
+.indent-1 { margin-left: 2rem; }
+.indent-2 { margin-left: 4rem; }
+
+/* Botones */
+.profile-buttons {
+  display: flex; gap: 15px; flex-wrap: nowrap;
+  align-items: center; margin-top: 50px; padding-top: 30px;
+  border-top: 1px solid var(--borde-sutil); width: 100%;
+}
+.profile-btn {
+  background-color: rgba(255, 255, 255, 0.05);
+  color: var(--texto-principal);
+  border: 1px solid var(--borde-sutil);
+  padding: 12px 20px;
+  font-family: var(--fuente-ui); font-size: 0.8rem; font-weight: 700;
+  cursor: pointer; transition: all 0.3s ease;
+  display: flex; align-items: center; justify-content: center;
+  white-space: nowrap; flex: 1;
+}
+.profile-btn:hover {
+  background-color: var(--azul-electrico);
+  border-color: var(--azul-electrico); color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 255, 0.3);
+}
+
+/* =========================================
+   RESPONSIVIDAD (MÓVIL) - CORRECCIONES CRÍTICAS
+   ========================================= */
+@media (max-width: 768px) {
+  /* HEADER: Ajustar para que quepa */
+  .header-container {
+    flex-direction: column; /* Apilar nombre y menú */
+    justify-content: center; gap: 5px;
+    height: auto; padding: 10px; /* Altura automática */
+  }
+  .header-title { font-size: 1.2rem; }
+  .header-subtitle { display: none; } /* Ocultar versión en móvil para ahorrar espacio */
+  .header-nav { font-size: 0.75rem; flex-wrap: wrap; justify-content: center; }
+
+  /* HERO: Ajustar grid */
+  .hero-section { padding: 80px 10px 60px 10px; align-items: flex-start; } /* Más padding top por el header alto */
+  .profile-container { width: 100%; }
+  
+  .profile-content {
+    flex-direction: column; gap: 30px; padding: 20px;
+  }
+
+  /* REORDENAMIENTO VISUAL (FLEX ORDER) */
+  /* 1. Código (Elevator Pitch) */
+  .profile-right { order: 1; width: 100%; }
+  .code-block { font-size: 0.9rem; } /* Fuente un poco más chica */
+
+  /* 2. Foto */
+  .profile-left { order: 2; width: 100%; align-items: center; }
+  .profile-image { width: 160px; height: 160px; }
+  .profile-quote { text-align: center; font-size: 0.75rem; }
+
+  /* 3. Botones (Cuadrícula 2x2) */
+  .profile-buttons {
+    order: 3;
+    display: grid; grid-template-columns: 1fr 1fr; /* 2 columnas */
+    gap: 10px; margin-top: 20px;
+  }
+  .profile-btn { width: 100%; font-size: 0.7rem; padding: 10px 5px; }
+}
+
 /* ... MANTÉN TODO EL CSS ANTERIOR DE HEADER, HERO Y GLOBALES ... */
 
 /* =========================================

@@ -79,11 +79,11 @@ body {
 }
 
 .profile-container {
-  background-color: rgba(21, 24, 35, 0.6); /* Vidrio */
+  background-color: rgba(21, 24, 35, 0.6);
   backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
   border: 1px solid var(--borde-sutil);
   border-radius: 12px;
-  width: 100%; max-width: 1200px; /* Ancho Desktop */
+  width: 100%; max-width: 1200px;
   overflow: hidden;
   box-shadow: 0 10px 30px rgba(0,0,0,0.5);
   display: flex; flex-direction: column;
@@ -106,7 +106,7 @@ body {
   align-items: flex-start;
 }
 
-/* Columna Izquierda (Foto) */
+/* Columna Izquierda */
 .profile-left {
   flex-shrink: 0; display: flex; flex-direction: column;
   align-items: flex-start; width: 300px;
@@ -123,7 +123,7 @@ body {
   font-family: var(--fuente-datos); font-style: italic;
 }
 
-/* Columna Derecha (Código) */
+/* Columna Derecha */
 .profile-right {
   flex: 1; display: flex; flex-direction: column;
 }
@@ -133,13 +133,12 @@ body {
   color: var(--texto-principal); font-family: var(--fuente-codigo);
   font-size: 1.05rem; line-height: 1.7;
 }
-/* Colores Sintaxis */
-.ck-key { color: #5b7cf7; } /* keyword */
-.ck-cls { color: #e5c07b; } /* class */
-.ck-fn  { color: #61afef; } /* function */
-.ck-str { color: #98c379; } /* string */
-.ck-punc{ color: #abb2bf; } /* punctuation */
-.ck-com { color: #6b7280; font-style: italic; } /* comment */
+.ck-key { color: #5b7cf7; }
+.ck-cls { color: #e5c07b; }
+.ck-fn  { color: #61afef; }
+.ck-str { color: #98c379; }
+.ck-punc{ color: #abb2bf; }
+.ck-com { color: #6b7280; font-style: italic; }
 .indent-1 { margin-left: 2rem; }
 .indent-2 { margin-left: 4rem; }
 
@@ -167,44 +166,104 @@ body {
 }
 
 /* =========================================
-   RESPONSIVIDAD (MÓVIL) - CORRECCIONES CRÍTICAS
+   RESPONSIVIDAD (MÓVIL) - CORRECCIONES FINALES
    ========================================= */
 @media (max-width: 768px) {
-  /* HEADER: Ajustar para que quepa */
-  .header-container {
-    flex-direction: column; /* Apilar nombre y menú */
-    justify-content: center; gap: 5px;
-    height: auto; padding: 10px; /* Altura automática */
-  }
-  .header-title { font-size: 1.2rem; }
-  .header-subtitle { display: none; } /* Ocultar versión en móvil para ahorrar espacio */
-  .header-nav { font-size: 0.75rem; flex-wrap: wrap; justify-content: center; }
-
-  /* HERO: Ajustar grid */
-  .hero-section { padding: 80px 10px 60px 10px; align-items: flex-start; } /* Más padding top por el header alto */
-  .profile-container { width: 100%; }
   
+  /* 1. HEADER: Alineación Izquierda y Ajuste de Texto */
+  .header-container {
+    flex-direction: column; 
+    align-items: flex-start; /* Alineado a la Izquierda */
+    justify-content: center;
+    gap: 8px;
+    height: auto; 
+    padding: 15px 1.5rem; /* Padding ajustado */
+  }
+  .header-branding { margin-bottom: 5px; }
+  .header-title { font-size: 1.3rem; }
+  .header-subtitle { 
+    display: block; /* Se muestra PORTFOLIO_V2025 */
+    font-size: 0.65rem; 
+    margin-top: 2px;
+  }
+  .header-nav { 
+    font-size: 0.65rem; /* Fuente pequeña para que quepa */
+    width: 100%;
+    flex-wrap: wrap; /* Permitir que baje si es necesario, aunque intentará mantenerse */
+    justify-content: flex-start; /* Alineado a la izquierda */
+  }
+  .nav-btn { padding: 0 3px; }
+
+  /* 2. HERO: Aprovechamiento de Espacio */
+  .hero-section { 
+    padding: 100px 10px 60px 10px; /* Más padding top por el header */
+    align-items: flex-start; 
+  }
+  .profile-container { 
+    width: 100%; 
+    max-width: 100%; /* Aprovechar todo el ancho */
+    border-radius: 8px;
+  }
+  
+  /* Header de Ventana más pequeño */
+  .profile-window-bar { 
+    padding: 8px 12px; 
+    font-size: 0.7rem; 
+  }
+  .window-controls { letter-spacing: 1px; }
+
+  /* 3. REORDENAMIENTO (Definición > Foto > Comentario > Botones) */
   .profile-content {
-    flex-direction: column; gap: 30px; padding: 20px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 15px;
+    gap: 0; /* Quitamos gap del padre para manejar margenes individuales */
   }
 
-  /* REORDENAMIENTO VISUAL (FLEX ORDER) */
-  /* 1. Código (Elevator Pitch) */
-  .profile-right { order: 1; width: 100%; }
-  .code-block { font-size: 0.9rem; } /* Fuente un poco más chica */
+  /* TRUCO CSS: 'display: contents' elimina el contenedor visual 
+     permitiendo que los hijos (imagen, codigo, botones) se ordenen libremente */
+  .profile-left, .profile-right {
+    display: contents;
+  }
 
-  /* 2. Foto */
-  .profile-left { order: 2; width: 100%; align-items: center; }
-  .profile-image { width: 160px; height: 160px; }
-  .profile-quote { text-align: center; font-size: 0.75rem; }
+  /* ORDEN 1: Código (Definición Urbanista) */
+  .code-block { 
+    order: 1; 
+    margin-bottom: 30px; 
+    font-size: 0.85rem; 
+    width: 100%;
+  }
 
-  /* 3. Botones (Cuadrícula 2x2) */
+  /* ORDEN 2: Foto */
+  .profile-image { 
+    order: 2; 
+    width: 140px; height: 140px; 
+    margin: 0 auto 20px auto; /* Centrada horizontalmente */
+  }
+
+  /* ORDEN 3: Comentario (Quote) */
+  .profile-quote { 
+    order: 3; 
+    text-align: center; /* En móvil se ve mejor centrado, pero si prefieres izq avísame */
+    margin-bottom: 30px;
+    font-size: 0.75rem;
+  }
+
+  /* ORDEN 4: Botones (Cuadrícula 2x2) */
   .profile-buttons {
-    order: 3;
-    display: grid; grid-template-columns: 1fr 1fr; /* 2 columnas */
-    gap: 10px; margin-top: 20px;
+    order: 4;
+    display: grid; 
+    grid-template-columns: 1fr 1fr; 
+    gap: 10px; 
+    margin-top: 0;
+    padding-top: 20px;
+    border-top: 1px solid var(--borde-sutil);
   }
-  .profile-btn { width: 100%; font-size: 0.7rem; padding: 10px 5px; }
+  .profile-btn { 
+    width: 100%; 
+    font-size: 0.65rem; /* Texto pequeño para que quepa "INICIAR CONEXION" */
+    padding: 10px 5px; 
+  }
 }
 
 /* ... MANTÉN TODO EL CSS ANTERIOR DE HEADER, HERO Y GLOBALES ... */

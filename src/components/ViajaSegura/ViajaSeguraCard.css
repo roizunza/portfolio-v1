@@ -1,0 +1,100 @@
+/* src/components/ViajaSegura/ViajaSeguraCard.css */
+
+/* Adaptación al Tema Dark VS Code */
+.project-detail-container {
+  background-color: #1e1e1e; /* Fondo oscuro */
+  border: 1px solid #333;
+  border-radius: 8px;
+  overflow: hidden;
+  max-width: 900px;
+  margin: 20px auto;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  font-family: 'Roboto Mono', monospace;
+  animation: fadeIn 0.5s ease-out;
+}
+
+.project-hero-image {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-bottom: 1px solid #333;
+  opacity: 0.8;
+  transition: opacity 0.3s;
+}
+
+.project-hero-image:hover {
+  opacity: 1;
+}
+
+.project-content {
+  padding: 30px;
+  color: #d4d4d4;
+}
+
+.project-definition {
+  font-size: 0.9rem;
+  margin-bottom: 20px;
+  color: #9cdcfe; /* Azul claro variables */
+  border-bottom: 1px dashed #444;
+  padding-bottom: 10px;
+}
+
+.project-definition .keyword {
+  color: #c586c0; /* Violeta keywords */
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.project-description {
+  margin-bottom: 30px;
+}
+
+.project-location {
+  font-size: 0.8rem;
+  color: #6a9955; /* Verde comentario */
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.project-text {
+  font-size: 0.95rem;
+  color: #cccccc;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+/* BOTÓN DE EJECUCIÓN */
+.execute-button {
+  background-color: #007acc; /* Azul VS Code */
+  color: white;
+  font-family: 'Source Code Pro', monospace;
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.execute-button:hover {
+  background-color: #005a9e;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 122, 204, 0.4);
+}
+
+.execute-button::before {
+  content: '>_';
+  margin-right: 10px;
+  color: #a8ff60; /* Verde terminal */
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}

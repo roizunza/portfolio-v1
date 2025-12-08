@@ -17,6 +17,14 @@
   /* --- MEDIDAS --- */
   --altura-header: 60px;
   --altura-footer: 40px;
+
+  /* --- COLORES EDITOR (MODAL) --- */
+  --bg-editor: #282c34;
+  --color-keyword: #c678dd; /* magenta */
+  --color-string: #98c379;  /* verde */
+  --color-function: #61afef; /* azul */
+  --color-comment: #5c6370; /* gris */
+  --color-variable: #e06c75; /* rojo suave */
 }
 
 /* Reset */
@@ -30,6 +38,11 @@ body {
 
 /* --- ANIMACIONES --- */
 @keyframes parpadeo { 0%, 50% { opacity: 1; } 51%, 100% { opacity: 0; } }
+@keyframes entradaSuave {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
 .cursor-terminal {
   display: inline-block; width: 10px; height: 18px;
   background-color: var(--texto-principal); margin-left: 5px;
@@ -79,7 +92,7 @@ body {
 }
 
 .profile-container {
-  background-color: rgba(21, 24, 35, 0.6);
+  background-color: rgba(21, 24, 35, 0.6); /* Vidrio */
   backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
   border: 1px solid var(--borde-sutil);
   border-radius: 12px;
@@ -106,7 +119,7 @@ body {
   align-items: flex-start;
 }
 
-/* Columna Izquierda */
+/* Columna Izquierda (Foto) */
 .profile-left {
   flex-shrink: 0; display: flex; flex-direction: column;
   align-items: flex-start; width: 300px;
@@ -123,7 +136,7 @@ body {
   font-family: var(--fuente-datos); font-style: italic;
 }
 
-/* Columna Derecha */
+/* Columna Derecha (Código) */
 .profile-right {
   flex: 1; display: flex; flex-direction: column;
 }
@@ -142,7 +155,7 @@ body {
 .indent-1 { margin-left: 2rem; }
 .indent-2 { margin-left: 4rem; }
 
-/* Botones */
+/* Botones Hero */
 .profile-buttons {
   display: flex; gap: 15px; flex-wrap: nowrap;
   align-items: center; margin-top: 50px; padding-top: 30px;
@@ -166,110 +179,81 @@ body {
 }
 
 /* =========================================
-   RESPONSIVIDAD (MÓVIL) - CORRECCIONES FINALES
+   ESTILOS DEL MODAL (EDITOR CONTACTO)
    ========================================= */
-@media (max-width: 768px) {
-  
-  /* 1. HEADER: Alineación Izquierda y Ajuste de Texto */
-  .header-container {
-    flex-direction: column; 
-    align-items: flex-start; /* Alineado a la Izquierda */
-    justify-content: center;
-    gap: 8px;
-    height: auto; 
-    padding: 15px 1.5rem; /* Padding ajustado */
-  }
-  .header-branding { margin-bottom: 5px; }
-  .header-title { font-size: 1.3rem; }
-  .header-subtitle { 
-    display: block; /* Se muestra PORTFOLIO_V2025 */
-    font-size: 0.65rem; 
-    margin-top: 2px;
-  }
-  .header-nav { 
-    font-size: 0.65rem; /* Fuente pequeña para que quepa */
-    width: 100%;
-    flex-wrap: wrap; /* Permitir que baje si es necesario, aunque intentará mantenerse */
-    justify-content: flex-start; /* Alineado a la izquierda */
-  }
-  .nav-btn { padding: 0 3px; }
-
-  /* 2. HERO: Aprovechamiento de Espacio */
-  .hero-section { 
-    padding: 100px 10px 60px 10px; /* Más padding top por el header */
-    align-items: flex-start; 
-  }
-  .profile-container { 
-    width: 100%; 
-    max-width: 100%; /* Aprovechar todo el ancho */
-    border-radius: 8px;
-  }
-  
-  /* Header de Ventana más pequeño */
-  .profile-window-bar { 
-    padding: 8px 12px; 
-    font-size: 0.7rem; 
-  }
-  .window-controls { letter-spacing: 1px; }
-
-  /* 3. REORDENAMIENTO (Definición > Foto > Comentario > Botones) */
-  .profile-content {
-    display: flex;
-    flex-direction: column;
-    padding: 20px 15px;
-    gap: 0; /* Quitamos gap del padre para manejar margenes individuales */
-  }
-
-  /* TRUCO CSS: 'display: contents' elimina el contenedor visual 
-     permitiendo que los hijos (imagen, codigo, botones) se ordenen libremente */
-  .profile-left, .profile-right {
-    display: contents;
-  }
-
-  /* ORDEN 1: Código (Definición Urbanista) */
-  .code-block { 
-    order: 1; 
-    margin-bottom: 30px; 
-    font-size: 0.85rem; 
-    width: 100%;
-  }
-
-  /* ORDEN 2: Foto */
-  .profile-image { 
-    order: 2; 
-    width: 140px; height: 140px; 
-    margin: 0 auto 20px auto; /* Centrada horizontalmente */
-  }
-
-  /* ORDEN 3: Comentario (Quote) */
-  .profile-quote { 
-    order: 3; 
-    text-align: center; /* En móvil se ve mejor centrado, pero si prefieres izq avísame */
-    margin-bottom: 30px;
-    font-size: 0.75rem;
-  }
-
-  /* ORDEN 4: Botones (Cuadrícula 2x2) */
-  .profile-buttons {
-    order: 4;
-    display: grid; 
-    grid-template-columns: 1fr 1fr; 
-    gap: 10px; 
-    margin-top: 0;
-    padding-top: 20px;
-    border-top: 1px solid var(--borde-sutil);
-  }
-  .profile-btn { 
-    width: 100%; 
-    font-size: 0.65rem; /* Texto pequeño para que quepa "INICIAR CONEXION" */
-    padding: 10px 5px; 
-  }
+.modal-overlay {
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(5px);
+  display: flex; align-items: center; justify-content: center;
+  z-index: 2000; padding: 20px;
+  animation: entradaSuave 0.3s ease-out forwards;
 }
 
-/* ... MANTÉN TODO EL CSS ANTERIOR DE HEADER, HERO Y GLOBALES ... */
+.code-editor {
+  background-color: var(--bg-editor);
+  border: 1px solid #1a1d28;
+  border-radius: 8px;
+  overflow: hidden;
+  width: 100%; max-width: 600px;
+  font-family: var(--fuente-codigo);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+}
+
+.editor-header {
+  background-color: #21252b; color: var(--texto-secundario);
+  padding: 12px 20px; display: flex; justify-content: space-between; align-items: center;
+  font-size: 13px; border-bottom: 1px solid #181a1f;
+}
+.editor-filename { color: var(--texto-secundario); }
+.editor-close { cursor: pointer; color: #ff5f56; font-weight: bold; }
+
+.editor-content { padding: 24px; font-size: 14px; line-height: 1.8; color: var(--text-primary); }
+
+.code-line { margin-bottom: 15px; display: flex; flex-wrap: wrap; align-items: center; }
+.code-keyword { color: var(--color-keyword); font-weight: bold; margin-right: 8px; }
+.code-variable { color: var(--color-variable); margin-right: 8px; }
+.code-operator { color: var(--texto-principal); margin-right: 8px; }
+.code-string { color: var(--color-string); display: flex; align-items: center; flex: 1; }
+.code-function-name { color: var(--color-function); }
+.code-punctuation { color: var(--texto-principal); }
+.code-comment { color: var(--color-comment); font-style: italic; }
+.code-indent { margin-left: 2rem; }
+
+.input-field {
+  background: transparent; border: none; outline: none;
+  color: var(--color-string); font-family: inherit; font-size: inherit;
+  width: 100%; border-bottom: 1px dashed #444;
+}
+.input-field::placeholder { color: #5c6370; opacity: 0.5; font-style: italic; }
+
+.textarea-field {
+  background: transparent; border: none; outline: none;
+  color: #abb2bf; font-family: inherit; font-size: inherit;
+  width: 100%; resize: none; display: block; min-height: 80px;
+}
+
+.editor-divider { height: 1px; background-color: var(--borde-sutil); margin: 20px 0; opacity: 0.3; }
+
+.editor-footer {
+  background-color: #21252b; padding: 16px 24px;
+  display: flex; align-items: center; justify-content: flex-end;
+  border-top: 1px solid var(--azul-electrico);
+}
+
+.send-btn {
+  background-color: transparent; color: var(--color-function);
+  border: 1px solid var(--color-function); padding: 8px 20px;
+  font-family: inherit; font-weight: bold; cursor: pointer;
+  border-radius: 4px; transition: all 0.3s;
+}
+.send-btn:hover { background-color: var(--color-function); color: #282c34; }
+
+.terminal-logs { padding: 40px; color: var(--color-string); font-family: var(--fuente-codigo); }
+.log-line { margin-bottom: 5px; }
 
 /* =========================================
-   ESTILOS DEL FOOTER (NUEVO)
+   ESTILOS DEL FOOTER
    ========================================= */
 .footer-container {
   position: fixed; bottom: 0; left: 0; width: 100%;
@@ -278,12 +262,12 @@ body {
   display: flex; align-items: center;
   padding: 0 1rem; z-index: 1000;
   border-top: 1px solid #333;
-  overflow: hidden; /* Evita que el texto largo rompa el layout */
+  overflow: hidden; 
 }
 
 .footer-content {
   font-family: var(--fuente-codigo);
-  font-size: 0.85rem; /* Tamaño Escritorio */
+  font-size: 0.85rem; 
   color: var(--texto-principal);
   white-space: nowrap; 
   display: flex; align-items: center;
@@ -291,27 +275,56 @@ body {
 }
 
 /* =========================================
-   RESPONSIVIDAD (MÓVIL) - ACTUALIZACIÓN
+   RESPONSIVIDAD (MÓVIL)
    ========================================= */
 @media (max-width: 768px) {
-  /* ... (Tus estilos de Header y Hero móvil previos siguen aquí) ... */
+  /* HEADER */
+  .header-container {
+    flex-direction: column; align-items: flex-start; justify-content: center;
+    gap: 8px; height: auto; padding: 15px 1.5rem;
+  }
+  .header-branding { margin-bottom: 5px; }
+  .header-title { font-size: 1.3rem; }
+  .header-subtitle { display: block; font-size: 0.65rem; margin-top: 2px; }
+  .header-nav { 
+    font-size: 0.65rem; width: 100%; flex-wrap: wrap; justify-content: flex-start; 
+  }
+  .nav-btn { padding: 0 3px; }
 
-  /* FOOTER MÓVIL: Ajuste de tamaño */
-  .footer-container {
-    height: 30px; /* Barra más delgada (antes 40px) */
-    padding: 0 0.5rem;
-  }
+  /* HERO */
+  .hero-section { padding: 100px 10px 60px 10px; align-items: flex-start; }
+  .profile-container { width: 100%; max-width: 100%; border-radius: 8px; }
+  .profile-window-bar { padding: 8px 12px; font-size: 0.7rem; }
   
-  .footer-content {
-    font-size: 0.6rem; /* Fuente "micro" estilo consola */
+  .profile-content {
+    display: flex; flex-direction: column; padding: 20px 15px; gap: 0;
   }
+  .profile-left, .profile-right { display: contents; }
+
+  /* ORDEN MÓVIL */
+  .code-block { order: 1; margin-bottom: 30px; font-size: 0.85rem; width: 100%; }
+  .profile-image { order: 2; width: 140px; height: 140px; margin: 0 auto 20px auto; }
+  .profile-quote { order: 3; text-align: center; margin-bottom: 30px; font-size: 0.75rem; }
   
-  /* Opcional: Ocultar la ruta larga en móvil si sigue estorbando */
+  .profile-buttons {
+    order: 4; display: grid; grid-template-columns: 1fr 1fr; 
+    gap: 10px; margin-top: 0; padding-top: 20px;
+    border-top: 1px solid var(--borde-sutil);
+  }
+  .profile-btn { width: 100%; font-size: 0.65rem; padding: 10px 5px; }
+
+  /* FOOTER */
+  .footer-container { height: 30px; padding: 0 0.5rem; }
+  .footer-content { font-size: 0.6rem; }
   .ruta-desktop { display: none; }
   .ruta-mobile { display: inline; }
+
+  /* MODAL */
+  .editor-content { padding: 15px; }
+  .code-line { font-size: 0.8rem; }
+  .code-indent { margin-left: 1rem; }
 }
 
-/* Para escritorio, ocultamos la versión corta */
 @media (min-width: 769px) {
   .ruta-mobile { display: none; }
 }

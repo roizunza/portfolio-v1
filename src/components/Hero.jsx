@@ -1,5 +1,6 @@
 import React from 'react';
-import { FaGithub, FaLinkedin, FaTerminal, FaFileDownload } from 'react-icons/fa';
+/* 1. Importamos FaPlug para el nuevo icono */
+import { FaGithub, FaLinkedin, FaFileDownload, FaPlug } from 'react-icons/fa';
 
 const Hero = ({ alAbrirTerminal }) => {
   
@@ -85,21 +86,32 @@ const Hero = ({ alAbrirTerminal }) => {
             </div>
 
             <div className="profile-buttons">
+              {/* Botón CV */}
               <button className="profile-btn" onClick={() => manejarClick('descarga', '/assets/cv_actual.pdf')}>
                 <FaFileDownload style={{marginRight: '8px'}}/> DESCARGAR_CV
               </button>
               
+              {/* Botón Conexión con nuevo LOGO (Enchufe) */}
               <button className="profile-btn" onClick={() => manejarClick('modal')}>
-                <FaTerminal style={{marginRight: '8px'}}/> INICIAR_CONEXIÓN
+                <FaPlug style={{marginRight: '8px', transform: 'rotate(90deg)'}}/> INICIAR_CONEXIÓN
               </button>
               
-              <button className="profile-btn" onClick={() => manejarClick('link', 'https://www.linkedin.com/in/tu-usuario-real/')}>
+              {/* Botón LinkedIn - PEGA TU LINK ABAJO */}
+              <button 
+                className="profile-btn" 
+                onClick={() => manejarClick('link', 'https://github.com/roizunza')}
+              >
                 <FaLinkedin style={{marginRight: '8px'}}/> LINKEDIN
               </button>
               
-              <button className="profile-btn" onClick={() => manejarClick('link', 'https://github.com/tu-usuario-real')}>
+              {/* Botón GitHub - PEGA TU LINK ABAJO */}
+              <button 
+                className="profile-btn" 
+                onClick={() => manejarClick('link', 'https://www.linkedin.com/in/rocioizunza/')}
+              >
                 <FaGithub style={{marginRight: '8px'}}/> GITHUB
               </button>
+
             </div>
 
           </div>

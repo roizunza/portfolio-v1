@@ -1,267 +1,49 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Roboto+Mono:wght@300;400;700&family=Source+Code+Pro:wght@600;700&display=swap');
-
-:root {
-  /* --- COLORES --- */
-  --fondo-app: #0d0f16;
-  --fondo-terminal: #000000;
-  --azul-electrico: #0000FF;
-  --texto-principal: #e0e0e0;
-  --texto-secundario: #6b7280;
-  --borde-sutil: rgba(255, 255, 255, 0.1);
-  
-  /* --- FUENTES --- */
-  --fuente-ui: 'Inter', sans-serif;
-  --fuente-datos: 'Roboto Mono', monospace;
-  --fuente-codigo: 'Source Code Pro', monospace;
-
-  /* --- MEDIDAS --- */
-  --altura-header: 60px;
-  --altura-footer: 40px;
-}
-
-/* Reset */
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body {
-  background-color: var(--fondo-app);
-  color: var(--texto-principal);
-  font-family: var(--fuente-ui);
-  overflow-x: hidden;
-}
-
-/* --- ANIMACIONES --- */
-@keyframes parpadeo { 0%, 50% { opacity: 1; } 51%, 100% { opacity: 0; } }
-.cursor-terminal {
-  display: inline-block; width: 10px; height: 18px;
-  background-color: var(--texto-principal); margin-left: 5px;
-  animation: parpadeo 1s step-end infinite; vertical-align: text-bottom;
-}
+/* ... MANTÉN TODO EL CSS ANTERIOR DE HEADER, HERO Y GLOBALES ... */
 
 /* =========================================
-   ESTILOS DEL HEADER
+   ESTILOS DEL FOOTER (NUEVO)
    ========================================= */
-.header-container {
-  position: fixed; top: 0; left: 0; width: 100%;
-  height: var(--altura-header);
-  background-color: var(--azul-electrico);
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 0 2rem; z-index: 1000;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.3);
-}
-
-.header-branding { display: flex; flex-direction: column; }
-.header-title { 
-  color: white; font-family: var(--fuente-datos); font-weight: 700; 
-  font-size: 1.8rem; letter-spacing: 0.05em; margin: 0; 
-}
-.header-subtitle {
-  color: rgba(255,255,255,0.9); font-family: var(--fuente-datos);
-  font-size: 0.75rem; font-weight: 500; letter-spacing: 0.025em;
-}
-
-.header-nav {
-  font-family: var(--fuente-codigo); color: white; font-size: 0.9rem;
+.footer-container {
+  position: fixed; bottom: 0; left: 0; width: 100%;
+  height: var(--altura-footer);
+  background-color: var(--fondo-terminal);
   display: flex; align-items: center;
-}
-.nav-btn {
-  background: none; border: none; color: white;
-  font-family: inherit; font-size: inherit; cursor: pointer;
-  padding: 0 4px; transition: opacity 0.2s;
-}
-.nav-btn:hover { text-decoration: underline; }
-
-/* =========================================
-   ESTILOS DEL HERO (PORTADA)
-   ========================================= */
-.hero-section {
-  width: 100%; min-height: 100vh;
-  display: flex; align-items: center; justify-content: center;
-  padding: 40px;
+  padding: 0 1rem; z-index: 1000;
+  border-top: 1px solid #333;
+  overflow: hidden; /* Evita que el texto largo rompa el layout */
 }
 
-.profile-container {
-  background-color: rgba(21, 24, 35, 0.6);
-  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
-  border: 1px solid var(--borde-sutil);
-  border-radius: 12px;
-  width: 100%; max-width: 1200px;
-  overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-  display: flex; flex-direction: column;
-}
-
-/* Header de Ventana */
-.profile-window-bar {
-  background-color: rgba(13, 15, 22, 0.8);
-  border-bottom: 1px solid var(--borde-sutil);
-  padding: 12px 20px;
-  font-size: 0.85rem; color: var(--texto-secundario);
-  font-family: var(--fuente-datos);
-  display: flex; justify-content: space-between; align-items: center;
-}
-.window-controls { font-family: var(--fuente-codigo); opacity: 0.7; letter-spacing: 2px; }
-
-/* Contenido Principal */
-.profile-content {
-  display: flex; gap: 60px; padding: 60px 50px;
-  align-items: flex-start;
-}
-
-/* Columna Izquierda */
-.profile-left {
-  flex-shrink: 0; display: flex; flex-direction: column;
-  align-items: flex-start; width: 300px;
-}
-.profile-image {
-  width: 260px; height: 260px; border-radius: 50%;
-  object-fit: cover; background-color: #222;
-  margin-bottom: 24px; border: 2px solid var(--borde-sutil);
-  align-self: center;
-}
-.profile-quote {
-  color: var(--texto-secundario); font-size: 13px; line-height: 1.6;
-  width: 100%; text-align: left;
-  font-family: var(--fuente-datos); font-style: italic;
-}
-
-/* Columna Derecha */
-.profile-right {
-  flex: 1; display: flex; flex-direction: column;
-}
-
-/* Bloque de Código */
-.code-block {
-  color: var(--texto-principal); font-family: var(--fuente-codigo);
-  font-size: 1.05rem; line-height: 1.7;
-}
-.ck-key { color: #5b7cf7; }
-.ck-cls { color: #e5c07b; }
-.ck-fn  { color: #61afef; }
-.ck-str { color: #98c379; }
-.ck-punc{ color: #abb2bf; }
-.ck-com { color: #6b7280; font-style: italic; }
-.indent-1 { margin-left: 2rem; }
-.indent-2 { margin-left: 4rem; }
-
-/* Botones */
-.profile-buttons {
-  display: flex; gap: 15px; flex-wrap: nowrap;
-  align-items: center; margin-top: 50px; padding-top: 30px;
-  border-top: 1px solid var(--borde-sutil); width: 100%;
-}
-.profile-btn {
-  background-color: rgba(255, 255, 255, 0.05);
+.footer-content {
+  font-family: var(--fuente-codigo);
+  font-size: 0.85rem; /* Tamaño Escritorio */
   color: var(--texto-principal);
-  border: 1px solid var(--borde-sutil);
-  padding: 12px 20px;
-  font-family: var(--fuente-ui); font-size: 0.8rem; font-weight: 700;
-  cursor: pointer; transition: all 0.3s ease;
-  display: flex; align-items: center; justify-content: center;
-  white-space: nowrap; flex: 1;
-}
-.profile-btn:hover {
-  background-color: var(--azul-electrico);
-  border-color: var(--azul-electrico); color: white;
-  transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(0, 0, 255, 0.3);
+  white-space: nowrap; 
+  display: flex; align-items: center;
+  width: 100%;
 }
 
 /* =========================================
-   RESPONSIVIDAD (MÓVIL) - CORRECCIONES FINALES
+   RESPONSIVIDAD (MÓVIL) - ACTUALIZACIÓN
    ========================================= */
 @media (max-width: 768px) {
-  
-  /* 1. HEADER: Alineación Izquierda y Ajuste de Texto */
-  .header-container {
-    flex-direction: column; 
-    align-items: flex-start; /* Alineado a la Izquierda */
-    justify-content: center;
-    gap: 8px;
-    height: auto; 
-    padding: 15px 1.5rem; /* Padding ajustado */
-  }
-  .header-branding { margin-bottom: 5px; }
-  .header-title { font-size: 1.3rem; }
-  .header-subtitle { 
-    display: block; /* Se muestra PORTFOLIO_V2025 */
-    font-size: 0.65rem; 
-    margin-top: 2px;
-  }
-  .header-nav { 
-    font-size: 0.65rem; /* Fuente pequeña para que quepa */
-    width: 100%;
-    flex-wrap: wrap; /* Permitir que baje si es necesario, aunque intentará mantenerse */
-    justify-content: flex-start; /* Alineado a la izquierda */
-  }
-  .nav-btn { padding: 0 3px; }
+  /* ... (Tus estilos de Header y Hero móvil previos siguen aquí) ... */
 
-  /* 2. HERO: Aprovechamiento de Espacio */
-  .hero-section { 
-    padding: 100px 10px 60px 10px; /* Más padding top por el header */
-    align-items: flex-start; 
-  }
-  .profile-container { 
-    width: 100%; 
-    max-width: 100%; /* Aprovechar todo el ancho */
-    border-radius: 8px;
+  /* FOOTER MÓVIL: Ajuste de tamaño */
+  .footer-container {
+    height: 30px; /* Barra más delgada (antes 40px) */
+    padding: 0 0.5rem;
   }
   
-  /* Header de Ventana más pequeño */
-  .profile-window-bar { 
-    padding: 8px 12px; 
-    font-size: 0.7rem; 
+  .footer-content {
+    font-size: 0.6rem; /* Fuente "micro" estilo consola */
   }
-  .window-controls { letter-spacing: 1px; }
+  
+  /* Opcional: Ocultar la ruta larga en móvil si sigue estorbando */
+  .ruta-desktop { display: none; }
+  .ruta-mobile { display: inline; }
+}
 
-  /* 3. REORDENAMIENTO (Definición > Foto > Comentario > Botones) */
-  .profile-content {
-    display: flex;
-    flex-direction: column;
-    padding: 20px 15px;
-    gap: 0; /* Quitamos gap del padre para manejar margenes individuales */
-  }
-
-  /* TRUCO CSS: 'display: contents' elimina el contenedor visual 
-     permitiendo que los hijos (imagen, codigo, botones) se ordenen libremente */
-  .profile-left, .profile-right {
-    display: contents;
-  }
-
-  /* ORDEN 1: Código (Definición Urbanista) */
-  .code-block { 
-    order: 1; 
-    margin-bottom: 30px; 
-    font-size: 0.85rem; 
-    width: 100%;
-  }
-
-  /* ORDEN 2: Foto */
-  .profile-image { 
-    order: 2; 
-    width: 140px; height: 140px; 
-    margin: 0 auto 20px auto; /* Centrada horizontalmente */
-  }
-
-  /* ORDEN 3: Comentario (Quote) */
-  .profile-quote { 
-    order: 3; 
-    text-align: center; /* En móvil se ve mejor centrado, pero si prefieres izq avísame */
-    margin-bottom: 30px;
-    font-size: 0.75rem;
-  }
-
-  /* ORDEN 4: Botones (Cuadrícula 2x2) */
-  .profile-buttons {
-    order: 4;
-    display: grid; 
-    grid-template-columns: 1fr 1fr; 
-    gap: 10px; 
-    margin-top: 0;
-    padding-top: 20px;
-    border-top: 1px solid var(--borde-sutil);
-  }
-  .profile-btn { 
-    width: 100%; 
-    font-size: 0.65rem; /* Texto pequeño para que quepa "INICIAR CONEXION" */
-    padding: 10px 5px; 
-  }
+/* Para escritorio, ocultamos la versión corta */
+@media (min-width: 769px) {
+  .ruta-mobile { display: none; }
 }

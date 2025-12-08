@@ -1,0 +1,66 @@
+/* Importamos exactamente las mismas fuentes que tenías en App.css */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Roboto+Mono:wght@300;400;700&family=Source+Code+Pro:wght@600;700&display=swap');
+
+:root {
+  /* --- 1. PALETA DE COLORES (Extraída de Viaja Segura + Header Figma) --- */
+  
+  /* Fondos */
+  --fondo-app: #0d0f16;       /* Tu negro profundo azulado original */
+  --fondo-terminal: #000000;  /* Negro puro para el footer */
+  
+  /* Identidad */
+  --azul-electrico: #0000FF;  /* El azul fuerte del Header (Figma) */
+  
+  /* Textos */
+  --texto-principal: #e0e0e0; /* Tu blanco humo original */
+  --texto-secundario: #5a626bd6; /* Tu gris azulado (text-muted) */
+
+  /* --- 2. FUENTES (Mismas familias) --- */
+  --fuente-ui: 'Inter', sans-serif;
+  --fuente-datos: 'Roboto Mono', monospace;
+  --fuente-codigo: 'Source Code Pro', monospace;
+
+  /* --- 3. MEDIDAS ESTÁNDAR --- */
+  --altura-header: 60px; /* Ajuste visual estándar */
+  --altura-footer: 40px;
+}
+
+/* Reset básico */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--fondo-app);
+  color: var(--texto-principal);
+  font-family: var(--fuente-ui);
+  /* Mantenemos el overflow-x hidden que tenías para evitar scroll lateral */
+  overflow-x: hidden; 
+}
+
+/* Utilidad que tenías para ocultar scrollbar */
+.sin-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.sin-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* --- ANIMACIONES GLOBALES --- */
+@keyframes parpadeo {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+.cursor-terminal {
+  display: inline-block;
+  width: 10px;
+  height: 18px;
+  background-color: var(--texto-principal);
+  margin-left: 5px;
+  animation: parpadeo 1s step-end infinite;
+  vertical-align: text-bottom;
+}

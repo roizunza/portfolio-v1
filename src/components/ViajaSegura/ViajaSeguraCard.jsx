@@ -1,45 +1,57 @@
 import React from 'react';
 import './ViajaSeguraCard.css';
-import imagenPortada from '../../assets/viajasegura.jpg'; // Ajusta la ruta si es necesario
+import imagenPortada from '../../assets/viajasegura.jpg'; 
 
-const ViajaSeguraCard = ({ onEjecutar }) => {
+// Recibimos "onClose" como prop
+const ViajaSeguraCard = ({ onEjecutar, onClose }) => {
   return (
     <div className="project-detail-container">
       
-      {/* 1. IMAGEN PRINCIPAL */}
+      {/* 1. BARRA DE VENTANA (NUEVO) */}
+      <div className="card-window-bar">
+        <div className="window-title">
+          <span>📂</span> viaja_segura_analysis.py
+        </div>
+        {/* Botón de Cerrar explícito */}
+        <div className="window-close-btn" onClick={onClose}>
+          [ X ]
+        </div>
+      </div>
+      
+      {/* 2. IMAGEN PRINCIPAL */}
       <img 
         src={imagenPortada} 
         alt="Ilustración Viaja Segura" 
         className="project-hero-image" 
       />
 
+      {/* 3. CONTENIDO SCROLLEABLE */}
       <div className="project-content">
         
-        {/* 2. DEFINICIÓN TÉCNICA */}
+        {/* Definición Técnica */}
         <div className="project-definition">
           <span className="keyword">const</span> proyecto = {'{'}
           <span style={{color: '#ce9178', marginLeft: '8px'}}>"id": "VS_01"</span>,
-          <span style={{color: '#ce9178', marginLeft: '8px'}}>"tipo": "Evaluación de Política Pública"</span>
+          <span style={{color: '#ce9178', marginLeft: '8px'}}>"status": "Active"</span>
           {'}'};
         </div>
 
-        {/* 3. DESCRIPCIÓN */}
+        {/* Descripción */}
         <div className="project-description">
           <div className="project-location">// UBICACIÓN: PERIFERIA SUR CDMX</div>
           
           <p className="project-text">
-            Este proyecto evalúa la iniciativa de la Asociación Civil Ruta 66, que opera un servicio exclusivo 
-            para mujeres e infancias. A través del análisis de datos geoespaciales, construí el sustento 
-            operativo que permitió legitimar el modelo ante SEMOVI.
+            Este proyecto evalúa la iniciativa de la Asociación Civil Ruta 66, operando un servicio exclusivo 
+            para mujeres e infancias.
           </p>
           
           <p className="project-text">
-            Traduje la experiencia de viaje cotidiana en información cuantificable, generando modelos de 
-            accesibilidad y analizando la demanda real del servicio.
+            A través del análisis geoespacial, construí el sustento operativo que legitimó el modelo ante SEMOVI,
+            traduciendo la experiencia de viaje en modelos de accesibilidad.
           </p>
         </div>
 
-        {/* 4. BOTÓN DE EJECUCIÓN */}
+        {/* Botón de Ejecución */}
         <button className="execute-button" onClick={onEjecutar}>
           EJECUTAR ANÁLISIS
         </button>

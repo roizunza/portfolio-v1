@@ -1,98 +1,139 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useState, useEffect } from 'react'; 
 import { FONTS } from '../../config/theme';
 import * as turf from '@turf/turf';
 
-// Importamos tus datos reales
+// Datos
 import manglaresData from '../../data/manglares.json';
 import inversionData from '../../data/inversion.json';
-import presionData from '../../data/manglarespresionados.json';
+import presionData from '../../data/manglarespresionados.json'; 
 
-const Card = ({ title, value, subtitle, color }) => (
-  <div style={{
-    backgroundColor: 'rgba(21, 24, 35, 0.6)',
-    borderRadius: '8px', padding: '15px',
-    borderLeft: `4px solid ${color}`,
-    display: 'flex', flexDirection: 'column', justifyContent: 'center',
-    flex: 1, 
-    backdropFilter: 'blur(10px)',
-    border: '1px solid rgba(255,255,255,0.05)'
-  }}>
-    <div style={{ fontFamily: FONTS.numbers, fontSize: '22px', fontWeight: 'bold', color: '#fff', marginBottom: '4px' }}>
-      {value}
-    </div>
-    <div style={{ fontFamily: FONTS.title, fontSize: '10px', fontWeight: '700', color: color, textTransform: 'uppercase', letterSpacing: '1px' }}>
-      {title}
-    </div>
-    <div style={{ fontFamily: FONTS.body, fontSize: '9px', color: '#a0a0a0', marginTop: '4px', lineHeight: '1.2' }}>
-      {subtitle}
-    </div>
-  </div>
+const C_PROYECTO_VERDE = '#15BE80'; 
+
+// Colores personalizados definidos para los TÍTULOS
+const C_TITLE_INVERSION = '#F232A9';
+const C_TITLE_PRESION = '#f30a41';
+const C_TITLE_AMENAZA = '#b2ea63ff';
+const C_TITLE_MANGLAR = '#ffffffff'; 
+
+// Color estándar para los SUBTÍTULOS (Replicando estilo Viaja Segura)
+const C_SUBTITULO_ESTANDAR = '#B0B3B8'; // Gris claro uniforme
+
+// La tarjeta ahora recibe un prop para el color del título (titleColor)
+const Card = ({ title, value, subtitle, color, titleColor }) => (
+  <div style={{
+    backgroundColor: 'rgba(21, 24, 35, 0.6)',
+    borderRadius: '8px', padding: '15px 10px',
+    borderLeft: `4px solid ${color}`,
+    display: 'flex', flexDirection: 'column', 
+    justifyContent: 'center',
+    alignItems: 'center', // Centrado horizontal
+    flex: 1, 
+    minWidth: '150px',
+    backdropFilter: 'blur(10px)',
+    border: '1px solid rgba(255,255,255,0.05)'
+  }}>
+    {/* Cifra principal (Sigue siendo C_PROYECTO_VERDE) */}
+    <div style={{ 
+        fontFamily: FONTS.numbers, 
+        fontSize: '18px', 
+        fontWeight: 'bold', 
+        color: C_PROYECTO_VERDE,
+        marginBottom: '4px' 
+    }}>
+      {value}
+    </div>
+    {/* Título (Ahora toma el color de acento) */}
+    <div style={{ 
+        fontFamily: FONTS.title, fontSize: '10px', fontWeight: '700', 
+        color: titleColor, // <--- ¡COLOR DE ACENTO PARA EL TÍTULO!
+        textTransform: 'uppercase', letterSpacing: '1px', textAlign: 'center' 
+    }}>
+      {title}
+    </div>
+    {/* Subtítulo (Color estándar de Viaja Segura) */}
+    <div style={{ 
+        fontFamily: FONTS.body, 
+        fontSize: '9px', 
+        color: C_SUBTITULO_ESTANDAR, // <--- COLOR GRIS ESTÁNDAR
+        marginTop: '4px', 
+        lineHeight: '1.3',
+        textAlign: 'center' 
+    }}>
+      {subtitle}
+    </div>
+  </div>
 );
 
-export default function Scorecards() {
 
-  // --- CÁLCULO EN VIVO DE ESTADÍSTICAS (Uso de Turf.js) ---
-  const kpis = useMemo(() => {
-    try {
-      // 1. Calcular área en m2
-      const areaManglaresM2 = turf.area(manglaresData);
-      const areaInversionM2 = turf.area(inversionData);
-      const areaPresionM2 = turf.area(presionData);
+const Scorecards = () => {
+    // Corregimos el problema de doble renderizado con esta técnica
+    const [isMounted, setIsMounted] = useState(false);
+    
+    useEffect(() => {
+        setIsMounted(true); 
+    }, []);
 
-      // 2. Convertir a Hectáreas (1 ha = 10,000 m2) y redondear
-      const haManglares = (areaManglaresM2 / 10000).toFixed(2);
-      const haInversion = (areaInversionM2 / 10000).toFixed(2);
-      const haPresion = (areaPresionM2 / 10000).toFixed(2);
+    const kpis = useMemo(() => {
+        try {
+          if (!manglaresData || !inversionData || !presionData) {
+            return { manglares: "0", inversion: "0", presion: "0", riesgo: "0" };
+          }
 
-      // 3. Calcular Porcentaje de Afectación
-      const porcentajeRiesgo = ((areaPresionM2 / areaManglaresM2) * 100).toFixed(1);
+          const areaManglaresM2 = turf.area(manglaresData);
+          const areaInversionM2 = turf.area(inversionData);
+          const areaPresionM2 = turf.area(presionData);
 
-      return {
-        manglares: haManglares,
-        inversion: haInversion,
-        presion: haPresion,
-        riesgo: porcentajeRiesgo
-      };
+          const haManglares = (areaManglaresM2 / 10000).toFixed(2);
+          const haInversion = (areaInversionM2 / 10000).toFixed(2);
+          const haPresion = (areaPresionM2 / 10000).toFixed(2);
+          
+          const porcentajeRiesgo = ((areaPresionM2 / areaManglaresM2) * 100);
+          const riesgoDisplay = porcentajeRiesgo < 100 ? porcentajeRiesgo.toFixed(1) : porcentajeRiesgo.toFixed(0);
 
-    } catch (error) {
-      console.error("Error calculando áreas con Turf:", error);
-      return { manglares: "0", inversion: "0", presion: "0", riesgo: "0" };
-    }
-  }, []); // Se ejecuta una sola vez al montar
+          return { manglares: haManglares, inversion: haInversion, presion: haPresion, riesgo: riesgoDisplay };
+        } catch (error) {
+          console.error("Error calculando KPIs:", error);
+          return { manglares: "Error", inversion: "Error", presion: "Error", riesgo: "Error" };
+        }
+  }, []);
 
-  return (
-    <>
-      {/* KPI 1: INVERSIÓN (Rosa #f5138c) */}
-      <Card 
-        value={`${kpis.inversion} Ha`} 
-        title="INVERSIÓN INMOBILIARIA" 
-        subtitle="Superficie de desarrollos proyectados." 
-        color="#f5138c" 
-      />
 
-      {/* KPI 2: MANGLARES (Verde #15BE80) */}
-      <Card 
-        value={`${kpis.manglares} Ha`} 
-        title="SUPERFICIE MANGLAR" 
-        subtitle="Cobertura vegetal base." 
-        color="#15BE80" 
-      />
-
-      {/* KPI 3: PRESIONADOS (Rojo #e31a1c) */}
-      <Card 
-        value={`${kpis.presion} Ha`} 
-        title="ECOSISTEMA PRESIONADO" 
-        subtitle="Conflicto directo Desarrollo vs Naturaleza." 
-        color="#e31a1c" 
-      />
-
-      {/* KPI 4: RIESGO (Amarillo #FFC107) */}
-      <Card 
-        value={`${kpis.riesgo}%`} 
-        title="ÍNDICE DE AMENAZA" 
-        subtitle="% del ecosistema bajo presión inmobiliaria." 
-        color="#FFC107" 
-      />
-    </>
-  );
+    if (!isMounted) {
+        return null;
+    }
+    
+    return (
+      <>
+          <Card 
+              value={`${kpis.inversion} Ha`} 
+              title="INVERSIÓN INMOBILIARIA" 
+              subtitle="Desarrollos proyectados." 
+              color="#f5138c" 
+              titleColor={C_TITLE_INVERSION} // #F232A9
+          />
+          <Card 
+              value={`${kpis.manglares} Ha`} 
+              title="SUPERFICIE MANGLAR" 
+              subtitle="Cobertura vegetal base." 
+              color="#ffffffff" 
+              titleColor={C_TITLE_MANGLAR} // #ffffffff
+          />
+          <Card 
+              value={`${kpis.presion} Ha`} 
+              title="ECOSISTEMA PRESIONADO" 
+              subtitle="Conflicto directo." 
+              color="#e31a1c" 
+              titleColor={C_TITLE_PRESION} // #e31a1c
+          />
+          <Card 
+              value={`${kpis.riesgo}%`} 
+              title="ÍNDICE DE AMENAZA" 
+              subtitle="% del ecosistema bajo presión." 
+              color="#FFC107" 
+              titleColor={C_TITLE_AMENAZA} // #a4e44aff
+          />
+      </>
+    );
 }
+
+export default React.memo(Scorecards);

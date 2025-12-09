@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import { COLORS, FONTS } from '../../config/theme';
 import { FaGithub } from 'react-icons/fa';
 
+// El color de las flechas del Sidebar de Viaja Segura es COLORS.accent
+const ACCENT_COLOR = COLORS.accent; 
+
 // --- MINI COMPONENTE DE SECCIÓN DESPLEGABLE ---
 const AccordionSection = ({ title, tag, isOpen, onClick, children }) => {
   const s = {
@@ -20,7 +23,8 @@ const AccordionSection = ({ title, tag, isOpen, onClick, children }) => {
       letterSpacing: '0.3px', transition: 'color 0.3s'
     },
     arrow: {
-      color: COLORS.accent, fontSize: '10px',
+      color: ACCENT_COLOR, // <--- EXTRACCIÓN Y USO DEL COLOR ACCENT
+      fontSize: '10px',
       transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)',
       transition: 'transform 0.3s'
     },
@@ -75,7 +79,7 @@ export default function Sidebar() {
     contentBody: { 
       flex: 1, 
       padding: '15px 15px', 
-      overflowY: 'auto', 
+      overflowY: 'auto', // <--- Mantiene el scroll en desktop
       paddingRight: '5px',
       // Forzar scrollbar en Firefox
       scrollbarWidth: 'thin', 
@@ -107,8 +111,8 @@ export default function Sidebar() {
 
         /* Scrollbar ULTRA FINO (2px) */
         .custom-scrollbar::-webkit-scrollbar {
-          width: 2px; /* Ancho ultra fino */
-          -webkit-appearance: none; /* Forzar aparición en móviles */
+          width: 2px;
+          -webkit-appearance: none;
         }
         .custom-scrollbar::-webkit-scrollbar-track {
           background: transparent; 
@@ -117,9 +121,17 @@ export default function Sidebar() {
           background: #424242; 
           border-radius: 2px;
         }
-        /* Hover para desktop */
         .custom-scrollbar::-webkit-scrollbar-thumb:hover {
           background: #777; 
+        }
+        
+        /* CORRECCIÓN PARA MÓVILES: 
+           Aseguramos que el contenedor de contenido scrolleable tenga una altura limitada
+           para que el scroll funcione sin salirse de la pantalla en layouts responsivos */
+        @media (max-width: 1024px) {
+            .custom-scrollbar {
+                max-height: 300px; /* Limita la altura del contenido para forzar el scroll */
+            }
         }
       `}</style>
 

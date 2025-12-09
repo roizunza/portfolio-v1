@@ -1,4 +1,8 @@
 import React, { useState } from 'react';
+
+// CORRECCIÓN DE RUTA: App.jsx está en src/, por lo que solo necesita ir a ./config/theme
+import { FONTS } from './config/theme'; 
+
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Hero from './components/Hero';

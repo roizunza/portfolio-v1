@@ -15,7 +15,8 @@ const Hero = ({ alAbrirTerminal }) => {
   };
 
   return (
-    <section className="hero-section">
+    // AQUI AGREGAMOS EL ID PARA QUE EL HEADER LO ENCUENTRE
+    <section className="hero-section" id="Sobre_Mi">
       <div className="profile-container">
         
         {/* Header de Ventana */}
@@ -96,18 +97,18 @@ const Hero = ({ alAbrirTerminal }) => {
                 <FaPlug style={{marginRight: '8px', transform: 'rotate(90deg)'}}/> INICIAR_CONEXIÓN
               </button>
               
-              {/* Botón LinkedIn - PEGA TU LINK ABAJO */}
+              {/* Botón LinkedIn */}
               <button 
                 className="profile-btn" 
-                onClick={() => manejarClick('link', 'https://github.com/roizunza')}
+                onClick={() => manejarClick('link', 'https://www.linkedin.com/in/rocioizunza/')}
               >
                 <FaLinkedin style={{marginRight: '8px'}}/> LINKEDIN
               </button>
               
-              {/* Botón GitHub - PEGA TU LINK ABAJO */}
+              {/* Botón GitHub */}
               <button 
                 className="profile-btn" 
-                onClick={() => manejarClick('link', 'https://www.linkedin.com/in/rocioizunza/')}
+                onClick={() => manejarClick('link', 'https://github.com/roizunza')}
               >
                 <FaGithub style={{marginRight: '8px'}}/> GITHUB
               </button>

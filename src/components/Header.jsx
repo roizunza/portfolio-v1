@@ -1,4 +1,6 @@
 import React from 'react';
+// Importamos la función de scroll lento
+import { smoothScrollTo } from '../utils/scroll';
 
 const Header = ({ alDarClicEnContacto }) => {
   const lista_menu = ["Proyectos", "Sobre_Mi", "CV", "Contacto"];
@@ -9,8 +11,8 @@ const Header = ({ alDarClicEnContacto }) => {
     } else if (seccion === "Contacto") {
       if (alDarClicEnContacto) alDarClicEnContacto();
     } else {
-      const elemento = document.getElementById(seccion);
-      if (elemento) elemento.scrollIntoView({ behavior: 'smooth' });
+      // Usamos el scroll lento personalizado (2000ms = 2 segundos)
+      smoothScrollTo(seccion, 2000);
     }
   };
 

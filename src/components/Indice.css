@@ -8,60 +8,46 @@
 }
 
 .projects-container {
-  max-width: 1200px;
+  max-width: 1400px; /* Ancho máximo amplio para que quepan los 4 */
   margin: 0 auto;
-  padding: 60px 20px;
+  padding: 80px 40px; /* Más aire arriba y abajo como en la imagen */
 }
 
-/* TÍTULO MINIMALISTA */
+/* TÍTULO ESTILO IMAGEN */
 .projects-header {
-  margin-bottom: 50px;
+  margin-bottom: 60px;
   text-align: center;
 }
 
 .projects-title {
   font-family: 'Inter', sans-serif;
-  font-size: 2rem;
+  font-size: 2.5rem; /* Tamaño grande */
   color: #FFFFFF;
   font-weight: 700;
-  letter-spacing: -1px;
+  letter-spacing: -0.5px;
 }
 
-/* GRID DE ARCHIVOS */
+/* GRID: AQUÍ ESTÁ LA CLAVE DEL LAYOUT */
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 30px;
+  /* ESCRITORIO: Forzamos 4 columnas iguales para que queden en una fila */
+  grid-template-columns: repeat(4, 1fr); 
+  gap: 20px;
+  align-items: start; /* Alineación superior */
 }
 
-/* RESPONSIVO MÓVIL: GRID 2x2 */
-@media (max-width: 768px) {
-  .projects-container { padding: 40px 15px; }
-  .projects-title { font-size: 1.5rem; margin-bottom: 30px; }
-  
-  .projects-grid {
-    grid-template-columns: 1fr 1fr; /* 2 Columnas forzadas */
-    gap: 15px;
-  }
-  
-  .project-file { padding: 20px 10px; }
-  .file-icon-img { width: 50px; }
-  .file-name { font-size: 0.8rem; }
-  .file-ext { font-size: 0.7rem; }
-}
-
-/* TARJETA DE ARCHIVO (ICONO) */
+/* TARJETA DE ARCHIVO */
 .project-file {
   background-color: transparent;
   border: 1px solid transparent;
   border-radius: 8px;
-  padding: 30px 20px;
+  padding: 20px 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 15px;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.3s ease;
 }
 
 .project-file:hover {
@@ -74,34 +60,63 @@
   border: 1px solid var(--highlight);
 }
 
+/* IMAGEN DEL ICONO */
 .file-icon-img {
-  width: 70px;
+  width: 60px;
   height: auto;
   object-fit: contain;
-  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.5));
   transition: transform 0.2s;
+  /* TRUCO VISUAL: Si tus iconos son negros, esto los vuelve blancos 
+     para coincidir con tu imagen de referencia. 
+     Si ya son de color, puedes quitar esta línea. */
+  filter: grayscale(100%) brightness(200%); 
 }
 
 .project-file:hover .file-icon-img {
   transform: scale(1.1);
 }
 
+/* TEXTOS */
 .file-name {
   font-family: var(--fuente-ui);
   font-size: 1rem;
   font-weight: 500;
-  color: var(--texto-principal);
+  color: #FFFFFF; /* Blanco puro */
   text-align: center;
+  margin-bottom: 2px;
 }
 
 .file-ext {
-  font-family: var(--fuente-codigo);
-  font-size: 0.8rem;
-  color: var(--texto-secundario);
-  opacity: 0.7;
+  font-family: var(--fuente-codigo); /* Fuente tipo código */
+  font-size: 0.85rem;
+  color: #6b7280; /* Gris apagado */
+  opacity: 0.8;
 }
 
-/* MODAL SINOPSIS */
+/* =========================================
+   RESPONSIVO (Mantiene tu lógica de celular)
+   ========================================= */
+@media (max-width: 1024px) {
+  .projects-container {
+    padding: 40px 20px;
+  }
+  
+  .projects-grid {
+    /* En Tablet/Móvil cambiamos a 2 columnas (2x2) */
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 15px;
+  }
+  
+  .projects-title {
+    font-size: 1.8rem;
+  }
+  
+  .file-icon-img {
+    width: 50px;
+  }
+}
+
+/* MODAL SINOPSIS (Sin cambios, funciona igual) */
 .synopsis-overlay {
   position: fixed;
   top: 0; left: 0; width: 100%; height: 100%;

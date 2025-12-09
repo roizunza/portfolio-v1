@@ -56,7 +56,8 @@ const Indice = ({ onActivarDashboard }) => {
   };
 
   return (
-    <section className="index-section">
+    // AQUI AGREGAMOS EL ID PARA QUE EL HEADER LO ENCUENTRE
+    <section className="index-section" id="Proyectos">
       <div className="projects-container">
         
         <div className="projects-header">
@@ -77,20 +78,17 @@ const Indice = ({ onActivarDashboard }) => {
           ))}
         </div>
 
-        {/* --- MODAL / FLASHCARD --- */}
         {proyectoSeleccionado && (
           <div className="synopsis-overlay" onClick={() => setProyectoSeleccionado(null)}>
             
             {proyectoSeleccionado.id === 1 ? (
-              // Tarjeta Personalizada (Viaja Segura)
               <div onClick={(e) => e.stopPropagation()} style={{maxWidth: '900px', width: '100%', padding: '0 10px'}}>
                  <ViajaSeguraCard 
                     onEjecutar={() => manejarEjecucion(proyectoSeleccionado.idScroll)} 
-                    onClose={() => setProyectoSeleccionado(null)} /* Pasamos función cerrar */
+                    onClose={() => setProyectoSeleccionado(null)}
                  />
               </div>
             ) : (
-              // Tarjeta Genérica
               <div className="synopsis-card" onClick={(e) => e.stopPropagation()}>
                 <div className="synopsis-header">
                   <span className="synopsis-title">

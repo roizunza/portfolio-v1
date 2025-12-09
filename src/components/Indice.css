@@ -8,35 +8,35 @@
 }
 
 .projects-container {
-  max-width: 1400px; /* Ancho máximo amplio para que quepan los 4 */
+  max-width: 1400px;
   margin: 0 auto;
-  padding: 80px 40px; /* Más aire arriba y abajo como en la imagen */
+  padding: 80px 40px;
 }
 
-/* TÍTULO ESTILO IMAGEN */
+/* TÍTULO: ROBOTO MONO BOLD */
 .projects-header {
   margin-bottom: 60px;
   text-align: center;
 }
 
 .projects-title {
-  font-family: 'Inter', sans-serif;
-  font-size: 2.5rem; /* Tamaño grande */
+  /* CAMBIO: Fuente Roboto Mono Bold */
+  font-family: 'Roboto Mono', monospace; 
+  font-size: 2.5rem;
   color: #FFFFFF;
   font-weight: 700;
-  letter-spacing: -0.5px;
+  letter-spacing: -1px;
 }
 
-/* GRID: AQUÍ ESTÁ LA CLAVE DEL LAYOUT */
+/* GRID */
 .projects-grid {
   display: grid;
-  /* ESCRITORIO: Forzamos 4 columnas iguales para que queden en una fila */
   grid-template-columns: repeat(4, 1fr); 
   gap: 20px;
-  align-items: start; /* Alineación superior */
+  align-items: start;
 }
 
-/* TARJETA DE ARCHIVO */
+/* TARJETA */
 .project-file {
   background-color: transparent;
   border: 1px solid transparent;
@@ -60,15 +60,12 @@
   border: 1px solid var(--highlight);
 }
 
-/* IMAGEN DEL ICONO */
+/* ICONO */
 .file-icon-img {
   width: 60px;
   height: auto;
   object-fit: contain;
   transition: transform 0.2s;
-  /* TRUCO VISUAL: Si tus iconos son negros, esto los vuelve blancos 
-     para coincidir con tu imagen de referencia. 
-     Si ya son de color, puedes quitar esta línea. */
   filter: grayscale(100%) brightness(200%); 
 }
 
@@ -76,25 +73,29 @@
   transform: scale(1.1);
 }
 
-/* TEXTOS */
-.file-name {
-  font-family: var(--fuente-ui);
-  font-size: 1rem;
+/* TEXTO DEL ARCHIVO (CAMBIO CLAVE) */
+.file-code-name {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 0.95rem; 
   font-weight: 500;
-  color: #FFFFFF; /* Blanco puro */
+  color: #FFFFFF;
   text-align: center;
-  margin-bottom: 2px;
+  
+  /* ESTO HACE QUE LA EXTENSIÓN BAJE AL SEGUNDO RENGLÓN */
+  display: flex;
+  flex-direction: column; 
+  gap: 4px; /* Espacio entre el nombre y la extensión */
+  line-height: 1.2;
 }
 
-.file-ext {
-  font-family: var(--fuente-codigo); /* Fuente tipo código */
-  font-size: 0.85rem;
-  color: #6b7280; /* Gris apagado */
-  opacity: 0.8;
+/* Estilo específico para la extensión (el segundo renglón) */
+.file-extension-span {
+  font-weight: 700; /* Un poco más gordita para resaltar el color */
+  font-size: 1rem;
 }
 
 /* =========================================
-   RESPONSIVO (Mantiene tu lógica de celular)
+   RESPONSIVO 
    ========================================= */
 @media (max-width: 1024px) {
   .projects-container {
@@ -102,7 +103,6 @@
   }
   
   .projects-grid {
-    /* En Tablet/Móvil cambiamos a 2 columnas (2x2) */
     grid-template-columns: repeat(2, 1fr); 
     gap: 15px;
   }
@@ -114,9 +114,13 @@
   .file-icon-img {
     width: 50px;
   }
+  
+  .file-code-name {
+    font-size: 0.8rem;
+  }
 }
 
-/* MODAL SINOPSIS (Sin cambios, funciona igual) */
+/* MODAL SINOPSIS (Sin cambios) */
 .synopsis-overlay {
   position: fixed;
   top: 0; left: 0; width: 100%; height: 100%;

@@ -1,63 +1,32 @@
 import React from 'react';
-import './ViajaSeguraCard.css';
+// 1. Importamos el Molde Universal
+import ProjectCard from '../Shared/ProjectCard';
+// 2. Importamos la imagen
 import imagenPortada from '../../assets/viajasegura.jpg'; 
 
-// Recibimos "onClose" como prop
 const ViajaSeguraCard = ({ onEjecutar, onClose }) => {
   return (
-    <div className="project-detail-container">
+    // 3. Usamos el Molde y le pasamos los datos específicos de Viaja Segura
+    <ProjectCard
+      title="01_viaja_segura"
+      defColor="#A020F0"  // Morado Fosfo
+      comment="// Escala local"
+      image={imagenPortada}
+      onEjecutar={onEjecutar}
+      onClose={onClose}
+    >
+      {/* 4. Aquí va solo el texto narrativo */}
+      <p className="project-text">
+        Para comunidades como Oyamel, Antigua y Ocotal, situadas en la periferia alta del sur de la CDMX, 
+        el transporte público concesionado es el medio inmediato para conectarse con la ciudad.
+      </p>
       
-      {/* 1. BARRA DE VENTANA (NUEVO) */}
-      <div className="card-window-bar">
-        <div className="window-title">
-          <span>📂</span> viaja_segura_analysis.py
-        </div>
-        {/* Botón de Cerrar explícito */}
-        <div className="window-close-btn" onClick={onClose}>
-          [ X ]
-        </div>
-      </div>
-      
-      {/* 2. IMAGEN PRINCIPAL */}
-      <img 
-        src={imagenPortada} 
-        alt="Ilustración Viaja Segura" 
-        className="project-hero-image" 
-      />
-
-      {/* 3. CONTENIDO SCROLLEABLE */}
-      <div className="project-content">
-        
-        {/* Definición Técnica */}
-        <div className="project-definition">
-          <span className="keyword">const</span> proyecto = {'{'}
-          <span style={{color: '#ce9178', marginLeft: '8px'}}>"id": "VS_01"</span>,
-          <span style={{color: '#ce9178', marginLeft: '8px'}}>"status": "Active"</span>
-          {'}'};
-        </div>
-
-        {/* Descripción */}
-        <div className="project-description">
-          <div className="project-location">// UBICACIÓN: PERIFERIA SUR CDMX</div>
-          
-          <p className="project-text">
-            Este proyecto evalúa la iniciativa de la Asociación Civil Ruta 66, operando un servicio exclusivo 
-            para mujeres e infancias.
-          </p>
-          
-          <p className="project-text">
-            A través del análisis geoespacial, construí el sustento operativo que legitimó el modelo ante SEMOVI,
-            traduciendo la experiencia de viaje en modelos de accesibilidad.
-          </p>
-        </div>
-
-        {/* Botón de Ejecución */}
-        <button className="execute-button" onClick={onEjecutar}>
-          EJECUTAR ANÁLISIS
-        </button>
-
-      </div>
-    </div>
+      <p className="project-text">
+        Este proyecto evalúa el programa "Viaja Segura", una iniciativa social de la Ruta 66 que ofrece 
+        servicio exclusivo para mujeres e infancias en horas pico. El análisis trasciende la operación: 
+        vincula estos recorridos con los equipamientos de cuidado, necesarios en la cotidianidad para sostener la vida.
+      </p>
+    </ProjectCard>
   );
 };
 

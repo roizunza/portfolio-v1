@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import './Indice.css'; 
 
+// Importamos las Cards Específicas
 import ViajaSeguraCard from './ViajaSegura/ViajaSeguraCard.jsx';
+import VigilanciaEspectralCard from './VigilanciaEspectral/VigilanciaEspectralCard.jsx'; // <--- NUEVO
 
 import iconKml from '../assets/kml.PNG';
 import iconTiff from '../assets/tiff.PNG';
@@ -16,34 +18,34 @@ const Indice = ({ onActivarDashboard }) => {
   const proyectos = [
     {
       id: 1,
-      titulo: "Análisis Viaja Segura",
-      extension: "data.kml",
+      baseName: "01_viaja_segura",
+      extension: ".kml",
+      extensionColor: "#A020F0", 
       icono: iconKml,
-      sinopsis: "...", 
       idScroll: "proyecto-viaja-segura" 
     },
     {
       id: 2,
-      titulo: "Japón: Trenes y Turismo",
-      extension: "analisis.tiff",
+      baseName: "02_vigilancia_espectral",
+      extension: ".tiff",
+      extensionColor: "#15BE80", 
       icono: iconTiff,
-      sinopsis: "Estudio raster sobre la densidad de atracciones turísticas y su proximidad a la red ferroviaria nacional de Japón.",
-      idScroll: "proyecto-japon"
+      idScroll: "proyecto-japon" // Nota: Eventualmente cambiaremos este ID
     },
     {
       id: 3,
-      titulo: "Airbnb Hong Kong",
-      extension: "listings.json",
+      baseName: "03_algoritmo_inmobiliario",
+      extension: ".json",
+      extensionColor: "#FF5A60", 
       icono: iconJson,
-      sinopsis: "Visualización interactiva del impacto de alquileres a corto plazo en la disponibilidad de vivienda en distritos de alta densidad.",
       idScroll: "proyecto-hk"
     },
     {
       id: 4,
-      titulo: "Recursos Puerto Rico",
-      extension: "mapa.gpkg",
+      baseName: "04_factor_esfuerzo_turistico",
+      extension: ".gpkg",
+      extensionColor: "#EE0E99", 
       icono: iconGpkg,
-      sinopsis: "Investigación cartográfica sobre la privatización de zonas costeras y recursos naturales protegidos.",
       idScroll: "proyecto-pr"
     }
   ];
@@ -51,17 +53,20 @@ const Indice = ({ onActivarDashboard }) => {
   const manejarEjecucion = (idScroll) => {
     setProyectoSeleccionado(null);
     if (onActivarDashboard) {
-      onActivarDashboard();
+      // Por ahora mandamos al mismo dashboard o alertamos si no existe
+      if(idScroll === "proyecto-viaja-segura") {
+          onActivarDashboard();
+      } else {
+          alert("Dashboard en construcción: " + idScroll);
+      }
     }
   };
 
   return (
-    // AQUI AGREGAMOS EL ID PARA QUE EL HEADER LO ENCUENTRE
     <section className="index-section" id="Proyectos">
       <div className="projects-container">
-        
         <div className="projects-header">
-          <h2 className="projects-title">#Proyectos</h2>
+          <h2 className="projects-title"># Proyectos</h2>
         </div>
 
         <div className="projects-grid">
@@ -72,43 +77,46 @@ const Indice = ({ onActivarDashboard }) => {
               onClick={() => setProyectoSeleccionado(proyecto)}
             >
               <img src={proyecto.icono} alt={proyecto.extension} className="file-icon-img" />
-              <span className="file-name">{proyecto.titulo}</span>
-              <span className="file-ext">{proyecto.extension}</span>
+              <div className="file-code-name">
+                <span>{proyecto.baseName}</span>
+                <span className="file-extension-span" style={{ color: proyecto.extensionColor }}>
+                  {proyecto.extension}
+                </span>
+              </div>
             </div>
           ))}
         </div>
 
+        {/* --- RENDERIZADO CONDICIONAL DE TARJETAS --- */}
         {proyectoSeleccionado && (
           <div className="synopsis-overlay" onClick={() => setProyectoSeleccionado(null)}>
             
-            {proyectoSeleccionado.id === 1 ? (
-              <div onClick={(e) => e.stopPropagation()} style={{maxWidth: '900px', width: '100%', padding: '0 10px'}}>
+            <div onClick={(e) => e.stopPropagation()} style={{maxWidth: '900px', width: '100%', padding: '0 10px'}}>
+               
+               {/* LÓGICA DE SELECCIÓN */}
+               {proyectoSeleccionado.id === 1 && (
                  <ViajaSeguraCard 
                     onEjecutar={() => manejarEjecucion(proyectoSeleccionado.idScroll)} 
                     onClose={() => setProyectoSeleccionado(null)}
                  />
-              </div>
-            ) : (
-              <div className="synopsis-card" onClick={(e) => e.stopPropagation()}>
-                <div className="synopsis-header">
-                  <span className="synopsis-title">
-                    <span style={{color:'#61afef'}}>ℹ info</span> 
-                    {proyectoSeleccionado.extension}
-                  </span>
-                  <button className="btn-close" onClick={() => setProyectoSeleccionado(null)}>
-                    <FaTimes />
-                  </button>
-                </div>
-                <div className="synopsis-body">
-                  <p>{proyectoSeleccionado.sinopsis}</p>
-                </div>
-                <div className="synopsis-actions">
-                  <button className="btn-navigate" onClick={() => alert("Proyecto en construcción")}>
-                    ABRIR_ARCHIVO() <FaArrowRight style={{marginLeft:'5px'}}/>
-                  </button>
-                </div>
-              </div>
-            )}
+               )}
+
+               {proyectoSeleccionado.id === 2 && (
+                 <VigilanciaEspectralCard 
+                    onEjecutar={() => manejarEjecucion(proyectoSeleccionado.idScroll)} 
+                    onClose={() => setProyectoSeleccionado(null)}
+                 />
+               )}
+
+               {/* Default para 3 y 4 por ahora */}
+               {(proyectoSeleccionado.id > 2) && (
+                  <div className="synopsis-card" style={{padding:'40px', textAlign:'center', color:'white'}}>
+                      <h3>Próximamente</h3>
+                      <p>Implementando Card...</p>
+                  </div>
+               )}
+
+            </div>
 
           </div>
         )}

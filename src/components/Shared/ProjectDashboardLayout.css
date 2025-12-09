@@ -12,10 +12,9 @@
   grid-template-columns: 280px 140px 1fr; 
   
   /* DEFINICIÓN DE FILAS: Arriba (Mapa) | Abajo (Gráficas) */
-  /* Ajusté a 60% arriba para darle prioridad al Mapa */
   grid-template-rows: 60% 1fr;      
   
-  /* MAPA DEL GRID - CLAVE PARA QUE NO SE ENCIMEN */
+  /* MAPA DEL GRID */
   grid-template-areas: 
     "sidebar scorecards top-box"   
     "sidebar bottom-box bottom-box"; 
@@ -37,36 +36,55 @@
 
 /* Asignación de áreas a las clases */
 .area-sidebar    { grid-area: sidebar; overflow-y: auto; }
-.area-scorecards { grid-area: scorecards; } /* Área exclusiva para KPIs */
-.area-top        { grid-area: top-box; }    /* Área exclusiva para Mapa */
-.area-bottom     { grid-area: bottom-box; } /* Gráficas (Abarca columnas 2 y 3) */
+.area-scorecards { grid-area: scorecards; display: flex; flex-direction: column; gap: 10px; }
+.area-top        { grid-area: top-box; }    /* Mapa */
+.area-bottom     { grid-area: bottom-box; } /* Gráficas */
 
-/* Scrollbars finos para el sidebar */
+/* Scrollbars finos */
 .area-sidebar::-webkit-scrollbar { width: 5px; }
 .area-sidebar::-webkit-scrollbar-thumb { background: #4a4f63; border-radius: 3px; }
 
-/* --- MÓVIL / TABLET (< 1024px) --- */
-/* Si la pantalla es chica, pasamos a modo vertical normal */
+/* =========================================
+   RESPONSIVO MÓVIL (ORDENAMIENTO VERTICAL)
+   ========================================= */
 @media (max-width: 1024px) {
   .dashboard-grid {
     display: flex;
     flex-direction: column;
-    height: auto;
+    /* Altura automática en móvil para permitir scroll infinito */
+    height: auto; 
     min-height: 100vh;
+    padding: 10px;
+    gap: 20px;
   }
   
-  .area-sidebar    { order: 1; height: auto; max-height: 400px; }
+  /* ORDEN 1: SIDEBAR */
+  .area-sidebar { 
+    order: 1; 
+    height: auto; 
+    max-height: 500px; /* Sidebar colapsable o con scroll limitado */
+    border: 1px solid #333;
+  }
   
-  /* En móvil, los scorecards vuelven a ser una rejilla horizontal pequeña */
+  /* ORDEN 2: SCORECARDS (GRID 2x2) */
   .area-scorecards { 
     order: 2; 
     height: auto; 
-    display: grid; 
-    grid-template-columns: 1fr 1fr; 
+    display: grid; /* Cambiamos de Flex a Grid */
+    grid-template-columns: 1fr 1fr; /* 2 Columnas exactas */
     gap: 10px; 
-    padding: 10px 0;
+    padding: 0;
   }
   
-  .area-top        { order: 3; height: 400px; }
-  .area-bottom     { order: 4; height: 400px; }
+  /* ORDEN 3: MAPA */
+  .area-top { 
+    order: 3; 
+    height: 400px; /* Altura fija para el mapa en móvil */
+  }
+  
+  /* ORDEN 4: GRÁFICAS */
+  .area-bottom { 
+    order: 4; 
+    height: 500px; /* Altura para gráficas apiladas */
+  }
 }

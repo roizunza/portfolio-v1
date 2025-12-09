@@ -291,27 +291,62 @@ body {
   }
   .nav-btn { padding: 0 3px; }
 
-  /* HERO */
+  /* HERO - REORDENAMIENTO */
   .hero-section { padding: 100px 10px 60px 10px; align-items: flex-start; }
   .profile-container { width: 100%; max-width: 100%; border-radius: 8px; }
   .profile-window-bar { padding: 8px 12px; font-size: 0.7rem; }
   
   .profile-content {
-    display: flex; flex-direction: column; padding: 20px 15px; gap: 0;
+    /* Quitamos el flex normal para usar display contents y reordenar */
+    display: flex; 
+    flex-direction: column;
+    padding: 25px 15px; 
+    gap: 20px;
   }
+  
+  /* Esto "desempaqueta" los divs left/right para que los hijos sean hermanos directos en el flex */
   .profile-left, .profile-right { display: contents; }
 
-  /* ORDEN MÓVIL */
-  .code-block { order: 1; margin-bottom: 30px; font-size: 0.85rem; width: 100%; }
-  .profile-image { order: 2; width: 140px; height: 140px; margin: 0 auto 20px auto; }
-  .profile-quote { order: 3; text-align: center; margin-bottom: 30px; font-size: 0.75rem; }
-  
-  .profile-buttons {
-    order: 4; display: grid; grid-template-columns: 1fr 1fr; 
-    gap: 10px; margin-top: 0; padding-top: 20px;
-    border-top: 1px solid var(--borde-sutil);
+  /* ORDEN MÓVIL EXACTO */
+  /* 1. Definición (Código) */
+  .code-block { 
+    order: 1; 
+    margin-bottom: 10px; 
+    font-size: 0.8rem; 
+    width: 100%; 
   }
-  .profile-btn { width: 100%; font-size: 0.65rem; padding: 10px 5px; }
+  
+  /* 2. Foto */
+  .profile-image { 
+    order: 2; 
+    width: 140px; height: 140px; 
+    margin: 0 auto 10px auto; /* Centrada */
+  }
+  
+  /* 3. Cita (Scripts) */
+  .profile-quote { 
+    order: 3; 
+    text-align: center; 
+    margin-bottom: 10px; 
+    font-size: 0.75rem; 
+  }
+  
+  /* 4. Botones (2x2) */
+  .profile-buttons {
+    order: 4; 
+    display: grid; 
+    grid-template-columns: 1fr 1fr; /* 2 Columnas exactas */
+    gap: 10px; 
+    margin-top: 10px; 
+    padding-top: 20px;
+    border-top: 1px solid var(--borde-sutil);
+    width: 100%;
+  }
+  .profile-btn { 
+    width: 100%; 
+    font-size: 0.65rem; 
+    padding: 12px 5px; 
+  }
 
   /* FOOTER */
   .footer-container { height: 30px; padding: 0 0.5rem; }
@@ -327,184 +362,4 @@ body {
 
 @media (min-width: 769px) {
   .ruta-mobile { display: none; }
-}
-
-/* ===================================
-   VARIABLES LOCALES (Tema VS Code)
-   =================================== */
-.index-section {
-  /* Usamos las variables globales definidas en index.css, pero definimos locales específicas */
-  --bg-card: #252526;       /* Color de la barra lateral de VS Code */
-  --bg-hover: #2a2d2e;      /* Color hover lista */
-  --border-card: #3e3e42;   /* Borde sutil */
-  --highlight: #007acc;     /* Azul VS Code Focus */
-  --shadow: rgba(0, 0, 0, 0.4);
-}
-
-.projects-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 60px 20px;
-}
-
-/* TÍTULO: Simula un comentario de código */
-.projects-header {
-  margin-bottom: 40px;
-  border-bottom: 1px solid var(--border-card);
-  padding-bottom: 10px;
-}
-
-.projects-title {
-  font-family: var(--fuente-codigo);
-  font-size: 1.2rem;
-  color: #6a9955; /* Verde Comentario */
-  font-weight: normal;
-}
-
-/* ===================================
-   GRID DE ARCHIVOS
-   =================================== */
-.projects-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 30px;
-}
-
-/* TARJETA DE ARCHIVO (ICONO) */
-.project-file {
-  background-color: transparent;
-  border: 1px solid transparent;
-  border-radius: 5px;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 15px;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.project-file:hover {
-  background-color: var(--bg-hover);
-  border-color: var(--border-card);
-}
-
-/* Efecto de selección activa */
-.project-file.active {
-  background-color: rgba(0, 122, 204, 0.2); /* Azul transparente */
-  border-color: var(--highlight);
-}
-
-.file-icon-img {
-  width: 64px;
-  height: auto;
-  object-fit: contain;
-  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));
-  transition: transform 0.2s;
-}
-
-.project-file:hover .file-icon-img {
-  transform: scale(1.1);
-}
-
-.file-name {
-  font-family: var(--fuente-ui);
-  font-size: 0.9rem;
-  color: var(--texto-principal);
-  text-align: center;
-}
-
-.file-ext {
-  font-family: var(--fuente-codigo);
-  font-size: 0.8rem;
-  color: var(--texto-secundario);
-  margin-top: -10px;
-}
-
-/* ===================================
-   MODAL / TARJETA DE SINOPSIS
-   =================================== */
-/* Esta tarjeta aparece flotando sobre el contenido o debajo del grid */
-.synopsis-overlay {
-  position: fixed;
-  top: 0; left: 0; width: 100%; height: 100%;
-  background-color: rgba(0,0,0,0.6);
-  backdrop-filter: blur(4px);
-  z-index: 1500;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  animation: fadeIn 0.3s ease-out;
-}
-
-.synopsis-card {
-  background-color: #1e1e1e;
-  border: 1px solid var(--highlight);
-  width: 100%;
-  max-width: 500px;
-  box-shadow: 0 20px 50px rgba(0,0,0,0.8);
-  display: flex;
-  flex-direction: column;
-}
-
-.synopsis-header {
-  background-color: #252526;
-  padding: 10px 20px;
-  border-bottom: 1px solid #333;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.synopsis-title {
-  font-family: var(--fuente-codigo);
-  color: var(--texto-principal);
-  font-size: 0.95rem;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.btn-close {
-  background: none; border: none;
-  color: #cccccc; cursor: pointer; font-size: 1.2rem;
-}
-.btn-close:hover { color: white; }
-
-.synopsis-body {
-  padding: 25px;
-  font-family: var(--fuente-ui);
-  color: #cccccc;
-  line-height: 1.6;
-  font-size: 0.95rem;
-}
-
-.synopsis-actions {
-  padding: 20px;
-  border-top: 1px solid #333;
-  display: flex;
-  justify-content: flex-end;
-}
-
-/* Botón "Ir al código" estilo VS Code */
-.btn-navigate {
-  background-color: var(--highlight);
-  color: white;
-  border: none;
-  padding: 8px 16px;
-  font-family: var(--fuente-codigo);
-  font-size: 0.85rem;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.btn-navigate:hover {
-  background-color: #0062a3;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
 }

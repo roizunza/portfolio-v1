@@ -13,31 +13,25 @@ export default function Scorecards() {
     return sat > max ? sat : max;
   }, 0);
 
-  // ESTILOS VERTICALES
+  // Estilos de la TARJETA INDIVIDUAL (El contenedor lo maneja el CSS externo ahora)
   const s = {
-    container: {
-      display: 'flex',
-      flexDirection: 'column', // Apilado vertical
-      justifyContent: 'space-between',
-      width: '100%', 
-      height: '100%', 
-      gap: '10px'
-    },
     card: {
       display: 'flex', 
       flexDirection: 'column', 
       justifyContent: 'center', 
       alignItems: 'center', 
       textAlign: 'center',
-      flex: 1, // Ocupan espacio equitativo verticalmente
-      backgroundColor: 'rgba(21, 24, 35, 0.6)', // Fondo oscuro para cada tarjeta
+      // En desktop flex:1, en móvil grid llena la celda
+      width: '100%', 
+      height: '100%', 
+      minHeight: '80px', // Altura mínima para que no se aplaste
+      backgroundColor: 'rgba(21, 24, 35, 0.6)', 
       borderRadius: '8px',
       border: '1px solid rgba(255, 255, 255, 0.05)',
       padding: '5px',
       boxSizing: 'border-box'
     },
     
-    // TEXTO AJUSTADO
     number: {
       color: '#A020F0', 
       fontFamily: "'Source Code Pro', monospace",
@@ -58,7 +52,7 @@ export default function Scorecards() {
     subtitle: {
       color: '#B4A7AF', 
       fontFamily: "'Inter', sans-serif",
-      fontSize: '9px', 
+      fontSize: '8px', 
       fontWeight: '500', 
       lineHeight: '1.2', 
       opacity: 0.8
@@ -66,7 +60,8 @@ export default function Scorecards() {
   };
 
   return (
-    <div style={s.container}>
+    // Quitamos el estilo inline del contenedor principal para que el CSS del Layout mande
+    <React.Fragment>
       <div style={s.card}>
         <div style={s.number}>{totalRutas}</div>
         <div style={s.title}>RUTAS</div>
@@ -90,6 +85,6 @@ export default function Scorecards() {
         <div style={{...s.title, color: COLORS.rutas.Ocotal}}>SATURACIÓN</div>
         <div style={s.subtitle}>Demanda vs Oferta</div>
       </div>
-    </div>
+    </React.Fragment>
   );
 }

@@ -2,19 +2,30 @@
 .dashboard-grid {
   display: grid;
   width: 100%;
-  /* Altura visible exacta (Viewport - Header - Footer) */
-  height: calc(100vh - 100px); 
-  padding: 15px;
+  
+  /* CÁLCULO DE ALTURA DE SEGURIDAD: 
+     100vh (Pantalla) 
+     - 60px (Header) 
+     - 40px (Footer) 
+     - 10px (Margen de seguridad anti-invasión) */
+  height: calc(100vh - 110px); 
+  
+  /* PADDING AJUSTADO: 
+     0 arriba (ELIMINA EL GAP CON EL HEADER)
+     15px lados
+     0 abajo */
+  padding: 0 15px 0 15px; 
+  
+  /* Aseguramos que no haya márgenes externos */
+  margin-top: 0;
+  margin-bottom: 0;
+  
   box-sizing: border-box;
   gap: 15px;
   
-  /* DEFINICIÓN DE COLUMNAS: Sidebar | Scorecards | Mapa */
   grid-template-columns: 280px 140px 1fr; 
-  
-  /* DEFINICIÓN DE FILAS: Arriba (Mapa) | Abajo (Gráficas) */
   grid-template-rows: 60% 1fr;      
   
-  /* MAPA DEL GRID */
   grid-template-areas: 
     "sidebar scorecards top-box"   
     "sidebar bottom-box bottom-box"; 
@@ -32,59 +43,32 @@
   display: flex;
   flex-direction: column;
   position: relative;
+  /* Altura 100% para llenar la celda del grid */
+  height: 100%; 
 }
 
-/* Asignación de áreas a las clases */
-.area-sidebar    { grid-area: sidebar; overflow-y: auto; }
+/* Asignación de áreas */
+.area-sidebar    { grid-area: sidebar; overflow: hidden; }
 .area-scorecards { grid-area: scorecards; display: flex; flex-direction: column; gap: 10px; }
-.area-top        { grid-area: top-box; }    /* Mapa */
-.area-bottom     { grid-area: bottom-box; } /* Gráficas */
+.area-top        { grid-area: top-box; }    
+.area-bottom     { grid-area: bottom-box; } 
 
-/* Scrollbars finos */
+/* Scrollbars */
 .area-sidebar::-webkit-scrollbar { width: 5px; }
 .area-sidebar::-webkit-scrollbar-thumb { background: #4a4f63; border-radius: 3px; }
 
-/* =========================================
-   RESPONSIVO MÓVIL (ORDENAMIENTO VERTICAL)
-   ========================================= */
+/* RESPONSIVO MÓVIL */
 @media (max-width: 1024px) {
   .dashboard-grid {
     display: flex;
     flex-direction: column;
-    /* Altura automática en móvil para permitir scroll infinito */
     height: auto; 
-    min-height: 100vh;
     padding: 10px;
     gap: 20px;
   }
   
-  /* ORDEN 1: SIDEBAR */
-  .area-sidebar { 
-    order: 1; 
-    height: auto; 
-    max-height: 500px; /* Sidebar colapsable o con scroll limitado */
-    border: 1px solid #333;
-  }
-  
-  /* ORDEN 2: SCORECARDS (GRID 2x2) */
-  .area-scorecards { 
-    order: 2; 
-    height: auto; 
-    display: grid; /* Cambiamos de Flex a Grid */
-    grid-template-columns: 1fr 1fr; /* 2 Columnas exactas */
-    gap: 10px; 
-    padding: 0;
-  }
-  
-  /* ORDEN 3: MAPA */
-  .area-top { 
-    order: 3; 
-    height: 400px; /* Altura fija para el mapa en móvil */
-  }
-  
-  /* ORDEN 4: GRÁFICAS */
-  .area-bottom { 
-    order: 4; 
-    height: 500px; /* Altura para gráficas apiladas */
-  }
+  .area-sidebar    { order: 1; height: auto; max-height: 500px; border: 1px solid #333; }
+  .area-scorecards { order: 2; height: auto; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding: 0; }
+  .area-top        { order: 3; height: 400px; }
+  .area-bottom     { order: 4; height: 500px; }
 }

@@ -1,56 +1,34 @@
 import React, { useState } from 'react';
 import { COLORS, FONTS } from '../../config/theme';
+import { FaGithub } from 'react-icons/fa';
 
 // --- MINI COMPONENTE DE SECCIÓN DESPLEGABLE ---
 const AccordionSection = ({ title, tag, isOpen, onClick, children }) => {
   const s = {
     container: { 
-      marginBottom: '15px', // Menos margen
+      marginBottom: '15px',
       borderBottom: '1px solid rgba(255,255,255,0.1)', 
       paddingBottom: '8px' 
     },
     header: { 
-      display: 'flex', 
-      alignItems: 'center', 
-      justifyContent: 'space-between', 
-      cursor: 'pointer',
-      padding: '4px 0'
+      display: 'flex', alignItems: 'center', justifyContent: 'space-between', 
+      cursor: 'pointer', padding: '4px 0'
     },
     titleText: {
-      fontFamily: FONTS.body,
-      fontSize: '14px', // Reducido de 17px
-      fontWeight: '700',
-      color: isOpen ? '#FFFFFF' : '#B0B3B8', 
-      margin: 0,
-      letterSpacing: '0.3px',
-      transition: 'color 0.3s'
+      fontFamily: FONTS.body, fontSize: '14px', fontWeight: '700',
+      color: isOpen ? '#FFFFFF' : '#B0B3B8', margin: 0,
+      letterSpacing: '0.3px', transition: 'color 0.3s'
     },
     arrow: {
-      color: COLORS.accent,
-      fontSize: '10px',
+      color: COLORS.accent, fontSize: '10px',
       transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)',
       transition: 'transform 0.3s'
     },
-    metaContainer: { 
-      display: 'flex', 
-      alignItems: 'center', 
-      marginTop: '2px' 
-    },
-    line: { 
-      height: '1px', 
-      backgroundColor: 'rgba(188, 186, 192, 0.43)', 
-      flexGrow: 1, 
-      marginRight: '8px' 
-    },
-    tagText: { 
-      fontFamily: FONTS.title, 
-      fontSize: '9px', // Reducido
-      color: '#7c7889ff', 
-      whiteSpace: 'nowrap' 
-    },
+    metaContainer: { display: 'flex', alignItems: 'center', marginTop: '2px' },
+    line: { height: '1px', backgroundColor: 'rgba(188, 186, 192, 0.43)', flexGrow: 1, marginRight: '8px' },
+    tagText: { fontFamily: FONTS.title, fontSize: '9px', color: '#7c7889ff', whiteSpace: 'nowrap' },
     content: {
-      display: isOpen ? 'block' : 'none',
-      marginTop: '10px',
+      display: isOpen ? 'block' : 'none', marginTop: '10px',
       animation: 'fadeIn 0.3s ease-in-out'
     }
   };
@@ -62,13 +40,11 @@ const AccordionSection = ({ title, tag, isOpen, onClick, children }) => {
           <h3 style={s.titleText}>{title}</h3>
           <span style={s.arrow}>▼</span>
         </div>
-        
         <div style={s.metaContainer}>
           <div style={s.line} />
           <span style={s.tagText}>{tag}</span>
         </div>
       </div>
-
       <div style={s.content}>
         {children}
       </div>
@@ -78,48 +54,75 @@ const AccordionSection = ({ title, tag, isOpen, onClick, children }) => {
 
 // --- COMPONENTE PRINCIPAL ---
 export default function Sidebar() {
-  
   const [sectionsState, setSectionsState] = useState({
-    contexto: true,
-    metodologia: false,
-    hallazgos: false,
-    impacto: false
+    contexto: true, metodologia: false, hallazgos: false, impacto: false
   });
 
   const toggle = (section) => {
-    setSectionsState(prevState => ({
-      ...prevState,
-      [section]: !prevState[section] 
-    }));
+    setSectionsState(prevState => ({ ...prevState, [section]: !prevState[section] }));
   };
 
   const s = {
+    // Height 100% para ocupar todo el panel del grid
     container: { display: 'flex', flexDirection: 'column', height: '100%', color: '#E0E0E0' },
-    // Header más compacto
-    headerBox: { backgroundColor: '#181d35', padding: '15px 15px', borderBottom: '1px solid rgba(255,255,255,0.05)' },
+    
+    // Header fijo
+    headerBox: { backgroundColor: '#181d35', padding: '15px 15px', borderBottom: '1px solid rgba(255,255,255,0.05)', flexShrink: 0 },
     subHeader: { fontFamily: FONTS.title, fontSize: '13px', fontWeight: '700', color: '#B0B3B8', margin: '0 0 4px 0', letterSpacing: '1px', textTransform: 'uppercase' },
-    // Título en Morado Fosfo (#A020F0) y más pequeño
     mainTitle: { fontFamily: FONTS.title, fontSize: '26px', fontWeight: '700', color: '#A020F0', margin: '0 0 15px 0', lineHeight: '1' },
     authorBox: { borderLeft: `2px solid ${COLORS.accent}`, paddingLeft: '10px', marginTop: '5px' },
     authorName: { fontFamily: FONTS.body, fontSize: '14px', fontWeight: '700', color: '#FFFFFF', margin: 0 },
     authorRole: { fontFamily: FONTS.body, fontSize: '11px', color: '#B0B3B8', margin: '2px 0 0 0' },
     
-    contentBody: { flex: 1, padding: '15px 15px', overflowY: 'auto', paddingRight: '5px' },
+    // Contenido Flexible con Scroll fino
+    contentBody: { 
+      flex: 1, 
+      padding: '15px 15px', 
+      overflowY: 'auto', 
+      paddingRight: '5px',
+      scrollbarWidth: 'thin', 
+      scrollbarColor: '#424242 transparent' 
+    },
     
-    // Textos más pequeños
     bodyText: { fontFamily: FONTS.body, fontSize: '12px', fontWeight: '400', lineHeight: '1.4', color: '#E0E0E0', marginBottom: '8px' },
     listItem: { marginBottom: '8px' },
     listKey: { color: '#FFFFFF', fontWeight: '500' },
     
-    btnContainer: { padding: '15px', borderTop: '1px solid rgba(255,255,255,0.1)', backgroundColor: 'var(--bg-panel)' },
-    btnGithub: { display: 'block', backgroundColor: '#0000FF', color: '#c5cde0ff', fontFamily: FONTS.numbers, fontSize: '14px', fontWeight: '700', textAlign: 'center', padding: '10px', textDecoration: 'none', borderRadius: '4px', letterSpacing: '-0.5px', transition: 'opacity 0.2s' }
+    // Footer del Sidebar (Fijo al fondo)
+    btnContainer: { 
+      padding: '15px', 
+      borderTop: '1px solid rgba(255,255,255,0.1)', 
+      backgroundColor: 'var(--bg-panel)', 
+      flexShrink: 0, 
+      marginTop: 'auto'
+    },
+    btnGithub: { 
+      display: 'flex', alignItems: 'center', justifyContent: 'center', 
+      backgroundColor: '#0000FF', color: '#c5cde0ff', fontFamily: FONTS.numbers, fontSize: '14px', fontWeight: '700', textAlign: 'center', padding: '10px', textDecoration: 'none', borderRadius: '4px', letterSpacing: '-0.5px', transition: 'opacity 0.2s' 
+    }
   };
 
   return (
     <div style={s.container}>
-      <style>{`@keyframes fadeIn { from { opacity: 0; transform: translateY(-5px); } to { opacity: 1; transform: translateY(0); } }`}</style>
+      <style>{`
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(-5px); } to { opacity: 1; transform: translateY(0); } }
 
-      {/* 1. HEADER FIJO */}
+        /* Scrollbar personalizado FINO (3px) */
+        .custom-scrollbar::-webkit-scrollbar {
+          width: 3px; 
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+          background: transparent; 
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+          background: #424242; 
+          border-radius: 3px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+          background: #555; 
+        }
+      `}</style>
+
       <div style={s.headerBox}>
         <h2 style={s.subHeader}>EVALUACIÓN PROGRAMA PILOTO</h2>
         <h1 style={s.mainTitle}>VIAJA SEGURA</h1>
@@ -129,68 +132,38 @@ export default function Sidebar() {
         </div>
       </div>
 
-      {/* 2. CUERPO */}
       <div style={s.contentBody} className="custom-scrollbar">
         
-        <AccordionSection 
-          title="Hacer visible lo cotidiano" 
-          tag="#Contexto"
-          isOpen={sectionsState.contexto}
-          onClick={() => toggle('contexto')}
-        >
-          <p style={s.bodyText}>
-            El proyecto <strong>"Viaja Segura"</strong> evalúa la iniciativa de la Asociación Civil Ruta 66, que opera un servicio exclusivo para mujeres e infancias en la periferia sur de la CDMX.
-          </p>
-          <p style={s.bodyText}>
-            La iniciativa social ya existía y era valiosa, pero requería traducirse al lenguaje técnico para garantizar su continuidad.
-          </p>
+        <AccordionSection title="Hacer visible lo cotidiano" tag="#Contexto" isOpen={sectionsState.contexto} onClick={() => toggle('contexto')}>
+          <p style={s.bodyText}>El proyecto <strong>"Viaja Segura"</strong> evalúa la iniciativa de la Asociación Civil Ruta 66, que opera un servicio exclusivo para mujeres e infancias en la periferia sur de la CDMX.</p>
+          <p style={s.bodyText}>La iniciativa social ya existía y era valiosa, pero requería traducirse al lenguaje técnico para garantizar su continuidad. Me integré al proyecto para instrumentar la evaluación técnica que la institución SEMOVI necesitaba. A través del análisis de datos, construí el sustento operativo que permitió legitimar el modelo y proyectar su ampliación.</p>
         </AccordionSection>
 
-        <AccordionSection 
-          title="Traduciendo la realidad" 
-          tag="#Metodología"
-          isOpen={sectionsState.metodologia}
-          onClick={() => toggle('metodologia')}
-        >
-          <p style={s.bodyText}>Para comprender la movilidad de mujeres e infancias, el reto fue traducir la experiencia de viaje cotidiana en información cuantificable.</p>
-          <div style={s.listItem}>
-            <p style={s.bodyText}><span style={s.listKey}>Campo:</span> Diseñé instrumentos específicos para registrar dinámicas de ascenso y descenso no convencionales.</p>
-          </div>
-          <div style={s.listItem}>
-            <p style={s.bodyText}><span style={s.listKey}>Procesamiento:</span> Construí la primera base de datos abierta y estructurada del servicio.</p>
-          </div>
+        <AccordionSection title="Traduciendo la realidad" tag="#Metodología" isOpen={sectionsState.metodologia} onClick={() => toggle('metodologia')}>
+          <p style={s.bodyText}>Para comprender la movilidad de mujeres e infancias, el reto fue traducir la experiencia de viaje cotidiana en información cuantificable y estructurada.</p>
+          <div style={s.listItem}><p style={s.bodyText}><span style={s.listKey}>Levantamiento en campo:</span> Diseñé instrumentos específicos para registrar dinámicas de ascenso y descenso no convencionales, participando directamente en los recorridos para asegurar la integridad y sensibilidad del dato.</p></div>
+          <div style={s.listItem}><p style={s.bodyText}><span style={s.listKey}>Procesamiento geoespacial:</span> Digitalicé y depuré la información operativa, construyendo la primera base de datos abierta y estructurada del servicio.</p></div>
+          <div style={s.listItem}><p style={s.bodyText}><span style={s.listKey}>Análisis espacial:</span> Fui más allá de los puntos: generé modelos de accesibilidad (isocronas de 500m) para cruzar la oferta de transporte con la infraestructura de cuidados, buscando correlacionar los nodos de mayor afluencia con la ubicación de escuelas, mercados y centros de salud.</p></div>
         </AccordionSection>
 
-        <AccordionSection 
-          title="Conectando la periferia" 
-          tag="#Hallazgos"
-          isOpen={sectionsState.hallazgos}
-          onClick={() => toggle('hallazgos')}
-        >
-          <div style={{ marginBottom: '8px', borderLeft: '2px solid rgba(255,255,255,0.3)', paddingLeft: '6px' }}>
-            <p style={s.bodyText}><span style={s.listKey}>Puente vital:</span> Reduce el aislamiento de la periferia alta con ejes de oportunidades.</p>
-          </div>
-          <div style={{ borderLeft: '2px solid rgba(255,255,255,0.3)', paddingLeft: '6px' }}>
-            <p style={s.bodyText}><span style={s.listKey}>Soporte de vida:</span> Los nodos de mayor afluencia coinciden con escuelas y servicios de salud.</p>
-          </div>
+        <AccordionSection title="Conectando la periferia" tag="#Hallazgos" isOpen={sectionsState.hallazgos} onClick={() => toggle('hallazgos')}>
+          <p style={s.bodyText}>El análisis geoespacial confirmó dos patrones territoriales:</p>
+          <div style={{ marginBottom: '8px', borderLeft: '2px solid rgba(255,255,255,0.3)', paddingLeft: '6px' }}><p style={s.bodyText}><span style={s.listKey}>Puente vital:</span> La ruta funciona como un eje de integración territorial, reduciendo el aislamiento de la periferia alta (Oyamel, Ocotal, Antigua) con ejes de oportunidades y equipamientos regionales como Ciudad Universitaria.</p></div>
+          <div style={{ borderLeft: '2px solid rgba(255,255,255,0.3)', paddingLeft: '6px' }}><p style={s.bodyText}><span style={s.listKey}>Soporte de vida:</span> Los nodos de mayor afluencia coinciden con escuelas y servicios de salud. Esta evidencia técnica permitió legitimar la operación de la ruta, reconociendo que el servicio es un eslabón indispensable en la cadena de cuidados de la zona.</p></div>
         </AccordionSection>
 
-        <AccordionSection 
-          title="Visualizar para reconfigurar" 
-          tag="#Impacto"
-          isOpen={sectionsState.impacto}
-          onClick={() => toggle('impacto')}
-        >
+        <AccordionSection title="Visualizar para reconfigurar" tag="#Impacto" isOpen={sectionsState.impacto} onClick={() => toggle('impacto')}>
           <p style={s.bodyText}>Decidí codificar esta investigación para transformar un diagnóstico estático en una herramienta de incidencia política.</p>
-          <p style={s.bodyText}>Necesitamos datos abiertos que nos ayuden a reconfigurar la movilidad para cuidar mejor a quienes nos cuidan.</p>
+          <p style={s.bodyText}>Al democratizar el acceso a esta evidencia, el dashboard visibiliza la economía de cuidados como eje central de la movilidad. La medición de estos patrones genera la evidencia necesaria para que las políticas públicas de transporte dejen de ser neutras y comiencen a ser redistributivas.</p>
+          <p style={s.bodyText}>Necesitamos datos abiertos que nos ayuden a reconfigurar la movilidad, no solo para movernos más rápido, sino para cuidar mejor a quienes nos cuidan.</p>
         </AccordionSection>
 
       </div>
 
-      {/* 3. FOOTER FIJO */}
       <div style={s.btnContainer}>
         <a href="https://github.com/roizunza/viajaseguradashboard" target="_blank" rel="noreferrer" style={s.btnGithub}>
-          VER CÓDIGO
+          <FaGithub style={{ marginRight: '8px', fontSize: '1.1em' }}/> 
+          VER CÓDIGO EN GITHUB
         </a>
       </div>
 

@@ -64,26 +64,26 @@ export default function Scorecards() {
     <React.Fragment>
       <div style={s.card}>
         <div style={s.number}>{totalRutas}</div>
-        <div style={s.title}>RUTAS</div>
-        <div style={s.subtitle}>Conectando hogares</div>
+        <div style={s.title}>RUTAS DE CUIDADO</div>
+        <div style={s.subtitle}>Conectando hogares con escuelas y servicios de salud</div>
       </div>
       
       <div style={s.card}>
         <div style={s.number}>{Math.round(kmTotal)} km</div>
-        <div style={{...s.title, color: COLORS.rutas.Oyamel}}>CONEXIÓN</div>
-        <div style={s.subtitle}>Periferia alta</div>
+        <div style={{...s.title, color: COLORS.rutas.Oyamel}}>DE CONEXIÓN PERIFÉRICA</div>
+        <div style={s.subtitle}>Uniendo la zona alta de difícil acceso con la ciudad</div>
       </div>
       
-      <div style={s.card}>
-        <div style={s.number}>+{Math.floor(demandaTotal/1000)}k</div>
-        <div style={{...s.title, color: COLORS.rutas.Antigua}}>VIAJES</div>
-        <div style={s.subtitle}>Vida cotidiana</div>
-      </div>
+     <div style={s.card}>
+     <div style={s.number}>+{demandaTotal.toLocaleString()}</div>
+     <div style={{...s.title, color: COLORS.rutas.Antigua}}>VIAJES DE CUIDADO</div>
+     <div style={s.subtitle}>Sosteniendo la vida cotidiana de mujeres e infancias</div>
+     </div>
       
       <div style={s.card}>
         <div style={s.number}>{Math.round(maxSaturacion)}%</div>
-        <div style={{...s.title, color: COLORS.rutas.Ocotal}}>SATURACIÓN</div>
-        <div style={s.subtitle}>Demanda vs Oferta</div>
+        <div style={{...s.title, color: COLORS.rutas.Ocotal}}>SOBRECARGA DE CUIDADO</div>
+        <div style={s.subtitle}>La necesidad comunitaria rebasa la infraestructura actual ofertada</div>
       </div>
     </React.Fragment>
   );

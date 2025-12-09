@@ -21,8 +21,8 @@ export default function MapComponent() {
       container: mapContainer.current,
       style: 'mapbox://styles/mapbox/dark-v11',
       // ZOOM OUT PARA VER TODO EL RECORRIDO
-      center: [-99.215, 19.325],
-      zoom: 11.0 
+      center: [-99.215, 19.323],
+      zoom: 12.0 
     });
 
     map.current.addControl(new mapboxgl.NavigationControl(), 'bottom-right');

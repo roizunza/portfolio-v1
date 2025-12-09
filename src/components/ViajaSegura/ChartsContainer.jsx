@@ -125,7 +125,7 @@ export default function ChartsContainer() {
         <div style={styles.header}>
           <div style={styles.title}>Infraestructura de cuidados</div>
           <div style={styles.legend}>
-            <div style={{ display: 'flex', alignItems: 'center' }}><span style={styles.dot(COLORS.equipamiento.EDUCATIVO)}></span> Educ</div>
+            <div style={{ display: 'flex', alignItems: 'center' }}><span style={styles.dot(COLORS.equipamiento.EDUCATIVO)}></span> Educación</div>
             <div style={{ display: 'flex', alignItems: 'center' }}><span style={styles.dot(COLORS.equipamiento.SALUD)}></span> Salud</div>
             <div style={{ display: 'flex', alignItems: 'center' }}><span style={styles.dot(COLORS.equipamiento.ABASTO)}></span> Abasto</div>
           </div>

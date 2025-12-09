@@ -5,134 +5,169 @@ import ndwiImg from '../../assets/ndwi_visual.png';
 
 const C_PROYECTO_VERDE = '#15BE80';
 
-// Componente para clonar el estilo de título de Viaja Segura
-const SectionTitle = ({ title, subtitle, color }) => (
-    <div style={{ marginBottom: '10px', paddingLeft: '10px' }}>
-        <h3 style={{ 
-            fontFamily: FONTS.title, fontSize: '14px', fontWeight: '700', 
-            color: color, margin: 0, letterSpacing: '1px' 
-        }}>
-            {subtitle}
-        </h3>
-        <h2 style={{ 
-            fontFamily: FONTS.title, fontSize: '24px', fontWeight: 'bold', 
-            color: '#fff', margin: '2px 0 0 0', lineHeight: '1.1'
-        }}>
-            {title}
-        </h2>
-    </div>
-);
-
-
-// Leyenda VERTICAL (Nueva Implementación)
-const VerticalLegend = ({ gradient, labels }) => (
-  <div style={{
-    position: 'absolute', 
-    bottom: '10px', 
-    left: '10px', // Alineado a la izquierda
-    backgroundColor: 'rgba(0,0,0,0.8)', 
-    padding: '8px 10px 8px 10px', // Ajustado para espacio de etiquetas
-    borderRadius: '4px', 
-    zIndex: 10, 
-    border: '1px solid rgba(255,255,255,0.1)',
-    display: 'flex', 
-    flexDirection: 'row', // La barra es un elemento, las etiquetas otro
-    alignItems: 'center',
-    height: '120px' // Altura fija para la leyenda
-  }}>
-    {/* Contenedor de etiquetas de texto a la izquierda */}
-    <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', height: '100%', marginRight: '10px' }}>
-      <span style={{ fontSize: '9px', color: '#ccc', fontFamily: FONTS.code, alignSelf: 'flex-start' }}>{labels[0]}</span>
-      <span style={{ fontSize: '9px', color: '#ccc', fontFamily: FONTS.code, alignSelf: 'flex-start' }}>{labels[1]}</span>
-      <span style={{ fontSize: '9px', color: '#ccc', fontFamily: FONTS.code, alignSelf: 'flex-start' }}>{labels[2]}</span>
-    </div>
-    
-    {/* Barra de color Vertical */}
+// Componente Panel de Información (Solo Texto y Leyenda)
+// NOTA: Ya no recibe 'acronym', porque eso lo movemos al contenedor principal
+const InfoPanel = ({ title, gradient, labels }) => (
     <div style={{ 
-        width: '12px', 
+        display: 'flex', 
+        flexDirection: 'column', 
         height: '100%', 
-        background: gradient, 
-        borderRadius: '2px', 
-        transform: 'rotate(180deg)' // Giramos 180 para que el gradiente vaya de abajo hacia arriba
-    }}></div>
-  </div>
+        width: '40%', // Ancho de la columna de texto
+        zIndex: 10,
+        paddingRight: '10px'
+    }}>
+        
+        {/* 1. TÍTULO PRINCIPAL (14px) */}
+        <div style={{ marginBottom: '10px' }}>
+            <h2 style={{ 
+                fontFamily: FONTS.title, 
+                fontSize: '14px', 
+                fontWeight: 'bold', 
+                color: '#fff', 
+                lineHeight: '1.2',
+                textAlign: 'left',
+                textTransform: 'uppercase',
+                margin: 0
+            }}>
+                {title}
+            </h2>
+        </div>
+
+        {/* 2. SIMBOLOGÍA (Leyenda) */}
+        <div style={{ 
+            display: 'flex', 
+            alignItems: 'center', 
+            justifyContent: 'flex-start'
+        }}>
+            <div style={{ display: 'flex', alignItems: 'flex-end', gap: '8px' }}>
+                {/* Etiquetas Numéricas */}
+                <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', height: '90px', textAlign: 'right' }}>
+                    <span style={{ fontSize: '9px', color: '#ccc', fontFamily: FONTS.code }}>{labels[0]}</span>
+                    <span style={{ fontSize: '9px', color: '#ccc', fontFamily: FONTS.code }}>{labels[1]}</span>
+                    <span style={{ fontSize: '9px', color: '#ccc', fontFamily: FONTS.code }}>{labels[2]}</span>
+                </div>
+
+                {/* Barra de Color */}
+                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                    <span style={{ fontSize: '7px', color: '#888', marginBottom: '3px', textTransform: 'uppercase', fontFamily: FONTS.body, letterSpacing:'1px' }}>VALOR</span>
+                    <div style={{ 
+                        width: '12px', 
+                        height: '90px', 
+                        background: gradient, 
+                        borderRadius: '2px',
+                        border: '1px solid rgba(255,255,255,0.2)' 
+                    }}></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
 );
 
 
 export default function RasterVisor() {
   
-  const baseContainerStyle = {
+  // Contenedor General de la Tarjeta
+  const cardStyle = {
     flex: 1, 
-    backgroundColor: 'rgba(21, 24, 35, 0.6)', // Fondo oscuro translúcido consistente
-    borderRadius: '6px',
+    backgroundColor: 'rgba(21, 24, 35, 0.6)', 
+    borderRadius: '8px',
     overflow: 'hidden', 
-    position: 'relative',
     border: '1px solid rgba(255,255,255,0.1)',
     display: 'flex', 
-    flexDirection: 'column',
-    padding: '15px' // Añadimos padding para el título
+    flexDirection: 'row', 
+    padding: '20px',
+    gap: '15px',
+    position: 'relative' // <--- IMPORTANTE: Necesario para posicionar la etiqueta en la esquina
   };
 
-  const imageContainerStyle = {
-    flex: 1, 
-    position: 'relative',
-    // IMPORTANTE: Aseguramos que el fondo detrás del PNG sea transparente o del color del contenedor padre
-    backgroundColor: 'transparent' 
+  // Contenedor de la Imagen
+  const imageWrapperStyle = {
+    flex: 1, // Ocupa el espacio restante entre el título y el borde derecho
+    height: '100%',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'transparent', 
+    
+    // --- AQUÍ CONTROLAS EL ÁREA DISPONIBLE PARA LA IMAGEN ---
+    // Si aumentas este padding, la imagen se hará visualmente más pequeña.
+    padding: '8px 40px 1px 0px' 
   };
-  
+
+  const imgStyle = {
+    // --- AQUÍ CONTROLAS EL TAMAÑO DE LA IMAGEN (PNG) ---
+    width: '100%',  // Intenta ocupar todo el ancho del contenedor wrapper
+    height: '100%', // Intenta ocupar todo el alto
+    objectFit: 'contain', // Asegura que la imagen NO se recorte y se vea completa
+    
+    opacity: 0.95,
+    filter: 'drop-shadow(0px 0px 8px rgba(0,0,0,0.5))'
+  };
+
+  // Estilo para la Etiqueta en la Esquina Inferior Derecha
+  const tagStyle = {
+    position: 'absolute',
+    bottom: '15px', // Margen inferior
+    right: '20px',  // Margen derecho (Donde marcaste el círculo rojo)
+    fontFamily: FONTS.code, 
+    fontSize: '14px', 
+    fontWeight: '700', 
+    color: '#fff', 
+    margin: 0, 
+    letterSpacing: '1px'
+  };
+
   return (
     <div style={{ display: 'flex', width: '100%', height: '100%', gap: '15px', padding: '15px' }}>
       
-      {/* 1. VISUALIZACIÓN NDVI (Vegetación) */}
-      <div style={baseContainerStyle}>
-        <SectionTitle 
-            title="Índice de Vegetación Normalizada" 
-            subtitle="BAND 6: NDVI" 
-            color={C_PROYECTO_VERDE}
-        />
+      {/* --- TARJETA 1: NDVI --- */}
+      <div style={cardStyle}>
         
-        {/* Imagen Raster */}
-        <div style={imageContainerStyle}>
+        {/* IZQUIERDA: Título y Leyenda */}
+        <InfoPanel 
+            title="ÍNDICE DE VEGETACIÓN NORMALIZADA"
+            gradient="linear-gradient(to top, #f30a41 0%, #f4976c 30%, #86d978 60%, #0f8e64 100%)"
+            labels={['0.95', '0.0', '-0.73']}
+        />
+
+        {/* CENTRO/DERECHA: Imagen PNG */}
+        <div style={imageWrapperStyle}>
             <img 
                 src={ndviImg} 
-                alt="Analisis NDVI" 
-                style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 1 }} 
+                alt="Mapa NDVI" 
+                style={imgStyle}
                 onError={(e) => {e.target.style.display='none'}} 
             />
         </div>
 
-        {/* Leyenda Vertical NDVI (Rojo a Verde) */}
-        <VerticalLegend 
-            // Estos colores deben coincidir con tu script de Python
-            gradient={`linear-gradient(to top, #f30a41 0%, #f4976c 20%, #86d978 43%, #0f8e64 100%)`} 
-            labels={['0.95', '0', '-0.73']} // Alto, Medio, Bajo
-        />
+        {/* ESQUINA INFERIOR DERECHA: Etiqueta */}
+        <h3 style={tagStyle}>NDVI</h3>
       </div>
 
-      {/* 2. VISUALIZACIÓN NDWI (Agua/Humedad) */}
-      <div style={baseContainerStyle}>
-        <SectionTitle 
-            title="Índice de Humedad Normalizada" 
-            subtitle="BAND 7: NDWI" 
-            color={C_PROYECTO_VERDE}
-        />
+
+      {/* --- TARJETA 2: NDWI --- */}
+      <div style={cardStyle}>
         
-        {/* Imagen Raster */}
-        <div style={imageContainerStyle}>
+        {/* IZQUIERDA: Título y Leyenda */}
+        <InfoPanel 
+            title="ÍNDICE DE HUMEDAD NORMALIZADA"
+            gradient="linear-gradient(to top, #f30a41 0%, #f4976c 30%, #77c4df 60%, #0106f7 100%)"
+            labels={['0.70', '0.0', '-0.73']}
+        />
+
+        {/* CENTRO/DERECHA: Imagen PNG */}
+        <div style={imageWrapperStyle}>
             <img 
                 src={ndwiImg} 
-                alt="Analisis NDWI" 
-                style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 1 }}
+                alt="Mapa NDWI" 
+                style={imgStyle}
                 onError={(e) => {e.target.style.display='none'}} 
             />
         </div>
 
-        {/* Leyenda Vertical NDWI (Rojo a Azul) */}
-        <VerticalLegend 
-            // Estos colores deben coincidir con tu script de Python
-            gradient={`linear-gradient(to top, #f30a41 0%, #f4976c 25%, #77c4df 51%, #0106f7 100%)`} 
-            labels={['0.7', '0', '-0.73']} // Alto, Medio, Bajo
-        />
+        {/* ESQUINA INFERIOR DERECHA: Etiqueta */}
+        <h3 style={tagStyle}>NDWI</h3>
       </div>
 
     </div>

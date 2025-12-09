@@ -63,10 +63,8 @@ export default function Sidebar() {
   };
 
   const s = {
-    // Height 100% para ocupar todo el panel del grid
     container: { display: 'flex', flexDirection: 'column', height: '100%', color: '#E0E0E0' },
     
-    // Header fijo
     headerBox: { backgroundColor: '#181d35', padding: '15px 15px', borderBottom: '1px solid rgba(255,255,255,0.05)', flexShrink: 0 },
     subHeader: { fontFamily: FONTS.title, fontSize: '13px', fontWeight: '700', color: '#B0B3B8', margin: '0 0 4px 0', letterSpacing: '1px', textTransform: 'uppercase' },
     mainTitle: { fontFamily: FONTS.title, fontSize: '26px', fontWeight: '700', color: '#A020F0', margin: '0 0 15px 0', lineHeight: '1' },
@@ -74,12 +72,12 @@ export default function Sidebar() {
     authorName: { fontFamily: FONTS.body, fontSize: '14px', fontWeight: '700', color: '#FFFFFF', margin: 0 },
     authorRole: { fontFamily: FONTS.body, fontSize: '11px', color: '#B0B3B8', margin: '2px 0 0 0' },
     
-    // Contenido Flexible con Scroll fino
     contentBody: { 
       flex: 1, 
       padding: '15px 15px', 
       overflowY: 'auto', 
       paddingRight: '5px',
+      // Forzar scrollbar en Firefox
       scrollbarWidth: 'thin', 
       scrollbarColor: '#424242 transparent' 
     },
@@ -88,7 +86,6 @@ export default function Sidebar() {
     listItem: { marginBottom: '8px' },
     listKey: { color: '#FFFFFF', fontWeight: '500' },
     
-    // Footer del Sidebar (Fijo al fondo)
     btnContainer: { 
       padding: '15px', 
       borderTop: '1px solid rgba(255,255,255,0.1)', 
@@ -104,22 +101,25 @@ export default function Sidebar() {
 
   return (
     <div style={s.container}>
+      {/* ESTILOS CSS INYECTADOS */}
       <style>{`
         @keyframes fadeIn { from { opacity: 0; transform: translateY(-5px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* Scrollbar personalizado FINO (3px) */
+        /* Scrollbar ULTRA FINO (2px) */
         .custom-scrollbar::-webkit-scrollbar {
-          width: 3px; 
+          width: 2px; /* Ancho ultra fino */
+          -webkit-appearance: none; /* Forzar aparición en móviles */
         }
         .custom-scrollbar::-webkit-scrollbar-track {
           background: transparent; 
         }
         .custom-scrollbar::-webkit-scrollbar-thumb {
           background: #424242; 
-          border-radius: 3px;
+          border-radius: 2px;
         }
+        /* Hover para desktop */
         .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-          background: #555; 
+          background: #777; 
         }
       `}</style>
 

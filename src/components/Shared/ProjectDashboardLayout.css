@@ -1,25 +1,19 @@
-/* Layout Reutilizable para Dashboards - 3 Columnas */
+/* Layout Reutilizable para Dashboards */
 .dashboard-grid {
   display: grid;
   width: 100%;
   
-  /* CÁLCULO DE ALTURA DE SEGURIDAD: 
-     100vh (Pantalla) 
-     - 60px (Header) 
-     - 40px (Footer) 
-     - 10px (Margen de seguridad anti-invasión) */
-  height: calc(100vh - 110px); 
+  /* CÁLCULO ESTRICTO: 
+     100vh (Pantalla) - 60px (Header) - 40px (Footer) = Espacio exacto disponible */
+  height: calc(100vh - 100px); 
   
-  /* PADDING AJUSTADO: 
-     0 arriba (ELIMINA EL GAP CON EL HEADER)
-     15px lados
-     0 abajo */
-  padding: 0 15px 0 15px; 
+  /* CERO PADDING VERTICAL: Elimina el gap con el header y el footer */
+  padding: 0 15px; 
   
-  /* Aseguramos que no haya márgenes externos */
-  margin-top: 0;
-  margin-bottom: 0;
+  /* CORTE DE SEGURIDAD: Impide que el dashboard crezca más allá de su caja */
+  overflow: hidden; 
   
+  margin: 0;
   box-sizing: border-box;
   gap: 15px;
   
@@ -37,25 +31,21 @@
 .panel {
   background-color: rgba(21, 24, 35, 0.6);
   border-radius: 8px;
-  overflow: hidden;
+  /* IMPORTANTE: El overflow debe estar oculto para que el scrollbar interno funcione */
+  overflow: hidden; 
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.05);
   display: flex;
   flex-direction: column;
   position: relative;
-  /* Altura 100% para llenar la celda del grid */
   height: 100%; 
 }
 
 /* Asignación de áreas */
-.area-sidebar    { grid-area: sidebar; overflow: hidden; }
+.area-sidebar    { grid-area: sidebar; }
 .area-scorecards { grid-area: scorecards; display: flex; flex-direction: column; gap: 10px; }
 .area-top        { grid-area: top-box; }    
 .area-bottom     { grid-area: bottom-box; } 
-
-/* Scrollbars */
-.area-sidebar::-webkit-scrollbar { width: 5px; }
-.area-sidebar::-webkit-scrollbar-thumb { background: #4a4f63; border-radius: 3px; }
 
 /* RESPONSIVO MÓVIL */
 @media (max-width: 1024px) {
@@ -63,8 +53,10 @@
     display: flex;
     flex-direction: column;
     height: auto; 
+    min-height: 100vh; /* En móvil sí permitimos que crezca */
     padding: 10px;
     gap: 20px;
+    overflow: visible; /* En móvil quitamos el candado para poder scrollear la página */
   }
   
   .area-sidebar    { order: 1; height: auto; max-height: 500px; border: 1px solid #333; }

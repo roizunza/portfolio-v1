@@ -5,7 +5,7 @@ import './Indice.css';
 import ViajaSeguraCard from './ViajaSegura/ViajaSeguraCard.jsx';
 import VigilanciaEspectralCard from './VigilanciaEspectral/VigilanciaEspectralCard.jsx';
 import AlgoritmoInmobiliarioCard from './AlgoritmoInmobiliario/AlgoritmoInmobiliarioCard.jsx';
-import FactorEsfuerzoCard from './FactorEsfuerzo/FactorEsfuerzoCard.jsx'; // <--- Importado
+import FactorEsfuerzoCard from './FactorEsfuerzo/FactorEsfuerzoCard.jsx';
 
 import iconKml from '../assets/kml.PNG';
 import iconTiff from '../assets/tiff.PNG';
@@ -30,7 +30,7 @@ const Indice = ({ onActivarDashboard }) => {
       extension: ".tiff",
       extensionColor: "#15BE80", 
       icono: iconTiff,
-      idScroll: "proyecto-vigilancia-espectral" 
+      idScroll: "proyecto-vigilancia-espectral" // <--- Este ID lo usa App.jsx para saber cuál activar
     },
     {
       id: 3,
@@ -50,15 +50,15 @@ const Indice = ({ onActivarDashboard }) => {
     }
   ];
 
+  // --- AQUÍ ESTABA EL CANDADO ---
   const manejarEjecucion = (idScroll) => {
+    // 1. Cerramos el modal primero
     setProyectoSeleccionado(null);
+    
+    // 2. Si existe la función de comunicación con App.jsx...
     if (onActivarDashboard) {
-      if(idScroll === "proyecto-viaja-segura") {
-          onActivarDashboard();
-      } else {
-          // Por ahora solo Viaja Segura tiene Dashboard activo
-          alert("Dashboard en construcción para: " + idScroll);
-      }
+        // LE MANDAMOS LA SEÑAL DIRECTA (Sin preguntar si está en construcción)
+        onActivarDashboard(idScroll);
     }
   };
 
@@ -117,7 +117,7 @@ const Indice = ({ onActivarDashboard }) => {
                  />
                )}
 
-               {/* 4. FACTOR ESFUERZO (NUEVO) */}
+               {/* 4. FACTOR ESFUERZO */}
                {proyectoSeleccionado.id === 4 && (
                  <FactorEsfuerzoCard 
                     onEjecutar={() => manejarEjecucion(proyectoSeleccionado.idScroll)} 

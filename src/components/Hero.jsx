@@ -1,5 +1,4 @@
 import React from 'react';
-/* 1. Importamos FaPlug para el nuevo icono */
 import { FaGithub, FaLinkedin, FaFileDownload, FaPlug } from 'react-icons/fa';
 
 const Hero = ({ alAbrirTerminal }) => {
@@ -15,7 +14,6 @@ const Hero = ({ alAbrirTerminal }) => {
   };
 
   return (
-    // AQUI AGREGAMOS EL ID PARA QUE EL HEADER LO ENCUENTRE
     <section className="hero-section" id="Sobre_Mi">
       <div className="profile-container">
         
@@ -67,37 +65,32 @@ const Hero = ({ alAbrirTerminal }) => {
               
               <div className="indent-1 ck-com">
                 """<br/>
-                Mi interés habita la intersección entre la<br/>
-                infraestructura digital y el espacio físico,<br/>
-                con el objetivo de revelar las dinámicas<br/>
-                invisibles a través del código.<br/>
+                Decodifico la ciudad a través de la ciencia de datos.<br/>
+                Programo para que la planificación urbana deje de<br/>
+                basarse en intuiciones y empiece a escuchar,<br/>
+                con evidencia, a quienes habitan la ciudad.<br/>
                 """
               </div>
               <br/>
               <div className="indent-1">
                 <span className="ck-key">def</span>{' '}
-                <span className="ck-fn">especialidad</span>
+                <span className="ck-fn">perfil</span>
                 <span className="ck-punc">():</span>
               </div>
               
               <div className="indent-2">
                 <span className="ck-key">return</span>{' '}
-                <span className="ck-str">"Ciencia de Datos Espaciales"</span>
+                <span className="ck-str">"Analista de Datos Geoespaciales"</span>
               </div>
             </div>
 
             <div className="profile-buttons">
-              {/* Botón CV */}
+              {/* 1. Botón CV */}
               <button className="profile-btn" onClick={() => manejarClick('descarga', '/assets/cv_actual.pdf')}>
                 <FaFileDownload style={{marginRight: '8px'}}/> DESCARGAR_CV
               </button>
               
-              {/* Botón Conexión con nuevo LOGO (Enchufe) */}
-              <button className="profile-btn" onClick={() => manejarClick('modal')}>
-                <FaPlug style={{marginRight: '8px', transform: 'rotate(90deg)'}}/> INICIAR_CONEXIÓN
-              </button>
-              
-              {/* Botón LinkedIn */}
+              {/* 2. Botón LinkedIn */}
               <button 
                 className="profile-btn" 
                 onClick={() => manejarClick('link', 'https://www.linkedin.com/in/rocioizunza/')}
@@ -105,12 +98,17 @@ const Hero = ({ alAbrirTerminal }) => {
                 <FaLinkedin style={{marginRight: '8px'}}/> LINKEDIN
               </button>
               
-              {/* Botón GitHub */}
+              {/* 3. Botón GitHub */}
               <button 
                 className="profile-btn" 
                 onClick={() => manejarClick('link', 'https://github.com/roizunza')}
               >
                 <FaGithub style={{marginRight: '8px'}}/> GITHUB
+              </button>
+
+              {/* 4. Botón Conexión */}
+              <button className="profile-btn" onClick={() => manejarClick('modal')}>
+                <FaPlug style={{marginRight: '8px', transform: 'rotate(90deg)'}}/> INICIAR_CONEXIÓN
               </button>
 
             </div>

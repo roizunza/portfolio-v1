@@ -4,6 +4,7 @@
   background-color: rgba(21, 24, 35, 0.6); 
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
+  
   border: 1px solid rgba(255, 255, 255, 0.1); 
   border-radius: 8px;
   overflow: hidden;
@@ -36,6 +37,11 @@
   display: flex;
   align-items: center;
   gap: 8px;
+  /* Seguridad para títulos muy largos en la barra */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 85%;
 }
 
 .window-close-btn {
@@ -45,6 +51,7 @@
   font-size: 1rem;
   padding: 0 5px;
   transition: opacity 0.2s;
+  flex-shrink: 0;
 }
 .window-close-btn:hover { opacity: 0.7; }
 
@@ -69,11 +76,12 @@
 .project-content::-webkit-scrollbar-thumb { background: #424242; border-radius: 4px; }
 .project-content::-webkit-scrollbar-track { background: rgba(0,0,0,0.2); }
 
-/* CÓDIGO */
+/* CÓDIGO (DEF) */
 .code-header {
   font-family: 'Source Code Pro', monospace;
   font-size: 1.1rem;
   margin-bottom: 5px;
+  line-height: 1.4;
 }
 
 .project-location-comment {
@@ -126,9 +134,22 @@
   to { opacity: 1; transform: translateY(0); }
 }
 
+/* =========================================
+   RESPONSIVO MÓVIL
+   ========================================= */
 @media (max-width: 768px) {
   .project-detail-container { max-height: 85vh; }
   .project-hero-image { height: 140px; }
   .project-content { padding: 20px; }
   .project-text { font-size: 0.85rem; }
+  
+  /* AJUSTE CLAVE: Fuente más chica y salto de línea forzado */
+  .code-header {
+    font-size: 0.85rem; 
+    word-break: break-all; /* Rompe la palabra si es muy larga para que baje */
+  }
+
+  .window-title {
+    font-size: 0.75rem;
+  }
 }

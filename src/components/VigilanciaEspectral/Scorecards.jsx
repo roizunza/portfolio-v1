@@ -13,32 +13,30 @@ const C_PROYECTO_VERDE = '#15BE80';
 const C_TITLE_INVERSION = '#F232A9';
 const C_TITLE_PRESION = '#f30a41';
 const C_TITLE_AMENAZA = '#b2ea63ff';
-const C_TITLE_MANGLAR = '#FFFFFF'; // Corregido el hex (tenía muchas f)
+const C_TITLE_MANGLAR = '#FFFFFF'; 
 
-// Color estándar para los SUBTÍTULOS (Replicando estilo Viaja Segura)
 const C_SUBTITULO_ESTANDAR = '#B0B3B8'; 
 
-const Card = ({ title, value, subtitle, color, titleColor }) => (
+const Card = ({ title, value, subtitle, titleColor }) => (
   <div style={{
-    // --- ESTILO ROBUSTO TIPO VIAJA SEGURA ---
+    // Estilo base idéntico a Viaja Segura
     display: 'flex', 
     flexDirection: 'column', 
     justifyContent: 'center', 
     alignItems: 'center', 
     textAlign: 'center',
     
-    // Dimensiones Clave para evitar cortes
+    // Dimensiones para evitar cortes
     width: '100%', 
     height: '100%', 
-    minHeight: '80px', // Altura mínima de seguridad
-    boxSizing: 'border-box', // Asegura que el padding no aumente el tamaño total
+    minHeight: '80px', 
+    boxSizing: 'border-box',
     
-    // Estética
+    // Estética Limpia (SIN FRANJA LATERAL)
     backgroundColor: 'rgba(21, 24, 35, 0.6)',
     borderRadius: '8px',
-    padding: '5px', // Padding reducido para ganar espacio
-    border: '1px solid rgba(255,255,255,0.05)',
-    borderLeft: `4px solid ${color}`, // Mantenemos tu borde de color lateral
+    padding: '8px', // Un poco más de aire interno
+    border: '1px solid rgba(255,255,255,0.05)', // Borde sutil uniforme
     backdropFilter: 'blur(10px)'
   }}>
     {/* Cifra principal */}
@@ -48,19 +46,19 @@ const Card = ({ title, value, subtitle, color, titleColor }) => (
         fontWeight: 'bold', 
         color: C_PROYECTO_VERDE,
         marginBottom: '4px',
-        lineHeight: '1' // Line-height compacto
+        lineHeight: '1'
     }}>
       {value}
     </div>
     
-    {/* Título */}
+    {/* Título (El color viene aquí, no en el borde) */}
     <div style={{ 
         fontFamily: FONTS.title, 
         fontSize: '10px', 
         fontWeight: '700', 
         color: titleColor, 
         textTransform: 'uppercase', 
-        letterSpacing: '0.5px', // Ajustado ligeramente
+        letterSpacing: '0.5px',
         marginBottom: '2px'
     }}>
       {title}
@@ -69,7 +67,7 @@ const Card = ({ title, value, subtitle, color, titleColor }) => (
     {/* Subtítulo */}
     <div style={{ 
         fontFamily: FONTS.body, 
-        fontSize: '8px', // Ajustado a 8px como en Viaja Segura para asegurar que quepa
+        fontSize: '8px', 
         color: C_SUBTITULO_ESTANDAR, 
         lineHeight: '1.2',
         opacity: 0.9
@@ -118,32 +116,29 @@ const Scorecards = () => {
     
     return (
       <React.Fragment>
+          {/* Eliminé el prop 'color' ya que no se usará para el borde */}
           <Card 
               value={`${kpis.inversion} Ha`} 
               title="INVERSIÓN INMOBILIARIA" 
               subtitle="Desarrollos proyectados." 
-              color="#f5138c" 
               titleColor={C_TITLE_INVERSION} 
           />
           <Card 
               value={`${kpis.manglares} Ha`} 
               title="SUPERFICIE MANGLAR" 
               subtitle="Cobertura vegetal base." 
-              color="#FFFFFF" 
               titleColor={C_TITLE_MANGLAR} 
           />
           <Card 
               value={`${kpis.presion} Ha`} 
               title="ECOSISTEMA PRESIONADO" 
               subtitle="Conflicto directo." 
-              color="#e31a1c" 
               titleColor={C_TITLE_PRESION} 
           />
           <Card 
               value={`${kpis.riesgo}%`} 
               title="ÍNDICE DE AMENAZA" 
               subtitle="% del ecosistema bajo presión." 
-              color="#FFC107" 
               titleColor={C_TITLE_AMENAZA} 
           />
       </React.Fragment>

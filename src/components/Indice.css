@@ -20,7 +20,6 @@
 }
 
 .projects-title {
-  /* CAMBIO: Fuente Roboto Mono Bold */
   font-family: 'Roboto Mono', monospace; 
   font-size: 2.5rem;
   color: #FFFFFF;
@@ -73,29 +72,27 @@
   transform: scale(1.1);
 }
 
-/* TEXTO DEL ARCHIVO (CAMBIO CLAVE) */
+/* TEXTO DEL ARCHIVO */
 .file-code-name {
   font-family: 'Roboto Mono', monospace;
   font-size: 0.95rem; 
   font-weight: 500;
   color: #FFFFFF;
   text-align: center;
-  
-  /* ESTO HACE QUE LA EXTENSIÓN BAJE AL SEGUNDO RENGLÓN */
   display: flex;
   flex-direction: column; 
-  gap: 4px; /* Espacio entre el nombre y la extensión */
+  gap: 4px; 
   line-height: 1.2;
+  word-break: break-word; /* Evita desbordamientos si es muy largo */
 }
 
-/* Estilo específico para la extensión (el segundo renglón) */
 .file-extension-span {
-  font-weight: 700; /* Un poco más gordita para resaltar el color */
+  font-weight: 700;
   font-size: 1rem;
 }
 
 /* =========================================
-   RESPONSIVO 
+   RESPONSIVO TABLET
    ========================================= */
 @media (max-width: 1024px) {
   .projects-container {
@@ -114,13 +111,34 @@
   .file-icon-img {
     width: 50px;
   }
-  
+}
+
+/* =========================================
+   RESPONSIVO MÓVIL (CELULAR) - AJUSTE FINO
+   ========================================= */
+@media (max-width: 768px) {
+  /* Hacemos la fuente mucho más chica para que quepan los nombres largos */
   .file-code-name {
-    font-size: 0.8rem;
+    font-size: 0.65rem; /* Reducido considerablemente */
+    line-height: 1.1;
+  }
+
+  .file-extension-span {
+    font-size: 0.75rem; /* La extensión un pelín más grande que el nombre */
+  }
+
+  /* Ajustamos el padding de la tarjeta para ganar espacio */
+  .project-file {
+    padding: 15px 5px;
+    gap: 10px;
+  }
+
+  .file-icon-img {
+    width: 40px; /* Icono un poco más chico también */
   }
 }
 
-/* MODAL SINOPSIS (Sin cambios) */
+/* MODAL SINOPSIS */
 .synopsis-overlay {
   position: fixed;
   top: 0; left: 0; width: 100%; height: 100%;

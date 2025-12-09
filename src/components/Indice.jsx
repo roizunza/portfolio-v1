@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
 import './Indice.css'; 
 
-// Importamos las Cards Específicas
+// Importamos TODAS las Cards
 import ViajaSeguraCard from './ViajaSegura/ViajaSeguraCard.jsx';
-import VigilanciaEspectralCard from './VigilanciaEspectral/VigilanciaEspectralCard.jsx'; // <--- NUEVO
+import VigilanciaEspectralCard from './VigilanciaEspectral/VigilanciaEspectralCard.jsx';
+import AlgoritmoInmobiliarioCard from './AlgoritmoInmobiliario/AlgoritmoInmobiliarioCard.jsx';
+import FactorEsfuerzoCard from './FactorEsfuerzo/FactorEsfuerzoCard.jsx'; // <--- Importado
 
 import iconKml from '../assets/kml.PNG';
 import iconTiff from '../assets/tiff.PNG';
 import iconJson from '../assets/json.PNG';
 import iconGpkg from '../assets/gpck.PNG';
-
-import { FaArrowRight, FaTimes } from 'react-icons/fa';
 
 const Indice = ({ onActivarDashboard }) => {
   const [proyectoSeleccionado, setProyectoSeleccionado] = useState(null);
@@ -30,7 +30,7 @@ const Indice = ({ onActivarDashboard }) => {
       extension: ".tiff",
       extensionColor: "#15BE80", 
       icono: iconTiff,
-      idScroll: "proyecto-japon" // Nota: Eventualmente cambiaremos este ID
+      idScroll: "proyecto-vigilancia-espectral" 
     },
     {
       id: 3,
@@ -38,7 +38,7 @@ const Indice = ({ onActivarDashboard }) => {
       extension: ".json",
       extensionColor: "#FF5A60", 
       icono: iconJson,
-      idScroll: "proyecto-hk"
+      idScroll: "proyecto-algoritmo-inmobiliario"
     },
     {
       id: 4,
@@ -46,18 +46,18 @@ const Indice = ({ onActivarDashboard }) => {
       extension: ".gpkg",
       extensionColor: "#EE0E99", 
       icono: iconGpkg,
-      idScroll: "proyecto-pr"
+      idScroll: "proyecto-esfuerzo-turistico"
     }
   ];
 
   const manejarEjecucion = (idScroll) => {
     setProyectoSeleccionado(null);
     if (onActivarDashboard) {
-      // Por ahora mandamos al mismo dashboard o alertamos si no existe
       if(idScroll === "proyecto-viaja-segura") {
           onActivarDashboard();
       } else {
-          alert("Dashboard en construcción: " + idScroll);
+          // Por ahora solo Viaja Segura tiene Dashboard activo
+          alert("Dashboard en construcción para: " + idScroll);
       }
     }
   };
@@ -87,13 +87,13 @@ const Indice = ({ onActivarDashboard }) => {
           ))}
         </div>
 
-        {/* --- RENDERIZADO CONDICIONAL DE TARJETAS --- */}
+        {/* --- RENDERIZADO DE TARJETAS --- */}
         {proyectoSeleccionado && (
           <div className="synopsis-overlay" onClick={() => setProyectoSeleccionado(null)}>
             
             <div onClick={(e) => e.stopPropagation()} style={{maxWidth: '900px', width: '100%', padding: '0 10px'}}>
                
-               {/* LÓGICA DE SELECCIÓN */}
+               {/* 1. VIAJA SEGURA */}
                {proyectoSeleccionado.id === 1 && (
                  <ViajaSeguraCard 
                     onEjecutar={() => manejarEjecucion(proyectoSeleccionado.idScroll)} 
@@ -101,6 +101,7 @@ const Indice = ({ onActivarDashboard }) => {
                  />
                )}
 
+               {/* 2. VIGILANCIA ESPECTRAL */}
                {proyectoSeleccionado.id === 2 && (
                  <VigilanciaEspectralCard 
                     onEjecutar={() => manejarEjecucion(proyectoSeleccionado.idScroll)} 
@@ -108,12 +109,20 @@ const Indice = ({ onActivarDashboard }) => {
                  />
                )}
 
-               {/* Default para 3 y 4 por ahora */}
-               {(proyectoSeleccionado.id > 2) && (
-                  <div className="synopsis-card" style={{padding:'40px', textAlign:'center', color:'white'}}>
-                      <h3>Próximamente</h3>
-                      <p>Implementando Card...</p>
-                  </div>
+               {/* 3. ALGORITMO INMOBILIARIO */}
+               {proyectoSeleccionado.id === 3 && (
+                 <AlgoritmoInmobiliarioCard 
+                    onEjecutar={() => manejarEjecucion(proyectoSeleccionado.idScroll)} 
+                    onClose={() => setProyectoSeleccionado(null)}
+                 />
+               )}
+
+               {/* 4. FACTOR ESFUERZO (NUEVO) */}
+               {proyectoSeleccionado.id === 4 && (
+                 <FactorEsfuerzoCard 
+                    onEjecutar={() => manejarEjecucion(proyectoSeleccionado.idScroll)} 
+                    onClose={() => setProyectoSeleccionado(null)}
+                 />
                )}
 
             </div>

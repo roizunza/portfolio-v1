@@ -166,4 +166,175 @@
   to { opacity: 1; transform: translateY(0); }
 }
 
+/* src/components/Indice.css */
+
+/* VARIABLES LOCALES */
+.index-section {
+  --bg-hover: #2a2d2e;      
+  --border-card: #3e3e42;   
+  --highlight: #007acc;     
+}
+
+.projects-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px 20px;
+}
+
+/* TÍTULO MINIMALISTA */
+.projects-header {
+  margin-bottom: 50px;
+  text-align: center; /* Centrado */
+}
+
+.projects-title {
+  font-family: 'Inter', sans-serif; /* Fuente UI limpia */
+  font-size: 2rem;
+  color: #FFFFFF; /* Blanco */
+  font-weight: 700;
+  letter-spacing: -1px;
+}
+
+/* GRID DE ARCHIVOS */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 30px;
+}
+
+/* TARJETA DE ARCHIVO (ICONO) */
+.project-file {
+  background-color: transparent;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.project-file:hover {
+  background-color: var(--bg-hover);
+  transform: translateY(-5px); /* Pequeño salto al hover */
+}
+
+/* Efecto activo */
+.project-file.active {
+  background-color: rgba(0, 122, 204, 0.1); 
+  border: 1px solid var(--highlight);
+}
+
+.file-icon-img {
+  width: 70px;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.5));
+  transition: transform 0.2s;
+}
+
+.project-file:hover .file-icon-img {
+  transform: scale(1.1);
+}
+
+.file-name {
+  font-family: var(--fuente-ui);
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--texto-principal);
+  text-align: center;
+}
+
+.file-ext {
+  font-family: var(--fuente-codigo);
+  font-size: 0.8rem;
+  color: var(--texto-secundario);
+  opacity: 0.7;
+}
+
+/* MODAL SINOPSIS */
+.synopsis-overlay {
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background-color: rgba(0,0,0,0.8); /* Fondo más oscuro para foco */
+  backdrop-filter: blur(8px);
+  z-index: 1500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* Tarjeta Genérica (para los otros proyectos) */
+.synopsis-card {
+  background-color: #1e1e1e;
+  border: 1px solid #333;
+  width: 100%;
+  max-width: 500px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+  display: flex;
+  flex-direction: column;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.synopsis-header {
+  background-color: #252526;
+  padding: 15px 20px;
+  border-bottom: 1px solid #333;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.synopsis-title {
+  font-family: var(--fuente-codigo);
+  color: var(--texto-principal);
+  font-size: 0.9rem;
+}
+
+.btn-close {
+  background: none; border: none;
+  color: #cccccc; cursor: pointer; font-size: 1.2rem;
+}
+.btn-close:hover { color: white; }
+
+.synopsis-body {
+  padding: 30px;
+  font-family: var(--fuente-ui);
+  color: #cccccc;
+  line-height: 1.6;
+}
+
+.synopsis-actions {
+  padding: 20px;
+  border-top: 1px solid #333;
+  display: flex;
+  justify-content: flex-end;
+  background-color: #252526;
+}
+
+.btn-navigate {
+  background-color: var(--highlight);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-family: var(--fuente-codigo);
+  font-size: 0.9rem;
+  cursor: pointer;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.btn-navigate:hover { background-color: #0062a3; }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 export default Indice;

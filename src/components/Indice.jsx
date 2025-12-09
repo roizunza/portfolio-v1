@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
 import './Indice.css'; 
 
-// Importación de Componentes de Tarjetas
 import ViajaSeguraCard from './ViajaSegura/ViajaSeguraCard.jsx';
 
-// Importación de Imágenes
 import iconKml from '../assets/kml.PNG';
 import iconTiff from '../assets/tiff.PNG';
 import iconJson from '../assets/json.PNG';
@@ -21,8 +19,7 @@ const Indice = ({ onActivarDashboard }) => {
       titulo: "Análisis Viaja Segura",
       extension: "data.kml",
       icono: iconKml,
-      // La sinopsis ya está dentro de la tarjeta ViajaSeguraCard, pero dejamos esto por referencia
-      sinopsis: "Evaluación geoespacial...", 
+      sinopsis: "...", 
       idScroll: "proyecto-viaja-segura" 
     },
     {
@@ -51,12 +48,8 @@ const Indice = ({ onActivarDashboard }) => {
     }
   ];
 
-  // Función que ejecuta la acción de la tarjeta
   const manejarEjecucion = (idScroll) => {
-    // 1. Cerramos el modal
     setProyectoSeleccionado(null);
-    
-    // 2. Activamos el Dashboard en App.jsx
     if (onActivarDashboard) {
       onActivarDashboard();
     }
@@ -66,8 +59,9 @@ const Indice = ({ onActivarDashboard }) => {
     <section className="index-section">
       <div className="projects-container">
         
+        {/* TÍTULO CORREGIDO */}
         <div className="projects-header">
-          <h2 className="projects-title">/* Índice de Archivos del Proyecto */</h2>
+          <h2 className="projects-title">#Proyectos</h2>
         </div>
 
         <div className="projects-grid">
@@ -84,22 +78,14 @@ const Indice = ({ onActivarDashboard }) => {
           ))}
         </div>
 
-        {/* --- MODAL / FLASHCARD --- */}
         {proyectoSeleccionado && (
           <div className="synopsis-overlay" onClick={() => setProyectoSeleccionado(null)}>
             
-            {/* LÓGICA DE SELECCIÓN DE TARJETA */}
-            
-            {/* CASO 1: PROYECTO VIAJA SEGURA (ID 1) */}
             {proyectoSeleccionado.id === 1 ? (
-              // Renderizamos directamente tu tarjeta personalizada
-              // Nota: Agregamos onClick stopPropagation para que clics dentro de la tarjeta no cierren el modal
               <div onClick={(e) => e.stopPropagation()} style={{maxWidth: '900px', width: '100%'}}>
                  <ViajaSeguraCard onEjecutar={() => manejarEjecucion(proyectoSeleccionado.idScroll)} />
               </div>
             ) : (
-              
-              // CASO 2: TARJETAS GENÉRICAS (Para los otros proyectos aún no hechos)
               <div className="synopsis-card" onClick={(e) => e.stopPropagation()}>
                 <div className="synopsis-header">
                   <span className="synopsis-title">
@@ -119,7 +105,6 @@ const Indice = ({ onActivarDashboard }) => {
                   </button>
                 </div>
               </div>
-
             )}
 
           </div>

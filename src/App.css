@@ -1,0 +1,17 @@
+/* Agrega esto al final de tu archivo App.css */
+
+@keyframes slideUpFade {
+  from {
+    opacity: 0;
+    transform: translateY(40px); /* Empieza un poco más abajo */
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Clase para aplicar la animación */
+.dashboard-enter-animation {
+  animation: slideUpFade 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}

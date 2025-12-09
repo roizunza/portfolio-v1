@@ -3,13 +3,11 @@ import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import { COLORS, FONTS } from '../../config/theme';
 
-// Rutas corregidas hacia la carpeta data
 import rutasData from '../../data/recorridos.json';
 import paradasData from '../../data/paradas_r66.json'; 
 import isocronasData from '../../data/isocronas.json';
 import equipData from '../../data/equipamiento.json';
 
-// Tu token de Mapbox
 mapboxgl.accessToken = 'pk.eyJ1Ijoicm9jb2VsbGFyIiwiYSI6ImNtaXFqdG1tajBneXMzY29ra3ZpNHhuaTAifQ.8rc4UaH2YExVO5ceCB9MXA';
 
 export default function MapComponent() {
@@ -22,8 +20,9 @@ export default function MapComponent() {
     map.current = new mapboxgl.Map({
       container: mapContainer.current,
       style: 'mapbox://styles/mapbox/dark-v11',
+      // ZOOM OUT PARA VER TODO EL RECORRIDO
       center: [-99.215, 19.325],
-      zoom: 12.5
+      zoom: 11.0 
     });
 
     map.current.addControl(new mapboxgl.NavigationControl(), 'bottom-right');
@@ -42,7 +41,7 @@ export default function MapComponent() {
         'source': 'isocronas',
         'paint': {
           'fill-color': '#A020F0', 
-          'fill-opacity': 0.2      
+          'fill-opacity': 0.15      
         }
       });
 
@@ -60,7 +59,7 @@ export default function MapComponent() {
             'Oyamel-MAQ', COLORS.rutas.Oyamel,
             '#FFFFFF'
           ],
-          'line-width': 9,
+          'line-width': 5, 
           'line-opacity': 0.8
         }
       });
@@ -71,7 +70,7 @@ export default function MapComponent() {
         'type': 'circle',
         'source': 'equipamiento',
         'paint': {
-          'circle-radius': 8,
+          'circle-radius': 5, 
           'circle-color': [
             'match', ['get', 'equipamiento'],
             'EDUCATIVO', COLORS.equipamiento.EDUCATIVO,
@@ -89,7 +88,7 @@ export default function MapComponent() {
         'type': 'circle',
         'source': 'paradas',
         'paint': {
-          'circle-radius': 12,
+          'circle-radius': 7, 
           'circle-color': [
             'match', ['get', 'origen_destino'],
             'Antigua-MAQ', COLORS.rutas.Antigua,
@@ -124,56 +123,39 @@ export default function MapComponent() {
       }
 
       const props = e.features[0].properties;
-      
-      // Estilos CSS inline
-      const containerStyle = `font-family:${FONTS.body}; font-size:12px; color:#e0e0e0; min-width:180px;`;
-      const titleStyle = `font-weight:bold; text-transform:uppercase; font-size:13px; margin-bottom:8px; border-bottom:1px solid rgba(255,255,255,0.2); padding-bottom:4px; letter-spacing:0.5px;`;
-      const rowStyle = `display:flex; justify-content:space-between; margin-bottom:4px;`;
-      const labelStyle = `color:#aaa; margin-right:10px;`;
+      const containerStyle = `font-family:${FONTS.body}; font-size:11px; color:#e0e0e0; min-width:160px;`;
+      const titleStyle = `font-weight:bold; text-transform:uppercase; font-size:12px; margin-bottom:6px; border-bottom:1px solid rgba(255,255,255,0.2); padding-bottom:3px; letter-spacing:0.5px;`;
+      const rowStyle = `display:flex; justify-content:space-between; margin-bottom:3px;`;
+      const labelStyle = `color:#aaa; margin-right:8px;`;
       const valStyle = `color:#fff; font-weight:500; text-align:right;`;
 
       let html = `<div style="${containerStyle}">`;
       
-      // POPUP RUTA 
       if (type === 'ruta') {
         let routeColor = '#FFF';
         if (props.origen_destino === 'Antigua-MAQ') routeColor = COLORS.rutas.Antigua;
         if (props.origen_destino === 'Ocotal-MAQ') routeColor = COLORS.rutas.Ocotal;
         if (props.origen_destino === 'Oyamel-MAQ') routeColor = COLORS.rutas.Oyamel;
-
         const longitud = parseFloat(props.Longitud_km || 0).toFixed(2);
-
         html += `<div style="${titleStyle} color:${routeColor}">RUTA ${props.origen_destino}</div>
-                 <div style="${rowStyle}"><span style="${labelStyle}">Horario:</span> <span style="${valStyle}">${props.Operacion_Horario || 'N/D'}</span></div>
-                 <div style="${rowStyle}"><span style="${labelStyle}">Unidad:</span> <span style="${valStyle}">${props.Tipo_Unidad || 'Vagoneta'}</span></div>
-                 <div style="${rowStyle}"><span style="${labelStyle}">Capacidad:</span> <span style="${valStyle}">${props.Unidad_Capacidad} pax</span></div>
-                 <div style="${rowStyle}"><span style="${labelStyle}">Intervalo:</span> <span style="${valStyle}">${props.Intervalo_Paso || 'N/D'}</span></div>
-                 <hr style="border:0; border-top:1px solid rgba(255,255,255,0.2); margin:6px 0;">
-                 <div style="${rowStyle}"><span style="${labelStyle}">Demanda:</span> <span style="${valStyle}">${props.Demanda_Diaria} / día</span></div>
+                 <div style="${rowStyle}"><span style="${labelStyle}">Demanda:</span> <span style="${valStyle}">${props.Demanda_Diaria}</span></div>
                  <div style="${rowStyle}"><span style="${labelStyle}">Longitud:</span> <span style="${valStyle}">${longitud} km</span></div>`;
-      
       } 
-      // POPUP PARADA
       else if (type === 'parada') {
         html += `<div style="${titleStyle} color:${COLORS.descensos}">PARADA</div>
-                 <div style="margin-bottom:6px; font-weight:bold;">${props.origen_destino}</div>
+                 <div style="margin-bottom:4px; font-weight:bold;">${props.origen_destino}</div>
                  <div style="${rowStyle}"><span style="${labelStyle}">Suben:</span> <span style="${valStyle}">${props.ascensos}</span></div>
-                 <div style="${rowStyle}"><span style="${labelStyle}">Bajan:</span> <span style="${valStyle}">${props.descensos}</span></div>
-                 <div style="${rowStyle} border-top:1px solid rgba(255,255,255,0.2); padding-top:4px; margin-top:4px;"><span style="${labelStyle}">Permanecen:</span> <span style="${valStyle}">${props.total}</span></div>`;
+                 <div style="${rowStyle}"><span style="${labelStyle}">Bajan:</span> <span style="${valStyle}">${props.descensos}</span></div>`;
       } 
-      // POPUP EQUIPAMIENTO
       else if (type === 'equip') {
         let titleColor = COLORS.equipamiento.Otros;
         if (props.equipamiento === 'EDUCATIVO') titleColor = COLORS.equipamiento.EDUCATIVO;
         if (props.equipamiento === 'SALUD') titleColor = COLORS.equipamiento.SALUD;
         if (props.equipamiento === 'ABASTO') titleColor = COLORS.equipamiento.ABASTO;
-
         html += `<div style="${titleStyle} color:${titleColor}">${props.equipamiento}</div>
-                 <div style="margin-bottom:4px; font-weight:bold; font-size:13px;">${props.nombre_escuela || props.nombre || 'S/N'}</div>`;
+                 <div style="margin-bottom:4px; font-weight:bold; font-size:12px;">${props.nombre_escuela || props.nombre || 'S/N'}</div>`;
       }
       html += `</div>`;
-
-      // MOSTRAR POPUP
       popup.setLngLat(coordinates).setHTML(html).addTo(map.current);
     };
 
@@ -182,12 +164,10 @@ export default function MapComponent() {
       popup.remove();
     };
 
-    // Eventos
     ['rutas-line', 'equip-circle', 'paradas-circle'].forEach(layer => {
       let type = 'equip';
       if (layer.includes('ruta')) type = 'ruta';
       if (layer.includes('parada')) type = 'parada';
-      
       map.current.on('mouseenter', layer, (e) => showPopup(e, type));
       map.current.on('mouseleave', layer, hidePopup);
     });
@@ -197,50 +177,43 @@ export default function MapComponent() {
   // SIMBOLOGÍA 
   const legendStyle = {
     position: 'absolute',
-    top: '20px',
-    left: '20px',
-    padding: '15px',
-    width: '200px', 
-    backgroundColor: 'rgba(37, 41, 62, 0.12)', 
+    top: '10px',
+    left: '10px',
+    padding: '8px', 
+    width: '140px',  
+    backgroundColor: 'rgba(37, 41, 62, 0.2)', 
     border: '1px solid rgba(255,255,255,0.1)',
-    borderRadius: '8px',
+    borderRadius: '6px',
     color: 'white',
     fontFamily: FONTS.title,
-    fontSize: '11px',
+    fontSize: '9px',
     zIndex: 10,
-    backdropFilter: 'blur(10px)',
-    WebkitBackdropFilter: 'blur(10px)'
+    backdropFilter: 'blur(8px)',
+    WebkitBackdropFilter: 'blur(8px)'
   };
 
-  const titleStyle = { margin: '0 0 10px 0', fontSize: '18px', fontWeight: 'bold', color: '#ccc', letterSpacing: '1px' };
-  const subtitleStyle = { margin: '12px 0 6px 0', fontSize: '15px', fontWeight: '500', color: '#B4A7AF' };
-  const itemStyle = { display: 'flex', alignItems: 'center', marginBottom: '5px', fontSize: '12px', fontWeight: '300', marginLeft: '12px' };
-  const dot = { width: '8px', height: '8px', borderRadius: '50%', marginRight: '10px', display: 'inline-block' };
-  const line = { width: '15px', height: '4px', marginRight: '8px', display: 'inline-block' };
+  const titleStyle = { margin: '0 0 4px 0', fontSize: '11px', fontWeight: 'bold', color: '#ccc', letterSpacing: '0.5px' };
+  const subtitleStyle = { margin: '6px 0 2px 0', fontSize: '9px', fontWeight: '500', color: '#B4A7AF' };
+  const itemStyle = { display: 'flex', alignItems: 'center', marginBottom: '2px', fontSize: '9px', fontWeight: '300', marginLeft: '6px' };
+  const dot = { width: '5px', height: '5px', borderRadius: '50%', marginRight: '5px', display: 'inline-block' };
+  const line = { width: '10px', height: '2px', marginRight: '5px', display: 'inline-block' };
 
   return (
     <div style={{ position: 'relative', width: '100%', height: '100%' }}>
-      
-      {/* Estilos Popups */}
       <style>{`
         .dark-popup .mapboxgl-popup-content {
-          background-color: rgba(24, 29, 53, 0.5) !important;
-          backdrop-filter: blur(10px);
-          -webkit-backdrop-filter: blur(10px);
+          background-color: rgba(24, 29, 53, 0.8) !important;
+          backdrop-filter: blur(5px);
           border: 1px solid rgba(255, 255, 255, 0.1);
           color: #e0e0e0;
-          border-radius: 8px;
-          padding: 15px;
-          box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+          border-radius: 4px;
+          padding: 8px;
         }
-        .dark-popup .mapboxgl-popup-tip {
-          border-top-color: rgba(24, 29, 53, 0.5) !important;
-        }
+        .dark-popup .mapboxgl-popup-tip { border-top-color: rgba(24, 29, 53, 0.8) !important; }
       `}</style>
 
       <div ref={mapContainer} style={{ width: '100%', height: '100%' }} />
 
-      {/* LEYENDA / SIMBOLOGÍA */}
       <div style={legendStyle}>
         <h4 style={titleStyle}>SIMBOLOGÍA</h4>
         
@@ -249,9 +222,9 @@ export default function MapComponent() {
         <div style={itemStyle}><span style={{...line, background: COLORS.rutas.Ocotal}}></span> Ocotal</div>
         <div style={itemStyle}><span style={{...line, background: COLORS.rutas.Antigua}}></span> Antigua</div>
         
-        <div style={{...itemStyle, marginTop:'8px', marginLeft: '0'}}>
-            <span style={{...dot, background: '#A020F0', opacity: 0.5, width: '12px', height: '12px', borderRadius: '2px'}}></span> 
-            <span style={{ fontWeight: '500' }}>Distancia caminable 500m</span>
+        <div style={{...itemStyle, marginTop:'4px', marginLeft: '0'}}>
+            <span style={{...dot, background: '#A020F0', opacity: 0.5, width: '8px', height: '8px', borderRadius: '2px'}}></span> 
+            <span style={{ fontWeight: '500' }}>Isocronas 500m</span>
         </div>
 
         <div style={subtitleStyle}>Equipamiento</div>

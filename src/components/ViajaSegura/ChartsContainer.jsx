@@ -1,8 +1,6 @@
 import React, { useMemo } from 'react';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
 import { COLORS, FONTS } from '../../config/theme';
-
-// Importaciones corregidas
 import paradasData from '../../data/paradas_r66.json';
 import equipData from '../../data/equipamiento.json';
 
@@ -38,15 +36,15 @@ export default function ChartsContainer() {
     return Object.keys(counts).map(key => ({ name: key, Educación: counts[key].Educ, Salud: counts[key].Salud, Abasto: counts[key].Abasto }));
   }, []);
 
-  // Componentes Visuales
+  // Componentes Visuales Compactos
   const CustomTooltip = ({ active, payload, label }) => {
     if (active && payload && payload.length) {
       return (
-        <div style={{ backgroundColor: 'rgba(24, 29, 53, 0.95)', border: '1px solid rgba(255,255,255,0.1)', padding: '10px', fontFamily: FONTS.body, fontSize: '11px' }}>
-          <p style={{color: 'white', fontWeight: 'bold', marginBottom:'5px'}}>{label}</p>
+        <div style={{ backgroundColor: 'rgba(24, 29, 53, 0.95)', border: '1px solid rgba(255,255,255,0.1)', padding: '6px', fontFamily: FONTS.body, fontSize: '10px' }}>
+          <p style={{color: 'white', fontWeight: 'bold', marginBottom:'3px', margin: 0}}>{label}</p>
           {payload.map((entry, index) => (
-            <div key={index} style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <span style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: entry.fill }}></span>
+            <div key={index} style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
+              <span style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: entry.fill }}></span>
               <span style={{ color: '#E0E0E0' }}>{entry.name}: <span style={{ color: '#fff', fontWeight: 'bold' }}>{Math.abs(entry.value)}</span></span>
             </div>
           ))}
@@ -63,23 +61,29 @@ export default function ChartsContainer() {
     if (payload.value === 'Antigua') color = COLORS.rutas.Antigua;
     return (
       <g transform={`translate(${x},${y})`}>
-        <text x={0} y={0} dy={15} textAnchor="middle" fill={color} fontFamily={FONTS.title} fontSize={13} fontWeight="bold">
+        <text x={0} y={0} dy={12} textAnchor="middle" fill={color} fontFamily={FONTS.title} fontSize={10} fontWeight="bold">
           {payload.value.toUpperCase()}
         </text>
       </g>
     );
   };
 
-  // ESTILOS RESPONSIVOS
+  // ESTILOS RESPONSIVOS COMPACTOS
   const styles = {
-    mainContainer: { display: 'flex', flexWrap: 'wrap', width: '100%', height: '100%', padding: '20px', overflowY: 'auto' },
-    leftSection: { flex: '2 1 600px', display: 'flex', flexDirection: 'column', paddingRight: '20px', minHeight: '300px', marginBottom: '40px' },
-    rightSection: { flex: '1 1 300px', display: 'flex', flexDirection: 'column', paddingLeft: '20px', paddingRight: '30px', minHeight: '300px' },
-    header: { display: 'flex', flexDirection: 'column', alignItems: 'flex-start', borderBottom: '1px solid rgba(255,255,255,0.1)', marginBottom: '15px', paddingBottom: '10px', gap: '8px' },
-    title: { fontFamily: FONTS.body, fontSize: '16px', fontWeight: '700', color: '#FFFFFF', margin: 0, letterSpacing: '0.5px', width:'100%' },
-    legend: { display: 'flex', gap: '15px', fontSize: '13px', fontFamily: FONTS.body, color: '#FFFFFF', flexWrap: 'wrap' },
-    subTitle: { fontFamily: FONTS.title, fontSize: '13px', color: '#B0B3B8', marginTop: '8px', textAlign: 'center', textTransform: 'uppercase', letterSpacing: '1px', fontWeight: 'bold' },
-    dot: (color) => ({ width: '8px', height: '8px', backgroundColor: color, borderRadius: '2px', display: 'inline-block', marginRight: '6px' })
+    mainContainer: { display: 'flex', flexWrap: 'wrap', width: '100%', height: '100%', padding: '10px 15px', overflow: 'hidden' },
+    
+    // Reducción de paddings para dar más espacio a las gráficas
+    leftSection: { flex: '2 1 500px', display: 'flex', flexDirection: 'column', paddingRight: '15px', minHeight: '0' },
+    rightSection: { flex: '1 1 250px', display: 'flex', flexDirection: 'column', paddingLeft: '15px', minHeight: '0', borderLeft: '1px solid rgba(255,255,255,0.05)' },
+    
+    header: { display: 'flex', flexDirection: 'column', alignItems: 'flex-start', borderBottom: '1px solid rgba(255,255,255,0.1)', marginBottom: '8px', paddingBottom: '5px', gap: '4px' },
+    
+    // Títulos y textos más pequeños
+    title: { fontFamily: FONTS.body, fontSize: '14px', fontWeight: '700', color: '#FFFFFF', margin: 0, letterSpacing: '0.3px', width:'100%' },
+    legend: { display: 'flex', gap: '10px', fontSize: '11px', fontFamily: FONTS.body, color: '#FFFFFF', flexWrap: 'wrap' },
+    subTitle: { fontFamily: FONTS.title, fontSize: '10px', color: '#B0B3B8', marginTop: '4px', textAlign: 'center', textTransform: 'uppercase', letterSpacing: '0.5px', fontWeight: 'bold' },
+    
+    dot: (color) => ({ width: '6px', height: '6px', backgroundColor: color, borderRadius: '2px', display: 'inline-block', marginRight: '4px' })
   };
 
   return (
@@ -95,17 +99,18 @@ export default function ChartsContainer() {
           </div>
         </div>
         
-        <div style={{ display: 'flex', flex: 1, gap: '5px' }}> 
+        <div style={{ display: 'flex', flex: 1, gap: '5px', minHeight: 0 }}> 
           {[ {d: dataOyamel, c: COLORS.rutas.Oyamel, t: 'Oyamel'}, {d: dataOcotal, c: COLORS.rutas.Ocotal, t: 'Ocotal'}, {d: dataAntigua, c: COLORS.rutas.Antigua, t: 'Antigua'} ].map((ruta, i) => (
-            <div key={i} style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
+            <div key={i} style={{ flex: 1, display: 'flex', flexDirection: 'column', minHeight: 0 }}>
               <div style={{ flex: 1, minHeight: 0 }}>
                 <ResponsiveContainer width="100%" height="100%">
-                  <BarChart data={ruta.d} layout="vertical" stackOffset="sign" margin={{top:0, right:2, left:0, bottom:0}}>
+                  <BarChart data={ruta.d} layout="vertical" stackOffset="sign" margin={{top:0, right:2, left:-25, bottom:0}}>
                     <XAxis type="number" hide />
-                    <YAxis type="category" dataKey="name" hide width={10} />
+                    <YAxis type="category" dataKey="name" hide width={0} />
                     <Tooltip content={<CustomTooltip />} cursor={{fill: 'rgba(255,255,255,0.05)'}} />
-                    <Bar dataKey="Ascensos" fill={ruta.c} stackId="stack" radius={[0, 3, 3, 0]} barSize={22} />
-                    <Bar dataKey="Descensos" fill={COLORS.descensos} stackId="stack" radius={[3, 0, 0, 3]} barSize={22} />
+                    {/* Barras más delgadas para que quepan todas */}
+                    <Bar dataKey="Ascensos" fill={ruta.c} stackId="stack" radius={[0, 2, 2, 0]} barSize={16} />
+                    <Bar dataKey="Descensos" fill={COLORS.descensos} stackId="stack" radius={[2, 0, 0, 2]} barSize={16} />
                   </BarChart>
                 </ResponsiveContainer>
               </div>
@@ -120,7 +125,7 @@ export default function ChartsContainer() {
         <div style={styles.header}>
           <div style={styles.title}>Infraestructura de cuidados</div>
           <div style={styles.legend}>
-            <div style={{ display: 'flex', alignItems: 'center' }}><span style={styles.dot(COLORS.equipamiento.EDUCATIVO)}></span> Educación</div>
+            <div style={{ display: 'flex', alignItems: 'center' }}><span style={styles.dot(COLORS.equipamiento.EDUCATIVO)}></span> Educ</div>
             <div style={{ display: 'flex', alignItems: 'center' }}><span style={styles.dot(COLORS.equipamiento.SALUD)}></span> Salud</div>
             <div style={{ display: 'flex', alignItems: 'center' }}><span style={styles.dot(COLORS.equipamiento.ABASTO)}></span> Abasto</div>
           </div>
@@ -128,13 +133,14 @@ export default function ChartsContainer() {
         
         <div style={{ flex: 1, minHeight: 0 }}>
           <ResponsiveContainer width="100%" height="100%">
-            <BarChart data={dataEquip} margin={{top:10, right:0, left:-20, bottom:30}} barCategoryGap="20%">
+            {/* Márgenes negativos para aprovechar todo el ancho */}
+            <BarChart data={dataEquip} margin={{top:5, right:0, left:-25, bottom:5}} barCategoryGap="25%">
               <XAxis dataKey="name" axisLine={false} tickLine={false} tick={<CustomAxisTick />} interval={0} />
-              <YAxis tick={{fill: '#B0B3B8', fontSize: 13, fontFamily: FONTS.body}} axisLine={false} tickLine={false} />
+              <YAxis tick={{fill: '#B0B3B8', fontSize: 10, fontFamily: FONTS.body}} axisLine={false} tickLine={false} />
               <Tooltip cursor={{fill: 'rgba(255,255,255,0.05)'}} content={<CustomTooltip />} />
               <Bar dataKey="Educación" stackId="a" fill={COLORS.equipamiento.EDUCATIVO} radius={[0, 0, 2, 2]} />
               <Bar dataKey="Salud" stackId="a" fill={COLORS.equipamiento.SALUD} />
-              <Bar dataKey="Abasto" stackId="a" fill={COLORS.equipamiento.ABASTO} radius={[4, 4, 0, 0]} />
+              <Bar dataKey="Abasto" stackId="a" fill={COLORS.equipamiento.ABASTO} radius={[2, 2, 0, 0]} />
             </BarChart>
           </ResponsiveContainer>
         </div>

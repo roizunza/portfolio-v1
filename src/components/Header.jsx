@@ -34,7 +34,7 @@ const Header = ({ alDarClicEnContacto }) => {
             <button 
               onClick={() => manejarNavegacion(elemento)} 
               className="nav-btn"
-              style={{ color: 'inherit', fontFamily: 'inherit' }} // Hereda el estilo del padre
+              style={{ color: 'inherit', fontFamily: 'inherit' }} 
             >
               "{elemento}"
             </button>

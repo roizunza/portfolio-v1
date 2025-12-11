@@ -17,7 +17,7 @@ const Footer = () => {
           C:\Users\Rocio\Desktop\portfolio_v2025&gt;
         </span>
 
-        {/* Ruta para Celular (Se oculta con CSS media query si existe en tu archivo global) */}
+        {/* Ruta para Celular */}
         <span className="ruta-mobile" style={{ opacity: 0.6, marginRight: '5px' }}>
           ~\portfolio_v2025&gt;
         </span>
@@ -28,7 +28,7 @@ const Footer = () => {
         </span>
 
         {/* Cursor Parpadeante */}
-        <span className="cursor-terminal" style={{ backgroundColor: '#34C759' }}></span>
+        <span className="cursor-terminal" style={{ backgroundColor: '#ffffff' }}></span>
 
       </div>
     </footer>

@@ -1,91 +1,126 @@
-import React, { useMemo, useState, useEffect } from 'react'; 
-import { FONTS, COLORS, PROJECTS } from '../../config/theme';
-import * as turf from '@turf/turf';
+import React, { useState, useEffect } from 'react';
+import { FONTS, COLORS } from '../../config/theme';
+import ndviImg from '../../assets/ndvi_visual.png'; 
+import ndwiImg from '../../assets/ndwi_visual.png'; 
 
-import manglaresData from '../../data/manglares.json';
-import inversionData from '../../data/inversion.json';
-import presionData from '../../data/manglarespresionados.json'; 
+export default function RasterVisor() {
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 1024);
 
-export default function Scorecards() {
-    const [isMounted, setIsMounted] = useState(false);
-    useEffect(() => setIsMounted(true), []);
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 1024);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
-    const THEME = PROJECTS.vigilancia;
-    const RAMP = THEME.ramp;
+  const RenderLegend = ({ gradient, labels, topLabel }) => (
+    <div style={{ display: 'flex', alignItems: 'flex-end', gap: '8px' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', height: isMobile ? '60px' : '90px', textAlign: 'right' }}>
+            {labels.map((l, i) => (
+              <span key={i} style={{ fontSize: '9px', color: '#ccc', fontFamily: FONTS.data, textShadow: '1px 1px 2px black' }}>
+                {l}
+              </span>
+            ))}
+        </div>
+        
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', height: isMobile ? '60px' : '90px', justifyContent: 'flex-start' }}>
+            <span style={{ fontSize: '8px', color: '#fff', fontFamily: FONTS.data, fontWeight: 'bold', marginBottom: '4px', textAlign: 'center', width: 'max-content', textShadow: '1px 1px 2px black' }}>
+                {topLabel}
+            </span>
+            <div style={{ 
+                width: '12px', 
+                flex: 1, 
+                background: gradient, 
+                borderRadius: '2px', 
+                border: '1px solid rgba(255,255,255,0.2)' 
+            }}></div>
+        </div>
+    </div>
+  );
 
-    const kpis = useMemo(() => {
-        try {
-          if (!manglaresData || !inversionData || !presionData) return { manglares: "0", inversion: "0", presion: "0", riesgo: "0" };
+  const RasterCard = ({ title, acronym, img, gradient, labels, topLabel }) => {
+      return (
+        <div style={{
+            flex: 1, minHeight: 0, 
+            backgroundColor: COLORS.background.panel,
+            borderRadius: '8px', overflow: 'hidden', 
+            border: `1px solid ${COLORS.ui.border}`,
+            display: 'flex', flexDirection: 'column', // Siempre columna interna
+            position: 'relative',
+            width: '100%' // Asegura ancho completo
+        }}>
+            {/* TÍTULO */}
+            <div style={{ position: 'absolute', top: '10px', left: '10px', zIndex: 10, maxWidth: '60%' }}>
+                <h2 style={{ 
+                    fontFamily: FONTS.body, 
+                    fontSize: '10px', 
+                    fontWeight: 'bold', color: '#fff', 
+                    whiteSpace: 'normal', 
+                    lineHeight: '1.2',
+                    margin: 0,
+                    textShadow: '0px 2px 4px rgba(0,0,0,0.8)'
+                }}>{title}</h2>
+            </div>
+            
+            {/* IMAGEN */}
+            <div style={{ flex: 1, position: 'relative', display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%', height: '100%' }}>
+                <img src={img} alt={acronym} style={{ width: '100%', height: '100%', objectFit: 'contain', opacity: 0.95 }} />
+                
+                {/* LEYENDA Y ETIQUETA - SIEMPRE VISIBLES A LA DERECHA */}
+                <div style={{
+                    position: 'absolute',
+                    bottom: '10px',
+                    right: '10px',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'flex-end',
+                    zIndex: 20,
+                    gap: '5px'
+                }}>
+                    <RenderLegend gradient={gradient} labels={labels} topLabel={topLabel} />
+                    
+                    <h3 style={{
+                        fontFamily: FONTS.main, fontSize: '14px', fontWeight: '700', 
+                        color: '#FFFFFF', 
+                        margin: 0, letterSpacing: '1px',
+                        textShadow: '0px 2px 4px rgba(0,0,0,0.8)'
+                    }}>
+                        {acronym}
+                    </h3>
+                </div>
+            </div>
+        </div>
+      );
+  };
 
-          const areaManglaresM2 = turf.area(manglaresData);
-          const areaInversionM2 = turf.area(inversionData);
-          const areaPresionM2 = turf.area(presionData);
+  return (
+    <div style={{ 
+        display: 'flex', 
+        flexDirection: 'column', // <--- CAMBIO CLAVE: Siempre Columna (Uno encima del otro)
+        width: '100%', 
+        height: '100%', 
+        gap: '10px', 
+        padding: '10px'
+    }}>
+      
+      {/* TARJETA 1: NDVI */}
+      <RasterCard 
+          title="ÍNDICE DE VEGETACIÓN DE DIFERENCIA NORMALIZADA" 
+          acronym="NDVI" 
+          img={ndviImg}
+          gradient="linear-gradient(to top, #f30a41 0%, #f4976c 30%, #86d978 60%, #0f8e64 100%)"
+          labels={['0.95', '0.0', '-0.73']}
+          topLabel="Alta Vegetación" 
+      />
 
-          const haManglares = (areaManglaresM2 / 10000).toFixed(2);
-          const haInversion = (areaInversionM2 / 10000).toFixed(2);
-          const haPresion = (areaPresionM2 / 10000).toFixed(2);
-          const porcentajeRiesgo = ((areaPresionM2 / areaManglaresM2) * 100);
-          const riesgoDisplay = porcentajeRiesgo < 100 ? porcentajeRiesgo.toFixed(1) : porcentajeRiesgo.toFixed(0);
-
-          return { manglares: haManglares, inversion: haInversion, presion: haPresion, riesgo: riesgoDisplay };
-        } catch (error) {
-          console.error("Error KPIs:", error);
-          return { manglares: "Error", inversion: "Error", presion: "Error", riesgo: "Error" };
-        }
-    }, []);
-
-    const s = {
-      card: {
-        display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', textAlign: 'center',
-        width: '100%', height: '100%', minHeight: '80px', boxSizing: 'border-box',
-        backgroundColor: COLORS.background.panel, 
-        borderRadius: '8px', padding: '5px',
-        border: `1px solid ${COLORS.ui.border}`,
-        backdropFilter: 'blur(10px)'
-      },
-      number: {
-        color: THEME.color, 
-        fontFamily: FONTS.main, fontSize: '22px', fontWeight: '700', marginBottom: '4px', lineHeight: '1'
-      },
-      title: {
-        fontFamily: FONTS.body, fontSize: '10px', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: '4px',
-      },
-      subtitle: {
-        color: COLORS.text.secondary, fontFamily: FONTS.body, fontSize: '8px', fontWeight: '500', lineHeight: '1.2', opacity: 0.8
-      }
-    };
-
-    if (!isMounted) return null;
-    
-    return (
-      <React.Fragment>
-          {/* 1. ECOSISTEMA PRESIONADO (ROJO) */}
-          <div style={s.card}>
-              <div style={s.number}>{kpis.presion} Ha</div>
-              <div style={{...s.title, color: RAMP.presion}}>ECOSISTEMA PRESIONADO</div>
-              <div style={s.subtitle}>Conflicto directo</div>
-          </div>
-
-          {/* 2. ÍNDICE DE AMENAZA (NARANJA)*/}
-          <div style={s.card}>
-              <div style={s.number}>{kpis.riesgo}%</div>
-              <div style={{...s.title, color: RAMP.riesgo}}>ÍNDICE DE AMENAZA</div>
-              <div style={s.subtitle}>% del ecosistema bajo presión</div>
-          </div>
-
-          {/* 3. INVERSIÓN INMOBILIARIA (AMARILLO) */}
-          <div style={s.card}>
-              <div style={s.number}>{kpis.inversion} Ha</div>
-              <div style={{...s.title, color: RAMP.inversion}}>INVERSIÓN INMOBILIARIA</div>
-              <div style={s.subtitle}>Desarrollos proyectados</div>
-          </div>
-          
-          {/* 4. SUPERFICIE MANGLAR (BLANCO) */}
-          <div style={s.card}>
-              <div style={s.number}>{kpis.manglares} Ha</div>
-              <div style={{...s.title, color: '#FFFFFF'}}>SUPERFICIE MANGLAR</div>
-              <div style={s.subtitle}>Cobertura vegetal base</div>
-          </div>
-      </React.Fragment>
-    );
+      {/* TARJETA 2: NDWI */}
+      <RasterCard 
+          title="ÍNDICE DE HUMEDAD DE DIFERENCIA NORMALIZADA" 
+          acronym="NDWI" 
+          img={ndwiImg}
+          gradient="linear-gradient(to top, #f30a41 0%, #f4976c 30%, #77c4df 60%, #0106f7 100%)"
+          labels={['0.70', '0.0', '-0.73']}
+          topLabel="Alta Humedad" 
+      />
+    </div>
+  );
 }

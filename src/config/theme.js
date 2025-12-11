@@ -25,7 +25,7 @@ export const COLORS = {
     border: 'rgba(255, 255, 255, 0.1)',
     windowControls: 'rgba(170, 170, 170, 0.6)',
     actionButton: '#0000ff',
-    accent: '#007acc' // <--- AGREGADO: Color para flechas del sidebar
+    accent: '#007acc' 
   }
 };
 

@@ -7,10 +7,10 @@ import AlgoritmoInmobiliarioCard from './AlgoritmoInmobiliario/AlgoritmoInmobili
 import FactorEsfuerzoCard from './FactorEsfuerzo/FactorEsfuerzoCard.jsx';
 
 // Iconos 
-import iconKml from '../assets/kml.png';   
+import iconKml from '../assets/kml.PNG';   
 import iconTiff from '../assets/tiff.PNG'; 
-import iconJson from '../assets/json.png'; 
-import iconGpkg from '../assets/gpck.png'; 
+import iconJson from '../assets/json.PNG'; 
+import iconGpkg from '../assets/gpck.PNG'; 
 
 const Indice = ({ onActivarDashboard }) => {
   const [proyectoSeleccionado, setProyectoSeleccionado] = useState(null);

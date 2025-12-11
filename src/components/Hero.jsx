@@ -20,7 +20,7 @@ const Hero = ({ alAbrirTerminal }) => {
         {/* Header de Ventana */}
         <div className="profile-window-bar">
           <span style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-            <span style={{ opacity: 0.5 }}>📂</span> perfil_usuario.py
+            <span style={{ opacity: 0.5 }}>📂</span> perfil_usuario
           </span>
           <span className="window-controls">
             <span>[ _ ]</span>

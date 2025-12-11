@@ -28,7 +28,7 @@ export default function MapComponent() {
       container: mapContainer.current,
       style: 'mapbox://styles/mapbox/dark-v11',
       center: [114.1694, 22.3193],
-      zoom: 10.5,
+      zoom: 9,
       pitch: 0
     });
 

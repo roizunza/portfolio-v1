@@ -85,7 +85,7 @@ export default function Sidebar() {
       <div style={s.btnContainer}>
         <a href="https://github.com/roizunza" target="_blank" rel="noreferrer" style={s.btnGithub}>
           <FaGithub style={{ marginRight: '8px', fontSize: '1.1em' }}/> 
-          VER CÓDIGO EN GITHUB
+          VER ANÁLISIS EN PYTHON
         </a>
       </div>
     </div>

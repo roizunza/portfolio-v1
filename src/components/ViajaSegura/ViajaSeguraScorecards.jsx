@@ -1,5 +1,5 @@
 import React from 'react';
-import { COLORS, FONTS } from '../../config/theme';
+import { COLORS, FONTS, PROJECTS } from '../../config/theme'; // Agregamos PROJECTS
 import recorridosData from '../../data/recorridos.json';
 
 export default function Scorecards() {
@@ -13,7 +13,9 @@ export default function Scorecards() {
     return sat > max ? sat : max;
   }, 0);
 
-  // Estilos de la TARJETA INDIVIDUAL (El contenedor lo maneja el CSS externo ahora)
+  const RUTAS_COLORS = PROJECTS.viajaSegura.ramp.rutas;
+
+  // Estilos de la TARJETA INDIVIDUAL
   const s = {
     card: {
       display: 'flex', 
@@ -21,10 +23,9 @@ export default function Scorecards() {
       justifyContent: 'center', 
       alignItems: 'center', 
       textAlign: 'center',
-      // En desktop flex:1, en móvil grid llena la celda
       width: '100%', 
       height: '100%', 
-      minHeight: '80px', // Altura mínima para que no se aplaste
+      minHeight: '80px', 
       backgroundColor: 'rgba(21, 24, 35, 0.6)', 
       borderRadius: '8px',
       border: '1px solid rgba(255, 255, 255, 0.05)',
@@ -60,7 +61,6 @@ export default function Scorecards() {
   };
 
   return (
-    // Quitamos el estilo inline del contenedor principal para que el CSS del Layout mande
     <React.Fragment>
       <div style={s.card}>
         <div style={s.number}>{totalRutas}</div>
@@ -70,19 +70,19 @@ export default function Scorecards() {
       
       <div style={s.card}>
         <div style={s.number}>{Math.round(kmTotal)} km</div>
-        <div style={{...s.title, color: COLORS.rutas.Oyamel}}>DE CONEXIÓN PERIFÉRICA</div>
+        <div style={{...s.title, color: RUTAS_COLORS.oyamel}}>DE CONEXIÓN PERIFÉRICA</div>
         <div style={s.subtitle}>Uniendo la zona alta de difícil acceso con la ciudad</div>
       </div>
       
      <div style={s.card}>
      <div style={s.number}>+{demandaTotal.toLocaleString()}</div>
-     <div style={{...s.title, color: COLORS.rutas.Antigua}}>VIAJES DE CUIDADO</div>
+     <div style={{...s.title, color: RUTAS_COLORS.antigua}}>VIAJES DE CUIDADO</div>
      <div style={s.subtitle}>Sosteniendo la vida cotidiana de mujeres e infancias</div>
      </div>
       
       <div style={s.card}>
         <div style={s.number}>{Math.round(maxSaturacion)}%</div>
-        <div style={{...s.title, color: COLORS.rutas.Ocotal}}>SOBRECARGA DE CUIDADO</div>
+        <div style={{...s.title, color: RUTAS_COLORS.ocotal}}>SOBRECARGA DE CUIDADO</div>
         <div style={s.subtitle}>La necesidad comunitaria rebasa la infraestructura actual ofertada</div>
       </div>
     </React.Fragment>

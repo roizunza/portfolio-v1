@@ -1,0 +1,124 @@
+/* src/components/TerminalModal.css */
+
+/* El fondo oscuro que cubre toda la pantalla */
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(5px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999; /* Por encima de todo */
+  animation: fadeIn 0.2s ease-out;
+}
+
+/* La ventana de la terminal */
+.terminal-window {
+  width: 90%;
+  max-width: 600px;
+  background-color: #1e121f; /* Color de tus paneles */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Barra superior */
+.terminal-header {
+  background-color: #181d35;
+  padding: 10px 15px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #fff;
+  font-family: 'Roboto Mono', monospace;
+}
+
+.window-controls {
+  color: rgba(170, 170, 170, 0.6);
+  font-size: 12px;
+  letter-spacing: 2px;
+}
+
+.close-btn {
+  cursor: pointer;
+  color: #fff;
+  font-weight: bold;
+}
+.close-btn:hover { color: #f30a41; }
+
+/* Contenido */
+.terminal-content {
+  padding: 30px;
+  font-family: 'Source Code Pro', monospace;
+  color: #e0e0e0;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* Colores de Sintaxis */
+.ck-key { color: #C678DD; } /* Keyword lila */
+.ck-cls { color: #E5C07B; } /* Class amarillo */
+.ck-str { color: #98C379; } /* String verde */
+.ck-fn  { color: #61AFEF; } /* Function azul */
+.ck-punc { color: #fff; }
+.ck-com { color: #888888; }
+
+.divider {
+  margin: 15px 0;
+  border-top: 1px dashed #333;
+}
+
+.indent { margin-left: 20px; }
+
+/* Botón */
+.terminal-actions {
+  margin-top: 25px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.execute-btn {
+  background-color: transparent;
+  border: 1px solid #34C759; /* Verde terminal */
+  color: #34C759;
+  font-family: 'Source Code Pro', monospace;
+  padding: 10px 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  transition: all 0.2s;
+}
+
+.execute-btn:hover {
+  background-color: rgba(52, 199, 89, 0.1);
+  box-shadow: 0 0 10px rgba(52, 199, 89, 0.2);
+}
+
+/* Logs */
+.logs-container {
+  color: #34C759;
+  font-family: 'Courier New', monospace;
+}
+
+.log-line { margin-bottom: 5px; }
+
+.cursor-blink {
+  animation: blink 1s infinite;
+  font-weight: bold;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}

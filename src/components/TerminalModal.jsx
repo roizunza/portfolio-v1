@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import emailjs from '@emailjs/browser';
 import { FaTerminal } from 'react-icons/fa';
+import './TerminalModal.css'; // Importamos los estilos específicos del modal
 
 const TerminalModal = ({ isOpen, onClose }) => {
   const [nombre, setNombre] = useState('');
@@ -27,16 +28,17 @@ const TerminalModal = ({ isOpen, onClose }) => {
       mensaje: mensaje
     };
 
+    // REEMPLAZA CON TUS CREDENCIALES DE EMAILJS
     emailjs.send(
-      'service_v7bqlj4',       // Service ID
-      'conexion_exitosa',      // Template ID
+      'TU_SERVICE_ID',       // Ej: service_v7bqlj4
+      'TU_TEMPLATE_ID',      // Ej: template_xyz
       templateParams,
-      'x4IiQCqiWTLmhyKfR'      // Public Key
+      'TU_PUBLIC_KEY'        // Ej: x4IiQCqiWTLmhyKfR
     )
     .then(() => {
        const pasosExito = [
         `> Encrypting_data_from: ${nombre}`,
-        "> Resolving_host: rocio_server...", // <--- ¡AQUÍ ESTÁ TU TOQUE PERSONAL!
+        "> Resolving_host: rocio_server...", 
         "> Uploading_packet... 100%",
         "> 200 OK. Message_received.",
         "> Closing_connection..."
@@ -62,101 +64,96 @@ const TerminalModal = ({ isOpen, onClose }) => {
     });
   };
 
-  // Estilos inline para "resetear" los inputs y que parezcan código puro
+  // Estilos inline para los inputs "invisibles" que parecen código
   const inputStyle = {
     background: 'transparent',
     border: 'none',
     borderBottom: '1px dashed #555',
-    color: 'inherit',
+    color: '#98C379', // Verde string
     fontFamily: 'inherit',
     fontSize: 'inherit',
     outline: 'none',
     width: 'auto',
-    minWidth: '150px'
+    minWidth: '150px',
+    marginLeft: '5px'
   };
 
   return (
     <div className="modal-overlay">
-      {/* Reutilizamos la clase del Hero para la caja principal */}
-      <div className="profile-container" style={{ maxWidth: '700px', margin: '0 auto' }}>
+      <div className="terminal-window">
         
         {/* Header de Ventana */}
-        <div className="profile-window-bar">
-          <span style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+        <div className="terminal-header">
+          <span style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '12px' }}>
             <span style={{ opacity: 0.5 }}>⚡</span> contacto_protocol.py
           </span>
           <span className="window-controls">
             <span>[ _ ]</span>
             <span>[ ▢ ]</span>
-            {/* [X] en blanco puro */}
-            <span onClick={onClose} style={{ cursor: 'pointer', color: '#FFFFFF', fontWeight: 'bold' }}>[ X ]</span>
+            <span onClick={onClose} className="close-btn">[ X ]</span>
           </span>
         </div>
 
-        <div className="profile-content" style={{ padding: '30px', display: 'block' }}>
+        <div className="terminal-content">
           
           {enviando ? (
-             // Vista de Logs (Verde Hacker)
-             <div className="code-block">
+             // VISTA DE LOGS (Hacker style)
+             <div className="logs-container">
                 {logs.map((log, i) => (
-                  <div key={i} style={{ marginBottom: '5px', color: '#98c379' }}>{log}</div>
+                  <div key={i} className="log-line">{log}</div>
                 ))}
-                <span className="cursor-terminal"></span>
+                <span className="cursor-blink">_</span>
              </div>
           ) : (
-            // Vista de Formulario
+            // VISTA DE FORMULARIO
             <>
-              <div className="code-block">
+              <div className="code-form">
                 
-                {/* Línea 1: Variable Nombre */}
-                <div>
+                {/* Variable Nombre */}
+                <div className="code-line">
                   <span className="ck-key">var</span>{' '}
                   <span className="ck-cls">nombre_remitente</span> 
                   <span className="ck-punc"> = </span>
-                  <span className="ck-str">
-                    "
-                    <input 
-                      type="text" 
-                      style={inputStyle}
-                      placeholder="Tu nombre"
-                      value={nombre}
-                      onChange={(e) => setNombre(e.target.value)}
-                      autoFocus
-                    />
-                    "
-                  </span>
+                  <span className="ck-str">"</span>
+                  <input 
+                    type="text" 
+                    style={inputStyle}
+                    placeholder="Tu nombre"
+                    value={nombre}
+                    onChange={(e) => setNombre(e.target.value)}
+                    autoFocus
+                  />
+                  <span className="ck-str">"</span>
                 </div>
 
-                {/* Línea 2: Variable Correo */}
-                <div style={{ marginTop: '10px' }}>
+                {/* Variable Correo */}
+                <div className="code-line">
                   <span className="ck-key">var</span>{' '}
                   <span className="ck-cls">correo_contacto</span> 
                   <span className="ck-punc"> = </span>
-                  <span className="ck-str">
-                    "
-                    <input 
-                      type="email" 
-                      style={inputStyle}
-                      placeholder="tucorreo@ejemplo.com"
-                      value={correo}
-                      onChange={(e) => setCorreo(e.target.value)}
-                    />
-                    "
-                  </span>
+                  <span className="ck-str">"</span>
+                  <input 
+                    type="email" 
+                    style={inputStyle}
+                    placeholder="tucorreo@ejemplo.com"
+                    value={correo}
+                    onChange={(e) => setCorreo(e.target.value)}
+                  />
+                  <span className="ck-str">"</span>
                 </div>
 
-                <div style={{ margin: '20px 0', borderTop: '1px dashed #333', opacity: 0.5 }}></div>
+                <div className="divider"></div>
 
-                {/* Línea 3: Definición Función */}
-                <div>
+                {/* Función Mensaje */}
+                <div className="code-line">
                   <span className="ck-key">def</span>{' '}
                   <span className="ck-fn">mensaje</span>
                   <span className="ck-punc">():</span>
                 </div>
 
-                {/* Línea 4: Docstring (Textarea) */}
-                <div className="indent-1 ck-com">
-                  """<br/>
+                {/* Textarea Docstring */}
+                <div className="code-block-comment">
+                  <span className="ck-com">"""</span><br/>
                   <textarea 
                     style={{
                       ...inputStyle, 
@@ -164,27 +161,26 @@ const TerminalModal = ({ isOpen, onClose }) => {
                       borderBottom: 'none', 
                       resize: 'none', 
                       minHeight: '80px',
+                      color: '#888888',
                       fontStyle: 'italic'
                     }}
                     placeholder="Escribe aquí el motivo de tu contacto..."
                     value={mensaje}
                     onChange={(e) => setMensaje(e.target.value)}
                   />
-                  <br/>"""
+                  <br/><span className="ck-com">"""</span>
                 </div>
 
-                {/* Línea 5: Return */}
-                <div className="indent-1" style={{ marginTop: '10px' }}>
+                <div className="code-line indent">
                   <span className="ck-key">return</span>{' '}
-                  {/* True en Azul (#569cd6) */}
                   <span style={{ color: '#569cd6' }}>True</span>
                 </div>
 
               </div>
 
-              {/* Botones */}
-              <div className="profile-buttons" style={{ marginTop: '30px', paddingTop: '20px' }}>
-                <button className="profile-btn" onClick={enviarPaquete}>
+              {/* Botón Ejecutar */}
+              <div className="terminal-actions">
+                <button className="execute-btn" onClick={enviarPaquete}>
                   <FaTerminal style={{marginRight: '8px'}}/> EJECUTAR_ENVIO
                 </button>
               </div>

@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from 'react';
 import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
-import { COLORS, FONTS } from '../../config/theme';
+import { COLORS, FONTS, PROJECTS, STYLES } from '../../config/theme'; // Importamos PROJECTS y STYLES
 
 import rutasData from '../../data/recorridos.json';
 import paradasData from '../../data/paradas_r66.json'; 
@@ -13,6 +13,7 @@ mapboxgl.accessToken = 'pk.eyJ1Ijoicm9jb2VsbGFyIiwiYSI6ImNtaXFqdG1tajBneXMzY29ra
 export default function MapComponent() {
   const mapContainer = useRef(null);
   const map = useRef(null);
+  const RAMP = PROJECTS.viajaSegura.ramp;
 
   useEffect(() => {
     if (map.current) return;
@@ -20,7 +21,6 @@ export default function MapComponent() {
     map.current = new mapboxgl.Map({
       container: mapContainer.current,
       style: 'mapbox://styles/mapbox/dark-v11',
-      // ZOOM OUT PARA VER TODO EL RECORRIDO
       center: [-99.215, 19.323],
       zoom: 12.0 
     });
@@ -40,7 +40,7 @@ export default function MapComponent() {
         'type': 'fill',
         'source': 'isocronas',
         'paint': {
-          'fill-color': '#A020F0', 
+          'fill-color': RAMP.isochrone, 
           'fill-opacity': 0.15      
         }
       });
@@ -54,9 +54,9 @@ export default function MapComponent() {
         'paint': {
           'line-color': [
             'match', ['get', 'origen_destino'],
-            'Antigua-MAQ', COLORS.rutas.Antigua,
-            'Ocotal-MAQ', COLORS.rutas.Ocotal,
-            'Oyamel-MAQ', COLORS.rutas.Oyamel,
+            'Antigua-MAQ', RAMP.rutas.antigua, 
+            'Ocotal-MAQ', RAMP.rutas.ocotal,   
+            'Oyamel-MAQ', RAMP.rutas.oyamel,   
             '#FFFFFF'
           ],
           'line-width': 5, 
@@ -73,10 +73,10 @@ export default function MapComponent() {
           'circle-radius': 5, 
           'circle-color': [
             'match', ['get', 'equipamiento'],
-            'EDUCATIVO', COLORS.equipamiento.EDUCATIVO,
-            'SALUD', COLORS.equipamiento.SALUD,
-            'ABASTO', COLORS.equipamiento.ABASTO,
-            COLORS.equipamiento.Otros
+            'EDUCATIVO', RAMP.equipamiento.educativo, 
+            'SALUD', RAMP.equipamiento.salud,         
+            'ABASTO', RAMP.equipamiento.abasto,       
+            RAMP.equipamiento.otros                   
           ],
           'circle-stroke-width': 0
         }
@@ -91,9 +91,9 @@ export default function MapComponent() {
           'circle-radius': 7, 
           'circle-color': [
             'match', ['get', 'origen_destino'],
-            'Antigua-MAQ', COLORS.rutas.Antigua,
-            'Ocotal-MAQ', COLORS.rutas.Ocotal,
-            'Oyamel-MAQ', COLORS.rutas.Oyamel,
+            'Antigua-MAQ', RAMP.rutas.antigua, 
+            'Ocotal-MAQ', RAMP.rutas.ocotal,   
+            'Oyamel-MAQ', RAMP.rutas.oyamel,   
             '#FFFFFF'
           ],
           'circle-stroke-width': 0
@@ -133,25 +133,25 @@ export default function MapComponent() {
       
       if (type === 'ruta') {
         let routeColor = '#FFF';
-        if (props.origen_destino === 'Antigua-MAQ') routeColor = COLORS.rutas.Antigua;
-        if (props.origen_destino === 'Ocotal-MAQ') routeColor = COLORS.rutas.Ocotal;
-        if (props.origen_destino === 'Oyamel-MAQ') routeColor = COLORS.rutas.Oyamel;
+        if (props.origen_destino === 'Antigua-MAQ') routeColor = RAMP.rutas.antigua;
+        if (props.origen_destino === 'Ocotal-MAQ') routeColor = RAMP.rutas.ocotal;
+        if (props.origen_destino === 'Oyamel-MAQ') routeColor = RAMP.rutas.oyamel;
         const longitud = parseFloat(props.Longitud_km || 0).toFixed(2);
         html += `<div style="${titleStyle} color:${routeColor}">RUTA ${props.origen_destino}</div>
                  <div style="${rowStyle}"><span style="${labelStyle}">Demanda:</span> <span style="${valStyle}">${props.Demanda_Diaria}</span></div>
                  <div style="${rowStyle}"><span style="${labelStyle}">Longitud:</span> <span style="${valStyle}">${longitud} km</span></div>`;
       } 
       else if (type === 'parada') {
-        html += `<div style="${titleStyle} color:${COLORS.descensos}">PARADA</div>
+        html += `<div style="${titleStyle} color:${RAMP.descensos}">PARADA</div>
                  <div style="margin-bottom:4px; font-weight:bold;">${props.origen_destino}</div>
                  <div style="${rowStyle}"><span style="${labelStyle}">Suben:</span> <span style="${valStyle}">${props.ascensos}</span></div>
                  <div style="${rowStyle}"><span style="${labelStyle}">Bajan:</span> <span style="${valStyle}">${props.descensos}</span></div>`;
       } 
       else if (type === 'equip') {
-        let titleColor = COLORS.equipamiento.Otros;
-        if (props.equipamiento === 'EDUCATIVO') titleColor = COLORS.equipamiento.EDUCATIVO;
-        if (props.equipamiento === 'SALUD') titleColor = COLORS.equipamiento.SALUD;
-        if (props.equipamiento === 'ABASTO') titleColor = COLORS.equipamiento.ABASTO;
+        let titleColor = RAMP.equipamiento.otros;
+        if (props.equipamiento === 'EDUCATIVO') titleColor = RAMP.equipamiento.educativo;
+        if (props.equipamiento === 'SALUD') titleColor = RAMP.equipamiento.salud;
+        if (props.equipamiento === 'ABASTO') titleColor = RAMP.equipamiento.abasto;
         html += `<div style="${titleStyle} color:${titleColor}">${props.equipamiento}</div>
                  <div style="margin-bottom:4px; font-weight:bold; font-size:12px;">${props.nombre_escuela || props.nombre || 'S/N'}</div>`;
       }
@@ -174,25 +174,8 @@ export default function MapComponent() {
 
   }, []);
 
-  // SIMBOLOGÍA 
-  const legendStyle = {
-    position: 'absolute',
-    top: '10px',
-    left: '10px',
-    padding: '8px', 
-    width: '140px',  
-    backgroundColor: 'rgba(37, 41, 62, 0.2)', 
-    border: '1px solid rgba(255,255,255,0.1)',
-    borderRadius: '6px',
-    color: 'white',
-    fontFamily: FONTS.title,
-    fontSize: '9px',
-    zIndex: 10,
-    backdropFilter: 'blur(8px)',
-    WebkitBackdropFilter: 'blur(8px)'
-  };
-
-  const titleStyle = { margin: '0 0 4px 0', fontSize: '11px', fontWeight: 'bold', color: '#ccc', letterSpacing: '0.5px' };
+  // ESTILOS
+  const titleStyle = STYLES.legendTitle;
   const subtitleStyle = { margin: '6px 0 2px 0', fontSize: '9px', fontWeight: '500', color: '#B4A7AF' };
   const itemStyle = { display: 'flex', alignItems: 'center', marginBottom: '2px', fontSize: '9px', fontWeight: '300', marginLeft: '6px' };
   const dot = { width: '5px', height: '5px', borderRadius: '50%', marginRight: '5px', display: 'inline-block' };
@@ -214,23 +197,23 @@ export default function MapComponent() {
 
       <div ref={mapContainer} style={{ width: '100%', height: '100%' }} />
 
-      <div style={legendStyle}>
+      <div style={STYLES.legendBox}>
         <h4 style={titleStyle}>SIMBOLOGÍA</h4>
         
         <div style={subtitleStyle}>Recorridos</div>
-        <div style={itemStyle}><span style={{...line, background: COLORS.rutas.Oyamel}}></span> Oyamel</div>
-        <div style={itemStyle}><span style={{...line, background: COLORS.rutas.Ocotal}}></span> Ocotal</div>
-        <div style={itemStyle}><span style={{...line, background: COLORS.rutas.Antigua}}></span> Antigua</div>
+        <div style={itemStyle}><span style={{...line, background: RAMP.rutas.oyamel}}></span> Oyamel</div>
+        <div style={itemStyle}><span style={{...line, background: RAMP.rutas.ocotal}}></span> Ocotal</div>
+        <div style={itemStyle}><span style={{...line, background: RAMP.rutas.antigua}}></span> Antigua</div>
         
         <div style={{...itemStyle, marginTop:'4px', marginLeft: '0'}}>
-            <span style={{...dot, background: '#A020F0', opacity: 0.5, width: '8px', height: '8px', borderRadius: '2px'}}></span> 
+            <span style={{...dot, background: RAMP.isochrone, opacity: 0.5, width: '8px', height: '8px', borderRadius: '2px'}}></span> 
             <span style={{ fontWeight: '500' }}>Isocronas 500m</span>
         </div>
 
         <div style={subtitleStyle}>Equipamiento</div>
-        <div style={itemStyle}><span style={{...dot, background: COLORS.equipamiento.EDUCATIVO}}></span> Educativo</div>
-        <div style={itemStyle}><span style={{...dot, background: COLORS.equipamiento.SALUD}}></span> Salud</div>
-        <div style={itemStyle}><span style={{...dot, background: COLORS.equipamiento.ABASTO}}></span> Abasto</div>
+        <div style={itemStyle}><span style={{...dot, background: RAMP.equipamiento.educativo}}></span> Educativo</div>
+        <div style={itemStyle}><span style={{...dot, background: RAMP.equipamiento.salud}}></span> Salud</div>
+        <div style={itemStyle}><span style={{...dot, background: RAMP.equipamiento.abasto}}></span> Abasto</div>
       </div>
     </div>
   );

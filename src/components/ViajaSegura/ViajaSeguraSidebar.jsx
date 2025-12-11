@@ -2,10 +2,8 @@ import React, { useState } from 'react';
 import { COLORS, FONTS } from '../../config/theme';
 import { FaGithub } from 'react-icons/fa';
 
-// El color de las flechas del Sidebar de Viaja Segura es COLORS.accent
 const ACCENT_COLOR = COLORS.accent; 
 
-// --- MINI COMPONENTE DE SECCIÓN DESPLEGABLE ---
 const AccordionSection = ({ title, tag, isOpen, onClick, children }) => {
   const s = {
     container: { 
@@ -23,7 +21,7 @@ const AccordionSection = ({ title, tag, isOpen, onClick, children }) => {
       letterSpacing: '0.3px', transition: 'color 0.3s'
     },
     arrow: {
-      color: ACCENT_COLOR, // <--- EXTRACCIÓN Y USO DEL COLOR ACCENT
+      color: ACCENT_COLOR, 
       fontSize: '10px',
       transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)',
       transition: 'transform 0.3s'
@@ -79,9 +77,9 @@ export default function Sidebar() {
     contentBody: { 
       flex: 1, 
       padding: '15px 15px', 
-      overflowY: 'auto', // <--- Mantiene el scroll en desktop
+      overflowY: 'auto', // Mantiene el scroll en desktop
       paddingRight: '5px',
-      // Forzar scrollbar en Firefox
+      // Forzar scrollbar 
       scrollbarWidth: 'thin', 
       scrollbarColor: '#424242 transparent' 
     },
@@ -172,13 +170,12 @@ export default function Sidebar() {
 
       </div>
 
-      <div style={s.btnContainer}>
+       <div style={s.btnContainer}>
         <a href="https://github.com/roizunza/viajaseguradashboard" target="_blank" rel="noreferrer" style={s.btnGithub}>
           <FaGithub style={{ marginRight: '8px', fontSize: '1.1em' }}/> 
-          VER CÓDIGO EN GITHUB
+          VER ANÁLISIS DE PYTHON
         </a>
       </div>
-
     </div>
   );
 }

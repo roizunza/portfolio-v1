@@ -1,6 +1,6 @@
 import React from 'react';
-// Importamos la función de scroll lento
 import { smoothScrollTo } from '../utils/scroll';
+import { FONTS, COLORS } from '../config/theme';
 
 const Header = ({ alDarClicEnContacto }) => {
   const lista_menu = ["Proyectos", "Sobre_Mi", "CV", "Contacto"];
@@ -11,23 +11,31 @@ const Header = ({ alDarClicEnContacto }) => {
     } else if (seccion === "Contacto") {
       if (alDarClicEnContacto) alDarClicEnContacto();
     } else {
-      // Usamos el scroll lento personalizado (2000ms = 2 segundos)
       smoothScrollTo(seccion, 2000);
     }
   };
 
   return (
-    <header className="header-container">
+    <header className="header-container" style={{ backgroundColor: COLORS.background.header, borderBottom: `1px solid ${COLORS.ui.border}` }}>
+      
       <div className="header-branding">
-        <h1 className="header-title">IZUNZA ROCÍO</h1>
-        <p className="header-subtitle">PORTFOLIO_V2025</p>
+        <h1 className="header-title" style={{ fontFamily: FONTS.main, color: COLORS.text.header }}>
+          IZUNZA ROCÍO
+        </h1>
+        <p className="header-subtitle" style={{ fontFamily: FONTS.main, color: COLORS.text.header, opacity: 0.8 }}>
+          PORTFOLIO_V2025
+        </p>
       </div>
 
-      <nav className="header-nav">
+      <nav className="header-nav" style={{ fontFamily: FONTS.data, color: COLORS.text.header }}>
         <span style={{ opacity: 0.8, marginRight: '8px' }}>menu = [</span>
         {lista_menu.map((elemento, indice) => (
           <span key={elemento}>
-            <button onClick={() => manejarNavegacion(elemento)} className="nav-btn">
+            <button 
+              onClick={() => manejarNavegacion(elemento)} 
+              className="nav-btn"
+              style={{ color: 'inherit', fontFamily: 'inherit' }} // Hereda el estilo del padre
+            >
               "{elemento}"
             </button>
             {indice < lista_menu.length - 1 && <span style={{ opacity: 0.8 }}>, </span>}

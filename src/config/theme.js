@@ -9,9 +9,9 @@ export const FONTS = {
 export const COLORS = {
   background: {
     app: '#0d0f16',
-    panel: '#12141E',           // <--- ESTE ES EL FONDO QUE PIDES (Hero Panel)
+    panel: '#12141E',
     sidebarHeader: '#181d35',
-    header: '#0000ff',          // <--- AZUL HEADER
+    header: '#0000ff',
     footer: '#070A16'
   },
   text: {
@@ -24,7 +24,8 @@ export const COLORS = {
   ui: {
     border: 'rgba(255, 255, 255, 0.1)',
     windowControls: 'rgba(170, 170, 170, 0.6)',
-    actionButton: '#0000ff'     // <--- NUEVA VARIABLE: Botones de Acción (Igual al Header)
+    actionButton: '#0000ff',
+    accent: '#007acc' // <--- AGREGADO: Color para flechas del sidebar
   }
 };
 
@@ -36,13 +37,26 @@ export const PROJECTS = {
       isochrone: '#A020F0',
       rutas: { antigua: '#F976C7', ocotal: '#f232a9', oyamel: '#f1afd1' },
       equipamiento: { educativo: '#3872e7', salud: '#4164a9', abasto: '#6b8dd3', otros: '#888888' },
-      descensos: '#03a9f4'      // <--- AZUL PARA GRÁFICAS (DESCENSOS)
+      descensos: '#03a9f4'
     }
   },
-  // ... (los demás proyectos siguen igual)
-  vigilancia: { color: '#15be80', ramp: { manglar: '#15BE80', inversion: '#f5138c', presion: '#f30a41' } },
-  algoritmo: { color: '#ff5a60', ramp: { step1: '#1f123b', step2: '#28bceb', step3: '#a4fc3c', step4: '#f4976c', step5: '#f30a41' } },
-  factorEsfuerzo: { color: '#1be5b5', ramp: { accessible: '#1be5b5', moderate: '#FFD600', isolated: '#EE0E99' } }
+  vigilancia: {
+    id: 'vigilancia',
+    color: '#15be80',
+    ramp: { 
+      manglar: '#15BE80', inversion: '#a7a469', presion: '#f30a41', riesgo: '#f4976c'     
+    }
+  },
+  algoritmo: {
+    id: 'algoritmo',
+    color: '#ff5a60',
+    ramp: { step1: '#31014d', step2: '#23057b', step3: '#6ab515', step4: '#a44113', step5: '#f30a41' }
+  },
+  factorEsfuerzo: {
+    id: 'factorEsfuerzo',
+    color: '#1be5b5',
+    ramp: { accessible: '#1be5b5', moderate: '#FFD600', isolated: '#EE0E99' }
+  }
 };
 
 export const STYLES = {

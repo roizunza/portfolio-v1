@@ -1,17 +1,16 @@
 import React, { useState } from 'react';
 import './Indice.css'; 
-
-// Importamos TODAS las Cards de Sinopsis
+import { PROJECTS } from '../config/theme'; 
 import ViajaSeguraCard from './ViajaSegura/ViajaSeguraCard.jsx';
 import VigilanciaEspectralCard from './VigilanciaEspectral/VigilanciaEspectralCard.jsx';
-import AlgoritmoInmobiliarioCard from './AlgoritmoInmobiliario/AlgoritmoInmobiliarioCard.jsx'; // <--- Esto requiere que el archivo exista
+import AlgoritmoInmobiliarioCard from './AlgoritmoInmobiliario/AlgoritmoInmobiliarioCard.jsx'; 
 import FactorEsfuerzoCard from './FactorEsfuerzo/FactorEsfuerzoCard.jsx';
 
-// Iconos
-import iconKml from '../assets/kml.PNG';
-import iconTiff from '../assets/tiff.PNG';
-import iconJson from '../assets/json.PNG';
-import iconGpkg from '../assets/gpck.PNG';
+// Iconos 
+import iconKml from '../assets/kml.png';   
+import iconTiff from '../assets/tiff.PNG'; 
+import iconJson from '../assets/json.png'; 
+import iconGpkg from '../assets/gpck.png'; 
 
 const Indice = ({ onActivarDashboard }) => {
   const [proyectoSeleccionado, setProyectoSeleccionado] = useState(null);
@@ -21,41 +20,38 @@ const Indice = ({ onActivarDashboard }) => {
       id: 1,
       baseName: "01_viaja_segura",
       extension: ".kml",
-      extensionColor: "#A020F0", 
+      extensionColor: PROJECTS.viajaSegura.color, 
       icono: iconKml,
-      idScroll: "proyecto-viaja-segura" 
+      idScroll: "seccion-viaja-segura" 
     },
     {
       id: 2,
       baseName: "02_vigilancia_espectral",
       extension: ".tiff",
-      extensionColor: "#15BE80", 
+      extensionColor: PROJECTS.vigilancia.color, 
       icono: iconTiff,
-      idScroll: "proyecto-vigilancia-espectral" 
+      idScroll: "seccion-vigilancia" 
     },
     {
       id: 3,
-      baseName: "03_algoritmo_inmobiliario", // Proyecto Desbloqueado
+      baseName: "03_algoritmo_inmobiliario", 
       extension: ".json",
-      extensionColor: "#2A85FF", // Azul Tecnológico (Color del Proyecto)
+      extensionColor: PROJECTS.algoritmo.color, 
       icono: iconJson,
-      idScroll: "proyecto-algoritmo-inmobiliario" // ID que conecta con App.jsx
+      idScroll: "seccion-algoritmo" 
     },
     {
       id: 4,
       baseName: "04_factor_esfuerzo_turistico",
       extension: ".gpkg",
-      extensionColor: "#EE0E99", 
+      extensionColor: PROJECTS.factorEsfuerzo.color, 
       icono: iconGpkg,
-      idScroll: "proyecto-esfuerzo-turistico"
+      idScroll: "seccion-esfuerzo"
     }
   ];
 
   const manejarEjecucion = (idScroll) => {
-    // 1. Cerramos el modal primero
     setProyectoSeleccionado(null);
-    
-    // 2. Ejecutamos la navegación al Dashboard
     if (onActivarDashboard) {
         onActivarDashboard(idScroll);
     }
@@ -86,17 +82,16 @@ const Indice = ({ onActivarDashboard }) => {
           ))}
         </div>
 
-        {/* --- RENDERIZADO DE TARJETAS (MODALES DE SINOPSIS) --- */}
+        {/* MODALES DE SINOPSIS */}
         {proyectoSeleccionado && (
           <div className="synopsis-overlay" onClick={() => setProyectoSeleccionado(null)}>
-            
             <div onClick={(e) => e.stopPropagation()} style={{maxWidth: '900px', width: '100%', padding: '0 10px'}}>
                 
                 {/* 1. VIAJA SEGURA */}
                 {proyectoSeleccionado.id === 1 && (
                   <ViajaSeguraCard 
                     onEjecutar={() => manejarEjecucion(proyectoSeleccionado.idScroll)} 
-                    onClose={() => setProyectoSeleccionado(null)}
+                    onClose={() => setProyectoSeleccionado(null)} 
                   />
                 )}
 
@@ -104,7 +99,7 @@ const Indice = ({ onActivarDashboard }) => {
                 {proyectoSeleccionado.id === 2 && (
                   <VigilanciaEspectralCard 
                     onEjecutar={() => manejarEjecucion(proyectoSeleccionado.idScroll)} 
-                    onClose={() => setProyectoSeleccionado(null)}
+                    onClose={() => setProyectoSeleccionado(null)} 
                   />
                 )}
 
@@ -112,7 +107,7 @@ const Indice = ({ onActivarDashboard }) => {
                 {proyectoSeleccionado.id === 3 && (
                   <AlgoritmoInmobiliarioCard 
                     onEjecutar={() => manejarEjecucion(proyectoSeleccionado.idScroll)} 
-                    onClose={() => setProyectoSeleccionado(null)}
+                    onClose={() => setProyectoSeleccionado(null)} 
                   />
                 )}
 
@@ -120,15 +115,13 @@ const Indice = ({ onActivarDashboard }) => {
                 {proyectoSeleccionado.id === 4 && (
                   <FactorEsfuerzoCard 
                     onEjecutar={() => manejarEjecucion(proyectoSeleccionado.idScroll)} 
-                    onClose={() => setProyectoSeleccionado(null)}
+                    onClose={() => setProyectoSeleccionado(null)} 
                   />
                 )}
 
             </div>
-
           </div>
         )}
-
       </div>
     </section>
   );

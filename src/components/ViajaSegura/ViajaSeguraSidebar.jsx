@@ -21,7 +21,7 @@ const AccordionSection = ({ title, tag, isOpen, onClick, children }) => {
       letterSpacing: '0.3px', transition: 'color 0.3s'
     },
     arrow: {
-      color: ACCENT_COLOR, 
+      color: COLORS.ui.accent, // <--- CAMBIO: Color de acento (Azul #007acc)
       fontSize: '10px',
       transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)',
       transition: 'transform 0.3s'

@@ -1,27 +1,30 @@
 import React from 'react';
 import ProjectCard from '../Shared/ProjectCard';
-// Importamos la imagen exacta que pediste (.png)
-import imgAlgoritmo from '../../assets/algoritmoinmobiliario.png';
+import imgAlgoritmo from '../../assets/algoritmoinmobiliario.png'; 
+import { PROJECTS, COLORS } from '../../config/theme';
 
 const AlgoritmoInmobiliarioCard = ({ onEjecutar, onClose }) => {
   return (
     <ProjectCard
       title="03_algoritmo_inmobiliario"
-      defColor="#FF5A60"  // Rojo Airbnb
+      defColor={PROJECTS.algoritmo.color} 
       comment="// Escala Metropoli"
       image={imgAlgoritmo}
       onEjecutar={onEjecutar}
       onClose={onClose}
+      
+      customBgColor={COLORS.background.panel}
+      customBtnColor={COLORS.ui.actionButton}
     >
-      <p className="project-text">
+      <p className="project-text" style={{ color: COLORS.text.secondary }}>
         Hong Kong, Región Administrativa Especial de China, opera como un ecosistema autónomo definido por su 
-        hiperdensidad y su rol crítico en las finanzas globales. En este paisaje de rascacielos, donde el suelo 
-        es el recurso más escaso, la irrupción de Airbnb actuó como un catalizador de polarización económica.
+        hiperdensidad y su rol crítico en las finanzas globales. En este paisaje de rascacielos, 
+        la irrupción de Airbnb actuó como un catalizador de polarización económica.
       </p>
       
-      <p className="project-text">
+      <p className="project-text" style={{ color: COLORS.text.secondary }}>
         Este análisis transforma datos abiertos en un diagnóstico territorial para tangibilizar los patrones 
-        mediante los cuales la oferta de alquiler a corto plazo ha reconfigurado el mercado de vivienda de la metrópoli.
+        mediante los cuales la oferta de alquiler a corto plazo ha reconfigurado el mercado de vivienda.
       </p>
     </ProjectCard>
   );

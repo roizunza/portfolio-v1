@@ -1,14 +1,12 @@
 import React from 'react';
-// Importamos el Template Universal
 import ProjectCard from '../Shared/ProjectCard';
-// Importamos la imagen (Asegúrate de que el nombre del archivo sea correcto en assets)
 import imgVigilancia from '../../assets/vigilanciaespectral.png';
 
 const VigilanciaEspectralCard = ({ onEjecutar, onClose }) => {
   return (
     <ProjectCard
       title="02_vigilancia_espectral"
-      defColor="#15BE80"  // Verde Espectral
+      defColor="#15BE80" 
       comment="// Escala municipal"
       image={imgVigilancia}
       onEjecutar={onEjecutar}

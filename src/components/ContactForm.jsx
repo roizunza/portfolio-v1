@@ -47,7 +47,7 @@ const ContactForm = ({ isOpen, onClose }) => {
         
         <div className="notepad-header">
           <span className="window-title">contact_form</span>
-          <button className="close-btn" onClick={onClose}>[x]</button>
+          <button className="close-btn" onClick={onClose}>[ X ]</button>
         </div>
 
         <form ref={form} onSubmit={sendEmail} style={{ display: 'flex', flexDirection: 'column', flex: 1 }}>

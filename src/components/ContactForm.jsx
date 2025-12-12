@@ -57,7 +57,7 @@ const ContactForm = ({ isOpen, onClose }) => {
             <div className="input-group">
               <label className="input-label">para:</label>
               <div className="static-field">
-                Rocío Izunza (Urbanista|Analista de Datos Geoespaciales)
+                Rocío Izunza - Urbanista|Analista de Datos Geoespaciales
               </div>
             </div>
 
@@ -76,7 +76,7 @@ const ContactForm = ({ isOpen, onClose }) => {
             {/* 2. CORREO (Variable: correo_contacto) */}
             <div className="input-group">
               <label className="input-label">
-                De: <span style={{ opacity: 0.5, fontWeight: 400 }}>(ro.izunza@gmail.com)</span>
+                De: <span style={{ opacity: 0.5, fontWeight: 400 }}>(Tu correo)</span>
               </label>
               <input 
                 type="email" 

@@ -1,0 +1,170 @@
+
+:root {
+  --bg-overlay: rgba(13, 15, 22, 0.9);
+  --bg-panel: #12141E;         
+  --bg-header: #0d0f16;        
+  
+  --text-primary: #FFFFFF;
+  --text-label: #B0B3B8;       
+  --text-placeholder: #5c6773;
+
+  --border-color: rgba(255, 255, 255, 0.1);
+  --color-button: #0000ff;     
+  
+  --font-mono: 'Source Code Pro', monospace; 
+  --font-body: 'Inter', sans-serif;          
+}
+
+/* OVERLAY */
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: var(--bg-overlay);
+  backdrop-filter: blur(5px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  animation: fadeIn 0.3s ease;
+}
+
+/* VENTANA PRINCIPAL */
+.notepad-window {
+  width: 95%;
+  max-width: 600px;
+  background-color: var(--bg-panel);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.8);
+  display: flex;
+  flex-direction: column;
+  animation: slideUp 0.3s ease;
+}
+
+/* HEADER */
+.notepad-header {
+  background-color: var(--bg-header);
+  padding: 12px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.window-title {
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: var(--text-label);
+}
+
+.close-btn {
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-family: var(--font-mono);
+  font-size: 16px;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0;
+}
+
+/* CUERPO */
+.notepad-body {
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.input-label {
+  font-family: var(--font-mono); 
+  font-size: 12px;               
+  color: var(--text-label);
+  font-weight: 600;
+  display: flex;
+  justify-content: space-between;
+ 
+}
+
+/* INPUTS Y TEXTAREA */
+.styled-input, 
+.message-textarea {
+  background-color: rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  padding: 12px;
+  
+  font-family: var(--font-body); 
+  font-size: 14px;
+  color: var(--text-primary);
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.styled-input:focus, 
+.message-textarea:focus {
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.message-textarea {
+  min-height: 150px;
+  resize: none;
+  line-height: 1.5;
+}
+
+::placeholder {
+  color: var(--text-placeholder);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-style: italic;
+}
+
+/* CAMPO ESTÁTICO (Destinatario) */
+.static-field {
+  padding: 10px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--text-primary);
+  background-color: rgba(255, 255, 255, 0.03);
+  border-radius: 4px;
+  border: 1px solid transparent;
+}
+
+/* FOOTER */
+.notepad-footer {
+  padding: 15px 30px;
+  border-top: 1px solid var(--border-color);
+  background-color: var(--bg-header);
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* BOTÓN */
+.submit-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  
+  background-color: var(--color-button); 
+  color: #FFFFFF;
+  
+  font-family: var(--font-mono); 
+  font-size: 14px;
+  font-weight: 700;
+  
+  padding: 10px 24px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  letter-spacing: -0.5px;
+  transition: opacity 0.2
+  }

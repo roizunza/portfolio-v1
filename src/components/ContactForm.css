@@ -1,4 +1,6 @@
-
+/* ======================================================
+   VARIABLES DE TEMA (Base proporcionada)
+   ====================================================== */
 :root {
   --bg-overlay: rgba(13, 15, 22, 0.9);
   --bg-panel: #12141E;         
@@ -92,7 +94,6 @@
   font-weight: 600;
   display: flex;
   justify-content: space-between;
- 
 }
 
 /* INPUTS Y TEXTAREA */
@@ -166,5 +167,28 @@
   border-radius: 4px;
   cursor: pointer;
   letter-spacing: -0.5px;
-  transition: opacity 0.2
-  }
+  transition: opacity 0.2s;
+}
+
+/* --- AGREGADOS NECESARIOS PARA FUNCIONALIDAD --- */
+
+.submit-btn:hover {
+  opacity: 0.8;
+}
+
+/* Estilo para cuando se está enviando el correo */
+.submit-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background-color: #333;
+}
+
+/* Animaciones requeridas por las clases .modal-overlay y .notepad-window */
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .notepad-body { padding: 20px; }
+  .submit-btn { width: 100%; }
+}

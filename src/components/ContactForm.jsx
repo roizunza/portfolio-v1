@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
+import emailjs from '@emailjs/browser';
 import './ContactForm.css';
 
 const ContactForm = ({ isOpen, onClose }) => {
-  const [senderEmail, setSenderEmail] = useState('');
-  const [subject, setSubject] = useState('');
-  const [message, setMessage] = useState('');
+  const form = useRef(); 
+  const [isSending, setIsSending] = useState(false);
+  const [status, setStatus] = useState(null); 
 
   if (!isOpen) return null;
 
@@ -14,90 +15,117 @@ const ContactForm = ({ isOpen, onClose }) => {
     }
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    
-    const finalSubject = subject || "Contacto desde Portfolio";
-    const finalBody = `De: ${senderEmail}\n\nMENSAJE:\n${message}`;
-    
-    const encodedSubject = encodeURIComponent(finalSubject);
-    const encodedBody = encodeURIComponent(finalBody);
+  const sendEmail = (e) => {
+    e.preventDefault(); 
+    setIsSending(true);
+    setStatus(null);
 
-    window.location.href = `mailto:rocio.izunza@ejemplo.com?subject=${encodedSubject}&body=${encodedBody}`;
-    
-    onClose();
+    //CREDENCIALES
+    const SERVICE_ID = 'service_v7bqlj4';
+    const TEMPLATE_ID = 'conexion_exitosa';
+    const PUBLIC_KEY = 'x4IiQCqiWTLmhyKfR';
+
+    emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, form.current, PUBLIC_KEY)
+      .then((result) => {
+          console.log("Éxito:", result.text);
+          setIsSending(false);
+          setStatus('success');
+          setTimeout(() => {
+            onClose();
+            setStatus(null);
+          }, 2000);
+      }, (error) => {
+          console.log("Error:", error.text);
+          setIsSending(false);
+          setStatus('error');
+      });
   };
 
   return (
     <div className="modal-overlay" onClick={handleOverlayClick}>
       <div className="notepad-window">
         
-        {/* HEADER */}
         <div className="notepad-header">
-          <span className="window-title">contact_form</span>
-          <button className="close-btn" onClick={onClose}>[ X ]</button>
+          <span className="window-title">contact_protocol.exe</span>
+          <button className="close-btn" onClick={onClose}>[x]</button>
         </div>
 
-        {/* FORMULARIO */}
-        <form onSubmit={handleSubmit} className="notepad-body">
+        <form ref={form} onSubmit={sendEmail} style={{ display: 'flex', flexDirection: 'column', flex: 1 }}>
           
-          {/* 1. DESTINATARIO (Fijo) */}
-          <div className="input-group">
-            <label className="input-label">Para:</label>
-            <div className="static-field">
-              Rocío Izunza &lt; Urbanista - Analista de Datos Geoespaciales &gt;
+          <div className="notepad-body">
+            
+            <div className="input-group">
+              <label className="input-label">para:</label>
+              <div className="static-field">
+                rocio.izunza (urbanista / data scientist)
+              </div>
             </div>
+
+            {/* 1. NOMBRE (Variable: nombre_remitente) */}
+            <div className="input-group">
+              <label className="input-label">Para:</label>
+              <input 
+                type="text" 
+                name="nombre_remitente" 
+                className="styled-input" 
+                placeholder="tu nombre"
+                required 
+              />
+            </div>
+
+            {/* 2. CORREO (Variable: correo_contacto) */}
+            <div className="input-group">
+              <label className="input-label">
+                De: <span style={{ opacity: 0.5, fontWeight: 400 }}>(ro.izunza@gmail.com)</span>
+              </label>
+              <input 
+                type="email" 
+                name="correo_contacto" 
+                className="styled-input" 
+                placeholder="usuario@email.com"
+                required 
+              />
+            </div>
+
+            {/* 3. ASUNTO (Variable: subject) */}
+            <div className="input-group">
+              <label className="input-label">Asunto:</label>
+              <input 
+                type="text" 
+                name="subject" 
+                className="styled-input" 
+                placeholder="Propuesta de colaboración..."
+                required
+              />
+            </div>
+
+            {/* 4. MENSAJE (Variable: mensaje) */}
+            <div className="input-group">
+              <label className="input-label">Mensaje:</label>
+              <textarea 
+                name="mensaje" 
+                className="message-textarea"
+                placeholder="Escribe los detalles aquí..."
+                required
+              />
+            </div>
+
+            {status === 'success' && <p style={{color: '#15BE80', fontSize: '12px', marginTop:'10px'}}>¡mensaje enviado con éxito!</p>}
+            {status === 'error' && <p style={{color: '#ff5a60', fontSize: '12px', marginTop:'10px'}}>error al enviar. intenta de nuevo.</p>}
+
           </div>
 
-          {/* 2. REMITENTE (Input Funcional) */}
-          <div className="input-group">
-            <label className="input-label">
-              De: <span style={{ opacity: 0.5, fontWeight: 400 }}>(Tu correo electrónico)</span>
-            </label>
-            <input 
-              type="email" 
-              className="styled-input" 
-              placeholder="ejemplo@correo.com"
-              value={senderEmail}
-              onChange={(e) => setSenderEmail(e.target.value)}
-              required 
-            />
+          <div className="notepad-footer">
+            <button 
+              type="submit" 
+              className="submit-btn" 
+              disabled={isSending}
+            >
+              {isSending ? 'enviando...' : '>enviar_mensaje'}
+            </button>
           </div>
 
-          {/* 3. ASUNTO */}
-          <div className="input-group">
-            <label className="input-label">Asunto:</label>
-            <input 
-              type="text" 
-              className="styled-input" 
-              placeholder="Propuesta de colaboración..."
-              value={subject}
-              onChange={(e) => setSubject(e.target.value)}
-              required
-            />
-          </div>
-
-          {/* 4. MENSAJE */}
-          <div className="input-group">
-            <label className="input-label">Mensaje:</label>
-            <textarea 
-              className="message-textarea"
-              placeholder="Escribe los detalles aquí..."
-              value={message}
-              onChange={(e) => setMessage(e.target.value)}
-              required
-            />
-          </div>
-
-          {/* BOTÓN */}
         </form>
-
-        {/* FOOTER */}
-        <div className="notepad-footer">
-          <button type="button" className="submit-btn" onClick={handleSubmit}>
-            ENVIAR MENSAJE
-          </button>
-        </div>
 
       </div>
     </div>

@@ -47,7 +47,7 @@ const Scorecards = () => {
       },
       number: {
         color: THEME_COLOR, 
-        fontFamily: FONTS.main, fontSize: '18px', fontWeight: '700', marginBottom: '4px', lineHeight: '1'
+        fontFamily: FONTS.main, fontSize: '22px', fontWeight: '700', marginBottom: '4px', lineHeight: '1'
       },
       title: {
         fontFamily: FONTS.body, fontSize: '10px', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: '4px',

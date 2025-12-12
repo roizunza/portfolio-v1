@@ -52,10 +52,11 @@ export const PROJECTS = {
     color: '#ff5a60',
     ramp: { step1: '#31014d', step2: '#23057b', step3: '#6ab515', step4: '#a44113', step5: '#f30a41' }
   },
+  // NUEVO PROYECTO AGREGADO
   factorEsfuerzo: {
     id: 'factorEsfuerzo',
-    color: '#1be5b5',
-    ramp: { accessible: '#1be5b5', moderate: '#FFD600', isolated: '#EE0E99' }
+    color: '#00E5FF', // Cian Eléctrico (Identidad)
+    ramp: { vias: '#546E7A', activos: '#00E5FF', aislamiento: '#fb1b62', buffer: '#0798a8', distancia: '#ecdb85' }
   }
 };
 

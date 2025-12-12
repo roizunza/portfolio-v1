@@ -1,13 +1,10 @@
 import React from 'react';
 import '../Shared/ProjectDashboardLayout.css'; // Layout estandarizado
+import Sidebar from './FactorEsfuerzoSidebar';
+import Scorecards from './FactorEsfuerzoScorecards';
 
-// Importación de Componentes Internos
-import Sidebar from './Sidebar';
-import Scorecards from './Scorecards';
-
-// [CORRECCIÓN] Descomentamos las importaciones reales
-import MapComponent from './MapComponent'; 
-import GraphsPanel from './GraphsPanel';   
+import MapComponent from './FactorEsfuerzoMap'; 
+import GraphsPanel from './FactorEsfuerzoGraphs';   
 
 const FactorEsfuerzoView = () => {
   return (
@@ -25,13 +22,11 @@ const FactorEsfuerzoView = () => {
 
       {/* 3. MAPA PRINCIPAL (Derecha Arriba - Geoespacial) */}
       <div className="panel area-top" style={{ position: 'relative' }}>
-         {/* [CORRECCIÓN] Renderizamos el componente real */}
          <MapComponent />
       </div>
 
       {/* 4. GRÁFICOS (Derecha Abajo - Análisis) */}
       <div className="panel area-bottom">
-         {/* [CORRECCIÓN] Renderizamos el componente real */}
          <GraphsPanel />
       </div>
 

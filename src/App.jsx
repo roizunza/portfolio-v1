@@ -7,13 +7,12 @@ import TerminalModal from './components/TerminalModal';
 import { smoothScrollTo } from './utils/scroll'; 
 import './App.css'; 
 
-
+// --- VISTAS DE PROYECTOS ---
 import ViajaSeguraView from './components/ViajaSegura/ViajaSeguraView.jsx';
 import VigilanciaEspectralView from './components/VigilanciaEspectral/VigilanciaEspectralView.jsx';
 import AlgoritmoView from './components/AlgoritmoInmobiliario/AlgoritmoInmobiliarioView.jsx'; 
-
-// [BLOQUEADO TEMPORALMENTE]
-// import FactorEsfuerzoView from './components/FactorEsfuerzo/FactorEsfuerzoView.jsx';
+// [NUEVO] Importamos la vista de Factor Esfuerzo
+import FactorEsfuerzoView from './components/FactorEsfuerzo/FactorEsfuerzoView.jsx';
 
 function App() {
   const [mostrarTerminal, setMostrarTerminal] = useState(false);
@@ -21,12 +20,12 @@ function App() {
   const cerrarTerminal = () => setMostrarTerminal(false);
 
   const irAProyecto = (idScroll) => {
+    // Mapeo de IDs para el scroll suave
     let targetId = '';
     if(idScroll.includes('viaja')) targetId = 'seccion-viaja-segura';
     if(idScroll.includes('vigilancia')) targetId = 'seccion-vigilancia';
-    if(idScroll.includes('algoritmo')) targetId = 'seccion-algoritmo'; // Activado
-    
-    // if(idScroll.includes('esfuerzo')) targetId = 'seccion-esfuerzo';
+    if(idScroll.includes('algoritmo')) targetId = 'seccion-algoritmo';
+    if(idScroll.includes('esfuerzo')) targetId = 'seccion-esfuerzo'; // <--- Conectado
     
     if (targetId) smoothScrollTo(targetId, 1500); 
   };
@@ -45,24 +44,25 @@ function App() {
 
         {/* --- ZONA DE PROYECTOS --- */}
         
+        {/* 01. VIAJA SEGURA */}
         <section id="seccion-viaja-segura" style={{ paddingBottom: '40px' }}>
             <ViajaSeguraView />
         </section>
 
+        {/* 02. VIGILANCIA ESPECTRAL */}
         <section id="seccion-vigilancia" style={{ paddingBottom: '40px' }}>
             <VigilanciaEspectralView />
         </section>
         
-        {/* PROYECTO 03: ALGORITMO INMOBILIARIO (Activo) */}
+        {/* 03. ALGORITMO INMOBILIARIO */}
         <section id="seccion-algoritmo" style={{ paddingBottom: '40px' }}>
             <AlgoritmoView />
         </section>
         
-        {/* [BLOQUEADO]
+        {/* 04. FACTOR ESFUERZO (JAPÓN) - ¡ACTIVADO! */}
         <section id="seccion-esfuerzo" style={{ paddingBottom: '40px' }}>
             <FactorEsfuerzoView />
         </section> 
-        */}
 
       </main>
 

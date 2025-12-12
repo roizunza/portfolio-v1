@@ -16,19 +16,34 @@ export default function RasterVisor() {
     <div style={{ display: 'flex', alignItems: 'flex-end', gap: '8px' }}>
         <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', height: '60px', textAlign: 'right' }}>
             {labels.map((l, i) => (
-              <span key={i} style={{ fontSize: '9px', color: '#ccc', fontFamily: FONTS.data, textShadow: '1px 1px 2px black' }}>
+              <span key={i} style={{ 
+                  fontSize: '10px', 
+                  color: '#B0B3B8', 
+                  fontFamily: FONTS.data, 
+                  textShadow: '1px 1px 2px black' 
+              }}>
                 {l}
               </span>
             ))}
         </div>
         
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', height: '60px', justifyContent: 'flex-start' }}>
-            <span style={{ fontSize: '8px', color: '#fff', fontFamily: FONTS.data, fontWeight: 'bold', marginBottom: '4px', textAlign: 'center', width: 'max-content', textShadow: '1px 1px 2px black' }}>
+            <span style={{ 
+                fontSize: '10px', 
+                color: '#fff', 
+                fontFamily: FONTS.body, 
+                fontWeight: 'bold', 
+                marginBottom: '4px', 
+                textAlign: 'center', 
+                width: 'max-content', 
+                textShadow: '1px 1px 2px black',
+                letterSpacing: '0.3px'
+            }}>
                 {topLabel}
             </span>
             <div style={{ 
                 width: '12px', 
-                flex: 1,
+                flex: 1, 
                 background: gradient, 
                 borderRadius: '2px', 
                 border: '1px solid rgba(255,255,255,0.2)' 
@@ -49,15 +64,22 @@ export default function RasterVisor() {
             display: 'flex', flexDirection: 'column', 
             position: 'relative'
         }}>
-            {/* TÍTULO (Izquierda Arriba) */}
-            <div style={{ position: 'absolute', top: '10px', left: '10px', zIndex: 10, maxWidth: '60%' }}>
+            {/* TÍTULO (Ajustado para ocupar 2 renglones) */}
+            <div style={{ 
+                position: 'absolute', 
+                top: '15px', 
+                left: '15px', 
+                zIndex: 10, 
+                maxWidth: '150px' 
+            }}>
                 <h2 style={{ 
                     fontFamily: FONTS.body, 
-                    fontSize: '10px', 
-                    fontWeight: 'bold', color: '#fff', 
-                    whiteSpace: 'normal', 
-                    lineHeight: '1.2',
+                    fontSize: '14px', 
+                    fontWeight: '700', 
+                    color: '#FFFFFF', 
                     margin: 0,
+                    letterSpacing: '0.3px',
+                    lineHeight: '1.3', 
                     textShadow: '0px 2px 4px rgba(0,0,0,0.8)'
                 }}>{title}</h2>
             </div>
@@ -69,20 +91,23 @@ export default function RasterVisor() {
                 {/* LEYENDA Y ETIQUETA (Derecha Abajo) */}
                 <div style={{
                     position: 'absolute',
-                    bottom: '10px',
-                    right: '10px',
+                    bottom: '15px',
+                    right: '15px',
                     display: 'flex',
                     flexDirection: 'column',
                     alignItems: 'flex-end',
                     zIndex: 20,
-                    gap: '5px'
+                    gap: '10px'
                 }}>
                     <RenderLegend gradient={gradient} labels={labels} topLabel={topLabel} />
                     
                     <h3 style={{
-                        fontFamily: FONTS.main, fontSize: '14px', fontWeight: '700', 
+                        fontFamily: FONTS.main, 
+                        fontSize: '14px', 
+                        fontWeight: '700', 
                         color: '#FFFFFF', 
-                        margin: 0, letterSpacing: '1px',
+                        margin: 0, 
+                        letterSpacing: '1px',
                         textShadow: '0px 2px 4px rgba(0,0,0,0.8)'
                     }}>
                         {acronym}
@@ -96,7 +121,7 @@ export default function RasterVisor() {
   return (
     <div style={{ 
         display: 'flex', 
-        flexDirection: 'column', 
+        flexDirection: isMobile ? 'column' : 'row', 
         width: '100%', 
         height: '100%', 
         gap: '10px', 
@@ -106,7 +131,7 @@ export default function RasterVisor() {
       
       {/* TARJETA 1: NDVI */}
       <RasterCard 
-          title="ÍNDICE DE VEGETACIÓN DE DIFERENCIA NORMALIZADA" 
+          title="Índice de vegetación de diferencia normalizada" 
           acronym="NDVI" 
           img={ndviImg}
           gradient="linear-gradient(to top, #f30a41 0%, #f4976c 30%, #86d978 60%, #0f8e64 100%)"
@@ -116,7 +141,7 @@ export default function RasterVisor() {
 
       {/* TARJETA 2: NDWI */}
       <RasterCard 
-          title="ÍNDICE DE HUMEDAD DE DIFERENCIA NORMALIZADA" 
+          title="Índice de humedad de diferencia normalizada" 
           acronym="NDWI" 
           img={ndwiImg}
           gradient="linear-gradient(to top, #f30a41 0%, #f4976c 30%, #77c4df 60%, #0106f7 100%)"

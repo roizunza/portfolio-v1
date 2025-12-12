@@ -46,7 +46,7 @@ const ContactForm = ({ isOpen, onClose }) => {
       <div className="notepad-window">
         
         <div className="notepad-header">
-          <span className="window-title">contact_protocol.exe</span>
+          <span className="window-title">contact_form</span>
           <button className="close-btn" onClick={onClose}>[x]</button>
         </div>
 
@@ -57,7 +57,7 @@ const ContactForm = ({ isOpen, onClose }) => {
             <div className="input-group">
               <label className="input-label">para:</label>
               <div className="static-field">
-                rocio.izunza (urbanista / data scientist)
+                Rocío Izunza (Urbanista|Analista de Datos Geoespaciales)
               </div>
             </div>
 

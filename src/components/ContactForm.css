@@ -1,6 +1,4 @@
-/* ======================================================
-   VARIABLES DE TEMA (Base proporcionada)
-   ====================================================== */
+
 :root {
   --bg-overlay: rgba(13, 15, 22, 0.9);
   --bg-panel: #12141E;         
@@ -169,8 +167,6 @@
   letter-spacing: -0.5px;
   transition: opacity 0.2s;
 }
-
-/* --- AGREGADOS NECESARIOS PARA FUNCIONALIDAD --- */
 
 .submit-btn:hover {
   opacity: 0.8;

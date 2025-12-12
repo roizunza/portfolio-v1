@@ -57,13 +57,15 @@ export default function Sidebar() {
     
     btnContainer: { padding: '15px', borderTop: `1px solid ${COLORS.ui.border}`, backgroundColor: COLORS.background.panel, flexShrink: 0, marginTop: 'auto' },
     
-    // Botón Azul
     btnGithub: { 
       display: 'flex', alignItems: 'center', justifyContent: 'center', 
       backgroundColor: COLORS.ui.actionButton, 
       color: '#FFFFFF', 
-      fontFamily: FONTS.main, fontSize: '14px', fontWeight: '700', textAlign: 'center', padding: '10px', 
-      textDecoration: 'none', borderRadius: '4px', letterSpacing: '-0.5px', transition: 'opacity 0.2s' 
+      fontFamily: FONTS.main, 
+      fontSize: '11px', 
+      fontWeight: '700', textAlign: 'center', padding: '12px 10px', 
+      textDecoration: 'none', borderRadius: '4px', letterSpacing: '-0.5px', transition: 'opacity 0.2s',
+      whiteSpace: 'nowrap' 
     }
   };
 
@@ -103,7 +105,7 @@ export default function Sidebar() {
 
       <div style={s.btnContainer}>
         <a href="https://github.com/roizunza" target="_blank" rel="noreferrer" style={s.btnGithub}>
-          <FaGithub style={{ marginRight: '8px', fontSize: '1.1em' }}/> 
+          <FaGithub style={{ marginRight: '8px', fontSize: '1.2em' }}/> 
           VER ANÁLISIS DE PYTHON
         </a>
       </div>

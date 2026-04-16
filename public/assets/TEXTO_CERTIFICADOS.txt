@@ -1,0 +1,188 @@
+¡Estoy muy emocionado de compartir que he completado el curso "Hábitos: Ser productivo para cumplir sus metas personales"! 🎉 Durante este viaje, aprendí a crear metas que se alineen con mis objetivos, comprendí el Loop del Hábito y cómo utilizarlo para establecer nuevos hábitos. También descubrí la importancia de las metas efectivas a través del método S.M.A.R.T. y los hábitos-clave que son fundamentales en mi vida. Además, me familiaricé con la metodología GTD (Getting Things Done) para mejorar mi organización. 
+
+Sin duda, esta experiencia ha sido un gran paso en mi evolución personal y profesional. ¡Listo para seguir creciendo! 🚀
+
+#Productividad #DesarrolloPersonal #AprendiNaAlura
+
+
+¡Estoy muy emocionado de compartir que he completado el curso "Aprender a aprender: técnicas para tu autodesarrollo"! 🎉 Durante este viaje, descubrí mi propósito y mis razones para aprender, conocí mi estilo de aprendizaje y aprendí a crear planes efectivos. También exploré diferentes formatos y metodologías, definí mis metas y creé rutinas productivas, eliminando distracciones. Además, me adentré en el poder de la neurociencia para alcanzar todo mi potencial. Sin duda, esta experiencia ha sido fundamental para mi evolución en los estudios. ¡Vamos por más! 💪
+
+#AprendizajeEfectivo #Neurociencia #AprendiNaAlura
+
+¡Estoy muy emocionado de compartir que he completado el curso "Foco: Enfocarse trae más resultados para el día a día"! 🎉 Durante las clases, aprendí a conocer herramientas para promover mi foco, descubrí los principales villanos que perjudican mi concentración y cómo evitar distracciones. También ejercité mi motivación y aprendí a usar el poder del hábito a favor de mi enfoque. Esta experiencia ha sido clave para mi evolución en los estudios y en mi vida diaria. ¡A seguir creciendo! 💪
+
+#Foco #Productividad #AprendiNaAlura
+
+¡Estoy emocionado de compartir que he completado el curso "Aprendizaje con IA: personalizando tu rutina con ChatGPT"! 🎉 Durante este viaje, aprendí a utilizar la inteligencia artificial para desarrollar una postura de aprendizaje más autónoma y a identificar mis estilos y preferencias de aprendizaje. Además, pude crear una rutina de estudios flexible y personalizada, utilizando tecnologías como ChatGPT, y diseñar un roadmap de estudios basado en la Taxonomía de Bloom. También descubrí cómo usar herramientas de IA para crear presentaciones, resúmenes y otros materiales. Sin duda, esta experiencia ha sido clave para mi evolución en los estudios y me siento más preparado que nunca. 🚀
+
+#InteligenciaArtificial #AprendizajeAutónomo #AprendiNaAlura
+
+¡Estoy muy emocionado de compartir que he completado el curso "LinkedIn para profesionales: construye tu marca y genera oportunidades"! 🎉 Durante este viaje, aprendí a destacar mi perfil con las mejores prácticas, a hacerlo más atractivo y a utilizar los recursos de LinkedIn a favor de mi carrera. También descubrí el poder de los contenidos a través de LinkedIn Pulse y cómo mejorar mis oportunidades de aparecer en las búsquedas. Además, ahora sé cómo crear una red de contactos valiosa. Sin duda, esta experiencia ha sido un gran paso en mi evolución profesional. 🚀 
+
+#LinkedIn #MarcaPersonal #AprendiNaAlura
+
+
+¡Estoy muy emocionado de compartir que he completado el curso de **Git y GitHub: repositorio, commit y versiones**! 🎉 Durante las clases, aprendí a comprender las diferencias entre Git y GitHub, así como los principales comandos que utilizamos a diario. También descubrí cómo controlar las versiones de mis proyectos y crear estrategias de ramificaciones. Además, ahora sé cómo navegar en el tiempo con el comando git log. Esta experiencia ha sido fundamental para mi evolución en el mundo del desarrollo. ¡A seguir aprendiendo! 🚀
+
+#Git #GitHub #AprendiNaAlura
+
+
+¡Estoy muy emocionado de compartir que he completado el curso "Lógica de programación: sumérgete en la programación con JavaScript"! 🎉 Durante este viaje, aprendí a mostrar mensajes en pantalla de forma interactiva, a utilizar variables en el desarrollo de software y a seguir buenas prácticas de programación. Además, desarrollé una aplicación de principio a fin, inspirada en el mundo real, y aprendí a adaptar soluciones proporcionadas por el lenguaje en mis programas. 
+
+Esta experiencia ha sido fundamental para mi evolución en el mundo de la programación y estoy ansioso por seguir aprendiendo y creciendo. 🚀
+
+#JavaScript #Programación #AprendiNaAlura
+
+¡Estoy muy emocionado de compartir que he completado el curso de **Lógica de programación: explorar funciones y listas**! 🎉 Durante este viaje, aprendí a utilizar JavaScript para manipular elementos en la pantalla, desarrollé mi lógica de programación con un proyecto real y descubrí cómo usar GitHub para publicar mis proyectos. Además, profundicé en el uso de listas, una de las estructuras de datos más importantes en la programación, y aprendí a hacer manipulaciones dinámicas de palabras y números. Cada paso en este curso ha sido un gran avance en mi evolución como estudiante y programador. ¡Listo para seguir aprendiendo! 🚀 #JavaScript #Programación #AprendiNaAlura
+
+
+¡Estoy muy emocionado de compartir que he completado el curso "IA: explorando el potencial de la Inteligencia Artificial Generativa"! 🎉 Durante las clases, aprendí a utilizar ChatGPT para crear y manipular textos, explorar las funcionalidades de Google AI Studio para IAs multimodales, y revisar y resumir textos de forma eficiente con Gemini. También integré Maritaca AI en mi entorno de trabajo y apliqué IAs generativas para aumentar mi productividad, manejando diferentes tipos de medios. Esta experiencia ha sido un gran paso en mi evolución como estudiante y profesional. ¡A seguir aprendiendo! 🚀 #InteligenciaArtificial #Productividad #AprendiNaAlura
+
+¡Estoy muy emocionado de compartir que he completado el curso de **Ingeniería de Prompt: creando prompts eficaces para la IA generativa**! 🎉 Durante las clases, aprendí a realizar interacciones con la API de ChatGPT, manipular fuentes de claves, configurar parámetros y entender conceptos clave como Asistentes y Threads en el Playground. También profundicé en la ingeniería de Prompt y el procesamiento de información por lotes. Esta experiencia ha sido fundamental para mi evolución en el mundo de la inteligencia artificial. ¡Listo para seguir aprendiendo y creciendo! 🚀 #IngenieríaDePrompt #IA #AprendiNaAlura
+
+
+¡Estoy muy emocionado de compartir que he completado el curso de HTML y CSS! 🎉 Durante este viaje, aprendí a descargar e instalar un entorno para el desarrollo de páginas, cómo estudiar nuevas tecnologías a partir de la documentación, y creé un proyecto desde cero. También practiqué estilizaciones con CSS y comprendí la importancia del HTML semántico y las buenas prácticas de desarrollo. Esta experiencia ha sido fundamental para mi evolución en el mundo del desarrollo web. ¡Vamos por más! 💻✨ #HTML #CSS #AprendiNaAlura
+
+¡Estoy muy emocionado de compartir que he completado el curso de **HTML y CSS: Clases, Posicionamiento y Flexbox**! 🎉 Durante estas clases, aprendí sobre la importancia de las clases CSS, cómo utilizar Flexbox para posicionar elementos de manera práctica y a estilizar textos, fuentes e íconos. También entendí cómo posicionar los elementos de una página con CSS y descubrí técnicas para aplicar efectos de estilización, como cambiar colores, redondeos e importar fuentes para mis proyectos. Esta experiencia ha sido fundamental para mi evolución en el mundo del desarrollo web. ¡Listo para seguir aprendiendo y creando! 🚀 #HTML #CSS #AprendiNaAlura
+
+
+¡Estoy muy emocionado de compartir que he completado el curso de HTML y CSS: header, footer y variables CSS! 🎉 Durante este viaje, aprendí a comprender el día a día de un desarrollador Front-end de manera práctica, a crear código HTML y CSS siguiendo buenas prácticas de programación, y a trabajar con más de una página HTML en el mismo proyecto. También exploré las pseudo-clases con ejemplos reales y prácticos. 
+
+Esta experiencia ha sido fundamental para mi evolución en el mundo del desarrollo web y estoy ansioso por aplicar todo lo que he aprendido. ¡Vamos por más! 🚀
+
+#HTML #CSS #AprendiNaAlura
+
+¡Estoy muy emocionado de compartir que he completado el curso de **HTML y CSS: trabajando con responsividad y publicación de proyectos**! 🎉 Durante las clases, aprendí a hacer mi sitio web responsivo para diferentes pantallas, descubrí cómo utilizar la Media Query en mis proyectos, y hasta creé una cuenta en GitHub para almacenar mi código en la nube. También entendí la diferencia entre medidas absolutas y relativas, y publiqué mi proyecto finalizado en la web para que todos lo vean. Esta experiencia ha sido un gran paso en mi evolución como estudiante y desarrollador. ¡A seguir aprendiendo! 💪
+
+#HTML #CSS #AprendiNaAlura
+
+
+¡Estoy muy emocionado de compartir que he completado el curso de **Desarrollo de carrera: demanda del mercado**! 🎉 Durante las clases, aprendí sobre las principales estrategias para encaminar mi carrera, cómo mis valores y motivaciones impactan mi trayectoria profesional, y las habilidades que realmente busca el mercado. Este curso me ha ayudado a comprender la importancia de la motivación tanto en mi vida profesional como personal. Sin duda, he evolucionado en mis estudios y estoy listo para enfrentar nuevos retos. 💪
+
+#DesarrolloDeCarrera #HabilidadesDelMercado #AprendiNaAlura
+
+¡Estoy muy emocionado de compartir que he completado el curso "Propósito profesional: ser el protagonista de tu carrera"! 🎉 Durante este viaje, aprendí a conocer mi razón de ser y cómo el ikigai puede ayudarme a alinear mis talentos, vocación y carrera. También descubrí la importancia de tener un propósito claro y cómo mis motivaciones y valores influyen en mi camino hacia el éxito. 
+
+Reflexioné sobre lo que realmente significa el éxito para mí y entendí cómo elegir la empresa adecuada para trabajar. Este curso me ha enseñado a no dejar que la vida me lleve, sino a mantener mi propósito siempre a la vista y a orientarlo y mejorarlo con el tiempo. 
+
+¡Estoy listo para seguir evolucionando en mis estudios y en mi carrera! 🚀 
+
+#PropósitoProfesional #Ikigai #AprendiNaAlura
+
+¡Estoy muy emocionada de compartir que he completado el curso "Transición de carrera: una guía al campo de tecnología"! 🎉 Durante este viaje, aprendí a realizar capacitaciones para el nuevo mercado laboral, empoderar a las mujeres y comunidades para generar un cambio tecnológico seguro, y a adaptarme a la "nueva normalidad" en el mundo de TI. También entendí los perfiles que buscan las startups, las mejores prácticas para entrevistas y cómo construir un currículum atractivo para los reclutadores. Esta experiencia me ha permitido evolucionar en mis estudios y prepararme para un futuro brillante en el ámbito tecnológico. ¡Vamos por más! 🚀 
+
+#Tecnología #CarreraDigital #AprendiNaAlura
+
+¡Estoy muy emocionado de compartir que he completado el curso "Emprendimiento: De la idea al plan de negocios"! 🎉 Durante las clases, aprendí sobre la mentalidad emprendedora, cómo validar una idea de negocio y construir un modelo sólido. Este viaje me ha permitido entender mejor qué significa emprender y cómo puedo aplicar estos conocimientos en mi carrera. Sin duda, estoy avanzando en mis estudios y creciendo como profesional. 🚀 
+
+#Emprendimiento #PlanDeNegocios #AprendiNaAlura
+
+¡Estoy muy emocionado de compartir que he completado el curso "Fundamentos de Agilidad: Primeros pasos para la transformación ágil"! 🎉 Durante las clases, aprendí sobre el origen del Método Ágil, las diferencias con el enfoque Waterfall, la importancia de la priorización de tareas y flujos, y por qué el feedback debe ser lo más rápido posible. También conocí el Manifiesto Ágil, que ha sido fundamental para entender esta metodología. 
+
+Esta experiencia ha sido clave para mi evolución en el mundo del aprendizaje y la transformación ágil. ¡Listo para aplicar todo lo aprendido! 🚀
+
+#Agilidad #TransformaciónÁgil #AprendiNaAlura
+
+
+¡Estoy muy emocionado de compartir que he completado el curso "Python para Data Science: primeros pasos"! 🎉 Durante este viaje, aprendí los comandos básicos de Python, la diferencia entre los tipos de variables y cómo manipular datos. También exploré estructuras condicionales y diferentes estructuras de repetición, además de trabajar con estructuras de datos y relacionar todo esto con la elaboración de proyectos. 
+
+Esta experiencia ha sido fundamental para mi evolución en el mundo de la programación y estoy ansioso por seguir aprendiendo y aplicando estos conocimientos en futuros proyectos. ¡Vamos por más! 🚀
+
+#Python #DataScience #AprendiNaAlura
+
+¡Estoy muy emocionado de compartir que he completado el curso "Practicando Python: condicionales if, elif y else"! 🎉 Durante las clases, revisé el uso de las instrucciones if, elif y else, y practiqué la codificación de condicionales. Esta experiencia ha sido fundamental para mi evolución en el aprendizaje de la programación. ¡Cada paso cuenta y estoy listo para seguir avanzando! 🚀
+
+#Python #Programación #AprendiNaAlura
+
+¡Estoy muy emocionado de compartir que he completado el curso "Practicando Python: bucles for y while"! 🎉 Durante las clases, revisé el concepto de bucles for y while en Python, comprendí la diferencia entre ambos tipos de bucles y practiqué la codificación de bucles. Esta experiencia ha sido fundamental para mi evolución en el aprendizaje de la programación. ¡Sigo avanzando en mi camino hacia el dominio de Python! 🚀 #Python #Programación #AprendiNaAlura
+
+
+¡Estoy muy emocionado de compartir que he completado el curso de Modelado de bases de datos: entidades, relaciones y atributos! 🎉 Durante este viaje, aprendí a identificar el modelo conceptual de una base de datos, diferenciar entre modelos de alto y bajo nivel, y aplicar técnicas de modelaje de datos. También pude distinguir entre el Modelo Entidad-Relación (MER) y el Diagrama Entidad-Relación (DER), además de elaborar un modelo de base de datos en diagrams.net. 
+
+Esta experiencia ha sido fundamental para mi evolución en el mundo del desarrollo y la gestión de datos. ¡Sigo aprendiendo y creciendo! 🚀
+
+#ModeladoDeDatos #BasesDeDatos #AprendiNaAlura
+
+¡Estoy muy emocionado de compartir que he completado el curso de **Python para Data Science**! 🎉 Durante este viaje, aprendí sobre las funciones de las bibliotecas y paquetes en Python, así como las funciones integradas y su utilidad. También tuve la oportunidad de crear mis propias funciones y trabajar con estructuras de datos compuestas y anidadas. Además, construí listas y diccionarios utilizando list y dict comprehension, y aprendí a manejar errores y excepciones en mis códigos. 
+
+Esta experiencia ha sido fundamental para mi evolución en el mundo de la programación y la ciencia de datos. ¡Sigo avanzando en mis estudios! 🚀
+
+#Python #DataScience #AprendiNaAlura
+
+¡Estoy muy emocionado de compartir que he completado el curso "Pandas: conociendo la biblioteca"! 🎉 Durante este viaje, aprendí a utilizar los principales recursos de Pandas para desarrollar proyectos, realizar análisis exploratorios y construir diferentes gráficas. También me familiaricé con la selección de datos específicos, el tratamiento de datos nulos, y la eliminación de filas y columnas. Además, pude crear diversos tipos de columnas que me ayudarán en mis futuros proyectos. 
+
+Esta experiencia ha sido un gran paso en mi evolución como estudiante y me siento más preparado para enfrentar nuevos desafíos. ¡Vamos por más! 🚀
+
+#Pandas #DataScience #AprendiNaAlura
+
+¡Estoy muy emocionado de compartir que he completado el curso de **NumPy: análisis numérico eficiente con Python**! 🎉 Durante las clases, aprendí a leer y escribir datos usando Numpy, a crear y manipular matrices multidimensionales, y a generar números aleatorios. También descubrí cómo utilizar Seeds para trabajar con la aleatoriedad y a calcular la regresión lineal. Además, exploré funciones de agregación en Numpy que me ayudarán en mis futuros proyectos. Esta experiencia ha sido clave para mi evolución en el mundo de la programación y el análisis de datos. ¡A seguir aprendiendo! 🚀
+
+#NumPy #Python #AprendiNaAlura
+
+¡Estoy muy emocionado de compartir que he completado el curso "Pandas E/S: trabajando con diferentes formatos de archivo"! 🎉 Durante este viaje, aprendí sobre archivos CSV, XLSX, JSON, HTML y XML, así como a trabajar con diferentes tipos de datos de entrada y salida. También descubrí cómo leer datos de Google Sheets, obtener tablas de páginas web, crear y escribir en una base de datos local, y realizar consultas SQL. 
+
+Esta experiencia ha sido fundamental para mi evolución en el mundo del análisis de datos y me siento más preparado que nunca para enfrentar nuevos desafíos. ¡Vamos por más! 🚀
+
+#Pandas #AnálisisDeDatos #AprendiNaAlura
+
+¡Estoy muy emocionado de compartir que he completado el curso de **Pandas: transformación y manipulación de datos**! 🎉 Durante las clases, aprendí a comprender y aplicar comandos de transformación de datos, diferenciar los tipos de información en los datos y manipular valores numéricos dentro de un DataFrame de Pandas. También descubrí cómo manejar datos textuales y realizar transformaciones con tipos de datos de fecha y hora. Esta experiencia me ha permitido relacionar las conversiones de datos con la construcción de mis proyectos. Sin duda, he evolucionado en mis estudios y estoy listo para seguir adelante. 🚀 
+
+#Pandas #ManipulaciónDeDatos #AprendiNaAlura
+
+¡Estoy muy emocionado de compartir que he completado el curso de **Pandas: seleccionar y agrupar datos**! 🎉 Durante las clases, aprendí a seleccionar y extraer información de los datos, agrupar datos para crear tablas, y crear gráficos que me ayudan a analizar mejor la información. También apliqué técnicas de filtrado y selección utilizando la biblioteca pandas. Esta experiencia ha sido clave para mi evolución en el mundo del análisis de datos. ¡Listo para seguir aprendiendo! 📊
+
+#Pandas #AnálisisDeDatos #AprendiNaAlura
+
+¡Estoy muy emocionado de compartir que he completado el curso de Visualización de datos: creando gráficos con bibliotecas de Python! 🎉 Durante este curso, aprendí a crear gráficos impresionantes con Matplotlib, entendí cómo funcionan las figuras y ejes, y exploré la biblioteca Seaborn para crear visualizaciones aún más atractivas. También me adentré en la creación de gráficos interactivos con Plotly y aprendí a personalizar mis visualizaciones con colores, estilos y anotaciones. Sin duda, esta experiencia ha sido fundamental para mi evolución en el mundo de los datos. ¡Listo para seguir aprendiendo! 📊
+
+#VisualizaciónDeDatos #Python #AprendiNaAlura
+
+¡Estoy muy emocionado de compartir que he completado el curso de **Estadística con Python: frecuencias y medidas**! 🎉 Durante este viaje, aprendí a interpretar y comprender las estadísticas que encuentro en mi día a día, desde noticias hasta informes. También descubrí la diferencia entre media, mediana y moda, y cómo elegir la medida adecuada para cada situación. Además, clasifiqué y organicé diferentes tipos de datos para prepararlos para el análisis, visualicé cómo se distribuyen mis datos y medí la dispersión de los mismos, entendiendo su significado. 
+
+Esta experiencia ha sido fundamental para mi evolución en los estudios y me siento más preparado para enfrentar nuevos desafíos. ¡Vamos por más! 🚀
+
+#Estadística #Python #AprendiNaAlura
+
+¡Estoy muy emocionado de compartir que he completado el curso de Visualización de Datos: estilizando tablas con Python! 🎉 A lo largo de las lecciones, aprendí a comprender las clases de la biblioteca Pandas para estilizar tablas, explorar los estilos integrados de Pandas y crear mis propias estilizaciones utilizando propiedades CSS. Además, trabajé con DataFrames para presentar información de manera efectiva y apliqué diversas estilizaciones a las tablas según la situación. 
+
+Esta experiencia ha sido un gran paso en mi evolución como estudiante y me siento más preparado para enfrentar nuevos desafíos en el mundo de los datos. ¡Vamos por más! 🚀 
+
+#VisualizaciónDeDatos #Python #AprendiNaAlura
+
+¡Estoy muy emocionado de compartir que he completado el curso de **Estadística con Python: Probabilidad y muestreo**! 🎉 Durante las clases, aprendí sobre las distribuciones binomial, poisson y normal, así como el concepto de nivel e intervalo de confianza. También conocí diversas técnicas de muestreo y aprendí a calcular el tamaño de la muestra. 
+
+Esta experiencia ha sido fundamental para mi evolución en los estudios y me siento más preparado para enfrentar nuevos desafíos en el mundo de la estadística. ¡Vamos por más! 💪
+
+#Estadística #Python #AprendiNaAlura
+
+¡Estoy muy emocionado de compartir que he completado el curso "IA aplicada a la ciencia de datos: uso de la IA en la construcción de visualización de datos"! 🎉 Durante este viaje, aprendí a utilizar ChatGPT como asistente personal para el análisis y la visualización de datos, optimizando mi tiempo en la creación de visualizaciones personalizadas. También descubrí las limitaciones y posibilidades de la IA en la creación de visuales y cómo construir informes efectivos utilizando herramientas como Gamma y ChatGPT. 
+
+Esta experiencia ha sido fundamental para mi evolución en el mundo del análisis de datos y estoy ansioso por aplicar todo lo que he aprendido. ¡Vamos por más! 🚀 
+
+#VisualizaciónDeDatos #InteligenciaArtificial #AprendiNaAlura
+
+¡Estoy muy emocionado de compartir que he completado el curso de **Data Science: probando relaciones con regresión lineal**! 🎉 Durante estas clases, aprendí a identificar relaciones lineales, diferenciar entre variables explicativas y de respuesta, y ajustar un modelo de regresión lineal. También me familiaricé con la interpretación de los coeficientes del modelo y el R², así como a hacer predicciones y analizar la calidad del modelo. 
+
+Esta experiencia ha sido fundamental para mi evolución en el mundo de los datos y me siento más preparado para enfrentar nuevos desafíos. ¡Vamos por más! 🚀 
+
+#DataScience #RegresiónLineal #AprendiNaAlura
+
+¡Estoy muy emocionado de compartir que he completado el curso de Clasificación: aprendiendo a clasificar datos con Machine Learning! 🎉 Durante este viaje, aprendí a realizar análisis exploratorios de datos, a aplicar transformaciones a variables categóricas, a entrenar modelos de clasificación y a hacer predicciones con nuevos datos. Además, descubrí cómo almacenar modelos de transformación y de aprendizaje automático en archivos pickle. 
+
+Esta experiencia ha sido un gran paso en mi evolución como estudiante y me siento más preparado para enfrentar nuevos desafíos en el mundo del Machine Learning. ¡Vamos por más! 🚀
+
+#MachineLearning #DataScience #AprendiNaAlura
+
+¡Estoy muy emocionado de compartir que he completado el curso de Clasificación: validación de modelos y métricas de evaluación! 🎉 Durante este viaje, aprendí a validar modelos de machine learning utilizando el método hold-out y la validación cruzada, así como a evaluar su desempeño con métricas adecuadas. También descubrí cómo identificar las métricas más apropiadas para cada tipo de problema y realicé el balanceo de datos con oversampling y undersampling. Además, apliqué un pipeline para validar modelos de forma correcta. 
+
+Esta experiencia ha sido fundamental para mi evolución en el mundo del aprendizaje automático. ¡Estoy listo para seguir creciendo y aprendiendo más! 🚀
+
+#MachineLearning #ValidaciónDeModelos #AprendiNaAlura
+
+¡Estoy muy emocionado de compartir que he completado el curso de IA aumentada: previsión de atrasos de vuelos! 🎉 Durante este viaje, aprendí a aplicar técnicas de visualización de datos para comunicar ideas y hallazgos, así como a utilizar métodos de codificación para transformar variables categóricas. También implementé modelos de regresión como DummyRegressor y RandomForestRegressor, analicé los resultados mediante métricas y gráficos, y descubrí cómo identificar las características más importantes para el modelo de machine learning. Además, exploré la optimización de hiperparámetros para mejorar el rendimiento de mis modelos. Sin duda, esta experiencia ha sido un gran paso en mi evolución como estudiante. ¡A seguir aprendiendo! 🚀 #MachineLearning #VisualizaciónDeDatos #AprendiNaAlura
+
+¡Estoy muy emocionado de compartir que he completado el curso de **Regresión lineal: Técnicas avanzadas de Modelado**! 🎉 Durante este viaje, aprendí a aplicar transformaciones antes de entrenar mis modelos, realizar regresiones con Statsmodels y Sklearn, y a obtener predicciones puntuales. También profundicé en técnicas avanzadas de modelado y aprendí a interpretar los coeficientes estimados, además de realizar análisis gráficos de los resultados encontrados. 
+
+Esta experiencia ha sido un gran paso en mi evolución como estudiante y me siento más preparado para enfrentar nuevos desafíos en el mundo del análisis de datos. ¡Vamos por más! 🚀
+
+#RegresiónLineal #ModeladoAvanzado #AprendiNaAlura

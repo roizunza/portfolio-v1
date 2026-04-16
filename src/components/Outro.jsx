@@ -107,7 +107,7 @@ const Outro = ({ onContactClick }) => {
         </button>
       </div>
 
-      <div className="outro-footer">© 2025 ROCÍO IZUNZA • DATA DRIVEN URBANISM</div>
+      <div className="outro-footer">© 2026 ROCÍO IZUNZA • DATA DRIVEN URBANISM</div>
     </section>
   );
 };

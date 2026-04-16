@@ -3,14 +3,11 @@ import './Indice.css';
 import { PROJECTS } from '../config/theme'; 
 import ViajaSeguraCard from './ViajaSegura/ViajaSeguraCard.jsx';
 import VigilanciaEspectralCard from './VigilanciaEspectral/VigilanciaEspectralCard.jsx';
-import AlgoritmoInmobiliarioCard from './AlgoritmoInmobiliario/AlgoritmoInmobiliarioCard.jsx'; 
-import FactorEsfuerzoCard from './FactorEsfuerzo/FactorEsfuerzoCard.jsx';
 
 // Iconos 
 import iconKml from '../assets/kml.PNG';   
 import iconTiff from '../assets/tiff.PNG'; 
 import iconJson from '../assets/json.PNG'; 
-import iconGpkg from '../assets/gpck.PNG'; 
 
 const Indice = ({ onActivarDashboard }) => {
   const [proyectoSeleccionado, setProyectoSeleccionado] = useState(null);
@@ -34,19 +31,11 @@ const Indice = ({ onActivarDashboard }) => {
     },
     {
       id: 3,
-      baseName: "03_algoritmo_inmobiliario", 
-      extension: ".json",
-      extensionColor: PROJECTS.algoritmo.color, 
+      baseName: "03_academic_skills", 
+      extension: ".sh",
+      extensionColor: "#00E5FF", 
       icono: iconJson,
-      idScroll: "seccion-algoritmo" 
-    },
-    {
-      id: 4,
-      baseName: "04_factor_esfuerzo_turistico",
-      extension: ".gpkg",
-      extensionColor: PROJECTS.factorEsfuerzo.color, 
-      icono: iconGpkg,
-      idScroll: "seccion-esfuerzo"
+      idScroll: "seccion-certificaciones" 
     }
   ];
 
@@ -65,60 +54,36 @@ const Indice = ({ onActivarDashboard }) => {
         </div>
 
         <div className="projects-grid">
-          {proyectos.map((proyecto) => (
+          {proyectos.map((p) => (
             <div 
-              key={proyecto.id} 
-              className={`project-file ${proyectoSeleccionado?.id === proyecto.id ? 'active' : ''}`}
-              onClick={() => setProyectoSeleccionado(proyecto)}
+              key={p.id} 
+              className="project-file"
+              onClick={() => p.id === 3 ? manejarEjecucion(p.idScroll) : setProyectoSeleccionado(p)}
             >
-              <img src={proyecto.icono} alt={proyecto.extension} className="file-icon-img" />
+              <img src={p.icono} alt={p.extension} className="file-icon-img" />
               <div className="file-code-name">
-                <span>{proyecto.baseName}</span>
-                <span className="file-extension-span" style={{ color: proyecto.extensionColor }}>
-                  {proyecto.extension}
-                </span>
+                <span>{p.baseName}</span>
+                <span className="file-extension-span" style={{ color: p.extensionColor }}>{p.extension}</span>
               </div>
             </div>
           ))}
         </div>
 
-        {/* MODALES DE SINOPSIS */}
         {proyectoSeleccionado && (
           <div className="synopsis-overlay" onClick={() => setProyectoSeleccionado(null)}>
             <div onClick={(e) => e.stopPropagation()} style={{maxWidth: '900px', width: '100%', padding: '0 10px'}}>
-                
-                {/* 1. VIAJA SEGURA */}
                 {proyectoSeleccionado.id === 1 && (
                   <ViajaSeguraCard 
                     onEjecutar={() => manejarEjecucion(proyectoSeleccionado.idScroll)} 
                     onClose={() => setProyectoSeleccionado(null)} 
                   />
                 )}
-
-                {/* 2. VIGILANCIA ESPECTRAL */}
                 {proyectoSeleccionado.id === 2 && (
                   <VigilanciaEspectralCard 
                     onEjecutar={() => manejarEjecucion(proyectoSeleccionado.idScroll)} 
                     onClose={() => setProyectoSeleccionado(null)} 
                   />
                 )}
-
-                {/* 3. ALGORITMO INMOBILIARIO */}
-                {proyectoSeleccionado.id === 3 && (
-                  <AlgoritmoInmobiliarioCard 
-                    onEjecutar={() => manejarEjecucion(proyectoSeleccionado.idScroll)} 
-                    onClose={() => setProyectoSeleccionado(null)} 
-                  />
-                )}
-
-                {/* 4. FACTOR ESFUERZO */}
-                {proyectoSeleccionado.id === 4 && (
-                  <FactorEsfuerzoCard 
-                    onEjecutar={() => manejarEjecucion(proyectoSeleccionado.idScroll)} 
-                    onClose={() => setProyectoSeleccionado(null)} 
-                  />
-                )}
-
             </div>
           </div>
         )}

@@ -6,19 +6,15 @@ import Indice from './components/Indice.jsx';
 import { smoothScrollTo } from './utils/scroll'; 
 import './App.css'; 
 
-// 1. IMPORTACIONES CORRECTAS
-// Asegúrate de que no haya duplicados.
 import Outro from './components/Outro.jsx'; 
-import ContactForm from './components/ContactForm.jsx'; // <--- Nuevo nombre
+import ContactForm from './components/ContactForm.jsx'; 
 
-// --- VISTAS DE PROYECTOS ---
 import ViajaSeguraView from './components/ViajaSegura/ViajaSeguraView.jsx';
 import VigilanciaEspectralView from './components/VigilanciaEspectral/VigilanciaEspectralView.jsx';
-import AlgoritmoView from './components/AlgoritmoInmobiliario/AlgoritmoInmobiliarioView.jsx'; 
-import FactorEsfuerzoView from './components/FactorEsfuerzo/FactorEsfuerzoView.jsx';
+// Importación del nuevo módulo de certificaciones
+import CertificacionesView from './components/Certificaciones/CertificacionesView.jsx';
 
 function App() {
-  // Estado para el formulario de contacto
   const [mostrarFormulario, setMostrarFormulario] = useState(false);
 
   const abrirFormulario = () => setMostrarFormulario(true);
@@ -32,8 +28,7 @@ function App() {
     let targetId = '';
     if(idScroll.includes('viaja')) targetId = 'seccion-viaja-segura';
     if(idScroll.includes('vigilancia')) targetId = 'seccion-vigilancia';
-    if(idScroll.includes('algoritmo')) targetId = 'seccion-algoritmo';
-    if(idScroll.includes('esfuerzo')) targetId = 'seccion-esfuerzo'; 
+    if(idScroll.includes('certificaciones')) targetId = 'seccion-certificaciones'; 
     
     if (targetId) smoothScrollTo(targetId, 1500); 
   };
@@ -47,7 +42,6 @@ function App() {
         
         <Indice onActivarDashboard={irAProyecto} />
 
-        {/* --- ZONA DE PROYECTOS --- */}
         <section id="seccion-viaja-segura" style={{ paddingBottom: '40px' }}>
             <ViajaSeguraView />
         </section>
@@ -56,22 +50,16 @@ function App() {
             <VigilanciaEspectralView />
         </section>
         
-        <section id="seccion-algoritmo" style={{ paddingBottom: '40px' }}>
-            <AlgoritmoView />
-        </section>
-        
-        <section id="seccion-esfuerzo" style={{ paddingBottom: '40px' }}>
-            <FactorEsfuerzoView />
+        <section id="seccion-certificaciones" style={{ paddingBottom: '40px' }}>
+            <CertificacionesView />
         </section> 
 
-        {/* OUTRO */}
         <Outro onContactClick={irAContacto} />
 
       </main>
 
       <Footer /> 
       
-      {/* 2. AQUÍ USAMOS EL COMPONENTE CON EL NUEVO NOMBRE */}
       <ContactForm isOpen={mostrarFormulario} onClose={cerrarFormulario} />
     </div>
   );

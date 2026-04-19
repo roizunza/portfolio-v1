@@ -2,7 +2,11 @@ import React, { useState } from 'react';
 import { COLORS, FONTS } from '../../config/theme';
 import { FaGithub } from 'react-icons/fa';
 
-const ACCENT_COLOR = COLORS.accent; 
+/**
+ * Sidebar Component for "Viaja Segura" Project
+ * Focus: Geospatial Data Engineering and Gender-Perspective Mobility.
+ * Updated: 2026-04-15
+ */
 
 const AccordionSection = ({ title, tag, isOpen, onClick, children }) => {
   const s = {
@@ -54,10 +58,9 @@ const AccordionSection = ({ title, tag, isOpen, onClick, children }) => {
   );
 };
 
-// --- COMPONENTE PRINCIPAL ---
 export default function Sidebar() {
   const [sectionsState, setSectionsState] = useState({
-    contexto: true, metodologia: false, hallazgos: false, impacto: false
+    proposito: true, metodologia: false, insights: false, stack: false
   });
 
   const toggle = (section) => {
@@ -66,38 +69,18 @@ export default function Sidebar() {
 
   const s = {
     container: { display: 'flex', flexDirection: 'column', height: '100%', color: '#E0E0E0' },
-    
     headerBox: { backgroundColor: '#181d35', padding: '15px 15px', borderBottom: '1px solid rgba(255,255,255,0.05)', flexShrink: 0 },
     subHeader: { fontFamily: FONTS.title, fontSize: '13px', fontWeight: '700', color: '#B0B3B8', margin: '0 0 4px 0', letterSpacing: '1px', textTransform: 'uppercase' },
     mainTitle: { fontFamily: FONTS.title, fontSize: '26px', fontWeight: '700', color: '#A020F0', margin: '0 0 15px 0', lineHeight: '1' },
     authorBox: { borderLeft: `2px solid ${COLORS.accent}`, paddingLeft: '10px', marginTop: '5px' },
     authorName: { fontFamily: FONTS.body, fontSize: '14px', fontWeight: '700', color: '#FFFFFF', margin: 0 },
     authorRole: { fontFamily: FONTS.body, fontSize: '11px', color: '#B0B3B8', margin: '2px 0 0 0' },
-    
-    contentBody: { 
-      flex: 1, 
-      padding: '15px 15px', 
-      overflowY: 'auto',
-      paddingRight: '5px',
-      scrollbarWidth: 'thin', 
-      scrollbarColor: '#424242 transparent' 
-    },
-    
+    contentBody: { flex: 1, padding: '15px 15px', overflowY: 'auto', paddingRight: '5px', scrollbarWidth: 'thin', scrollbarColor: '#424242 transparent' },
     bodyText: { fontFamily: FONTS.body, fontSize: '12px', fontWeight: '400', lineHeight: '1.4', color: '#E0E0E0', marginBottom: '8px' },
     listItem: { marginBottom: '8px' },
     listKey: { color: '#FFFFFF', fontWeight: '500' },
-    
-    btnContainer: { 
-      padding: '15px', 
-      borderTop: '1px solid rgba(255,255,255,0.1)', 
-      backgroundColor: 'var(--bg-panel)', 
-      flexShrink: 0, 
-      marginTop: 'auto'
-    },
-    btnGithub: { 
-      display: 'flex', alignItems: 'center', justifyContent: 'center', 
-      backgroundColor: '#0000FF', color: '#c5cde0ff', fontFamily: FONTS.numbers, fontSize: '14px', fontWeight: '700', textAlign: 'center', padding: '10px', textDecoration: 'none', borderRadius: '4px', letterSpacing: '-0.5px', transition: 'opacity 0.2s' 
-    }
+    btnContainer: { padding: '15px', borderTop: '1px solid rgba(255,255,255,0.1)', backgroundColor: 'var(--bg-panel)', flexShrink: 0, marginTop: 'auto' },
+    btnGithub: { display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundColor: '#333', color: '#FFF', fontFamily: FONTS.numbers, fontSize: '14px', fontWeight: '700', textAlign: 'center', padding: '10px', textDecoration: 'none', borderRadius: '4px', opacity: 0.7, cursor: 'not-allowed' }
   };
 
   return (
@@ -107,50 +90,60 @@ export default function Sidebar() {
         .custom-scrollbar::-webkit-scrollbar { width: 2px; }
         .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
         .custom-scrollbar::-webkit-scrollbar-thumb { background: #424242; border-radius: 2px; }
-        @media (max-width: 1024px) { .custom-scrollbar { max-height: 300px; } }
       `}</style>
 
       <div style={s.headerBox}>
         <h2 style={s.subHeader}>MOVILIDAD DE CUIDADOS</h2>
         <h1 style={s.mainTitle}>VIAJA SEGURA</h1>
         <div style={s.authorBox}>
-          <p style={s.authorName}>Karla Rocío Izunza</p>
-          <p style={s.authorRole}>Legitimación operativa mediante ingeniería de datos y evidencia geoespacial</p>
+          <p style={s.authorRole}>Legitimación de servicios de transporte mediante evidencia geoespacial</p>
         </div>
       </div>
 
       <div style={s.contentBody} className="custom-scrollbar">
         
-        <AccordionSection title="01. El Problema" tag="#DataStrategy" isOpen={sectionsState.contexto} onClick={() => toggle('contexto')}>
-          <p style={s.bodyText}>El reto consistió en traducir la operación social y analógica de la <strong>"Ruta 66"</strong> (servicio exclusivo para mujeres e infancias) en un modelo de datos estructurado.</p>
-          <p style={s.bodyText}>El objetivo central fue construir el sustento técnico necesario para legitimar el servicio ante autoridades regulatorias (SEMOVI), transformando la observación de campo en evidencia operativa para proyectar su ampliación.</p>
+        <AccordionSection title="01. El Propósito" tag="#DataDrivenLegitimacy" isOpen={sectionsState.proposito} onClick={() => toggle('proposito')}>
+          <p style={s.bodyText}>El proyecto evalúa la operación de la "Ruta 66", la cual presta un servicio exclusivo para mujeres e infancias en la periferia sur de la CDMX. El reto consistió en traducir una operación analógica y social en un modelo de datos estructurado para sustentar su relevancia ante SEMOVI. El objetivo central fue construir el sustento operativo necesario para legitimar el modelo y proyectar su ampliación a otras rutas mediante evidencia técnica.</p>
         </AccordionSection>
 
-        <AccordionSection title="02. Ingeniería y Calidad" tag="#ETL_QC" isOpen={sectionsState.metodologia} onClick={() => toggle('metodologia')}>
-          <p style={s.bodyText}>Para digitalizar la realidad del servicio, implementé un flujo centrado en la integridad del dato espacial:</p>
-          <div style={s.listItem}><p style={s.bodyText}><span style={s.listKey}>Ingeniería de Datos:</span> Diseño de procesos para normalizar registros de ascenso y descenso con Python (Pandas/GeoPandas). Se aplicaron rutinas de Control de Calidad (QC) para corregir inconsistencias de georreferenciación en la periferia alta.</p></div>
-          <div style={s.listItem}><p style={s.bodyText}><span style={s.listKey}>Modelado Espacial:</span> Implementación de modelos de accesibilidad mediante isocronas de 500m para automatizar el cruce de la oferta de transporte con capas de infraestructura urbana.</p></div>
+        <AccordionSection title="02. Estructura y Metodología" tag="#DataEngineering_GIS" isOpen={sectionsState.metodologia} onClick={() => toggle('metodologia')}>
+          <div style={s.listItem}>
+            <p style={s.bodyText}>
+              <span style={s.listKey}>Ingeniería de Datos (ETL):</span> Diseño de instrumentos de captura digital para normalizar registros de ascenso. Se utiliza Python (GeoPandas) para la limpieza, depuración y estructuración de la primera base de datos, resolviendo inconsistencias de georreferenciación.
+            </p>
+          </div>
+          <div style={s.listItem}>
+            <p style={s.bodyText}>
+              <span style={s.listKey}>Modelado Espacial Avanzado:</span> En GIS, se generaron modelos de accesibilidad mediante isocronas caminables de 500m. El análisis consiste en automatizar el cruce de la oferta de transporte con la infraestructura de cuidados, correlacionando nodos de mayor afluencia con la ubicación de equipamiento.
+            </p>
+          </div>
         </AccordionSection>
 
-        <AccordionSection title="03. Producto e Inteligencia" tag="#Insights" isOpen={sectionsState.hallazgos} onClick={() => toggle('hallazgos')}>
-          <p style={s.bodyText}>El procesamiento técnico reveló patrones críticos para la toma de decisiones:</p>
-          <div style={{ marginBottom: '8px', borderLeft: '2px solid rgba(255,255,255,0.3)', paddingLeft: '6px' }}><p style={s.bodyText}><span style={s.listKey}>Conectividad Crítica:</span> Se validó la ruta como el puente vital que reduce el aislamiento de zonas periféricas (Oyamel, Ocotal, Antigua) con el nodo regional de Ciudad Universitaria.</p></div>
-          <div style={{ borderLeft: '2px solid rgba(255,255,255,0.3)', paddingLeft: '6px' }}><p style={s.bodyText}><span style={s.listKey}>Priorización Estratégica:</span> La correlación espacial identificó que los puntos de mayor demanda coinciden con infraestructura de cuidados, permitiendo optimizar la ubicación de paradas.</p></div>
+        <AccordionSection title="03. Insights y Visualización" tag="#TheProduct" isOpen={sectionsState.insights} onClick={() => toggle('insights')}>
+          <p style={s.bodyText}>El resultado es una herramienta que transforma coordenadas y datos en decisiones:</p>
+          <div style={{ marginBottom: '8px', borderLeft: '2px solid rgba(255,255,255,0.3)', paddingLeft: '6px' }}>
+            <p style={s.bodyText}><span style={s.listKey}>Eje de Integración:</span> Conecta la periferia alta (Oyamel, Ocotal, Antigua) con equipamiento regional como Ciudad Universitaria.</p>
+          </div>
+          <div style={{ marginBottom: '8px', borderLeft: '2px solid rgba(255,255,255,0.3)', paddingLeft: '6px' }}>
+            <p style={s.bodyText}><span style={s.listKey}>Validación de la Demanda:</span> Legitimación de la ruta como eslabón en la red de movilidad de cuidados.</p>
+          </div>
+          <div style={{ borderLeft: '2px solid rgba(255,255,255,0.3)', paddingLeft: '6px' }}>
+            <p style={s.bodyText}><span style={s.listKey}>Visualización de Impacto:</span> Dashboard interactivo que visibiliza la economía de cuidados para incidencia política.</p>
+          </div>
         </AccordionSection>
 
-        <AccordionSection title="04. Visualización de Impacto" tag="#TheProduct" isOpen={sectionsState.impacto} onClick={() => toggle('impacto')}>
-          <p style={s.bodyText}>Desarrollé un dashboard interactivo en React que transforma un diagnóstico estático en una herramienta dinámica de incidencia política.</p>
-          <p style={s.bodyText}>Este visor democratiza el acceso a la evidencia técnica, visibilizando la economía de cuidados como eje central de la movilidad urbana. Al digitalizar estos patrones, facilitamos que las políticas públicas de transporte dejen de ser neutras y se basen en datos redistributivos.</p>
+        <AccordionSection title="Stack Tecnológico" tag="#TechSpecs" isOpen={sectionsState.stack} onClick={() => toggle('stack')}>
+          <p style={s.bodyText}>Python (GeoPandas), QGIS, React, Mapbox GL JS, Figma.</p>
         </AccordionSection>
-
       </div>
 
-       <div style={s.btnContainer}>
-        <a href="https://github.com/roizunza/viajaseguradashboard" target="_blank" rel="noreferrer" style={s.btnGithub}>
-          <FaGithub style={{ marginRight: '8px', fontSize: '1.1em' }}/> 
-          VER ANÁLISIS TÉCNICO (PYTHON)
-        </a>
-      </div>
+      {/* <div style={s.btnContainer}>
+          <a href="#" style={s.btnGithub}>
+            <FaGithub style={{ marginRight: '8px', fontSize: '1.1em' }}/> 
+            VER ANÁLISIS TÉCNICO (PYTHON)
+          </a>
+        </div> 
+      */}
     </div>
   );
 }

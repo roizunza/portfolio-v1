@@ -1,14 +1,20 @@
 import React from 'react';
 import ProjectCard from '../Shared/ProjectCard';
-import imagenPortada from '../../assets/viajasegura.jpg'; 
+import imagenPortada from '../../assets/viajasegura.png'; 
 import { PROJECTS, COLORS } from '../../config/theme';
+
+/**
+ * Viaja Segura Card Component
+ * Project: Geospatial Data Engineering / Mobility Analysis
+ * Description: Highlights the transition from analog operations to structured data models.
+ */
 
 const ViajaSeguraCard = ({ onEjecutar, onClose }) => {
   return (
     <ProjectCard
       title="01_viaja_segura"
       defColor={PROJECTS.viajaSegura.color}
-      comment="// Escala local"
+      comment="// Geospatial Data Engineering"
       image={imagenPortada}
       onEjecutar={onEjecutar}
       onClose={onClose}
@@ -17,14 +23,13 @@ const ViajaSeguraCard = ({ onEjecutar, onClose }) => {
       customBtnColor={COLORS.background.header} 
     >
       <p className="project-text">
-        Para comunidades como Oyamel, Antigua y Ocotal, situadas en la periferia alta del sur de la CDMX, 
-        el transporte público concesionado es el medio inmediato para conectarse con la ciudad.
+        Transformación de operaciones analógicas en la periferia alta del sur de la CDMX 
+        en un modelo de datos estructurado para la validación técnica de servicios de transporte.
       </p>
       
       <p className="project-text">
-        Este proyecto evalúa el programa "Viaja Segura", una iniciativa social de la Ruta 66 que ofrece 
-        servicio exclusivo para mujeres e infancias. El análisis vincula estos recorridos con los 
-        equipamientos de cuidado, necesarios para sostener la vida.
+        El análisis implementa flujos <strong>ETL</strong> y modelado <strong>GIS</strong> para correlacionar flujos 
+        de movilidad con nodos de equipamiento urbano relacionados con el cuidado, generando la evidencia necesaria para la toma de decisiones estratégicas.
       </p>
     </ProjectCard>
   );

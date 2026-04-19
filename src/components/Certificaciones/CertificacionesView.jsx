@@ -1,87 +1,41 @@
-import React, { useState } from 'react';
-import { certificaciones } from './certificacionesData';
-import './Certificaciones.css';
+import React from 'react';
+import { FONTS, COLORS, PROJECTS } from './config/theme';
 
-const CertificacionesView = () => {
-  const [abierto, setAbierto] = useState(null);
+// Componentes Base
+import Header from './components/Header/Header';
+import Hero from './components/Hero/Hero';
+import Indice from './components/Indice/Indice';
+import Outro from './components/Outro/Outro';
+import Footer from './components/Footer/Footer';
 
+// Nueva Sección
+import CertificacionesView from './components/Certificaciones/CertificacionesView';
+
+function App() {
   return (
-    <div className="skills-main-wrapper">
-      <div className="skills-layout-grid">
-        
-        {/* LADO IZQUIERDO: MÉTRICAS VERTICALES */}
-        <aside className="skills-left-col">
-          <h2 className="skills-title-stylized">SKILLS</h2>
-          <div className="metrics-stack">
-            <div className="metric-item">
-              <span className="m-label">Formaciones</span>
-              <span className="m-value">8</span>
-            </div>
-            <div className="metric-item">
-              <span className="m-label">Cursos Completados</span>
-              <span className="m-value">46</span>
-            </div>
-            <div className="metric-item">
-              <span className="m-label">Horas Totales</span>
-              <span className="m-value">476</span>
-            </div>
-          </div>
-        </aside>
+    <div style={{ 
+      backgroundColor: COLORS.background.main, 
+      minHeight: '100vh',
+      color: COLORS.text.primary,
+      fontFamily: FONTS.body 
+    }}>
+      <Header />
+      
+      <main>
+        <Hero />
+        <Indice />
 
-        {/* LADO DERECHO: ESPECIALIDADES */}
-        <main className="skills-right-col">
-          
-          {/* MÉTRICA ESPECIALIDADES (AMARILLO PASTEL) */}
-          <div className="metric-item-special">
-            <span className="m-label">Especialidades</span>
-            <span className="m-value">4</span>
-          </div>
+        {/* Sección de Certificaciones colocada antes del Outro */}
+        <section id="certificaciones">
+          <CertificacionesView />
+        </section>
 
-          <div className="accordion-group">
-            {certificaciones.map((spec) => (
-              <div 
-                key={spec.id} 
-                className={`spec-box ${abierto === spec.id ? 'expanded' : ''}`}
-                style={{ '--accent': spec.colorHex }}
-              >
-                <div className="spec-trigger" onClick={() => setAbierto(abierto === spec.id ? null : spec.id)}>
-                  <div className="trigger-left">
-                    <div className="status-dot"></div>
-                    <div className="trigger-text">
-                      <h3>{spec.categoria}</h3>
-                      <p className="trigger-meta">{spec.institucion} | {spec.horasTotales}h totales</p>
-                    </div>
-                  </div>
-                  <span className="plus-minus">{abierto === spec.id ? '−' : '+'}</span>
-                </div>
+        <Outro />
+      </main>
 
-                <div className="spec-content">
-                  <div className="content-inner">
-                    <a href={spec.certificadoEspecialidad} target="_blank" rel="noreferrer" className="btn-main-cert">
-                       &gt; Certificado de Especialización
-                    </a>
-
-                    {spec.formaciones.map((f, i) => (
-                      <div key={i} className="formation-block">
-                        <h4 className="formation-name">// Formación: {f.nombre} ({f.horas}h)</h4>
-                        <div className="courses-grid">
-                          {f.cursos.map((c, j) => (
-                            <a key={j} href={c.link} target="_blank" rel="noreferrer" className="course-btn">
-                              {c.nombre}
-                            </a>
-                          ))}
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </main>
-      </div>
+      <Footer />
     </div>
   );
-};
+}
 
-export default CertificacionesView;
+export default App;

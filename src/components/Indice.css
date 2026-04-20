@@ -81,7 +81,7 @@
   flex-direction: column; 
   gap: 4px; 
   line-height: 1.2;
-  word-break: break-word; /* Evita desbordamientos si es muy largo */
+  word-break: break-word; 
 }
 
 .file-extension-span {
@@ -109,7 +109,7 @@
   }
 }
 
-/* RESPONSIVO VISUALIZACIÓN CELULAR */
+/* RESPONSIVO VISUALIZACIÓN CEL */
 @media (max-width: 768px) {
   .file-code-name {
     font-size: 0.65rem; 

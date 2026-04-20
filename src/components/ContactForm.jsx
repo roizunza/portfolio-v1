@@ -9,7 +9,6 @@ const ContactForm = ({ isOpen, onClose, t }) => {
 
   if (!isOpen) return null;
 
-  // Seguro por si el JSON tarda en mapearse
   const text = t || {
     titulo: "contact_form", para_label: "Destinatario:", rol: "Urbanista | Analista de Datos Geoespaciales", nombre_label: "Nombre:", nombre_ph: "tu nombre", correo_label: "Remitente:", correo_sub: "(Tu correo)", asunto_label: "Asunto:", asunto_ph: "Propuesta de colaboración...", mensaje_label: "Mensaje:", mensaje_ph: "Escribe los detalles aquí...", exito: "¡mensaje enviado con éxito!", error: "error al enviar. intenta de nuevo.", enviando: "enviando...", btn_enviar: ">enviar_mensaje"
   };

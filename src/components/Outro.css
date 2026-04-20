@@ -16,7 +16,7 @@
   --ck-punc: #ffffff;  /* Blanco (Puntuación) */
 }
 
-/* SECCIÓN OUTRO */
+/* OUTRO */
 .outro-section {
   display: flex;
   flex-direction: column;
@@ -76,7 +76,7 @@
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
 }
 
-/* BARRA SUPERIOR (HEADER) */
+/* HEADER*/
 .profile-window-bar {
   background-color: var(--bg-app);
   padding: 10px 15px;

@@ -94,7 +94,7 @@
   justify-content: space-between;
 }
 
-/* INPUTS Y TEXTAREA */
+/* INPUTS Y TEXT */
 .styled-input, 
 .message-textarea {
   background-color: rgba(0, 0, 0, 0.2);
@@ -127,7 +127,6 @@
   font-style: italic;
 }
 
-/* CAMPO ESTÁTICO (Destinatario) */
 .static-field {
   padding: 10px;
   font-family: var(--font-mono);
@@ -172,18 +171,16 @@
   opacity: 0.8;
 }
 
-/* Estilo para cuando se está enviando el correo */
 .submit-btn:disabled {
   opacity: 0.5;
   cursor: not-allowed;
   background-color: #333;
 }
 
-/* Animaciones requeridas por las clases .modal-overlay y .notepad-window */
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 @keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
 
-/* Responsive */
+/* Diseño responsivo */
 @media (max-width: 768px) {
   .notepad-body { padding: 20px; }
   .submit-btn { width: 100%; }

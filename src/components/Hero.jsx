@@ -9,7 +9,6 @@ const Hero = ({ alAbrirTerminal }) => {
   
   const manejarClick = (accion, destino) => {
     if (accion === 'modal') {
-      // RECONECTAMOS LA FUNCIÓN
       if (alAbrirTerminal) alAbrirTerminal(); 
     } else if (accion === 'link' || accion === 'descarga') {
       window.open(destino, '_blank'); 

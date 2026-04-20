@@ -6,13 +6,10 @@ const LanguageContext = createContext();
 
 export const LanguageProvider = ({ children }) => {
   const [idioma, setIdioma] = useState('es');
-  
-  // NUEVO: Estado global para la ventana de contacto
+
   const [contactoAbierto, setContactoAbierto] = useState(false);
 
   const t = idioma === 'es' ? es : en;
-
-  // Funciones para controlar la ventana
   const abrirContacto = () => setContactoAbierto(true);
   const cerrarContacto = () => setContactoAbierto(false);
 

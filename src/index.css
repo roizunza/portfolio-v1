@@ -319,7 +319,6 @@ body {
     gap: 20px;
   }
   
-  /* Esto "desempaqueta" los divs left/right para que los hijos sean hermanos directos en el flex */
   .profile-left, .profile-right { display: contents; }
 
   /* ORDEN MÓVIL EXACTO */

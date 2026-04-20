@@ -5,7 +5,7 @@
 .formacion-layout { display: grid; grid-template-columns: 1fr 3fr; gap: 30px; align-items: stretch; }
 .formacion-insights { display: flex; flex-direction: column; gap: 15px; }
 
-/* Cambiamos colores hardcodeados por variables globales */
+/*variables globales */
 .insight-box { background: var(--fondo-panel); border: 1px solid var(--borde-sutil); padding: 22px; border-radius: 4px; height: 95px; display: flex; flex-direction: column; justify-content: center; }
 .insight-label { color: var(--texto-secundario); font-size: 0.85rem; text-transform: uppercase; font-family: var(--fuente-datos); margin-bottom: 5px; }
 .insight-value { color: var(--texto-principal); font-family: var(--fuente-datos); font-size: 2.2rem; font-weight: 700; line-height: 1; }

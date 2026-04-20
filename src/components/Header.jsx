@@ -3,7 +3,6 @@ import { smoothScrollTo } from '../utils/scroll';
 import { FaGlobeAmericas } from 'react-icons/fa';
 import { useLanguage } from '../context/LanguageContext.jsx';
 
-// RECUPERAMOS LA PROP alDarClicEnContacto
 const Header = ({ alDarClicEnContacto }) => { 
   const { idioma, setIdioma, t } = useLanguage(); 
   const navTexts = t.nav;
@@ -21,7 +20,6 @@ const Header = ({ alDarClicEnContacto }) => {
       const rutaCV = idioma === 'en' ? '/assets/cv_en.pdf' : '/assets/cv_es.pdf';
       window.open(rutaCV, '_blank');
     } else if (item.id === "Contacto") {
-      // RECONECTAMOS LA FUNCIÓN
       if (alDarClicEnContacto) alDarClicEnContacto(); 
     } else {
       smoothScrollTo(item.id, 2000);

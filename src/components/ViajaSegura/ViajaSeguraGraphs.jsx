@@ -4,7 +4,6 @@ import { PROJECTS } from '../../config/theme';
 import paradasData from '../../data/paradas_r66.json';
 import equipData from '../../data/equipamiento.json';
 
-// Extraemos los colores globales para pasarlos como Strings planos a Recharts
 const getCssVar = (name) => getComputedStyle(document.documentElement).getPropertyValue(name).trim();
 
 export default function ViajaSeguraGraphs({ t }) { 

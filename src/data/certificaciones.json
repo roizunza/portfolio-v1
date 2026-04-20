@@ -1,22 +1,24 @@
 [
   {
-    "id": "ds",
-    "titulo": "Data Science & Machine Learning",
-    "institucion": "Alura Latam",
-    "color": "#FF007A",
+    "id": "data_science",
+    "titulo": "Data Scientist",
+    "institucion": "ONE - Oracle Next Education",
+    "color": "#00E5FF",
+    "totalFormaciones": 3,
+    "totalHoras": 184,
     "formaciones": [
       {
         "nombre": "Aprendiendo a hacer ETL G9-ONE",
         "pdf": "BLOQUE_HS_PYTHON_ETL.pdf",
         "cursos": [
-          { "nombre": "NumPy: análisis numérico eficiente con Python", "h": "8h", "pdf": "BLOQUE_HS_PYTHON_ETL.pdf" },
-          { "nombre": "Pandas E/S: trabajando con diferentes formatos de archivo", "h": "10h", "pdf": "BLOQUE_HS_PYTHON_ETL.pdf" },
-          { "nombre": "Pandas: transformación y manipulación de datos", "h": "8h", "pdf": "BLOQUE_HS_PYTHON_ETL.pdf" },
-          { "nombre": "Pandas: seleccionar y agrupar datos", "h": "10h", "pdf": "BLOQUE_HS_PYTHON_ETL.pdf" },
+          { "nombre": "NumPy: análisis numérico eficiente con Python", "h": "8h", "pdf": "PYTHON_NUMPY.pdf" },
+          { "nombre": "Pandas E/S: trabajando con diferentes formatos de archivo", "h": "10h", "pdf": "PYTHON_PANDAS_ARCHIVOS.pdf" },
+          { "nombre": "Pandas: transformación y manipulación de datos", "h": "8h", "pdf": "PYTHON_PANDAS_ETL.pdf" },
+          { "nombre": "Pandas: seleccionar y agrupar datos", "h": "10h", "pdf": "PYTHON_PANDAS_SELECCION_AGRUPACION.pdf" },
           { "nombre": "Visualización de datos: creando gráficos con bibliotecas de Python", "h": "10h", "pdf": "PYTHON_VISUALIZACION_DATOS.pdf" },
           { "nombre": "Visualización de Datos: estilizando tablas con Python", "h": "8h", "pdf": "PYTHON_VISUALIZACION_DATOS_TABLAS.pdf" },
-          { "nombre": "Challenge Telecom X: análisis de evasión de clientes", "h": "4h", "pdf": "BLOQUE_HS_PYTHON_ETL.pdf" },
-          { "nombre": "IA aplicada a la ciencia de datos: uso de la IA en la construcción de visualización de datos", "h": "13h", "pdf": "IA_CIENCIA_DATOS.pdf" }
+          { "nombre": "Challenge Telecom X: análisis de evasión de clientes", "h": "4h", "pdf": "CHALLENGE_TELECOM_2.pdf" },
+          { "nombre": "IA aplicada a la ciencia de datos: uso de la IA en la construcción de visualización de datos", "h": "10h", "pdf": "IA_CIENCIA_DATOS.pdf" }
         ]
       },
       {
@@ -26,11 +28,11 @@
           { "nombre": "Estadística con Python: frecuencias y medidas", "h": "10h", "pdf": "PYTHON_ESTADISTICA.pdf" },
           { "nombre": "Estadística con Python: Probabilidad y muestreo", "h": "12h", "pdf": "PYTHON_ESTADISTICA_PROBABILIDAD.pdf" },
           { "nombre": "Data Science: probando relaciones con regresión lineal", "h": "8h", "pdf": "CIENCIA_DATOS_REGRESIONES.pdf" },
-          { "nombre": "Regresión lineal: Técnicas avanzadas de Modelado", "h": "5h", "pdf": "BLOQUE_HS_ESTADISTICA_ML.pdf" },
-          { "nombre": "Clasificación: aprendiendo a clasificar datos con Machine Learning", "h": "8h", "pdf": "BLOQUE_HS_ESTADISTICA_ML.pdf" },
-          { "nombre": "Clasificación: validación de modelos y métricas de evaluación", "h": "8h", "pdf": "BLOQUE_HS_ESTADISTICA_ML.pdf" },
+          { "nombre": "Regresión lineal: Técnicas avanzadas de Modelado", "h": "5h", "pdf": "REGRESIONLINEAL_MODELADO.pdf" },
+          { "nombre": "Clasificación: aprendiendo a clasificar datos con Machine Learning", "h": "8h", "pdf": "CLASIFICACION_ML.pdf" },
+          { "nombre": "Clasificación: validación de modelos y métricas de evaluación", "h": "8h", "pdf": "CLASIFICACION_MODELOS.pdf" },
           { "nombre": "IA aumentada: previsión de atrasos de vuelos", "h": "8h", "pdf": "IA_AUMENTADA_PREDICCION.pdf" },
-          { "nombre": "Challenge Telecom X: análisis de evasión de clientes - Parte 2", "h": "6h", "pdf": "BLOQUE_HS_ESTADISTICA_ML.pdf" }
+          { "nombre": "Challenge Telecom X: análisis de evasión de clientes - Parte 2", "h": "6h", "pdf": "CHALLENGETELECOM2.pdf" }
         ]
       },
       {
@@ -41,35 +43,21 @@
           { "nombre": "Practicando Python: condicionales if, elif y else", "h": "4h", "pdf": "PYTHON_CONDICIONALES.pdf" },
           { "nombre": "Practicando Python: bucles for y while", "h": "4h", "pdf": "PYTHON_BUCLES.pdf" },
           { "nombre": "Practicando Python para Data Science: Challenge Alura Store", "h": "6h", "pdf": "CHALLENGE_PYTHON.pdf" },
-          { "nombre": "Modelado de bases de datos: entidades, relaciones y atributos", "h": "8h", "pdf": "BLOQUE_HS_PYTHON_FUNDAMENTOS.pdf" },
-          { "nombre": "Python para Data Science: trabajar con funciones, estructuras de datos y excepciones", "h": "11h", "pdf": "PYTHON_FUNCIONES.pdf" },
-          { "nombre": "Pandas: conociendo la biblioteca", "h": "8h", "pdf": "BLOQUE_HS_PYTHON_FUNDAMENTOS.pdf" }
+          { "nombre": "Modelado de bases de datos: entidades, relaciones y atributos", "h": "8h", "pdf": "MODELADO_DATOS_ENTIDADES.pdf" },
+          { "nombre": "Python para Data Science: trabajar con funciones, estructuras de datos y excepciones", "h": "8h", "pdf": "PYTHON_FUNCIONES.pdf" },
+          { "nombre": "Pandas: conociendo la biblioteca", "h": "8h", "pdf": "PYTHON_PANDAS.pdf" }
         ]
       }
     ]
   },
   {
-    "id": "dev",
-    "titulo": "Desarrollo Web & Programación",
-    "institucion": "Alura Latam",
-    "color": "#00FF66",
+    "id": "programacion_web",
+    "titulo": "Programación y Desarrollo Web",
+    "institucion": "ONE - Oracle Next Education",
+    "color": "#A020F0",
+    "totalFormaciones": 2,
+    "totalHoras": 99,
     "formaciones": [
-      {
-        "nombre": "Principiante en Programación G9 - ONE",
-        "pdf": "BLOQUE_HS_PROGRAMACION_PRINCIPIOS.pdf",
-        "cursos": [
-          { "nombre": "Lógica de programación: sumérgete en la programación con JavaScript", "h": "8h", "pdf": "LOGICA_PROGRAMACION_JS.pdf" },
-          { "nombre": "Lógica de programación: explorar funciones y listas", "h": "8h", "pdf": "LOGICA_PROGRAMACION_JS_FUNCIONES_LISTAS.pdf" },
-          { "nombre": "Git y GitHub: repositorio, commit y versiones", "h": "6h", "pdf": "GIT_GITHUB.pdf" },
-          { "nombre": "Practicando Lógica de Programación: Challenge Amigo secreto", "h": "10h", "pdf": "CHALLENGE_AMIGO_SECRETO.pdf" },
-          { "nombre": "IA: explorando el potencial de la Inteligencia Artificial Generativa", "h": "8h", "pdf": "IA_GENERATIVA.pdf" },
-          { "nombre": "Ingeniería de Prompt: creando prompts eficaces para la IA generativa", "h": "8h", "pdf": "INGENIERIA_PROMPT.pdf" },
-          { "nombre": "HTML y CSS: ambientes de desarrollo, estructura de archivos y tags", "h": "6h", "pdf": "HTML_CSS.pdf" },
-          { "nombre": "HTML y CSS: Clases, Posicionamiento y Flexbox", "h": "6h", "pdf": "HTML_CSS_CLASES.pdf" },
-          { "nombre": "HTML y CSS: header, footer y variables CSS", "h": "6h", "pdf": "HTML_CSS_VARIABLES.pdf" },
-          { "nombre": "HTML y CSS: trabajando con responsividad y publicación de proyectos", "h": "6h", "pdf": "HTML_CSS_RESPONSIVIDAD.pdf" }
-        ]
-      },
       {
         "nombre": "Lógica de programación con JavaScript",
         "pdf": "BLOQUE_HS_LOGICA_PROGRAMACION_JS.pdf",
@@ -78,24 +66,39 @@
           { "nombre": "Lógica de programación: explorar funciones y listas", "h": "8h", "pdf": "LOGICA_PROGRAMACION_JS_FUNCIONES_LISTAS.pdf" },
           { "nombre": "Git y GitHub: repositorio, commit y versiones", "h": "6h", "pdf": "GIT_GITHUB.pdf" }
         ]
+      },
+      {
+        "nombre": "Principiante en Programación G9 - ONE",
+        "pdf": "BLOQUE_HS_PROGRAMACION_PRINCIPIOS.pdf",
+        "cursos": [
+          { "nombre": "Practicando Lógica de Programación: Challenge Amigo secreto", "h": "10h", "pdf": "CHALLENGE_AMIGO_SECRETO.pdf" },
+          { "nombre": "IA: explorando el potencial de la Inteligencia Artificial Generativa", "h": "8h", "pdf": "IA_GENERATIVA.pdf" },
+          { "nombre": "Ingeniería de Prompt: creando prompts eficaces para la IA generativa", "h": "8h", "pdf": "INGENIERIA_PROMPT.pdf" },
+          { "nombre": "HTML y CSS: ambientes de desarrollo, estructura de archivos y tags", "h": "6h", "pdf": "HTML_CSS.pdf" },
+          { "nombre": "HTML y CSS: Clases, Posicionamiento y Flexbox", "h": "6h", "pdf": "HTML_CSS_CLASES.pdf" },
+          { "nombre": "HTML y CSS: header, footer y variables CSS", "h": "6h", "pdf": "HTML_CSS_VARIABLES.pdf" },
+          { "nombre": "HTML y CSS: trabajando con responsividad y publicación de proyectos", "h": "6h", "pdf": "HTML_CSS_RESPONSIVIDAD.pdf" }
+        ]
       }
     ]
   },
   {
-    "id": "soft",
-    "titulo": "Desarrollo Personal & Soft Skills",
-    "institucion": "Alura Latam",
-    "color": "#FDFD96",
+    "id": "desarrollo_personal",
+    "titulo": "Desarrollo Personal",
+    "institucion": "ONE - Oracle Next Education",
+    "color": "#FF5A60",
+    "totalFormaciones": 2,
+    "totalHoras": 73,
     "formaciones": [
       {
         "nombre": "Desarrollo Personal G9-ONE",
         "pdf": "BLOQUE_SS_DESARROLLOPERSONAL.pdf",
         "cursos": [
           { "nombre": "Aprender a aprender: tecnicas para tu autodesarrollo", "h": "8h", "pdf": "APRENDER A APRENDER.pdf" },
-          { "nombre": "LinkedIn para profesionales: construye tu marca y genera oportunidades", "h": "8h", "pdf": "BLOQUE_SS_DESARROLLOPERSONAL.pdf" },
-          { "nombre": "Foco: Enfocarse trae más resultados para el día a día", "h": "8h", "pdf": "FOCO.pdf" },
+          { "nombre": "LinkedIn para profesionales: construye tu marca y genera oportunidades", "h": "8h", "pdf": "LINKEDIN.pdf" },
+          { "nombre": "Foco: Enfocarse trae más resultados para el día a día", "h": "8h", "pdf": "FOCO_2.pdf" },
           { "nombre": "Hábitos: Ser productivo para cumplir sus metas personales", "h": "8h", "pdf": "HABITOS.pdf" },
-          { "nombre": "Aprendizaje con IA: personalizando tu rutina con ChatGPT", "h": "6h", "pdf": "APRENDIZAJE_CON_IA.pdf" }
+          { "nombre": "Aprendizaje con IA: personalizando tu rutina con ChatGPT", "h": "6h", "pdf": "APRENDIZAJE_CON_IA_2.pdf" }
         ]
       },
       {
@@ -103,31 +106,32 @@
         "pdf": "BLOQUE_SS_EMPRENDIMIENTO_AGILIDAD_PROTAGONISMOPROFESIONAL.pdf",
         "cursos": [
           { "nombre": "Desarrollo de carrera: demanda del mercado", "h": "6h", "pdf": "DESARROLLO_MERCADO.pdf" },
-          { "nombre": "Propósito profesional: ser el protagonista de tu carrera", "h": "6h", "pdf": "BLOQUE_SS_EMPRENDIMIENTO_AGILIDAD_PROTAGONISMOPROFESIONAL.pdf" },
+          { "nombre": "Propósito profesional: ser el protagonista de tu carrera", "h": "6h", "pdf": "PROPOSITO_PROFESIONAL.pdf" },
           { "nombre": "Transición de carrera: una guía al campo de tecnología", "h": "6h", "pdf": "TRANSICION_CARRERA.pdf" },
           { "nombre": "Fundamentos de Agilidad: Primeros pasos para la transformación ágil", "h": "6h", "pdf": "FUNDAMENTOS_AGILIDAD.pdf" },
-          { "nombre": "Emprendimiento: De la idea al plan de negocios", "h": "9h", "pdf": "EMPRENDIMIENTO.pdf" }
+          { "nombre": "Emprendimiento: De la idea al plan de negocios", "h": "6h", "pdf": "EMPRENDIMIENTO.pdf" }
         ]
       }
     ]
   },
   {
-    "id": "geo",
-    "titulo": "Geointeligencia y Gobernanza",
+    "id": "transporte",
+    "titulo": "Digitalización del Transporte Público",
     "institucion": "SEGOB (INAFED), SEDATU, GIZ y BID",
-    "color": "#00E5FF",
+    "color": "#15BE80",
+    "totalFormaciones": 1,
+    "totalHoras": 120,
     "formaciones": [
       {
         "nombre": "Diplomado Virtual Digitalización del Transporte Público en Ciudades Mexicanas",
         "pdf": "constancia INAFED_IUCK.pdf",
-        "modulos": [
-          "Introducción al Diplomado",
-          "Marco de evaluación del nivel de digitalización y competencias digitales",
-          "Nivel de Digitalización del transporte público en México",
-          "Talleres Prácticos sobre tecnologías de digitalización",
-          "Cierre de diplomado: Hacia un sistema de transporte inteligente"
-        ],
-        "horas": 120
+        "cursos": [
+          { "nombre": "Introducción al Diplomado", "h": "", "pdf": "" },
+          { "nombre": "Marco de evaluación del nivel de digitalización y competencias digitales en el transporte público", "h": "", "pdf": "" },
+          { "nombre": "Nivel de Digitalización del transporte público en México", "h": "", "pdf": "" },
+          { "nombre": "Talleres Prácticos sobre tecnologías de digitalización del transporte público aplicadas al contexto mexicano", "h": "", "pdf": "" },
+          { "nombre": "Cierre de diplomado. Hacia un sistema de transporte público inteligente, accesible, más eficiente y más amigable con el clima", "h": "", "pdf": "" }
+        ]
       }
     ]
   }

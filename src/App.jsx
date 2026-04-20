@@ -4,75 +4,79 @@ import Footer from './components/Footer';
 import Hero from './components/Hero';
 import Indice from './components/Indice.jsx';
 import { smoothScrollTo } from './utils/scroll'; 
+import certificacionesES from './data/certificaciones.json';
+import certificacionesEN from './data/certificaciones_en.json';
 import './App.css'; 
 
-// 1. IMPORTACIONES CORRECTAS
-// Asegúrate de que no haya duplicados.
 import Outro from './components/Outro.jsx'; 
-import ContactForm from './components/ContactForm.jsx'; // <--- Nuevo nombre
+import ContactForm from './components/ContactForm.jsx';
+import FormacionTecnica from './components/FormacionTecnica.jsx';
 
-// --- VISTAS DE PROYECTOS ---
+import { useLanguage } from './context/LanguageContext.jsx'; 
+
 import ViajaSeguraView from './components/ViajaSegura/ViajaSeguraView.jsx';
 import VigilanciaEspectralView from './components/VigilanciaEspectral/VigilanciaEspectralView.jsx';
 import AlgoritmoView from './components/AlgoritmoInmobiliario/AlgoritmoInmobiliarioView.jsx'; 
 import FactorEsfuerzoView from './components/FactorEsfuerzo/FactorEsfuerzoView.jsx';
 
 function App() {
-  // Estado para el formulario de contacto
-  const [mostrarFormulario, setMostrarFormulario] = useState(false);
+  const { idioma, setIdioma, t } = useLanguage();
+  const dataActual = idioma === 'es' ? certificacionesES : certificacionesEN;
 
+  const [mostrarFormulario, setMostrarFormulario] = useState(false);
   const abrirFormulario = () => setMostrarFormulario(true);
   const cerrarFormulario = () => setMostrarFormulario(false);
 
-  const irAContacto = () => {
-    abrirFormulario();
-  };
+  const irAContacto = () => abrirFormulario();
 
   const irAProyecto = (idScroll) => {
     let targetId = '';
     if(idScroll.includes('viaja')) targetId = 'seccion-viaja-segura';
-    if(idScroll.includes('vigilancia')) targetId = 'seccion-vigilancia';
-    if(idScroll.includes('algoritmo')) targetId = 'seccion-algoritmo';
-    if(idScroll.includes('esfuerzo')) targetId = 'seccion-esfuerzo'; 
+    else if(idScroll.includes('vigilancia')) targetId = 'seccion-vigilancia';
+    else if(idScroll.includes('algoritmo')) targetId = 'seccion-algoritmo';
+    else if(idScroll.includes('esfuerzo')) targetId = 'seccion-esfuerzo'; 
+    else if(idScroll.includes('formacion')) targetId = 'formacion-tecnica-seccion';
     
     if (targetId) smoothScrollTo(targetId, 1500); 
   };
 
   return (
     <div className="app-container">
-      <Header alDarClicEnContacto={irAContacto} />
+      <Header 
+        alDarClicEnContacto={irAContacto} 
+        idioma={idioma} 
+        setIdioma={setIdioma} 
+        t={t.nav} 
+      />
 
-      <main style={{ flex: 1, paddingTop: '60px' }}>
-        <Hero alAbrirTerminal={irAContacto} />
+      <main style={{ flex: 1, paddingTop: '70px' }}>
+        <Hero alAbrirTerminal={irAContacto} t={t.hero} idioma={idioma} />
         
-        <Indice onActivarDashboard={irAProyecto} />
+        <Indice onActivarDashboard={irAProyecto} idioma={idioma} t={t} />
 
-        {/* --- ZONA DE PROYECTOS --- */}
         <section id="seccion-viaja-segura" style={{ paddingBottom: '40px' }}>
-            <ViajaSeguraView />
+            <ViajaSeguraView t={t.viajaSegura} idioma={idioma} />
         </section>
 
         <section id="seccion-vigilancia" style={{ paddingBottom: '40px' }}>
-            <VigilanciaEspectralView />
+            <VigilanciaEspectralView t={t.vigilancia} idioma={idioma} />
         </section>
         
         <section id="seccion-algoritmo" style={{ paddingBottom: '40px' }}>
-            <AlgoritmoView />
+            <AlgoritmoView t={t.algoritmo} idioma={idioma} />
         </section>
         
         <section id="seccion-esfuerzo" style={{ paddingBottom: '40px' }}>
-            <FactorEsfuerzoView />
+            <FactorEsfuerzoView t={t.factorEsfuerzo} idioma={idioma} />
         </section> 
 
-        {/* OUTRO */}
-        <Outro onContactClick={irAContacto} />
-
+        <FormacionTecnica t={t.formacion} data={dataActual} />
+        
+        <Outro onContactClick={irAContacto} t={t.outro} />
       </main>
 
       <Footer /> 
-      
-      {/* 2. AQUÍ USAMOS EL COMPONENTE CON EL NUEVO NOMBRE */}
-      <ContactForm isOpen={mostrarFormulario} onClose={cerrarFormulario} />
+      <ContactForm isOpen={mostrarFormulario} onClose={cerrarFormulario} t={t.contacto} />
     </div>
   );
 }

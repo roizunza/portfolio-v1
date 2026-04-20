@@ -1,15 +1,25 @@
 import React, { useMemo } from 'react';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
-import { COLORS, FONTS, PROJECTS } from '../../config/theme';
+import { PROJECTS } from '../../config/theme';
 import paradasData from '../../data/paradas_r66.json';
 import equipData from '../../data/equipamiento.json';
 
-export default function ViajaSeguraGraphs() {
+// Extraemos los colores globales para pasarlos como Strings planos a Recharts
+const getCssVar = (name) => getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+
+export default function ViajaSeguraGraphs({ t }) { 
 
   const THEME = PROJECTS.viajaSegura;
   const RAMP = THEME.ramp;
-  
   const C_DESCENSOS = RAMP.descensos; 
+
+  // Colores CSS extraídos
+  const panelBg = getCssVar('--fondo-panel') || '#12141E';
+  const borderColor = getCssVar('--borde-sutil') || 'rgba(255,255,255,0.1)';
+  const fontBody = getCssVar('--fuente-ui') || 'Inter, sans-serif';
+  const fontData = getCssVar('--fuente-datos') || 'Roboto Mono, monospace';
+  const textPrimary = getCssVar('--texto-principal') || '#ffffff';
+  const textSecondary = getCssVar('--texto-secundario') || '#b0b3b8';
 
   const processRouteData = (rutaName) => {
     return paradasData.features
@@ -22,6 +32,7 @@ export default function ViajaSeguraGraphs() {
         DescensosReal: f.properties.descensos 
       }));
   };
+
   const dataOyamel = useMemo(() => processRouteData('Oyamel'), []);
   const dataOcotal = useMemo(() => processRouteData('Ocotal'), []);
   const dataAntigua = useMemo(() => processRouteData('Antigua'), []);
@@ -38,18 +49,23 @@ export default function ViajaSeguraGraphs() {
       if (tipo === 'SALUD') counts[r].Salud++;
       if (tipo === 'ABASTO') counts[r].Abasto++;
     });
-    return Object.keys(counts).map(key => ({ name: key, Educación: counts[key].Educ, Salud: counts[key].Salud, Abasto: counts[key].Abasto }));
+    return Object.keys(counts).map(key => ({ 
+      name: key, 
+      Educacion: counts[key].Educ, 
+      Salud: counts[key].Salud, 
+      Abasto: counts[key].Abasto 
+    }));
   }, []);
 
   const CustomTooltip = ({ active, payload, label }) => {
     if (active && payload && payload.length) {
       return (
-        <div style={{ backgroundColor: COLORS.background.panel, border: `1px solid ${COLORS.ui.border}`, padding: '6px', fontFamily: FONTS.body, fontSize: '10px' }}>
+        <div style={{ backgroundColor: panelBg, border: `1px solid ${borderColor}`, padding: '6px', fontFamily: fontBody, fontSize: '10px' }}>
           <p style={{color: 'white', fontWeight: 'bold', marginBottom:'3px', margin: 0}}>{label}</p>
           {payload.map((entry, index) => (
             <div key={index} style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
               <span style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: entry.fill }}></span>
-              <span style={{ color: COLORS.text.secondary }}>{entry.name}: <span style={{ color: '#fff', fontWeight: 'bold' }}>{Math.abs(entry.value)}</span></span>
+              <span style={{ color: textSecondary }}>{entry.name}: <span style={{ color: '#fff', fontWeight: 'bold' }}>{Math.abs(entry.value)}</span></span>
             </div>
           ))}
         </div>
@@ -59,13 +75,13 @@ export default function ViajaSeguraGraphs() {
   };
 
   const CustomAxisTick = ({ x, y, payload }) => {
-    let color = COLORS.text.secondary;
+    let color = textSecondary;
     if (payload.value === 'Oyamel') color = RAMP.rutas.oyamel;
     if (payload.value === 'Ocotal') color = RAMP.rutas.ocotal;
     if (payload.value === 'Antigua') color = RAMP.rutas.antigua;
     return (
       <g transform={`translate(${x},${y})`}>
-        <text x={0} y={0} dy={12} textAnchor="middle" fill={color} fontFamily={FONTS.data} fontSize={10} fontWeight="bold">
+        <text x={0} y={0} dy={12} textAnchor="middle" fill={color} fontFamily={fontData} fontSize={10} fontWeight="bold">
           {payload.value.toUpperCase()}
         </text>
       </g>
@@ -75,27 +91,26 @@ export default function ViajaSeguraGraphs() {
   const styles = {
     mainContainer: { display: 'flex', flexWrap: 'wrap', width: '100%', height: '100%', padding: '10px 15px', overflow: 'hidden' },
     leftSection: { flex: '2 1 500px', display: 'flex', flexDirection: 'column', paddingRight: '15px', minHeight: '0' },
-    rightSection: { flex: '1 1 250px', display: 'flex', flexDirection: 'column', paddingLeft: '15px', minHeight: '0', borderLeft: `1px solid ${COLORS.ui.border}` },
-    header: { display: 'flex', flexDirection: 'column', alignItems: 'flex-start', borderBottom: `1px solid ${COLORS.ui.border}`, marginBottom: '8px', paddingBottom: '5px', gap: '4px' },
-    title: { fontFamily: FONTS.body, fontSize: '14px', fontWeight: '700', color: COLORS.text.primary, margin: 0, letterSpacing: '0.3px', width:'100%' },
-    legend: { display: 'flex', gap: '10px', fontSize: '11px', fontFamily: FONTS.body, color: COLORS.text.primary, flexWrap: 'wrap' },
-    subTitle: { fontFamily: FONTS.data, fontSize: '10px', color: COLORS.text.secondary, marginTop: '4px', textAlign: 'center', textTransform: 'uppercase', letterSpacing: '0.5px', fontWeight: 'bold' },
+    rightSection: { flex: '1 1 250px', display: 'flex', flexDirection: 'column', paddingLeft: '15px', minHeight: '0', borderLeft: `1px solid ${borderColor}` },
+    header: { display: 'flex', flexDirection: 'column', alignItems: 'flex-start', borderBottom: `1px solid ${borderColor}`, marginBottom: '8px', paddingBottom: '5px', gap: '4px' },
+    title: { fontFamily: fontBody, fontSize: '14px', fontWeight: '700', color: textPrimary, margin: 0, letterSpacing: '0.3px', width:'100%' },
+    legend: { display: 'flex', gap: '10px', fontSize: '11px', fontFamily: fontBody, color: textPrimary, flexWrap: 'wrap' },
+    subTitle: { fontFamily: fontData, fontSize: '10px', color: textSecondary, marginTop: '4px', textAlign: 'center', textTransform: 'uppercase', letterSpacing: '0.5px', fontWeight: 'bold' },
     dot: (color) => ({ width: '6px', height: '6px', backgroundColor: color, borderRadius: '2px', display: 'inline-block', marginRight: '4px' })
   };
 
   return (
     <div style={styles.mainContainer}>
-      {/* IZQUIERDA */}
       <div style={styles.leftSection}>
         <div style={styles.header}>
-          <div style={styles.title}>Dinámica de demanda</div>
+          <div style={styles.title}>{t.graphs.demanda}</div>
           <div style={styles.legend}>
-            <div style={{ display: 'flex', alignItems: 'center' }}><span style={styles.dot(RAMP.rutas.antigua)}></span> Ascensos</div>
-            <div style={{ display: 'flex', alignItems: 'center' }}><span style={styles.dot(C_DESCENSOS)}></span> Descensos</div>
+            <div style={{ display: 'flex', alignItems: 'center' }}><span style={styles.dot(RAMP.rutas.antigua)}></span> {t.graphs.ascensos}</div>
+            <div style={{ display: 'flex', alignItems: 'center' }}><span style={styles.dot(C_DESCENSOS)}></span> {t.graphs.descensos}</div>
           </div>
         </div>
         <div style={{ display: 'flex', flex: 1, gap: '5px', minHeight: 0 }}> 
-          {[ {d: dataOyamel, c: RAMP.rutas.oyamel, t: 'Oyamel'}, {d: dataOcotal, c: RAMP.rutas.ocotal, t: 'Ocotal'}, {d: dataAntigua, c: RAMP.rutas.antigua, t: 'Antigua'} ].map((ruta, i) => (
+          {[ {d: dataOyamel, c: RAMP.rutas.oyamel, t_name: 'Oyamel'}, {d: dataOcotal, c: RAMP.rutas.ocotal, t_name: 'Ocotal'}, {d: dataAntigua, c: RAMP.rutas.antigua, t_name: 'Antigua'} ].map((ruta, i) => (
             <div key={i} style={{ flex: 1, display: 'flex', flexDirection: 'column', minHeight: 0 }}>
               <div style={{ flex: 1, minHeight: 0 }}>
                 <ResponsiveContainer width="100%" height="100%">
@@ -103,36 +118,35 @@ export default function ViajaSeguraGraphs() {
                     <XAxis type="number" hide />
                     <YAxis type="category" dataKey="name" hide width={0} />
                     <Tooltip content={<CustomTooltip />} cursor={{fill: 'rgba(255,255,255,0.05)'}} />
-                    <Bar dataKey="Ascensos" fill={ruta.c} stackId="stack" radius={[0, 2, 2, 0]} barSize={16} />
-                    <Bar dataKey="Descensos" fill={C_DESCENSOS} stackId="stack" radius={[2, 0, 0, 2]} barSize={16} />
+                    <Bar dataKey="Ascensos" name={t.graphs.ascensos} fill={ruta.c} stackId="stack" radius={[0, 2, 2, 0]} barSize={16} />
+                    <Bar dataKey="Descensos" name={t.graphs.descensos} fill={C_DESCENSOS} stackId="stack" radius={[2, 0, 0, 2]} barSize={16} />
                   </BarChart>
                 </ResponsiveContainer>
               </div>
-              <div style={{...styles.subTitle, color: ruta.c}}>{ruta.t}</div>
+              <div style={{...styles.subTitle, color: ruta.c}}>{ruta.t_name}</div>
             </div>
           ))}
         </div>
       </div>
 
-      {/* DERECHA */}
       <div style={styles.rightSection}>
         <div style={styles.header}>
-          <div style={styles.title}>Infraestructura de cuidados</div>
+          <div style={styles.title}>{t.graphs.infra}</div>
           <div style={styles.legend}>
-            <div style={{ display: 'flex', alignItems: 'center' }}><span style={styles.dot(RAMP.equipamiento.educativo)}></span> Educación</div>
-            <div style={{ display: 'flex', alignItems: 'center' }}><span style={styles.dot(RAMP.equipamiento.salud)}></span> Salud</div>
-            <div style={{ display: 'flex', alignItems: 'center' }}><span style={styles.dot(RAMP.equipamiento.abasto)}></span> Abasto</div>
+            <div style={{ display: 'flex', alignItems: 'center' }}><span style={styles.dot(RAMP.equipamiento.educativo)}></span> {t.graphs.educacion}</div>
+            <div style={{ display: 'flex', alignItems: 'center' }}><span style={styles.dot(RAMP.equipamiento.salud)}></span> {t.graphs.salud}</div>
+            <div style={{ display: 'flex', alignItems: 'center' }}><span style={styles.dot(RAMP.equipamiento.abasto)}></span> {t.graphs.abasto}</div>
           </div>
         </div>
         <div style={{ flex: 1, minHeight: 0 }}>
           <ResponsiveContainer width="100%" height="100%">
             <BarChart data={dataEquip} margin={{top:5, right:0, left:-25, bottom:5}} barCategoryGap="25%">
               <XAxis dataKey="name" axisLine={false} tickLine={false} tick={<CustomAxisTick />} interval={0} />
-              <YAxis tick={{fill: COLORS.text.secondary, fontSize: 10, fontFamily: FONTS.body}} axisLine={false} tickLine={false} />
+              <YAxis tick={{fill: textSecondary, fontSize: 10, fontFamily: fontBody}} axisLine={false} tickLine={false} />
               <Tooltip cursor={{fill: 'rgba(255,255,255,0.05)'}} content={<CustomTooltip />} />
-              <Bar dataKey="Educación" stackId="a" fill={RAMP.equipamiento.educativo} radius={[0, 0, 2, 2]} />
-              <Bar dataKey="Salud" stackId="a" fill={RAMP.equipamiento.salud} />
-              <Bar dataKey="Abasto" stackId="a" fill={RAMP.equipamiento.abasto} radius={[2, 2, 0, 0]} />
+              <Bar dataKey="Educacion" name={t.graphs.educacion} stackId="a" fill={RAMP.equipamiento.educativo} radius={[0, 0, 2, 2]} />
+              <Bar dataKey="Salud" name={t.graphs.salud} stackId="a" fill={RAMP.equipamiento.salud} />
+              <Bar dataKey="Abasto" name={t.graphs.abasto} stackId="a" fill={RAMP.equipamiento.abasto} radius={[2, 2, 0, 0]} />
             </BarChart>
           </ResponsiveContainer>
         </div>

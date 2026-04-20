@@ -1,80 +1,214 @@
-import React, { useState } from 'react';
-import Header from './components/Header';
-import Footer from './components/Footer';
-import Hero from './components/Hero';
-import Indice from './components/Indice.jsx';
-import { smoothScrollTo } from './utils/scroll'; 
-import './App.css'; 
-
-// 1. IMPORTACIONES CORRECTAS
-// Asegúrate de que no haya duplicados.
-import Outro from './components/Outro.jsx'; 
-import ContactForm from './components/ContactForm.jsx'; // <--- Nuevo nombre
-
-// --- VISTAS DE PROYECTOS ---
-import ViajaSeguraView from './components/ViajaSegura/ViajaSeguraView.jsx';
-import VigilanciaEspectralView from './components/VigilanciaEspectral/VigilanciaEspectralView.jsx';
-import AlgoritmoView from './components/AlgoritmoInmobiliario/AlgoritmoInmobiliarioView.jsx'; 
-import FactorEsfuerzoView from './components/FactorEsfuerzo/FactorEsfuerzoView.jsx';
-
-function App() {
-  // Estado para el formulario de contacto
-  const [mostrarFormulario, setMostrarFormulario] = useState(false);
-
-  const abrirFormulario = () => setMostrarFormulario(true);
-  const cerrarFormulario = () => setMostrarFormulario(false);
-
-  const irAContacto = () => {
-    abrirFormulario();
-  };
-
-  const irAProyecto = (idScroll) => {
-    let targetId = '';
-    if(idScroll.includes('viaja')) targetId = 'seccion-viaja-segura';
-    if(idScroll.includes('vigilancia')) targetId = 'seccion-vigilancia';
-    if(idScroll.includes('algoritmo')) targetId = 'seccion-algoritmo';
-    if(idScroll.includes('esfuerzo')) targetId = 'seccion-esfuerzo'; 
-    
-    if (targetId) smoothScrollTo(targetId, 1500); 
-  };
-
-  return (
-    <div className="app-container">
-      <Header alDarClicEnContacto={irAContacto} />
-
-      <main style={{ flex: 1, paddingTop: '60px' }}>
-        <Hero alAbrirTerminal={irAContacto} />
-        
-        <Indice onActivarDashboard={irAProyecto} />
-
-        {/* --- ZONA DE PROYECTOS --- */}
-        <section id="seccion-viaja-segura" style={{ paddingBottom: '40px' }}>
-            <ViajaSeguraView />
-        </section>
-
-        <section id="seccion-vigilancia" style={{ paddingBottom: '40px' }}>
-            <VigilanciaEspectralView />
-        </section>
-        
-        <section id="seccion-algoritmo" style={{ paddingBottom: '40px' }}>
-            <AlgoritmoView />
-        </section>
-        
-        <section id="seccion-esfuerzo" style={{ paddingBottom: '40px' }}>
-            <FactorEsfuerzoView />
-        </section> 
-
-        {/* OUTRO */}
-        <Outro onContactClick={irAContacto} />
-
-      </main>
-
-      <Footer /> 
-      
-      {/* 2. AQUÍ USAMOS EL COMPONENTE CON EL NUEVO NOMBRE */}
-      <ContactForm isOpen={mostrarFormulario} onClose={cerrarFormulario} />
-    </div>
-  );
+/* VARIABLES LOCALES */
+.index-section {
+  --bg-hover: #2a2d2e;      
+  --border-card: #3e3e42;   
+  --highlight: #007acc;     
 }
 
-export default App;
+.projects-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 80px 40px;
+}
+
+/* TÍTULO: ROBOTO MONO BOLD */
+.projects-header {
+  margin-bottom: 60px;
+  text-align: center;
+}
+
+.projects-title {
+  font-family: 'Roboto Mono', monospace; 
+  font-size: 2.5rem;
+  color: #FFFFFF;
+  font-weight: 700;
+  letter-spacing: -1px;
+}
+
+/* GRID */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); 
+  gap: 20px;
+  align-items: start;
+}
+
+/* TARJETA */
+.project-file {
+  background-color: transparent;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  padding: 20px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.project-file:hover {
+  background-color: var(--bg-hover);
+  transform: translateY(-5px);
+}
+
+.project-file.active {
+  background-color: rgba(0, 122, 204, 0.1); 
+  border: 1px solid var(--highlight);
+}
+
+/* ICONO */
+.file-icon-img {
+  width: 60px;
+  height: auto;
+  object-fit: contain;
+  transition: transform 0.2s;
+  filter: grayscale(100%) brightness(200%); 
+}
+
+.project-file:hover .file-icon-img {
+  transform: scale(1.1);
+}
+
+/* TEXTO DEL ARCHIVO */
+.file-code-name {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 0.95rem; 
+  font-weight: 500;
+  color: #FFFFFF;
+  text-align: center;
+  display: flex;
+  flex-direction: column; 
+  gap: 4px; 
+  line-height: 1.2;
+  word-break: break-word; /* Evita desbordamientos si es muy largo */
+}
+
+.file-extension-span {
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+/* RESPONSIVO VISUALIZACIÓN TABLET */
+@media (max-width: 1024px) {
+  .projects-container {
+    padding: 40px 20px;
+  }
+  
+  .projects-grid {
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 15px;
+  }
+  
+  .projects-title {
+    font-size: 1.8rem;
+  }
+  
+  .file-icon-img {
+    width: 50px;
+  }
+}
+
+/* RESPONSIVO VISUALIZACIÓN CELULAR */
+@media (max-width: 768px) {
+  .file-code-name {
+    font-size: 0.65rem; 
+    line-height: 1.1;
+  }
+
+  .file-extension-span {
+    font-size: 0.75rem; 
+  }
+
+
+  .project-file {
+    padding: 15px 5px;
+    gap: 10px;
+  }
+
+  .file-icon-img {
+    width: 40px; 
+  }
+}
+
+/* MODAL SINOPSIS */
+.synopsis-overlay {
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background-color: rgba(0,0,0,0.8);
+  backdrop-filter: blur(8px);
+  z-index: 1500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.synopsis-card {
+  background-color: #1e1e1e;
+  border: 1px solid #333;
+  width: 100%;
+  max-width: 500px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+  display: flex;
+  flex-direction: column;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.synopsis-header {
+  background-color: #252526;
+  padding: 15px 20px;
+  border-bottom: 1px solid #333;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.synopsis-title {
+  font-family: var(--fuente-codigo);
+  color: var(--texto-principal);
+  font-size: 0.9rem;
+}
+
+.btn-close {
+  background: none; border: none;
+  color: #cccccc; cursor: pointer; font-size: 1.2rem;
+}
+.btn-close:hover { color: white; }
+
+.synopsis-body {
+  padding: 30px;
+  font-family: var(--fuente-ui);
+  color: #cccccc;
+  line-height: 1.6;
+}
+
+.synopsis-actions {
+  padding: 20px;
+  border-top: 1px solid #333;
+  display: flex;
+  justify-content: flex-end;
+  background-color: #252526;
+}
+
+.btn-navigate {
+  background-color: var(--highlight);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-family: var(--fuente-codigo);
+  font-size: 0.9rem;
+  cursor: pointer;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.btn-navigate:hover { background-color: #0062a3; }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}

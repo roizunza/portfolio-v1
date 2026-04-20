@@ -1,7 +1,10 @@
 import React from 'react';
 import { FaGithub, FaLinkedin, FaFileDownload, FaPlug } from 'react-icons/fa';
+import { useLanguage } from '../context/LanguageContext.jsx';
 
 const Hero = ({ alAbrirTerminal }) => {
+  const { idioma, t } = useLanguage();
+  const heroText = t.hero;
   
   const manejarClick = (accion, destino) => {
     if (accion === 'modal') {
@@ -14,24 +17,123 @@ const Hero = ({ alAbrirTerminal }) => {
   };
 
   return (
-    <section className="hero-section" id="Sobre_Mi">
+    <section className="hero-section" id="Sobre_Mi" style={{padding: '40px 0'}}>
+      <style>{`
+        .profile-container {
+          max-width: 1350px; 
+          width: 95%;
+          margin: 0 auto;
+          background-color: var(--fondo-panel); 
+          backdrop-filter: blur(10px);
+          -webkit-backdrop-filter: blur(10px);
+          border: 1px solid var(--borde-sutil);
+          border-radius: 8px;
+          overflow: hidden;
+          box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+        }
+
+        .profile-window-bar {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 10px 20px;
+          background-color: var(--fondo-app); 
+          border-bottom: 1px solid var(--borde-sutil);
+          font-family: var(--fuente-datos);
+          font-size: 13px;
+        }
+
+        .window-controls {
+          display: flex;
+          gap: 15px;
+          color: var(--controles-ventana);
+        }
+
+        .profile-content {
+          display: flex;
+          align-items: center;
+          gap: 60px;
+          padding: 60px; 
+        }
+
+        .profile-left {
+          flex: 0 0 30%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .profile-image {
+          width: 320px; 
+          height: 320px;
+          border-radius: 50%;
+          object-fit: cover;
+          border: 4px solid rgba(255,255,255,0.05);
+          box-shadow: 0 0 30px rgba(0,0,0,0.3);
+        }
+
+        .profile-right {
+          flex: 1;
+        }
+
+        @media (max-width: 992px) {
+          .profile-content {
+            flex-direction: column;
+            padding: 40px 20px;
+            gap: 30px;
+            text-align: center;
+          }
+          
+          .profile-image {
+            width: 200px;
+            height: 200px;
+          }
+
+          .profile-window-bar {
+            padding: 8px 12px;
+            font-size: 11px;
+          }
+
+          .window-controls {
+            gap: 8px;
+          }
+
+          .code-block {
+            font-size: 13px !important;
+            text-align: left; 
+            width: 100%;
+          }
+
+          .profile-buttons {
+            justify-content: center !important;
+            flex-wrap: wrap;
+            gap: 10px;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .profile-window-bar span:first-child {
+            max-width: 150px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+          }
+        }
+      `}</style>
+
       <div className="profile-container">
-        
-        {/* Header de Ventana */}
         <div className="profile-window-bar">
-          <span style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-            <span style={{ opacity: 0.5 }}>📂</span> perfil_usuario
+          <span style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--texto-secundario)' }}>
+            <span style={{ opacity: 0.5 }}>📂</span> {heroText.archivoPy}
           </span>
-          <span className="window-controls">
-            <span>[ _ ]</span>
-            <span>[ ▢ ]</span>
-            <span>[ X ]</span>
-          </span>
+          <div className="window-controls">
+            <span>[ _ ] </span>
+            <span> [ ▢ ] </span>
+            <span> [ X ]</span>
+          </div>
         </div>
 
         <div className="profile-content">
-          
-          {/* Columna Izquierda: Foto y Cita */}
           <div className="profile-left">
             <img 
               src="/assets/foto_perfil.jpg"
@@ -42,77 +144,55 @@ const Hero = ({ alAbrirTerminal }) => {
                 e.target.parentNode.style.backgroundColor = '#333'; 
               }}
             />
-            <p className="profile-quote">
-              """<br/>
-              Entre scripts y coordenadas, encuentro el momento para reconectar:
-              reinterpreto la ciudad a través del dibujo, plasmando el folclore
-              y el ambiente que la data no alcanza a describir.<br/>
-              """
-            </p>
           </div>
 
-          {/* Columna Derecha: Código y Botones */}
           <div className="profile-right">
-            
-            <div className="code-block">
+            <div className="code-block" style={{fontSize: '16px', lineHeight: '1.6'}}>
               <div>
-                <span className="ck-key">class</span>{' '}
-                <span className="ck-cls">Rocio_Izunza</span>
-                <span className="ck-punc">(</span>
-                <span className="ck-cls">Urbanista</span>
-                <span className="ck-punc">):</span>
+                <span className="ck-key" style={{color: 'var(--color-keyword)'}}>class</span>{' '}
+                <span className="ck-cls" style={{color: 'var(--color-function)'}}>Rocio_Izunza</span>
+                <span className="ck-punc" style={{color: 'var(--texto-principal)'}}>(</span>
+                <span className="ck-cls" style={{color: 'var(--color-variable)'}}>{heroText.clase}</span>
+                <span className="ck-punc" style={{color: 'var(--texto-principal)'}}>,</span>{' '}
+                <span className="ck-cls" style={{color: 'var(--color-variable)'}}>{heroText.subclase}</span>
+                <span className="ck-punc" style={{color: 'var(--texto-principal)'}}>):</span>
               </div>
               
-              <div className="indent-1 ck-com">
+              <div className="indent-1 ck-com" style={{color: 'var(--color-comment)'}}>
                 """<br/>
-                Decodifico la ciudad a través de la ciencia de datos.<br/>
-                Programo para que la planificación urbana deje de<br/>
-                basarse en intuiciones y empiece a escuchar,<br/>
-                con evidencia, a quienes habitan la ciudad.<br/>
+                {heroText.bio}<br/>
                 """
               </div>
               <br/>
               <div className="indent-1">
-                <span className="ck-key">def</span>{' '}
-                <span className="ck-fn">perfil</span>
-                <span className="ck-punc">():</span>
+                <span className="ck-key" style={{color: 'var(--color-keyword)'}}>def</span>{' '}
+                <span className="ck-fn" style={{color: 'var(--color-function)'}}>perfil</span>
+                <span className="ck-punc" style={{color: 'var(--texto-principal)'}}>():</span>
               </div>
               
               <div className="indent-2">
-                <span className="ck-key">return</span>{' '}
-                <span className="ck-str">"Analista de Datos Geoespaciales"</span>
+                <span className="ck-key" style={{color: 'var(--color-keyword)'}}>return</span>{' '}
+                <span className="ck-str" style={{color: 'var(--color-string)'}}>"{heroText.perfilLabel}"</span>
               </div>
             </div>
 
-            <div className="profile-buttons">
-              {/* 1. Botón CV */}
-              <button className="profile-btn" onClick={() => manejarClick('descarga', '/assets/cv_actual.pdf')}>
-                <FaFileDownload style={{marginRight: '8px'}}/> DESCARGAR_CV
+            <div className="profile-buttons" style={{marginTop: '40px', display: 'flex', gap: '15px'}}>
+              <button className="profile-btn" onClick={() => manejarClick('descarga', idioma === 'en' ? '/assets/cv_en.pdf' : '/assets/cv_es.pdf')}>
+                <FaFileDownload style={{marginRight: '8px'}}/> {heroText.cvBtn}
               </button>
               
-              {/* 2. Botón LinkedIn */}
-              <button 
-                className="profile-btn" 
-                onClick={() => manejarClick('link', 'https://www.linkedin.com/in/rocioizunza/')}
-              >
+              <button className="profile-btn" onClick={() => manejarClick('link', 'https://www.linkedin.com/in/rocioizunza/')}>
                 <FaLinkedin style={{marginRight: '8px'}}/> LINKEDIN
               </button>
               
-              {/* 3. Botón GitHub */}
-              <button 
-                className="profile-btn" 
-                onClick={() => manejarClick('link', 'https://github.com/roizunza')}
-              >
+              <button className="profile-btn" onClick={() => manejarClick('link', 'https://github.com/roizunza')}>
                 <FaGithub style={{marginRight: '8px'}}/> GITHUB
               </button>
 
-              {/* 4. Botón Conexión */}
               <button className="profile-btn" onClick={() => manejarClick('modal')}>
-                <FaPlug style={{marginRight: '8px', transform: 'rotate(90deg)'}}/> INICIAR_CONEXIÓN
+                <FaPlug style={{marginRight: '8px', transform: 'rotate(90deg)'}}/> {heroText.cta}
               </button>
-
             </div>
-
           </div>
         </div>
       </div>

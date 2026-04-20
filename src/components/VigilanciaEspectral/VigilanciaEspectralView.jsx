@@ -1,29 +1,24 @@
 import React from 'react';
-import '../Shared/ProjectDashboardLayout.css'; // Usamos el CSS Maestro
-
-import Sidebar from './VigilanciaEspectralSidebar';
-import Scorecards from './VigilanciaEspectralScorecards';
-import MapComponent from './VigilanciaEspectralMap'; // Tu mapa vectorial de arriba
-import RasterVisor from './VigilanciaEspectralRasterVisor';   // <--- EL NUEVO COMPONENTE DE RASTERS
+import ProjectDashboardLayout from '../Shared/ProjectDashboardLayout.jsx';
+import Sidebar from './VigilanciaEspectralSidebar.jsx';
+import MapComponent from './VigilanciaEspectralMap.jsx';
+import Scorecards from './VigilanciaEspectralScorecards.jsx';
+import RasterVisor from './VigilanciaEspectralRasterVisor.jsx';
+import { useLanguage } from '../../context/LanguageContext.jsx';
 
 const VigilanciaEspectralView = () => {
-  return (
-    <div className="dashboard-grid">
-      
-      <div className="panel area-sidebar">
-        <Sidebar />
-      </div>
-      <div className="area-scorecards">
-        <Scorecards />
-      </div>
-      <div className="panel area-top">
-        <MapComponent />
-      </div>
-      <div className="panel area-bottom">
-        <RasterVisor />
-      </div>
+  const { t: fullT } = useLanguage();
+  const t = fullT.vigilancia;
 
-    </div>
+  if (!t) return null;
+
+  return (
+    <ProjectDashboardLayout
+      sidebarContent={<Sidebar t={t} />}
+      mapContent={<MapComponent t={t} />}
+      scorecardsContent={<Scorecards t={t} />}
+      chartsContent={<RasterVisor t={t} />}
+    />
   );
 };
 

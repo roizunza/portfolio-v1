@@ -1,0 +1,35 @@
+.formacion-section { max-width: 1400px; margin: 0 auto; padding: 80px 40px; }
+.formacion-header { margin-bottom: 60px; text-align: center; }
+.formacion-title { font-family: var(--fuente-datos); font-size: 2.5rem; color: var(--texto-principal); font-weight: 700; letter-spacing: -1px; margin: 0; }
+.formacion-title span { margin-right: 10px; }
+.formacion-layout { display: grid; grid-template-columns: 1fr 3fr; gap: 30px; align-items: stretch; }
+.formacion-insights { display: flex; flex-direction: column; gap: 15px; }
+
+/* Cambiamos colores hardcodeados por variables globales */
+.insight-box { background: var(--fondo-panel); border: 1px solid var(--borde-sutil); padding: 22px; border-radius: 4px; height: 95px; display: flex; flex-direction: column; justify-content: center; }
+.insight-label { color: var(--texto-secundario); font-size: 0.85rem; text-transform: uppercase; font-family: var(--fuente-datos); margin-bottom: 5px; }
+.insight-value { color: var(--texto-principal); font-family: var(--fuente-datos); font-size: 2.2rem; font-weight: 700; line-height: 1; }
+.formacion-list { display: flex; flex-direction: column; gap: 15px; }
+
+.especialidad-card { background: var(--fondo-panel); border-left: 4px solid var(--accent-color); overflow: hidden; transition: all 0.3s ease; min-height: 95px; }
+.especialidad-header { padding: 0 25px; height: 95px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; }
+.especialidad-info h3 { margin: 0; font-family: var(--fuente-datos); font-size: 1.25rem; color: var(--texto-principal); }
+.especialidad-meta { font-size: 0.9rem; color: var(--texto-muteado); margin-top: 4px; font-family: var(--fuente-datos); }
+.plus-minus { color: var(--accent-color); font-family: var(--fuente-datos); font-size: 1.8rem; }
+
+.especialidad-content { max-height: 0; overflow: hidden; transition: max-height 0.5s ease; background: rgba(0, 0, 0, 0.2); }
+.especialidad-card.open .especialidad-content { max-height: 2000px; }
+
+.formacion-item { padding: 25px 40px; border-bottom: 1px solid var(--borde-sutil); }
+.formacion-item h4 { color: var(--accent-color); font-family: var(--fuente-datos); font-size: 1rem; margin-bottom: 15px; display: inline-block; }
+.curso-line { color: var(--texto-secundario); font-size: 0.95rem; font-family: var(--fuente-datos); margin-bottom: 8px; }
+
+.link-cert { cursor: pointer; }
+.link-cert:hover { opacity: 0.7; text-decoration: underline; color: var(--accent-color); }
+.curso-line span { font-size: 0.8rem; opacity: 0.4; margin-left: 8px; }
+
+@media (max-width: 1024px) {
+  .formacion-layout { grid-template-columns: 1fr; }
+  .formacion-insights { flex-direction: row; flex-wrap: wrap; justify-content: center; margin-bottom: 30px; }
+  .formacion-title { font-size: 1.8rem; }
+}

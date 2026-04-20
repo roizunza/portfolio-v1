@@ -1,19 +1,27 @@
 import React, { useRef, useEffect } from 'react';
 import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
-import { PROJECTS, STYLES, FONTS } from '../../config/theme';
+import { PROJECTS, STYLES } from '../../config/theme';
 
 import distritosData from '../../data/distritos-data-airbnb-hk.json';
 import unidadesData from '../../data/unidades-enteras-aribnb-hk.json';
 
-mapboxgl.accessToken = 'pk.eyJ1Ijoicm9jb2VsbGFyIiwiYSI6ImNtaXFqdG1tajBneXMzY29ra3ZpNHhuaTAifQ.8rc4UaH2YExVO5ceCB9MXA';
+mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_TOKEN;
 
-export default function MapComponent() {
+const getCssVar = (name) => getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+
+export default function MapComponent({ t }) {
   const mapContainer = useRef(null);
   const map = useRef(null);
+  const tRef = useRef(t);
 
   const RAMP = PROJECTS.algoritmo.ramp;
   const PROJECT_COLOR = PROJECTS.algoritmo.color; 
+  const fontBody = getCssVar('--fuente-ui') || 'Inter, sans-serif';
+
+  useEffect(() => {
+    tRef.current = t;
+  }, [t]);
 
   useEffect(() => {
     if (map.current) return;
@@ -30,7 +38,6 @@ export default function MapComponent() {
 
     map.current.on('load', () => {
 
-      // CAPA DE POLÍGONOS
       map.current.addSource('distritos', { type: 'geojson', data: distritosData });
       
       map.current.addLayer({
@@ -48,7 +55,6 @@ export default function MapComponent() {
         }
       });
       
-      // CAPA DE PUNTOS 
       map.current.addSource('unidades', { type: 'geojson', data: unidadesData });
       map.current.addLayer({
         'id': 'unidades-points', 'type': 'circle', 'source': 'unidades',
@@ -64,12 +70,10 @@ export default function MapComponent() {
           ]
         }
       });
-
       
       map.current.addLayer({ 'id': 'distritos-outline', 'type': 'line', 'source': 'distritos', 'paint': { 'line-color': '#FFFFFF', 'line-width': 0.2, 'line-opacity': 0.2 } });
     });
 
-    // POPUP INTERACTIVO
     const popup = new mapboxgl.Popup({
       closeButton: false,
       closeOnClick: false,
@@ -80,6 +84,7 @@ export default function MapComponent() {
       map.current.getCanvas().style.cursor = 'pointer';
       const props = e.features[0].properties;
       const coordinates = e.lngLat;
+      const currentT = tRef.current.map; 
 
       let precioHKD = 0;
       let titulo = '';
@@ -87,19 +92,18 @@ export default function MapComponent() {
       
       if (type === 'punto') {
         precioHKD = props.price;
-        titulo = 'UNIDAD AIRBNB';
+        titulo = currentT.popupUnidad;
         colorTitulo = RAMP.step4; 
       } else {
         precioHKD = props.PRECIO_PROMEDIO_HK;
-    
-        titulo = `DISTRITO: ${props.distrito || ''}`;
+        titulo = `${currentT.popupDistrito}${props.distrito || ''}`;
         colorTitulo = PROJECT_COLOR; 
       }
 
       const precioUSD = (precioHKD / 7.8).toFixed(2);
       const precioHKDFormat = precioHKD.toLocaleString();
 
-      const containerStyle = `font-family:${FONTS.body}; font-size:11px; color:#e0e0e0; min-width:140px;`;
+      const containerStyle = `font-family:${fontBody}; font-size:11px; color:#e0e0e0; min-width:140px;`;
       const titleStyle = `font-weight:bold; text-transform:uppercase; font-size:12px; margin-bottom:6px; border-bottom:1px solid rgba(255,255,255,0.2); padding-bottom:3px; letter-spacing:0.5px; color:${colorTitulo};`;
       const rowStyle = `display:flex; justify-content:space-between; margin-bottom:3px;`;
       const labelStyle = `color:#aaa; margin-right:8px;`;
@@ -111,11 +115,11 @@ export default function MapComponent() {
             ${titulo}
           </div>
           <div style="${rowStyle}">
-            <span style="${labelStyle}">Precio HKD:</span> 
+            <span style="${labelStyle}">${currentT.popupPrecioHKD}</span> 
             <span style="${valStyle}">$${precioHKDFormat}</span>
           </div>
           <div style="${rowStyle}">
-            <span style="${labelStyle}">Precio USD:</span> 
+            <span style="${labelStyle}">${currentT.popupPrecioUSD}</span> 
             <span style="${valStyle}">$${precioUSD}</span>
           </div>
         </div>
@@ -129,19 +133,19 @@ export default function MapComponent() {
       popup.remove();
     };
 
-    // Eventos
     map.current.on('mousemove', 'distritos-fill', (e) => showPopup(e, 'poligono'));
     map.current.on('mouseleave', 'distritos-fill', hidePopup);
 
     map.current.on('mouseenter', 'unidades-points', (e) => showPopup(e, 'punto'));
     map.current.on('mouseleave', 'unidades-points', hidePopup);
 
-  }, []);
+  }, [RAMP, PROJECT_COLOR]);
 
-  // Estilos Leyenda
+  if (!t || !t.map) return null;
+
   const titleStyle = STYLES.legendTitle;
-  const subTitleStyle = { fontSize: '9px', fontWeight: 'bold', color: '#aaa', margin: '6px 0 3px 0', textTransform: 'none' }; // Corrección: textTransform none para permitir minúsculas
-  const itemStyle = { display: 'flex', alignItems: 'center', marginBottom: '4px', fontSize: '9px', fontWeight: '300' };
+  const subTitleStyle = { fontSize: '9px', fontWeight: 'bold', color: '#aaa', margin: '6px 0 3px 0', textTransform: 'none' };
+  const itemStyle = { display: 'flex', alignItems: 'center', marginBottom: '4px', fontSize: '9px', fontWeight: '300', color: 'var(--texto-principal)' };
   const boxColor = { width: '10px', height: '10px', borderRadius: '2px', marginRight: '8px' };
   const circleColor = { width: '8px', height: '8px', borderRadius: '50%', marginRight: '8px' };
 
@@ -163,9 +167,9 @@ export default function MapComponent() {
       <div ref={mapContainer} style={{ width: '100%', height: '100%' }} />
       
       <div style={STYLES.legendBox}>
-        <h4 style={titleStyle}>SIMBOLOGÍA</h4>
+        <h4 style={titleStyle}>{t.map.simbologia}</h4>
 
-        <div style={subTitleStyle}>Precio Promedio/Distrito(HK$)</div>
+        <div style={subTitleStyle}>{t.map.subPrecioDistrito}</div>
         <div style={itemStyle}><div style={{...boxColor, background: RAMP.step5}}></div> &gt; 3,482 </div>
         <div style={itemStyle}><div style={{...boxColor, background: RAMP.step4}}></div> 2,423 - 3,482 </div>
         <div style={itemStyle}><div style={{...boxColor, background: RAMP.step3}}></div> 1,497 - 2,423 </div>
@@ -174,7 +178,7 @@ export default function MapComponent() {
 
         <div style={{ height: '1px', background: 'rgba(255,255,255,0.1)', margin: '8px 0' }}></div>
 
-        <div style={subTitleStyle}>Precio Unidad (HK$)</div>
+        <div style={subTitleStyle}>{t.map.subPrecioUnidad}</div>
         <div style={itemStyle}><div style={{...circleColor, background: RAMP.step5}}></div> &gt; 1,422 </div>
         <div style={itemStyle}><div style={{...circleColor, background: RAMP.step4}}></div> 989 - 1,422 </div>
         <div style={itemStyle}><div style={{...circleColor, background: RAMP.step3}}></div> 706 - 989 </div>

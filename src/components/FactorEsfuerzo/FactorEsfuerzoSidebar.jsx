@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { PROJECTS } from '../../config/theme';
 
-const THEME = PROJECTS.viajaSegura;
+const THEME = PROJECTS.factorEsfuerzo;
 
 const AccordionSection = ({ title, tag, isOpen, onClick, children }) => {
   const s = {
@@ -13,7 +13,7 @@ const AccordionSection = ({ title, tag, isOpen, onClick, children }) => {
       letterSpacing: '0.3px', transition: 'color 0.3s'
     },
     arrow: {
-      color: THEME.color, 
+      color: THEME.color, // <-- CORRECCIÓN: Ahora toma el color exacto del proyecto
       fontSize: '10px',
       transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)',
       transition: 'transform 0.3s'
@@ -35,7 +35,7 @@ const AccordionSection = ({ title, tag, isOpen, onClick, children }) => {
   );
 };
 
-export default function ViajaSeguraSidebar({ t }) {
+export default function FactorEsfuerzoSidebar({ t }) {
   const [sectionsState, setSectionsState] = useState({ purpose: true, methodology: false, insights: false, stack: false });
 
   if (!t) return null;
@@ -82,25 +82,30 @@ export default function ViajaSeguraSidebar({ t }) {
         <AccordionSection title={t.metodologia.title} tag={t.metodologia.tag} isOpen={sectionsState.methodology} onClick={() => toggle('methodology')}>
           <div style={s.listItem}>
             <p style={s.bodyText}>
-              <span style={s.listKey}>{t.metodologia.etlKey}</span> {t.metodologia.etlText}
+              <span style={s.listKey}>{t.metodologia.item1Key}</span> {t.metodologia.item1Text}
             </p>
           </div>
           <div style={s.listItem}>
             <p style={s.bodyText}>
-              <span style={s.listKey}>{t.metodologia.spatialKey}</span> {t.metodologia.spatialText}
+              <span style={s.listKey}>{t.metodologia.item2Key}</span> {t.metodologia.item2Text}
+            </p>
+          </div>
+          <div style={s.listItem}>
+            <p style={s.bodyText}>
+              <span style={s.listKey}>{t.metodologia.item3Key}</span> {t.metodologia.item3Text}
             </p>
           </div>
         </AccordionSection>
 
         <AccordionSection title={t.insights.title} tag={t.insights.tag} isOpen={sectionsState.insights} onClick={() => toggle('insights')}>
           <div style={{ marginBottom: '8px', borderLeft: '2px solid rgba(255,255,255,0.3)', paddingLeft: '6px' }}>
-            <p style={s.bodyText}><span style={s.listKey}>{t.insights.ejeKey}</span> {t.insights.ejeText}</p>
+            <p style={s.bodyText}><span style={s.listKey}>{t.insights.item1Key}</span> {t.insights.item1Text}</p>
           </div>
           <div style={{ marginBottom: '8px', borderLeft: '2px solid rgba(255,255,255,0.3)', paddingLeft: '6px' }}>
-            <p style={s.bodyText}><span style={s.listKey}>{t.insights.valKey}</span> {t.insights.valText}</p>
+            <p style={s.bodyText}><span style={s.listKey}>{t.insights.item2Key}</span> {t.insights.item2Text}</p>
           </div>
           <div style={{ borderLeft: '2px solid rgba(255,255,255,0.3)', paddingLeft: '6px' }}>
-            <p style={s.bodyText}><span style={s.listKey}>{t.insights.visKey}</span> {t.insights.visText}</p>
+            <p style={s.bodyText}><span style={s.listKey}>{t.insights.item3Key}</span> {t.insights.item3Text}</p>
           </div>
         </AccordionSection>
 

@@ -1,28 +1,31 @@
 import React from 'react';
-import ProjectCard from '../Shared/ProjectCard';
+import ProjectCard from '../Shared/ProjectCard.jsx';
 import imgVigilancia from '../../assets/vigilanciaespectral.png';
+import { PROJECTS } from '../../config/theme.js';
+import { useLanguage } from '../../context/LanguageContext.jsx';
 
 const VigilanciaEspectralCard = ({ onEjecutar, onClose }) => {
+  const { idioma, t: fullT } = useLanguage();
+  const t = fullT.vigilancia;
+
   return (
     <ProjectCard
-      title="02_vigilancia_espectral"
-      defColor="#15BE80" 
-      comment="// Escala municipal"
+      title={t.fileName}
+      defColor={PROJECTS.vigilancia.color} 
+      comment={idioma === 'es' ? "// Auditoría de Datos Ambientales y ML" : "// Environmental Data Auditing & ML"}
       image={imgVigilancia}
       onEjecutar={onEjecutar}
       onClose={onClose}
+      customBgColor="var(--fondo-panel)"
+      customBtnColor="var(--azul-electrico)"
+      btnText={t.ejecutar}
     >
       <p className="project-text">
-        En el municipio de Dorado, al norte de Puerto Rico, la costa enfrenta una fractura: 
-        aunque la playa es legalmente un bien de uso público, los desarrollos inmobiliarios 
-        han impuesto una privatización de facto.
+        {t.cardDescription1}
       </p>
       
       <p className="project-text">
-        Este análisis utiliza monitoreo satelital para auditar el territorio. Se identifica 
-        cómo se instrumentaliza el propio entorno natural y la arquitectura para bloquear 
-        los accesos públicos terrestres, evidenciando una exclusión que separa a la comunidad 
-        de su derecho al disfrute de la playa.
+        {t.cardDescription2}
       </p>
     </ProjectCard>
   );

@@ -1,0 +1,114 @@
+[
+  {
+    "id": "ds",
+    "titulo": "Data Science & Machine Learning",
+    "institucion": "Alura Latam",
+    "color": "#FF007A",
+    "formaciones": [
+      {
+        "nombre": "ETL Processes with Python G9-ONE",
+        "pdf": "BLOQUE_HS_PYTHON_ETL.pdf",
+        "cursos": [
+          { "nombre": "NumPy: Efficient Numerical Analysis with Python", "h": "8h", "pdf": "BLOQUE_HS_PYTHON_ETL.pdf" },
+          { "nombre": "Pandas I/O: Working with different file formats", "h": "10h", "pdf": "BLOQUE_HS_PYTHON_ETL.pdf" },
+          { "nombre": "Pandas: Data Transformation and Manipulation", "h": "8h", "pdf": "BLOQUE_HS_PYTHON_ETL.pdf" },
+          { "nombre": "Data Visualization: Plotting with Python Libraries", "h": "10h", "pdf": "PYTHON_VISUALIZACION_DATOS.pdf" },
+          { "nombre": "Data Visualization: Styling Tables with Python", "h": "8h", "pdf": "PYTHON_VISUALIZACION_DATOS_TABLAS.pdf" },
+          { "nombre": "Applied AI for Data Science: AI-driven Visual Analytics", "h": "10h", "pdf": "IA_CIENCIA_DATOS.pdf" }
+        ]
+      },
+      {
+        "nombre": "Statistics and Machine Learning G9-ONE",
+        "pdf": "BLOQUE_HS_ESTADISTICA_ML.pdf",
+        "cursos": [
+          { "nombre": "Statistics with Python: Frequencies and Measures", "h": "10h", "pdf": "PYTHON_ESTADISTICA.pdf" },
+          { "nombre": "Statistics with Python: Probability and Sampling", "h": "12h", "pdf": "PYTHON_ESTADISTICA_PROBABILIDAD.pdf" },
+          { "nombre": "Data Science: Linear Regression Analysis", "h": "8h", "pdf": "CIENCIA_DATOS_REGRESIONES.pdf" },
+          { "nombre": "Augmented AI: Flight Delay Prediction", "h": "8h", "pdf": "IA_AUMENTADA_PREDICCION.pdf" }
+        ]
+      },
+      {
+        "nombre": "Python Foundations and Data G9-ONE",
+        "pdf": "BLOQUE_HS_PYTHON_FUNDAMENTOS.pdf",
+        "cursos": [
+          { "nombre": "Python for Data Science: First Steps", "h": "8h", "pdf": "PYTHON_PRINCIPIOS.pdf" },
+          { "nombre": "Python Practice: If, Elif, and Else Conditionals", "h": "4h", "pdf": "PYTHON_CONDICIONALES.pdf" },
+          { "nombre": "Python Practice: For and While Loops", "h": "4h", "pdf": "PYTHON_BUCLES.pdf" },
+          { "nombre": "Data Science Practice: Alura Store Challenge", "h": "6h", "pdf": "CHALLENGE_PYTHON.pdf" },
+          { "nombre": "Python for Data Science: Functions and Data Structures", "h": "11h", "pdf": "PYTHON_FUNCIONES.pdf" }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "dev",
+    "titulo": "Web Development & Programming",
+    "institucion": "Alura Latam",
+    "color": "#00FF66",
+    "formaciones": [
+      {
+        "nombre": "Programming Foundations G9 - ONE",
+        "pdf": "BLOQUE_HS_PROGRAMACION_PRINCIPIOS.pdf",
+        "cursos": [
+          { "nombre": "Programming Logic: Deep Dive into JavaScript", "h": "8h", "pdf": "LOGICA_PROGRAMACION_JS.pdf" },
+          { "nombre": "Git and GitHub: Repositories, Commits, and Versions", "h": "6h", "pdf": "GIT_GITHUB.pdf" },
+          { "nombre": "Generative AI: Exploring Potential and Tools", "h": "8h", "pdf": "IA_GENERATIVA.pdf" },
+          { "nombre": "Prompt Engineering: Crafting Effective Prompts", "h": "8h", "pdf": "INGENIERIA_PROMPT.pdf" },
+          { "nombre": "HTML and CSS: Tags and Semantic Structures", "h": "6h", "pdf": "HTML_CSS.pdf" },
+          { "nombre": "HTML and CSS: Classes, Positioning, and Flexbox", "h": "6h", "pdf": "HTML_CSS_CLASES.pdf" },
+          { "nombre": "HTML and CSS: Header, Footer, and CSS Variables", "h": "6h", "pdf": "HTML_CSS_VARIABLES.pdf" },
+          { "nombre": "HTML and CSS: Responsiveness and Deployment", "h": "6h", "pdf": "HTML_CSS_RESPONSIVIDAD.pdf" },
+          { "nombre": "Logic Practice: Secret Friend Challenge", "h": "10h", "pdf": "CHALLENGE_AMIGO_SECRETO.pdf" }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "soft",
+    "titulo": "Personal Development & Soft Skills",
+    "institucion": "Alura Latam",
+    "color": "#FDFD96",
+    "formaciones": [
+      {
+        "nombre": "Personal Development G9-ONE",
+        "pdf": "BLOQUE_SS_DESARROLLOPERSONAL.pdf",
+        "cursos": [
+          { "nombre": "Learning to Learn: Self-Development Techniques", "h": "8h", "pdf": "APRENDER A APRENDER.pdf" },
+          { "nombre": "Focus: Bringing More Results to Your Daily Life", "h": "8h", "pdf": "FOCO.pdf" },
+          { "nombre": "Habits: Being Productive to Meet Personal Goals", "h": "8h", "pdf": "HABITOS.pdf" },
+          { "nombre": "Learning with AI: Personalizing Routines with ChatGPT", "h": "6h", "pdf": "APRENDIZAJE_CON_IA.pdf" }
+        ]
+      },
+      {
+        "nombre": "Entrepreneurship and Professional Agility G9-ONE",
+        "pdf": "BLOQUE_SS_EMPRENDIMIENTO_AGILIDAD_PROTAGONISMOPROFESIONAL.pdf",
+        "cursos": [
+          { "nombre": "Career Development: Market Demand Analysis", "h": "6h", "pdf": "DESARROLLO_MERCADO.pdf" },
+          { "nombre": "Career Transition: A Guide to the Tech Field", "h": "6h", "pdf": "TRANSICION_CARRERA.pdf" },
+          { "nombre": "Agile Foundations: First Steps in Transformation", "h": "6h", "pdf": "FUNDAMENTOS_AGILIDAD.pdf" },
+          { "nombre": "Entrepreneurship: From Idea to Business Plan", "h": "9h", "pdf": "EMPRENDIMIENTO.pdf" }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "geo",
+    "titulo": "Geointelligence and Governance",
+    "institucion": "SEGOB (INAFED), SEDATU, GIZ and IDB",
+    "color": "#00E5FF",
+    "formaciones": [
+      {
+        "nombre": "Public Transport Digitalization in Mexican Cities",
+        "pdf": "constancia INAFED_IUCK.pdf",
+        "modulos": [
+          "Intro to Public Transport Digitalization",
+          "Digital Skills Assessment Framework",
+          "Public Transport Digitalization Status in Mexico",
+          "Practical Workshops on Applied Digital Technologies",
+          "Toward Intelligent and Sustainable Transit Systems"
+        ],
+        "horas": 120
+      }
+    ]
+  }
+]

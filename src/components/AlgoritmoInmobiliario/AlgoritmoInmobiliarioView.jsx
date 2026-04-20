@@ -1,37 +1,25 @@
 import React from 'react';
-import '../Shared/ProjectDashboardLayout.css'; 
+import ProjectDashboardLayout from '../Shared/ProjectDashboardLayout.jsx';
+import Sidebar from './AlgoritmoInmobiliarioSidebar.jsx';
+import MapComponent from './AlgoritmoInmobiliarioMap.jsx';
+import Scorecards from './AlgoritmoInmobiliarioScorecards.jsx';
+import ChartsContainer from './AlgoritmoInmobiliarioGraphs.jsx';
+import { useLanguage } from '../../context/LanguageContext.jsx';
 
-import Sidebar from './AlgoritmoInmobiliarioSidebar';
-import Scorecards from './AlgoritmoInmobiliarioScorecards';
-import MapComponent from './AlgoritmoInmobiliarioMap'; 
-import GraphsPanel from './AlgoritmoInmobiliarioGraphs';
+const AlgoritmoView = () => {
+  const { t: fullT } = useLanguage();
+  const t = fullT.algoritmo;
 
-const AlgoritmoInmobiliarioView = () => {
+  if (!t) return null;
+
   return (
-    <div className="dashboard-grid">
-      
-      {/* 1. SIDEBAR */}
-      <div className="panel area-sidebar">
-        <Sidebar />
-      </div>
-
-      {/* 2. SCORECARDS */}
-      <div className="area-scorecards">
-        <Scorecards />
-      </div>
-
-      {/* 3. MAP */}
-      <div className="panel area-top" style={{ position: 'relative' }}>
-         <MapComponent />
-      </div>
-
-      {/* 4. GRÁFICOS*/}
-      <div className="panel area-bottom">
-         <GraphsPanel />
-      </div>
-
-    </div>
+    <ProjectDashboardLayout
+      sidebarContent={<Sidebar t={t} />}
+      mapContent={<MapComponent t={t} />}
+      scorecardsContent={<Scorecards t={t} />}
+      chartsContent={<ChartsContainer t={t} />}
+    />
   );
 };
 
-export default AlgoritmoInmobiliarioView;
+export default AlgoritmoView;

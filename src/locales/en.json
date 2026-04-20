@@ -1,0 +1,339 @@
+{
+  "nav": {
+    "proyectos": "Projects",
+    "formacion": "Specialization",
+    "Sobre_Mi": "About_Me",
+    "contacto": "Contact"
+  },
+  "hero": {
+    "archivoPy": "professional_profile.py",
+    "clase": "Urban_Planner",
+    "subclase": "Data_Scientist",
+    "bio": "I decode the city through data science. I write code so that urban planning stops relying on intuition and starts listening, with evidence, to the people who inhabit the territory.",
+    "perfilLabel": "Geospatial Data Analyst",
+    "cta": "CONTACT",
+    "cvBtn": "DOWNLOAD_CV"
+  },
+  "formacion": {
+    "titulo": "Technical Specialization",
+    "especialidades": "Specializations",
+    "formaciones": "Certifications",
+    "cursos": "Completed Courses",
+    "horas": "Total Hours"
+  },
+  "viajaSegura": {
+    "fileName": "01_safe_journey",
+    "ejecutar": "RUN ANALYSIS",
+    "cardDescription1": "Converting analog transit records from Mexico City's southern periphery into structured data for technical service validation.",
+    "cardDescription2": "The analysis utilizes ETL workflows and GIS modeling to link mobility patterns with urban care facilities, providing data-driven evidence for strategic planning.",
+    "subtitle": "CARE-BASED MOBILITY",
+    "title": "SAFE JOURNEY",
+    "role": "Transit service legitimation through geospatial evidence",
+    "proposito": {
+      "title": "01. Purpose",
+      "tag": "#DataDrivenLegitimacy",
+      "content": "The project evaluates the operation of 'Route 66', an exclusive service for women and children in CDMX's southern periphery. The challenge involved translating analog social operations into a structured data model to support its relevance before SEMOVI. The goal was to build the operational groundwork required to legitimize the model and project its expansion via technical evidence."
+    },
+    "metodologia": {
+      "title": "02. Structure & Methodology",
+      "tag": "#DataEngineering_GIS",
+      "etlKey": "Data Engineering (ETL):",
+      "etlText": "Design of digital capture instruments to normalize boarding records. Python (GeoPandas) is used for data cleaning and structuring the primary database, resolving georeferencing inconsistencies.",
+      "spatialKey": "Advanced Spatial Modeling:",
+      "spatialText": "In GIS, accessibility models were generated using 500m walking isochrones. The analysis automates the overlap of transit supply with care infrastructure, correlating high-flow nodes with facility locations."
+    },
+    "insights": {
+      "title": "03. Insights & Visualization",
+      "tag": "#TheProduct",
+      "intro": "The result is a tool that transforms coordinates and raw data into strategic decisions:",
+      "ejeKey": "Integration Axis:",
+      "ejeText": "Connects high-altitude peripheries (Oyamel, Ocotal, Antigua) with regional hubs like Ciudad Universitaria.",
+      "valKey": "Demand Validation:",
+      "valText": "Legitimation of the route as a vital link in the care mobility network.",
+      "visKey": "Impact Visualization:",
+      "visText": "Interactive dashboard highlighting the care economy for political advocacy."
+    },
+    "stack": {
+      "title": "Tech Stack",
+      "tag": "#TechSpecs",
+      "content": "Python (GeoPandas), QGIS, React, Mapbox GL JS, Figma."
+    },
+    "scorecards": {
+      "rutas": "CARE ROUTES",
+      "rutas_sub": "Connecting homes with schools and health services",
+      "conexion": "PERIPHERAL CONNECTION",
+      "conexion_sub": "Difficult-access high-altitude areas",
+      "viajes": "CARE TRIPS",
+      "viajes_sub": "Women and children",
+      "sobrecarga": "OVERLOAD",
+      "sobrecarga_sub": "Community need vs current supply"
+    },
+    "graphs": {
+      "demanda": "Demand dynamics",
+      "ascensos": "Boardings",
+      "descensos": "Alightings",
+      "infra": "Care infrastructure",
+      "educacion": "Education",
+      "salud": "Health",
+      "abasto": "Supplies"
+    },
+    "map": {
+      "simbologia": "SYMBOLOGY",
+      "recorridos": "Routes",
+      "isocronas": "500m Isochrones",
+      "equip": "Equipment",
+      "popups": {
+        "ruta": "ROUTE",
+        "demanda": "Demand",
+        "longitud": "Length",
+        "parada": "STOP",
+        "suben": "Boardings",
+        "bajan": "Alightings",
+        "educativo": "EDUCATION",
+        "salud": "HEALTH",
+        "abasto": "SUPPLIES"
+      }
+    }
+  },
+  "vigilancia": {
+    "fileName": "02_spectral_watch",
+    "ejecutar": "RUN ANALYSIS",
+    "title": "SPECTRAL WATCH",
+    "subtitle": "Environmental Pressure & Coastal Access Audit",
+    "role": "Machine Learning Segmentation & Ecosystem Pressure Index",
+    "cardComment": "// Environmental Data Auditing & ML",
+    "cardDescription1": "Machine Learning: Environmental auditing via supervised satellite imagery classification to quantify anthropogenic pressure on mangrove ecosystems in Dorado, Puerto Rico.",
+    "cardDescription2": "The analysis employs multispectral indices (NDVI/NDWI) to validate segmentation integrity and demonstrates coastal confinement through advanced geospatial modeling.",
+    "proposito": {
+      "title": "01. Purpose",
+      "tag": "#EnvironmentalAudit",
+      "content": "The project consists of an environmental audit in Dorado, Puerto Rico, to quantify the impact generated by resort development on the mangrove ecosystem. The goal is to document vegetation loss and ecosystem health by building a pressure index, transforming satellite observation into technical evidence for evaluation."
+    },
+    "metodologia": {
+      "title": "02. Structure & Methodology",
+      "tag": "#ML_Methodology",
+      "intro": "The analysis integrates machine learning and multispectral validation to ensure finding accuracy:",
+      "item1Key": "Supervised Segmentation (Machine Learning):",
+      "item1Text": "Implementation of a supervised classification model to segment land use into four categories: Urban, Real Estate Investment (resorts), Mangroves, and Sea.",
+      "item2Key": "Consistency Validation (NDVI/NDWI):",
+      "item2Text": "Vegetation (NDVI) and water (NDWI) indices are generated to perform a cross-validation with the Machine Learning model results.",
+      "item3Key": "Ecosystem Pressure Index Calculation:",
+      "item3Text": "Development of a metric to evaluate the level of fragmentation and pressure on the mangrove. This index integrates surrounding infrastructure density and spectral response."
+    },
+    "insights": {
+      "title": "03. Insights & Visualization",
+      "tag": "#Insights",
+      "intro": "The study reveals critical data on territory configuration and raises a hypothesis on coastal accessibility:",
+      "item1Key": "Structural Fracture:",
+      "item1Text": "The analysis reveals a high surface area of real estate investment, confirming land commodification.",
+      "item2Key": "The Confinement Hypothesis:",
+      "item2Text": "The combination of architectural and natural barriers may be nullifying public access to beaches guaranteed by law.",
+      "item3Key": "Audit Dashboard:",
+      "item3Text": "Interactive visualization that allows contrasting the segmentation model with environmental pressure indices."
+    },
+    "stack": {
+      "title": "Tech Stack",
+      "tag": "#TechSpecs",
+      "content": "Python (Scikit-learn, GeoPandas), Google Earth Engine, SNAP, Mapbox GL JS, Figma."
+    },
+    "raster": {
+      "ndviTitle": "Normalized Difference Vegetation Index",
+      "ndviTop": "High Vegetation",
+      "ndwiTitle": "Normalized Difference Water Index",
+      "ndwiTop": "High Moisture"
+    },
+    "scorecards": {
+      "presion": "PRESSURED ECOSYSTEM",
+      "presion_sub": "Direct conflict",
+      "threat": "THREAT INDEX",
+      "threat_sub": "% of ecosystem under pressure",
+      "inversion": "REAL ESTATE INVESTMENT",
+      "inversion_sub": "Projected developments",
+      "manglar": "MANGROVE SURFACE",
+      "manglar_sub": "Baseline vegetation cover"
+    },
+    "map": {
+      "simbologia": "SYMBOLOGY",
+      "manglar": "Mangrove",
+      "inversion": "Real Estate Investment",
+      "presion": "Pressured mangrove zone"
+    }
+  },
+  "algoritmo": {
+    "fileName": "03_real_estate_algorithm",
+    "ejecutar": "RUN ANALYSIS",
+    "title": "REAL ESTATE ALGORITHM",
+    "subtitle": "MARKET INTELLIGENCE",
+    "role": "Quantitative analysis of short-term rental dynamics in hyper-dense environments.",
+    "cardDescription1": "Market Intelligence: Quantitative analysis of short-term rental dynamics in Hong Kong to visualize housing financialization within hyper-dense environments.",
+    "cardDescription2": "Using SQL (PostgreSQL) and Python to model massive datasets, identifying speculation clusters and housing stock transformed into liquid financial assets.",
+    "proposito": {
+      "title": "01. Purpose",
+      "tag": "#BigDataAnalysis",
+      "content": "The project analyzes the short-term rental operations of the Airbnb platform in Hong Kong, a territory defined by its hyper-density and its central role in global finance. The goal is to make tangible how the platform's dynamics contribute to housing financialization, reconfiguring urban access rules and transforming the housing stock into liquid financial assets through big data analysis."
+    },
+    "metodologia": {
+      "title": "02. Structure & Methodology",
+      "tag": "#DataEngineering",
+      "intro": "A data engineering workflow is implemented to process and model unified information from Inside Airbnb:",
+      "item1Key": "Data Cleaning & Management (SQL):",
+      "item1Text": "PostgreSQL is used for the ingestion and debugging of unified datasets. Queries are executed to filter outliers, normalize data types, and eliminate inconsistent records.",
+      "item2Key": "Geospatial Processing (Python):",
+      "item2Text": "Using Python (GeoPandas) and the SQLAlchemy library, clean data is extracted to execute spatial aggregations by district and calculate critical turnover metrics.",
+      "item3Key": "Metric Normalization:",
+      "item3Text": "Development of algorithms to standardize housing pressure indicators, allowing for consistent comparison."
+    },
+    "insights": {
+      "title": "03. Insights & Visualization",
+      "tag": "#MarketInsights",
+      "intro": "The analysis identifies a structural fracture in the housing market through high-precision metrics:",
+      "item1Key": "Commodified Stock:",
+      "item1Text": "Quantification of units extracted from the traditional market that exceed local capacity.",
+      "item2Key": "Speculation Clusters:",
+      "item2Text": "Revelation of high-intensity zones in Yau Tsim Mong and Central & Western.",
+      "item3Key": "Data Visualization:",
+      "item3Text": "Thematic cartography correlating price with availability."
+    },
+    "stack": {
+      "title": "Tech Stack",
+      "tag": "#TechSpecs",
+      "content": "Python (GeoPandas, SQLAlchemy), SQL (PostgreSQL), QGIS, Figma."
+    },
+    "scorecards": {
+      "stock": "COMMODIFIED STOCK",
+      "stock_sub": "Housing extracted from the market",
+      "barrera": "ACCESS BARRIER",
+      "barrera_sub": "Average cost per night",
+      "subutilizacion": "UNDERUTILIZATION",
+      "subutilizacion_sub": "Days/Year of vacant property",
+      "rotacion": "TURNOVER PRESSURE",
+      "rotacion_sub": "Turnover intensity"
+    },
+    "graphs": {
+      "scatterTitle": "Speculation: Price vs. Rotation",
+      "barTitle": "Absorption by District",
+      "altaPresion": "High Pressure",
+      "estandar": "Standard",
+      "unidadesAirbnb": "Airbnb Units",
+      "precio": "Price",
+      "rotacion": "Turnover",
+      "stockTooltip": "Stock",
+      "unidades": "units",
+      "unidadesTooltip": "Units:"
+    },
+    "map": {
+      "simbologia": "SYMBOLOGY",
+      "subPrecioDistrito": "Avg. Price/District(HK$)",
+      "subPrecioUnidad": "Unit Price (HK$)",
+      "popupUnidad": "AIRBNB UNIT",
+      "popupDistrito": "DISTRICT: ",
+      "popupPrecioHKD": "Price HKD:",
+      "popupPrecioUSD": "Price USD:"
+    }
+  },
+  "factorEsfuerzo": {
+    "fileName": "04_effort_factor_analysis",
+    "ejecutar": "RUN ANALYSIS",
+    "title": "EFFORT FACTOR",
+    "subtitle": "RAILWAY NETWORK ACCESSIBILITY",
+    "role": "Proximity and territorial fragmentation modeling through data mining",
+    "cardDescription1": "Data Analysis: Proximity and territorial fragmentation modeling within the Japanese rail network to quantify the 'Hidden Cost' of Shinkansen efficiency.",
+    "cardDescription2": "This project delivers a spatial data mining model to identify accessibility gaps in historical heritage sites disconnected from primary railway hubs.",
+    "proposito": {
+      "title": "01. Purpose",
+      "tag": "#GeospatialAnalysis",
+      "content": "The project evaluates the spatial relationship between the Japanese railway network and regional cultural assets. The goal is to quantify the access inequality experienced by points of interest (POIs) not integrated into main nodes, determining the Effort Factor: the physical distance a user must invest from the nearest station to the cultural destination."
+    },
+    "metodologia": {
+      "title": "02. Structure & Methodology",
+      "tag": "#DataMining",
+      "item1Key": "Data Mining (POIs):",
+      "item1Text": "Development of Python scripts (BeautifulSoup) for web scraping specialized sites, normalizing coordinates and attributes of strategic assets into a structured dataset.",
+      "item2Key": "Infrastructure Extraction:",
+      "item2Text": "Automated capture and filtering of the entire Japanese railway network using geospatial plugins for integration into the accessibility model.",
+      "item3Key": "Near Analysis:",
+      "item3Text": "Execution of a proximity analysis in GIS to categorize the difficulty level of access and the relative isolation of peripheral assets."
+    },
+    "insights": {
+      "title": "03. Insights & Visualization",
+      "tag": "#IsolationMetrics",
+      "item1Key": "Centralization:",
+      "item1Text": "It is identified that the infrastructure prioritizes dense commercial nodes, critically increasing the effort to access historical heritage.",
+      "item2Key": "Last-Mile Metrics:",
+      "item2Text": "Detection of clusters where travel effort exceeds standard walkability radii (1km), highlighting connectivity gaps.",
+      "item3Key": "Cartography:",
+      "item3Text": "Thematic visualization correlating station density with POI locations for territorial decision-making."
+    },
+    "stack": {
+      "title": "Tech Stack",
+      "tag": "#TechSpecs",
+      "content": "Python (BeautifulSoup, Pandas), QGIS (QuickOSM), Figma."
+    },
+    "scorecards": {
+      "activos": "MAPPED ASSETS",
+      "activos_sub": "Cultural points of interest",
+      "esfuerzo": "EFFORT FACTOR",
+      "esfuerzo_sub": "Average distance to network",
+      "aislamiento": "ISOLATION INDEX",
+      "aislamiento_sub": "Assets outside pedestrian radius",
+      "conexion": "CONNECTED NODES",
+      "conexion_sub": "Direct access (<500m)",
+      "km": " km"
+    },
+    "graphs": {
+      "distribucion": "Accessibility Distribution",
+      "aislados": "Top 5 Isolated Assets (km)",
+      "distLabel": "Distance",
+      "countLabel": "Count",
+      "sinNombre": "Unnamed",
+      "buckets": {
+        "bajo": "< 500m",
+        "medio": "500m-1km",
+        "alto": "1km-3km",
+        "critico": "> 3km"
+      }
+    },
+    "map": {
+      "simbologia": "SYMBOLOGY",
+      "turismo": "Tourism",
+      "activo": "Tourist Asset (Point)",
+      "buffer": "Influence Buffer",
+      "esfuerzo": "Effort Factor",
+      "distancia": "Distance to Station",
+      "red": "Railway Network",
+      "estacion": "Train Station",
+      "vias": "Tracks",
+      "popupActivo": "TOURIST ASSET",
+      "popupEstacion": "STATION",
+      "popupRed": "DISTANCE TO NETWORK",
+      "metros": "meters"
+    }
+  },
+  "contacto": {
+    "rolDestinatario": "Rocío Izunza - Urban Planner|Geospatial Data Analyst",
+    "title": "contact_form",
+    "destinatario": "recipient:",
+    "remitente": "sender:",
+    "remitentePlaceholder": "your name",
+    "correo": "email:",
+    "correoPlaceholder": "user@email.com",
+    "asunto": "subject:",
+    "asuntoPlaceholder": "Collaboration proposal...",
+    "mensaje": "message:",
+    "mensajePlaceholder": "Write the details here...",
+    "exito": "message sent successfully!",
+    "error": "error sending. please try again.",
+    "btnEnviar": ">send_message",
+    "btnEnviando": "sending..."
+  },
+  "outro": {
+    "log_completed": ">PROCESS_COMPLETED: 100%",
+    "log_analyzing": "> ANALYZING_NEXT_STEP...",
+    "titulo": "READY TO CODE THE NEXT CITY",
+    "tab": "extra_info",
+    "perfil": "Urban Planner & Geospatial Data Analyst",
+    "status": "Online & Ready",
+    "layers": "'Infrastructure', 'Data', 'Gender', 'Environment'",
+    "btn": "CONTACT"
+  }
+}

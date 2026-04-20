@@ -1,14 +1,25 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Roboto+Mono:wght@300;400;700&family=Source+Code+Pro:wght@600;700&display=swap');
 
 :root {
-  /* --- COLORES --- */
+  /* --- COLORES BASE UI --- */
   --fondo-app: #0d0f16;
+  --fondo-panel: #12141E;
   --fondo-terminal: #000000;
-  --azul-electrico: #0000FF;
-  --texto-principal: #e0e0e0;
-  --texto-secundario: #6b7280;
-  --borde-sutil: rgba(255, 255, 255, 0.1);
+  --azul-electrico: #0000ff;
   
+  /* --- TEXTOS Y BORDES --- */
+  --texto-principal: #ffffff;
+  --texto-secundario: #b0b3b8;
+  --texto-muteado: #aaaaaa;
+  --borde-sutil: rgba(255, 255, 255, 0.1);
+  --controles-ventana: rgba(170, 170, 170, 0.6);
+  
+  /* --- COLORES DE PROYECTOS (Identidad Visual) --- */
+  --color-viaja: #a020f0;
+  --color-vigilancia: #15be80;
+  --color-algoritmo: #ff5a60;
+  --color-esfuerzo: #00e5ff;
+
   /* --- FUENTES --- */
   --fuente-ui: 'Inter', sans-serif;
   --fuente-datos: 'Roboto Mono', monospace;
@@ -20,13 +31,12 @@
 
   /* --- COLORES EDITOR (MODAL) --- */
   --bg-editor: #282c34;
-  --color-keyword: #c678dd; /* magenta */
-  --color-string: #98c379;  /* verde */
-  --color-function: #61afef; /* azul */
-  --color-comment: #5c6370; /* gris */
-  --color-variable: #e06c75; /* rojo suave */
+  --color-keyword: #c678dd; 
+  --color-string: #98c379;  
+  --color-function: #61afef; 
+  --color-comment: #6a9955; 
+  --color-variable: #e06c75; 
 }
-
 /* Reset */
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body {

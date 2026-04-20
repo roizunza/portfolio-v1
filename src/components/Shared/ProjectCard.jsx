@@ -1,71 +1,50 @@
 import React from 'react';
-import './ProjectCard.css'; // Mantenemos el CSS para la estructura y el móvil
-import { FONTS, COLORS } from '../../config/theme'; 
+import './ProjectCard.css'; 
 
 const ProjectCard = ({ 
-  title,       
-  defColor,    
-  comment,     
-  image,       
-  onEjecutar, 
-  onClose,
-  children,
-  // Props nuevas para forzar colores
-  customBgColor,   // Para el fondo de la tarjeta
-  customBtnColor   // Para el botón
+  title, defColor, comment, image, onEjecutar, onClose, children,
+  customBgColor, customBtnColor, btnText 
 }) => {
   
-  // Estilos de la tarjeta (Sobrescriben al CSS)
   const cardStyle = {
-    backgroundColor: customBgColor || COLORS.background.panel, // Usa el color del Hero (#1e121f) por defecto
-    borderColor: COLORS.ui.border
+    backgroundColor: customBgColor || 'var(--fondo-panel)',
+    borderColor: 'var(--borde-sutil)'
   };
 
-  // Estilos del botón (Sobrescriben al CSS)
   const btnStyle = {
-    backgroundColor: customBtnColor || COLORS.background.header, // Usa el Azul Header (#0000ff) por defecto
-    fontFamily: FONTS.main,
-    color: '#FFFFFF'
+    backgroundColor: customBtnColor || 'var(--azul-electrico)',
+    fontFamily: 'var(--fuente-codigo)',
+    color: 'var(--texto-principal)'
   };
 
   return (
     <div className="project-detail-container" style={cardStyle}>
-      
-      {/* Header de la Ventana */}
-      <div className="card-window-bar" style={{ backgroundColor: COLORS.background.sidebarHeader, borderBottomColor: COLORS.ui.border }}>
-        <div className="window-title" style={{ fontFamily: FONTS.data, color: COLORS.text.secondary }}>
+      <div className="card-window-bar" style={{ backgroundColor: 'var(--fondo-app)', borderBottomColor: 'var(--borde-sutil)' }}>
+        <div className="window-title" style={{ fontFamily: 'var(--fuente-datos)', color: 'var(--texto-secundario)' }}>
           <span>📂</span> {title}
         </div>
-        <div className="window-close-btn" onClick={onClose} style={{ color: COLORS.text.primary }}>[ X ]</div>
+        <div className="window-close-btn" onClick={onClose} style={{ color: 'var(--texto-principal)' }}>[ X ]</div>
       </div>
       
-      {/* Imagen */}
-      <img src={image} alt={title} className="project-hero-image" style={{ borderBottomColor: COLORS.ui.border }} />
+      <img src={image} alt={title} className="project-hero-image" style={{ borderBottomColor: 'var(--borde-sutil)' }} />
 
-      {/* Contenido */}
       <div className="project-content">
-        
-        <div className="code-header" style={{ fontFamily: FONTS.main }}>
+        <div className="code-header" style={{ fontFamily: 'var(--fuente-codigo)' }}>
           <span style={{ color: defColor, fontWeight: 'bold' }}>def():</span>
-          <span style={{ color: COLORS.text.primary, marginLeft: '10px' }}>{title}</span>
+          <span style={{ color: 'var(--texto-principal)', marginLeft: '10px' }}>{title}</span>
         </div>
 
-        <div className="project-location-comment" style={{ fontFamily: FONTS.main, color: COLORS.text.codeComment }}>
+        <div className="project-location-comment" style={{ fontFamily: 'var(--fuente-codigo)', color: 'var(--color-comment)' }}>
           {comment}
         </div>
 
-        <div className="project-description" style={{ fontFamily: FONTS.body, color: COLORS.text.secondary }}>
+        <div className="project-description" style={{ fontFamily: 'var(--fuente-ui)', color: 'var(--texto-secundario)' }}>
           {children}
         </div>
 
-        <button 
-          className="execute-button" 
-          onClick={onEjecutar} 
-          style={btnStyle} // <--- Aquí aplicamos el Azul Header
-        >
-          EJECUTAR ANÁLISIS
+        <button className="execute-button" onClick={onEjecutar} style={btnStyle}>
+          {btnText}
         </button>
-
       </div>
     </div>
   );

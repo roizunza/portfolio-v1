@@ -1,19 +1,19 @@
 import React from 'react';
 import ProjectCard from '../Shared/ProjectCard.jsx';
-import imgAlgoritmo from '../../assets/algoritmoinmobiliario.png'; 
-import { PROJECTS } from '../../config/theme.js';
+import imgFactor from '../../assets/factoresfuerzo.png'; 
+import { PROJECTS } from '../../config/theme';
 import { useLanguage } from '../../context/LanguageContext.jsx';
 
-const AlgoritmoInmobiliarioCard = ({ onEjecutar, onClose }) => {
+const FactorEsfuerzoCard = ({ onEjecutar, onClose }) => {
   const { idioma, t: fullT } = useLanguage();
-  const t = fullT.algoritmo;
+  const t = fullT.factorEsfuerzo;
 
   return (
     <ProjectCard
       title={t.fileName}
-      defColor={PROJECTS.algoritmo.color} 
-      comment={idioma === 'es' ? "// Inteligencia de Mercado & Big Data" : "// Market Intelligence & Big Data"}
-      image={imgAlgoritmo}
+      defColor={PROJECTS.factorEsfuerzo.color} 
+      comment={idioma === 'es' ? "// Análisis Ferroviario" : "// Rail Analysis"}
+      image={imgFactor}
       onEjecutar={onEjecutar}
       onClose={onClose}
       customBgColor="var(--fondo-panel)"
@@ -31,4 +31,4 @@ const AlgoritmoInmobiliarioCard = ({ onEjecutar, onClose }) => {
   );
 };
 
-export default AlgoritmoInmobiliarioCard;
+export default FactorEsfuerzoCard;

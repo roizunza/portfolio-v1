@@ -1,12 +1,12 @@
 import React, { useMemo, useState, useEffect } from 'react'; 
-import { FONTS, COLORS, PROJECTS } from '../../config/theme';
+import { PROJECTS } from '../../config/theme.js';
 import * as turf from '@turf/turf';
 
 import manglaresData from '../../data/manglares.json';
 import inversionData from '../../data/inversion.json';
 import presionData from '../../data/manglarespresionados.json'; 
 
-export default function Scorecards() {
+export default function Scorecards({ t }) {
     const [isMounted, setIsMounted] = useState(false);
     useEffect(() => setIsMounted(true), []);
 
@@ -37,53 +37,49 @@ export default function Scorecards() {
       card: {
         display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', textAlign: 'center',
         width: '100%', height: '100%', minHeight: '80px', boxSizing: 'border-box',
-        backgroundColor: COLORS.background.panel, 
+        backgroundColor: 'var(--fondo-panel)', 
         borderRadius: '8px', padding: '5px',
-        border: `1px solid ${COLORS.ui.border}`,
+        border: '1px solid var(--borde-sutil)',
         backdropFilter: 'blur(10px)'
       },
       number: {
         color: THEME.color, 
-        fontFamily: FONTS.main, fontSize: '22px', fontWeight: '700', marginBottom: '4px', lineHeight: '1'
+        fontFamily: 'var(--fuente-datos)', fontSize: '22px', fontWeight: '700', marginBottom: '4px', lineHeight: '1'
       },
       title: {
-        fontFamily: FONTS.body, fontSize: '10px', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: '4px',
+        fontFamily: 'var(--fuente-ui)', fontSize: '10px', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: '4px',
       },
       subtitle: {
-        color: COLORS.text.secondary, fontFamily: FONTS.body, fontSize: '8px', fontWeight: '500', lineHeight: '1.2', opacity: 0.8
+        color: 'var(--texto-secundario)', fontFamily: 'var(--fuente-ui)', fontSize: '8px', fontWeight: '500', lineHeight: '1.2', opacity: 0.8
       }
     };
 
-    if (!isMounted) return null;
+    if (!isMounted || !t || !t.scorecards) return null;
     
     return (
       <React.Fragment>
-          {/* 1. ECOSISTEMA PRESIONADO (ROJO) */}
           <div style={s.card}>
               <div style={s.number}>{kpis.presion} Ha</div>
-              <div style={{...s.title, color: RAMP.presion}}>ECOSISTEMA PRESIONADO</div>
-              <div style={s.subtitle}>Conflicto directo</div>
+              <div style={{...s.title, color: RAMP.presion}}>{t.scorecards.presion}</div>
+              <div style={s.subtitle}>{t.scorecards.presion_sub}</div>
           </div>
 
-          {/* 2. ÍNDICE DE AMENAZA (NARANJA)*/}
           <div style={s.card}>
               <div style={s.number}>{kpis.riesgo}%</div>
-              <div style={{...s.title, color: RAMP.riesgo}}>ÍNDICE DE AMENAZA</div>
-              <div style={s.subtitle}>% del ecosistema bajo presión</div>
+              <div style={{...s.title, color: RAMP.riesgo}}>{t.scorecards.amenaza}</div>
+              <div style={s.subtitle}>{t.scorecards.amenaza_sub}</div>
           </div>
 
-          {/* 3. INVERSIÓN INMOBILIARIA (AMARILLO) */}
           <div style={s.card}>
               <div style={s.number}>{kpis.inversion} Ha</div>
-              <div style={{...s.title, color: RAMP.inversion}}>INVERSIÓN INMOBILIARIA</div>
-              <div style={s.subtitle}>Desarrollos proyectados</div>
+              <div style={{...s.title, color: RAMP.inversion}}>{t.scorecards.inversion}</div>
+              <div style={s.subtitle}>{t.scorecards.inversion_sub}</div>
           </div>
           
-          {/* 4. SUPERFICIE MANGLAR (BLANCO) */}
           <div style={s.card}>
               <div style={s.number}>{kpis.manglares} Ha</div>
-              <div style={{...s.title, color: '#FFFFFF'}}>SUPERFICIE MANGLAR</div>
-              <div style={s.subtitle}>Cobertura vegetal base</div>
+              <div style={{...s.title, color: 'var(--texto-principal)'}}>{t.scorecards.manglar}</div>
+              <div style={s.subtitle}>{t.scorecards.manglar_sub}</div>
           </div>
       </React.Fragment>
     );

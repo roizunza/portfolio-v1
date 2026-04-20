@@ -1,36 +1,24 @@
 import React from 'react';
-import { FONTS, COLORS } from '../config/theme';
 
 const Footer = () => {
   return (
-    <footer 
-      className="footer-container" 
-      style={{ 
-        backgroundColor: COLORS.background.footer, 
-        borderTop: `1px solid ${COLORS.ui.border}` 
-      }}
-    >
-      <div className="footer-content" style={{ fontFamily: FONTS.main, color: '#8a8a8a' }}>
-        
-        {/* Ruta para Escritorio */}
-        <span className="ruta-desktop" style={{ opacity: 0.6, marginRight: '8px' }}>
-          C:\Users\Rocio\Desktop\portfolio_v2025&gt;
-        </span>
-
-        {/* Ruta para Celular */}
-        <span className="ruta-mobile" style={{ opacity: 0.6, marginRight: '5px' }}>
-          ~\portfolio_v2025&gt;
-        </span>
-
-        {/* Estado del sistema */}
-        <span>
-          system_ready. waiting_for_click...
-        </span>
-
-        {/* Cursor Parpadeante */}
-        <span className="cursor-terminal" style={{ backgroundColor: '#ffffff' }}></span>
-
-      </div>
+    <footer style={{ 
+      height: 'var(--altura-footer)', 
+      display: 'flex', 
+      justifyContent: 'center', 
+      alignItems: 'center', 
+      backgroundColor: 'var(--fondo-app)',
+      borderTop: '1px solid var(--borde-sutil)',
+      color: 'var(--texto-muteado)',
+      fontFamily: 'var(--fuente-datos)',
+      fontSize: '0.75rem',
+      padding: '0 20px',
+      position: 'relative',
+      zIndex: 10,
+      width: '100%',
+      marginTop: 'auto' // Esto empuja el footer al final si el contenido es corto
+    }}>
+      <span>{`>_ SYSTEM_STATUS: ONLINE // ROCÍO IZUNZA © 2026`}</span>
     </footer>
   );
 };

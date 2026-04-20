@@ -3,8 +3,9 @@ import { FaPlug } from 'react-icons/fa';
 import { useLanguage } from '../context/LanguageContext.jsx';
 import './Outro.css'; 
 
-const Outro = ({ onContactClick }) => {
-  const { t: fullT } = useLanguage();
+// RECUPERAMOS LA PROP onContactClick
+const Outro = ({ onContactClick }) => { 
+  const { t: fullT } = useLanguage(); 
   const t = fullT.outro;
 
   const [isVisible, setIsVisible] = useState(false);
@@ -91,6 +92,7 @@ const Outro = ({ onContactClick }) => {
       </div>
 
       <div style={{ textAlign: 'center', marginBottom: '40px' }}>
+        {/* RECONECTAMOS EL BOTÓN */}
         <button className="hero-btn" onClick={onContactClick}>
           <FaPlug style={{ transform: 'rotate(90deg)' }}/> {t.btn}
         </button>

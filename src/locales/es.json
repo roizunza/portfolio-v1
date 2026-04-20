@@ -310,21 +310,21 @@
     }
   },
   "contacto": {
-    "rolDestinatario": "Rocío Izunza - Urbanista|Analista de Datos Geoespaciales",
-    "title": "formulario_contacto",
-    "destinatario": "destinatario:",
-    "remitente": "remitente:",
-    "remitentePlaceholder": "tu nombre",
-    "correo": "correo:",
-    "correoPlaceholder": "usuario@email.com",
-    "asunto": "asunto:",
-    "asuntoPlaceholder": "Propuesta de colaboración...",
-    "mensaje": "mensaje:",
-    "mensajePlaceholder": "Escribe los detalles aquí...",
+    "titulo": "contact_form",
+    "para_label": "Destinatario:",
+    "rol": "Urbanista | Analista de Datos Geoespaciales",
+    "nombre_label": "Nombre:",
+    "nombre_ph": "tu nombre",
+    "correo_label": "Remitente:",
+    "correo_sub": "(Tu correo)",
+    "asunto_label": "Asunto:",
+    "asunto_ph": "Propuesta de colaboración...",
+    "mensaje_label": "Mensaje:",
+    "mensaje_ph": "Escribe los detalles aquí...",
     "exito": "¡mensaje enviado con éxito!",
     "error": "error al enviar. intenta de nuevo.",
-    "btnEnviar": ">enviar_mensaje",
-    "btnEnviando": "enviando..."
+    "enviando": "enviando...",
+    "btn_enviar": ">enviar_mensaje"
   },
   "outro": {
     "log_completed": ">PROCESO_COMPLETADO: 100%",
@@ -336,4 +336,4 @@
     "layers": "'Infraestructura', 'Data', 'Género', 'Ambiente'",
     "btn": "CONTACTO"
   }
-}
+}   

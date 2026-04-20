@@ -2,16 +2,16 @@ import React from 'react';
 import { FaGithub, FaLinkedin, FaFileDownload, FaPlug } from 'react-icons/fa';
 import { useLanguage } from '../context/LanguageContext.jsx';
 
-const Hero = ({ alAbrirTerminal }) => {
-  const { idioma, t } = useLanguage();
+// RECUPERAMOS LA PROP alAbrirTerminal
+const Hero = ({ alAbrirTerminal }) => { 
+  const { idioma, t } = useLanguage(); 
   const heroText = t.hero;
   
   const manejarClick = (accion, destino) => {
     if (accion === 'modal') {
-      if (alAbrirTerminal) alAbrirTerminal();
-    } else if (accion === 'link') {
-      window.open(destino, '_blank'); 
-    } else if (accion === 'descarga') {
+      // RECONECTAMOS LA FUNCIÓN
+      if (alAbrirTerminal) alAbrirTerminal(); 
+    } else if (accion === 'link' || accion === 'descarga') {
       window.open(destino, '_blank'); 
     }
   };
@@ -19,106 +19,22 @@ const Hero = ({ alAbrirTerminal }) => {
   return (
     <section className="hero-section" id="Sobre_Mi" style={{padding: '40px 0'}}>
       <style>{`
-        .profile-container {
-          max-width: 1350px; 
-          width: 95%;
-          margin: 0 auto;
-          background-color: var(--fondo-panel); 
-          backdrop-filter: blur(10px);
-          -webkit-backdrop-filter: blur(10px);
-          border: 1px solid var(--borde-sutil);
-          border-radius: 8px;
-          overflow: hidden;
-          box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-        }
-
-        .profile-window-bar {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          padding: 10px 20px;
-          background-color: var(--fondo-app); 
-          border-bottom: 1px solid var(--borde-sutil);
-          font-family: var(--fuente-datos);
-          font-size: 13px;
-        }
-
-        .window-controls {
-          display: flex;
-          gap: 15px;
-          color: var(--controles-ventana);
-        }
-
-        .profile-content {
-          display: flex;
-          align-items: center;
-          gap: 60px;
-          padding: 60px; 
-        }
-
-        .profile-left {
-          flex: 0 0 30%;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-        }
-
-        .profile-image {
-          width: 320px; 
-          height: 320px;
-          border-radius: 50%;
-          object-fit: cover;
-          border: 4px solid rgba(255,255,255,0.05);
-          box-shadow: 0 0 30px rgba(0,0,0,0.3);
-        }
-
-        .profile-right {
-          flex: 1;
-        }
-
+        .profile-container { max-width: 1350px; width: 95%; margin: 0 auto; background-color: var(--fondo-panel); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--borde-sutil); border-radius: 8px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
+        .profile-window-bar { display: flex; justify-content: space-between; align-items: center; padding: 10px 20px; background-color: var(--fondo-app); border-bottom: 1px solid var(--borde-sutil); font-family: var(--fuente-datos); font-size: 13px; }
+        .window-controls { display: flex; gap: 15px; color: var(--controles-ventana); }
+        .profile-content { display: flex; align-items: center; gap: 60px; padding: 60px; }
+        .profile-left { flex: 0 0 30%; display: flex; flex-direction: column; align-items: center; }
+        .profile-image { width: 320px; height: 320px; border-radius: 50%; object-fit: cover; border: 4px solid rgba(255,255,255,0.05); box-shadow: 0 0 30px rgba(0,0,0,0.3); }
+        .profile-right { flex: 1; }
         @media (max-width: 992px) {
-          .profile-content {
-            flex-direction: column;
-            padding: 40px 20px;
-            gap: 30px;
-            text-align: center;
-          }
-          
-          .profile-image {
-            width: 200px;
-            height: 200px;
-          }
-
-          .profile-window-bar {
-            padding: 8px 12px;
-            font-size: 11px;
-          }
-
-          .window-controls {
-            gap: 8px;
-          }
-
-          .code-block {
-            font-size: 13px !important;
-            text-align: left; 
-            width: 100%;
-          }
-
-          .profile-buttons {
-            justify-content: center !important;
-            flex-wrap: wrap;
-            gap: 10px;
-          }
+          .profile-content { flex-direction: column; padding: 40px 20px; gap: 30px; text-align: center; }
+          .profile-image { width: 200px; height: 200px; }
+          .profile-window-bar { padding: 8px 12px; font-size: 11px; }
+          .window-controls { gap: 8px; }
+          .code-block { font-size: 13px !important; text-align: left; width: 100%; }
+          .profile-buttons { justify-content: center !important; flex-wrap: wrap; gap: 10px; }
         }
-
-        @media (max-width: 480px) {
-          .profile-window-bar span:first-child {
-            max-width: 150px;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-          }
-        }
+        @media (max-width: 480px) { .profile-window-bar span:first-child { max-width: 150px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; } }
       `}</style>
 
       <div className="profile-container">

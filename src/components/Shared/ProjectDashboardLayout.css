@@ -31,9 +31,27 @@
   height: 100%; 
 }
 
-/* Área de Sidebar: Ojo, aquí está la clave. El Sidebar es alto, pero su contenido (el acordeón) debe tener scroll interno */
+/* Área de Sidebar: Aquí activamos el scroll interno para que las tarjetas desplegadas se puedan leer */
 .area-sidebar {
   grid-area: sidebar;
+  overflow-y: auto; 
+  overflow-x: hidden;
+}
+
+/* Diseño elegante para la barra de scroll del Sidebar (aplica en navegadores WebKit como Chrome/Safari) */
+.area-sidebar::-webkit-scrollbar {
+  width: 6px;
+}
+.area-sidebar::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+.area-sidebar::-webkit-scrollbar-thumb {
+  background: var(--borde-sutil);
+  border-radius: 8px;
+}
+.area-sidebar::-webkit-scrollbar-thumb:hover {
+  background: var(--texto-secundario);
 }
 
 .area-scorecards {
@@ -41,7 +59,6 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
-  /* Eliminado overflow, los scorecards individuales se gestionan solos */
 }
 
 .area-top {
@@ -64,7 +81,8 @@
     overflow: visible; 
   }
   
-  .area-sidebar    { order: 1; height: auto; max-height: 500px; }
+  /* El max-height de 500px detiene el panel, y el overflow-y: auto permite scrollear por dentro */
+  .area-sidebar    { order: 1; height: auto; max-height: 500px; overflow-y: auto; }
   .area-scorecards { order: 2; height: auto; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding: 0; }
   .area-top        { order: 3; height: 400px; }
   .area-bottom     { order: 4; height: 500px; }

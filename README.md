@@ -1,5 +1,3 @@
-import os
-
 readme_content = """# Data-Driven Urbanism: Portfolio V2026
 **Karla Rocío Izunza Coéllar** *Urbanista (UNAM) y Científica de Datos Especializada (ORACLE - NEXT GENERATION / ALURA)*
 
@@ -83,5 +81,90 @@ Despliegue Local:
 Bash
 npm run dev
 Uso: Accede a http://localhost:5173 para interactuar con los dashboards y cambiar entre los idiomas disponibles (ES/EN).
+
+-----------------------------------------------------------------------
+
+readme_content = """# Data-Driven Urbanism: Portfolio V2026
+**Karla Rocío Izunza Coéllar** *Urban Planner (UNAM) and Specialized Data Scientist (ORACLE - NEXT GENERATION / ALURA)*
+
+This repository contains the technical development and visualization of interactive dashboards applied to urban and geospatial analysis.
+
+## 1. Purpose of the analysis
+The core objective of this project is to integrate data science with urban planning to transform massive data into actionable evidence. Through this portfolio, complex analyses are presented to decode urban dynamics in four critical areas:
+
+* **Viaja Segura (Travel Safely):** Transformation of analog operations in the southern upper periphery of Mexico City into a structured data model for the technical validation of transport services.
+
+The analysis implements ETL flows and GIS modeling to correlate mobility flows with urban facility nodes related to care economy, generating the necessary evidence for strategic decision-making.
+
+* **Spectral Monitoring:** Machine Learning: Environmental audit through supervised classification of satellite imagery to quantify anthropogenic pressure on mangrove ecosystems in Dorado, Puerto Rico.
+
+The analysis utilizes multispectral indices (NDVI/NDWI) to validate segmentation integrity and provides evidence of coastal confinement through advanced geospatial modeling.
+
+* **Real Estate Algorithm:** Market Intelligence: Quantitative analysis of accommodation platform dynamics in Hong Kong to visualize the financialization of housing in hyper-dense environments.
+
+Using SQL (PostgreSQL) and Python, massive data is modeled to identify speculation clusters and the volume of housing stock transformed into financial assets.
+
+* **Tourist Effort Factor:** Data Analysis: Proximity and territorial fragmentation modeling in the Japanese railway network to quantify the 'Hidden Cost' of Shinkansen efficiency.
+
+This project measures access inequality through spatial data mining, evaluating the physical effort required to connect with regional heritage disconnected from the main network.
+
+## 2. Project Structure and File Organization
+The project is built under a modular architecture using **React + Vite**, allowing each analysis to function as an independent yet consistent view.
+
+/src
+├── components/           # Modular system components
+│   ├── ViajaSegura/      # Mobility and care analysis in southern CDMX
+│   ├── VigilanciaEspectral/ # Coastal and environmental audit in Puerto Rico
+│   ├── AlgoritmoInmobiliario/ # Airbnb platform dynamics in Hong Kong
+│   ├── FactorEsfuerzo/    # Accessibility and last-mile metrics in Japan
+│   └── Shared/           # Reusable layouts and project cards
+├── data/                 # Data layers (GeoJSON and supporting JSON files)
+├── config/               # Centralized theme and style configuration
+├── context/              # Global state management (ES/EN languages)
+└── App.jsx               # Main application orchestrator
+
+## 3. Examples of Insights Obtained
+From the geospatial data analysis and the implementation of interactive dashboards, the following findings have been extracted:
+
+**Mobility and Care Economy (Viaja Segura):**
+
+- **Integration Axis:** A vital connection is identified between the upper periphery (Oyamel, Ocotal, Antigua) and strategic regional facilities such as Ciudad Universitaria (UNAM).
+- **Demand Validation:** Legitimation of transport routes as fundamental links in the care mobility network.
+
+**Coastal Audit (Spectral Monitoring):**
+
+- **Structural Fracture:** The analysis reveals a high surface area of real estate investment, confirming intensive land commodification processes.
+- **Confinement Hypothesis:** It was detected that the conjunction of architectural and natural barriers may be canceling public access to beaches guaranteed by law.
+
+**Housing Market (Real Estate Algorithm):**
+
+- **Commodified Stock:** Quantification of units extracted from the traditional market that exceed local absorption capacity.
+- **Speculation Clusters:** Identification of high-intensity speculative zones in districts such as Yau Tsim Mong and Central & Western.
+
+**Accessibility and Infrastructure (Effort Factor):**
+
+- **Centralization Bias:** Infrastructure prioritizes dense commercial nodes, increasing the effort required to access historical heritage.
+- **Last-Mile Metrics:** Detection of areas where travel effort exceeds standard walkability radii (1km), highlighting critical connectivity gaps.
+
+## 4. Instructions to Run the Project
+To view the dashboard locally and explore the interactive data, follow these instructions:
+
+**Requirements:** Node.js installed on your system.
+
+**Cloning and Installation:**
+
+```bash
+git clone [https://github.com/roizunza/portfolio-v2026.git](https://github.com/roizunza/portfolio-v2026.git)
+cd portfolio-v2026
+npm install
+```
+
+**Local Deployment:**
+
+```bash
+npm run dev
+```
+
+**Usage:** Access http://localhost:5173 to interact with the dashboards and switch between available languages (ES/EN).
 
 ---

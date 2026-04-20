@@ -110,7 +110,7 @@
       "content": "El proyecto consiste en una auditoría ambiental en Dorado, Puerto Rico, para cuantificar el impacto generado por el desarrollo de resorts sobre el ecosistema de manglar. El objetivo es documentar la pérdida de cobertura vegetal y el estado del ecosistema mediante la construcción de un índice de presión, transformando la observación satelital en evidencia técnica para evaluación."
     },
     "metodologia": {
-      "title": "02. Estructura y metodología",
+      "title": "02. Estructura y Metodología",
       "tag": "#ML_Methodology",
       "intro": "El análisis integra aprendizaje automático y validación multiespectral para garantizar la precisión de los hallazgos:",
       "item1Key": "Segmentación Supervisada (Machine Learning):",
@@ -173,7 +173,7 @@
       "content": "El proyecto analiza la operación de la plataforma airbnb en su apartado de renta a corto plazo en Hong Kong, territorio definido por su hiperdensidad y su rol central en las finanzas globales. El objetivo es tangibilizar cómo la dinámica de la plataforma contribuye a la financiarización de la vivienda, reconfigurando las reglas de acceso urbano y transformando el stock habitacional en activos financieros líquidos mediante el análisis de datos masivos."
     },
     "metodologia": {
-      "title": "02. Estructura y metodología",
+      "title": "02. Estructura y Metodología",
       "tag": "#DataEngineering",
       "intro": "Se implementa un flujo de trabajo de ingeniería de datos para procesar y modelar información unificada proveniente de Inside Airbnb:",
       "item1Key": "Limpieza y Gestión de Datos (SQL):",
@@ -245,7 +245,7 @@
       "content": "El proyecto evalúa la relación espacial entre la red ferroviaria japonesa y los activos culturales regionales. El objetivo es cuantificar la desigualdad de acceso que experimentan los puntos de interés (POIs) no integrados a los nodos principales, determinando el Factor de Esfuerzo: la distancia física que un usuario debe invertir desde la estación más cercana hasta el destino cultural."
     },
     "metodologia": {
-      "title": "02. Estructura y metodología",
+      "title": "02. Estructura y Metodología",
       "tag": "#DataMining",
       "item1Key": "Minería de Datos (POIs):",
       "item1Text": "Desarrollo de scripts en Python (BeautifulSoup) para el web scraping de sitios especializados, normalizando coordenadas y atributos de activos estratégicos en un dataset estructurado.",
@@ -255,7 +255,7 @@
       "item3Text": "Ejecución de un análisis de proximidad en GIS para categorizar el nivel de dificultad de acceso y el aislamiento relativo de los activos periféricos."
     },
     "insights": {
-      "title": "03. Insights y visualización",
+      "title": "03. Insights y Visualización",
       "tag": "#IsolationMetrics",
       "item1Key": "Centralización:",
       "item1Text": "Se identifica que la infraestructura prioriza nodos comerciales densos, aumentando críticamente el esfuerzo para acceder al patrimonio histórico.",

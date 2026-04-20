@@ -1,14 +1,12 @@
 import React, { useRef, useEffect } from 'react';
 import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
-import { COLORS, FONTS, PROJECTS } from '../../config/theme';
+import { FONTS, PROJECTS } from '../../config/theme';
 
 import rutasData from '../../data/recorridos.json';
 import paradasData from '../../data/paradas_r66.json'; 
 import isocronasData from '../../data/isocronas.json';
 import equipData from '../../data/equipamiento.json';
-
-mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_TOKEN;
 
 export default function MapComponent({ t }) {
   const mapContainer = useRef(null);
@@ -20,7 +18,9 @@ export default function MapComponent({ t }) {
 
   useEffect(() => {
     if (map.current) return;
-    mapboxgl.accessToken = TOKEN;
+
+    // Conexión segura con la variable de entorno de Vite
+    mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_TOKEN;
 
     map.current = new mapboxgl.Map({
       container: mapContainer.current,
@@ -41,7 +41,6 @@ export default function MapComponent({ t }) {
 
       map.current.addLayer({
         'id': 'isocronas-fill', 'type': 'fill', 'source': 'isocronas',
-        // Bajamos la opacidad para que no sature el mapa como pediste
         'paint': { 'fill-color': RAMP.isochrone, 'fill-opacity': 0.05 } 
       });
 
@@ -98,7 +97,7 @@ export default function MapComponent({ t }) {
         const coordinates = e.lngLat;
         const currentT = tRef.current; 
 
-        const containerStyle = `font-family:${FONTS.body}; font-size:11px; color:#e0e0e0; min-width:160px;`;
+        const containerStyle = `font-family: var(--fuente-ui); font-size:11px; color:#e0e0e0; min-width:160px;`;
         const titleStyle = `font-weight:bold; text-transform:uppercase; font-size:12px; margin-bottom:6px; border-bottom:1px solid rgba(255,255,255,0.2); padding-bottom:3px; letter-spacing:0.5px;`;
         const rowStyle = `display:flex; justify-content:space-between; margin-bottom:3px;`;
         const labelStyle = `color:#aaa; margin-right:8px;`;
@@ -155,7 +154,6 @@ export default function MapComponent({ t }) {
     <div style={{ position: 'relative', width: '100%', height: '100%' }}>
       <div ref={mapContainer} style={{ width: '100%', height: '100%' }} />
       
-      {/* Símbología anclada arriba a la izquierda y sin depender de 'STYLES' externos para no fallar */}
       <div style={{
         position: 'absolute', 
         top: '10px', 
@@ -166,7 +164,7 @@ export default function MapComponent({ t }) {
         border: '1px solid rgba(255,255,255,0.1)',
         borderRadius: '6px', 
         color: '#FFFFFF', 
-        fontFamily: FONTS.data, 
+        fontFamily: 'var(--fuente-datos)', 
         fontSize: '9px',
         zIndex: 10, 
         backdropFilter: 'blur(8px)'

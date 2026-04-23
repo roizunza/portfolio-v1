@@ -8,7 +8,8 @@ import estacionesData from '../../data/estacion-tren.json';
 import factorData from '../../data/factor-esfuerzo-turistico.json';
 import activosData from '../../data/activos-turisticos.json';
 
-mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_TOKEN;
+const MAPBOX_TOKEN = import.meta.env.VITE_MAPBOX_TOKEN || 'pk.eyJ1Ijoicm9jb2VsbGFyIiwiYSI6ImNtaXFqdG1tajBneXMzY29ra3ZpNHhuaTAifQ.8rc4UaH2YExVO5ceCB9MXA';
+mapboxgl.accessToken = MAPBOX_TOKEN;
 
 const getCssVar = (name) => getComputedStyle(document.documentElement).getPropertyValue(name).trim();
 

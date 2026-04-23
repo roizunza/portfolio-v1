@@ -7,7 +7,10 @@ import manglaresData from '../../data/manglares.json';
 import inversionData from '../../data/inversion.json';
 import presionData from '../../data/manglarespresionados.json'; 
 
-mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_TOKEN;
+const MAPBOX_TOKEN = import.meta.env.VITE_MAPBOX_TOKEN || 'pk.eyJ1Ijoicm9jb2VsbGFyIiwiYSI6ImNtaXFqdG1tajBneXMzY29ra3ZpNHhuaTAifQ.8rc4UaH2YExVO5ceCB9MXA';
+mapboxgl.accessToken = MAPBOX_TOKEN;
+
+const getCssVar = (name) => getComputedStyle(document.documentElement).getPropertyValue(name).trim();
 
 export default function MapComponent({ t }) {
   const mapContainer = useRef(null);

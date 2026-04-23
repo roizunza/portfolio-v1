@@ -8,6 +8,10 @@ import paradasData from '../../data/paradas_r66.json';
 import isocronasData from '../../data/isocronas.json';
 import equipData from '../../data/equipamiento.json';
 
+const MAPBOX_TOKEN = import.meta.env.VITE_MAPBOX_TOKEN || 'pk.eyJ1Ijoicm9jb2VsbGFyIiwiYSI6ImNtaXFqdG1tajBneXMzY29ra3ZpNHhuaTAifQ.8rc4UaH2YExVO5ceCB9MXA';
+mapboxgl.accessToken = MAPBOX_TOKEN;
+
+const getCssVar = (name) => getComputedStyle(document.documentElement).getPropertyValue(name).trim();
 export default function MapComponent({ t }) {
   const mapContainer = useRef(null);
   const map = useRef(null);
@@ -18,9 +22,6 @@ export default function MapComponent({ t }) {
 
   useEffect(() => {
     if (map.current) return;
-
-    // Conexión segura con la variable de entorno de Vite
-    mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_TOKEN;
 
     map.current = new mapboxgl.Map({
       container: mapContainer.current,
